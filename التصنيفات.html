@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جمالك - متجر العناية والتجميل</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FFC1CC;
+            --secondary-color: #D8B4E2;
+            --neutral-color: #FFF8F0;
+            --button-color: #FF6B81;
+            --text-color: #4A4A4A;
+            --light-text: #ffffff;
+            --dark-text: #333333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --discount-color: #FF4757;
+            --exclusive-color: #9c27b0;
+            --new-color: #2ed573;
+            --fast-delivery: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-text);
+            direction: rtl;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* الهيدر */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: #f8f8f8;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .header-top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-top-left {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-top-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .header-main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--button-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--button-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-icon {
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .header-icon:hover {
+            color: var(--button-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background-color: var(--button-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-btn {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background-color: #e55c71;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* صفحة الأقسام الرئيسية */
+        .categories-main-page {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .categories-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--dark-text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .categories-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--button-color);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid #f0f0f0;
+            position: relative;
+            cursor: pointer;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-image {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-image {
+            transform: scale(1.05);
+        }
+
+        .category-info {
+            padding: 15px;
+            text-align: center;
+            background: white;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        /* تأثير النقر على التصنيفات */
+        .category-card.active {
+            border: 2px solid var(--button-color);
+            transform: scale(0.98);
+        }
+
+        /* مؤشر التحميل */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary-color);
+            border-top: 5px solid var(--button-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #2c2c2c;
+            color: #f1f1f1;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: white;
+        }
+
+        .footer-column h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--button-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-right: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--button-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        /* التجاوب مع الشاشات المختلفة */
+        @media (max-width: 992px) {
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: white;
+                width: 100%;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .category-card {
+                height: auto;
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .category-image {
+                height: 100px;
+                width: 100px;
+                flex-shrink: 0;
+            }
+            
+            .category-info {
+                padding: 10px;
+                text-align: right;
+                justify-content: flex-start;
+            }
+            
+            .category-name {
+                font-size: 1rem;
+            }
+            
+            .categories-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-main-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .categories-title {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .category-card {
+                height: auto;
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .category-image {
+                height: 80px;
+                width: 80px;
+            }
+            
+            .category-info {
+                padding: 8px;
+            }
+            
+            .category-name {
+                font-size: 0.9rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h4::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-card {
+                height: 100px;
+            }
+            
+            .category-image {
+                height: 90px;
+                width: 90px;
+            }
+            
+            .category-name {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- مؤشر التحميل -->
+    <div class="loader" id="pageLoader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-container">
+                <div class="header-top-left">
+                    <span><i class="fas fa-truck"></i> توصيل مجاني للطلبات فوق 200 ر.س</span>
+                </div>
+                <div class="header-top-right">
+                    <span><i class="fas fa-phone"></i> 800-12345</span>
+                    <span><i class="fas fa-envelope"></i> info@jamalk.com</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container header-main-container">
+            <div class="logo">جمالك</div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="التصنيفات.html">منتجاتنا</a></li>
+                <li><a href="make.html">مكياج</a></li>
+                <li><a href="99.html">أقل من 99 ريال</a></li>
+                <li><a href="#">الاشتراك</a></li>
+                <li><a href="التصنيفات.html">عروض خاصة</a></li>
+                <li><a href="#">مدونة الجمال</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <a href="#" class="header-icon">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="index.html" class="header-icon">
+                    <i class="far fa-heart"></i>
+                </a>
+                <a href="index.html" class="header-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="login-btn">تسجيل دخول</button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- صفحة الأقسام الرئيسية -->
+    <section class="categories-main-page">
+        <div class="container">
+            <h2 class="categories-title">أقسام المتجر</h2>
+            <div class="categories-grid">
+                <!-- مكياج -->
+                <a href="make.html" class="category-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScqA4slyhm2rsQLK31_eLaob-EqBvwS_e29g&s" alt="مكياج" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">مكياج</span>
+                    </div>
+                </a>
+                
+                <!-- جمال كوري -->
+                <a href="جمال كوري.html" class="category-card">
+                    <img src="https://shipshopp.com/cdn/shop/collections/Korean-Skincare-Starter-Kit_1024x1024_51d1b3de-fe83-4945-b9d5-4625de82a1ba.webp?v=1701778940" alt="جمال كوري" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">جمال كوري</span>
+                    </div>
+                </a>
+                
+                <!-- اجهزة -->
+                <a href="divces.html" class="category-card">
+                    <img src="https://cdn.salla.sa/VNdbb/29d04b1e-7b6f-48ad-b017-f798c1937909-1000x666.66666666667-YfVsBbzB9jMGaQnYdZ9Wo1rwJmV4PD8UnJHzwJ5i.jpg" alt="أجهزة تجميل" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">اجهزة</span>
+                    </div>
+                </a>
+                
+                <!-- العناية بالبشرة -->
+                <a href="بشرة.html" class="category-card">
+                    <img src="https://cdn.salla.sa/qVKv/2zppPuncZ2NoVpug7T8wtHd5Lbe5B9VvkWkO3QJ8.jpg" alt="العناية بالبشرة" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">العناية بالبشرة</span>
+                    </div>
+                </a>
+                
+                <!-- اقل من 99 ريال -->
+                <a href="99.html" class="category-card">
+                    <img src="https://media.zid.store/57c9e911-0694-401c-a4b9-ebab5a76ef9e/ba3ee6b3-a525-4123-8959-cd55f2f72ef6-260x260.png" alt="أقل من 99 ريال" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">أقل من 99 ريال</span>
+                    </div>
+                </a>
+                
+                
+                
+                <!-- العناية بالجسم -->
+                <a href="بشرة.html" class="category-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMEbxUR7r7B2CH3RKJ1_V86cWhYw0rDb7dhg&s" alt="العناية بالجسم" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">العناية بالجسم</span>
+                    </div>
+                </a>
+                
+                <!-- العناية بالشعر -->
+                <a href="شعر.html" class="category-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToTVZISeC4MR_N6kVVTNVopYani0dXe1OAbA&s" alt="العناية بالشعر" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">العناية بالشعر</span>
+                    </div>
+                </a>
+                
+                <!-- أطقم هدايا -->
+                <a href="هدايا.html" class="category-card">
+                    <img src="https://jasminegift.com/wp-content/uploads/2021/07/ad17cc6f-344a-454c-afe9-86d921ff3a4d-1.jpg" alt="أطقم هدايا" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">أطقم هدايا</span>
+                    </div>
+                </a>
+                
+               
+                
+                <!-- العناية بالصحة -->
+                <a href="بشرة.html" class="category-card">
+                    <img src="https://cdn.salla.sa/mjqZa/28b2d8d5-038f-4c0b-8f96-ca004d6954d2-1000x551.1811023622-LGTOcmgXJJNWoTG4uDbUFps7i7PjR6pCpJyGJIpb.jpg" alt="العناية بالصحة" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">العناية بالصحة</span>
+                    </div>
+                </a>
+                
+                <!-- منتجات صغيرة للسفر -->
+                <a href="99.html" class="category-card">
+                    <img src="https://www.thebodyshop.com.sa/east/pub/media/catalog/category/ALWAYS_ON_LANDING_PAGE_HOLIDAY_E.jpg" alt="منتجات سفر" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">منتجات سفر</span>
+                    </div>
+                </a>
+                
+                <!-- العناية بالاظافر -->
+                <a href="make.html" class="category-card">
+                    <img src="https://koala.sh/api/image/v2-1b18m-2wo8y.jpg?width=1216&height=832&dream=" alt="العناية بالاظافر" class="category-image">
+                    <div class="category-info">
+                        <span class="category-name">العناية بالاظافر</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>عن المتجر</h4>
+                    <p>متجرنا يقدم أجود منتجات التجميل والعناية بالبشرة والشعر مع ضمان الجودة والخدمة المتميزة.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">تتبع الطلب</a></li>
+                        <li><a href="#">الاشتراك</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>المساعدة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">سياسة الإرجاع</a></li>
+                        <li><a href="#">طرق الدفع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>القائمة البريدية</h4>
+                    <p>اشتركي في نشرتنا البريدية لتصلك آخر العروض والأخبار</p>
+                    <form>
+                        <input type="email" placeholder="بريدك الإلكتروني" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: var(--border-radius); border: none;">
+                        <button type="submit" class="login-btn" style="width: 100%; padding: 10px;">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 جمالك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // دالة لإظهار/إخفاء القائمة على الهواتف
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', function(event) {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!navMenu.contains(event.target) && !hamburger.contains(event.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // إضافة تأثير النقر على الأقسام
+        const categoryCards = document.querySelectorAll('.category-card');
+        
+        categoryCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // إظهار مؤشر التحميل
+                document.getElementById('pageLoader').style.display = 'flex';
+                
+                // إزالة النشاط من جميع العناصر
+                categoryCards.forEach(c => c.classList.remove('active'));
+                
+                // إضافة النشاط للعنصر الحالي
+                this.classList.add('active');
+                
+                // الحصول على رابط الصفحة
+                const targetUrl = this.getAttribute('href');
+                
+                // الانتقال إلى الصفحة بعد تأخير بسيط لمشاهدة تأثير النقر
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 500);
+            });
+        });
+
+        // تحسين تجربة المستخدم بإضافة تأثيرات عند التمرير
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
+                header.style.background = 'white';
+            }
+        });
+
+        // إضافة تأثيرات للصور عند التحميل
+        window.addEventListener('load', function() {
+            const images = document.querySelectorAll('.category-image');
+            images.forEach(img => {
+                img.style.opacity = '1';
+                img.style.transition = 'opacity 0.5s ease';
+            });
+            
+            // إخفاء مؤشر التحميل بعد تحميل الصفحة
+            document.getElementById('pageLoader').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

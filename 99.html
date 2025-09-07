@@ -1,0 +1,2869 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جمالك - متجر المكياج</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FFC1CC;
+            --secondary-color: #D8B4E2;
+            --neutral-color: #FFF8F0;
+            --button-color: #FF6B81;
+            --text-color: #4A4A4A;
+            --light-text: #ffffff;
+            --dark-text: #333333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --discount-color: #FF4757;
+            --exclusive-color: #9c27b0;
+            --new-color: #2ed573;
+            --fast-delivery: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-text);
+            direction: rtl;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* الهيدر */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: #f8f8f8;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .header-top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-top-left {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-top-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .header-main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--button-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--button-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-icon {
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .header-icon:hover {
+            color: var(--button-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background-color: var(--button-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-btn {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background-color: #e55c71;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* قسم المنتجات */
+        .products-section {
+            padding: 40px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: var(--dark-text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--button-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid #f0f0f0;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* لجعل جميع البطاقات متساوية في الارتفاع */
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image-container {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* لجعل المحتوى يأخذ المساحة المتبقية */
+        }
+
+        .product-title {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-text);
+            min-height: 2.4rem; /* للحفاظ على تناسق العناوين */
+        }
+
+        .product-price {
+            color: var(--button-color);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.8rem;
+            margin-left: 6px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: auto; /* لدفع الأزرار إلى الأسفل */
+        }
+
+        .add-to-cart {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: #e55c71;
+        }
+
+        /* علامات المنتجات */
+        .product-badges {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 10;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .badge-discount {
+            background-color: var(--discount-color);
+        }
+
+        .badge-new {
+            background-color: var(--new-color);
+        }
+
+        .badge-exclusive {
+            background-color: var(--exclusive-color);
+        }
+
+        .badge-fast-delivery {
+            background-color: var(--fast-delivery);
+            color: #333;
+        }
+
+        /* قسم الاشتراك */
+        .subscription-section {
+            background-color: var(--secondary-color);
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .subscription-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--box-shadow);
+        }
+
+        .subscription-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+
+        .subscription-card p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: 555;
+        }
+
+        .subscribe-btn {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .subscribe-btn:hover {
+            background-color: #e55c71;
+            transform: translateY(-2px);
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #2c2c2c;
+            color: #f1f1f1;
+            padding: 40px 0 15px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+            color: white;
+        }
+
+        .footer-column h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 35px;
+            height: 2px;
+            background-color: var(--button-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-right: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            background-color: #444;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--button-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* صفحة المنتج */
+        .product-page {
+            display: none;
+            padding: 30px 0;
+            background-color: white;
+        }
+
+        .product-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-gallery {
+            position: relative;
+        }
+
+        .main-product-image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 12px;
+        }
+
+        .product-thumbnails {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .product-thumbnail {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .product-thumbnail:hover, .product-thumbnail.active {
+            border-color: var(--button-color);
+        }
+
+        .product-info-detail {
+            padding: 15px 0;
+        }
+
+        .product-title-detail {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: var(--dark-text);
+        }
+
+        .product-price-detail {
+            font-size: 1.6rem;
+            color: var(--button-color);
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .product-options {
+            margin-bottom: 20px;
+        }
+
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .option-values {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .option-value {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .option-value:hover, .option-value.selected {
+            background-color: var(--button-color);
+            color: white;
+            border-color: var(--button-color);
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .product-table th, .product-table td {
+            padding: 10px 12px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+
+        .product-table th {
+            background-color: #f8f8f8;
+            font-weight: 600;
+        }
+
+        .product-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .back-to-products {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .back-to-products:hover {
+            background-color: #c69ad4;
+        }
+
+        /* العربة الطافية */
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--button-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .floating-cart:hover {
+            transform: scale(1.1);
+        }
+        
+        .floating-cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--discount-color);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* التجاوب مع الشاشات المختلفة */
+        @media (max-width: 992px) {
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .product-details {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: white;
+                width: 100%;
+                flex-direction: column;
+                padding: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 8px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+            
+            /* تعديل هنا: عرض عمودين للشاشات المتوسطة */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .product-image-container {
+                height: 180px;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .product-thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .subscription-card {
+                padding: 20px;
+            }
+            
+            .subscription-card h3 {
+                font-size: 1.6rem;
+            }
+            
+            .footer-content {
+                gap: 25px;
+            }
+
+            .floating-cart {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                left: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-main-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .subscription-card {
+                padding: 15px;
+            }
+            
+            .subscription-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .footer-column h4::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .product-thumbnail {
+                width: 50px;
+                height: 50px;
+            }
+            
+            /* تعديل هنا: عرض عمودين للشاشات الصغيرة */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .product-image-container {
+                height: 160px;
+            }
+            
+            .product-info {
+                padding: 12px;
+            }
+            
+            .product-title {
+                font-size: 0.9rem;
+                min-height: 2.2rem;
+            }
+            
+            .product-price {
+                font-size: 1rem;
+            }
+            
+            .add-to-cart {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+            }
+            
+            .product-details {
+                gap: 20px;
+            }
+            
+            .product-title-detail {
+                font-size: 1.5rem;
+            }
+            
+            .product-price-detail {
+                font-size: 1.4rem;
+            }
+            
+            .option-value {
+                padding: 5px 10px;
+                font-size: 0.85rem;
+            }
+
+            .floating-cart {
+                width: 45px;
+                height: 45px;
+                bottom: 10px;
+                left: 10px;
+            }
+            
+            .floating-cart-count {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            /* تعديل هنا: عرض عمودين للشاشات الصغيرة جداً */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .product-image-container {
+                height: 140px;
+            }
+            
+            .product-title {
+                font-size: 0.85rem;
+                min-height: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-container">
+                <div class="header-top-left">
+                    <span><i class="fas fa-truck"></i> توصيل مجاني للطلبات فوق 200 ر.س</span>
+                </div>
+                <div class="header-top-right">
+                    <span><i class="fas fa-phone"></i> 800-12345</span>
+                    <span><i class="fas fa-envelope"></i> info@jamalk.com</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container header-main-container">
+            <div class="logo">جمالك</div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="التصنيفات.html">منتجاتنا</a></li>
+                <li><a href="make.html">مكياج</a></li>
+                <li><a href="99.html">أقل من 99 ريال</a></li>
+                <li><a href="#">الاشتراك</a></li>
+                <li><a href="التصنيفات.html">عروض خاصة</a></li>
+                <li><a href="#">مدونة الجمال</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <a href="#" class="header-icon">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="index.html" class="header-icon">
+                    <i class="far fa-heart"></i>
+                </a>
+                <a href="#" class="header-icon" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="login-btn">تسجيل دخول</button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم المنتجات المميزة -->
+    <section class="products-section" id="products-section">
+        <div class="container">
+            <h2 class="section-title">منتجاتنا المميزة</h2>
+            <div class="products-grid" id="featured-products">
+                <!-- سيتم إضافة المنتجات ديناميكيًا باستخدام JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- صفحة المنتج (مخفيّة في البداية) -->
+    <section class="product-page" id="product-page">
+        <div class="container">
+            <button class="back-to-products" id="back-to-products">← العودة إلى المنتجات</button>
+            
+            <div class="product-details" id="product-details">
+                <!-- سيتم تعبئة هذه المنطقة بمعلومات المنتج عند النقر عليه -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاشتراك -->
+    <section class="subscription-section">
+        <div class="container">
+            <div class="subscription-card">
+                <h3>اشتراك شهري حصري</h3>
+                <p>احصلي على صندوق شهري يحتوي على 3-5 منتجات مختارة خصيصاً لكِ مع خصم يصل إلى 40%</p>
+                <button class="subscribe-btn">اشتركي الآن</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>عن المتجر</h4>
+                    <p>متجرنا يقدم أجود منتجات التجميل والعناية بالبشرة والشعر مع ضمان الجودة والخدمة المتميزة.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">تتبع الطلب</a></li>
+                        <li><a href="#">الاشتراك</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>المساعدة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">سياسة الإرجاع</a></li>
+                        <li><a href="#">طرق الدفع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>القائمة البريدية</h4>
+                    <p>اشتركي في نشرتنا البريدية لتصلك آخر العروض والأخبار</p>
+                    <form>
+                        <input type="email" placeholder="بريدك الإلكتروني" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: var(--border-radius); border: none;">
+                        <button type="submit" class="subscribe-btn" style="width: 100%; padding: 10px;">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 جمالك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- العربة الطافية -->
+    <div class="floating-cart" id="floating-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="floating-cart-count">0</span>
+    </div>
+
+    <script>
+        // بيانات المنتجات (يمكن استبدالها ببيانات حقيقية لاحقاً)
+        const products = [
+           {
+                id: 1,
+                name: "شارلوت تلبوري",
+                price: "85 ر.س",
+                originalPrice: "200 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z89832513223E67B4B8B0Z/45/1750680489/99538b85-8999-4b16-8284-9e40662de637.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                description: "منتج مكياج فاخر من شارلوت تلبوري يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                                "https://f.nooncdn.com/p/pzsku/Z89832513223E67B4B8B0Z/45/1750680489/99538b85-8999-4b16-8284-9e40662de637.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZE594A171AEE2479A3978Z/45/1750680429/8390898e-1bf6-4748-a966-7c45379f845e.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZE594A171AEE2479A3978Z/45/1750680440/61a12eb7-dde9-4db2-a77f-f6a69b5f7532.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZE594A171AEE2479A3978Z/45/1750680450/317ec80d-7748-4adb-b1f6-c9f0afe35dae.jpg?format=webp&width=800"
+                ],
+                colors: ["أحمر"],
+                sizes: ["صغير", "وسط", "كبير"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "شارلوت تلبوري",
+                    "اللون": "وردي",
+                    "الحجم": "وسط",
+                    "المكونات": "مكونات طبيعية 100%",
+                    "الاستخدام": "للوجه والشفاه",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },  {
+                id: 2,
+                name: "باليت ظلال عيون فلورمار - 003 صن سيت",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1738048155/9fe32a96-ed68-4c13-8b08-07082bf53ba6.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                                "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1738048155/9fe32a96-ed68-4c13-8b08-07082bf53ba6.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1715073416/b8b71637-7c91-4605-84d9-aede34ef6673.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1715073427/c7ecc672-392e-47a9-8b05-f45dab064067.jpg?format=webp&width=800"
+                ],
+                colors: ["SUNSET"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": "SUNSET",
+                    "الحجم": "وسط",
+                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            }, {
+                id: 3,
+                name: "نو اريفيرينت أحمر شفاه كولور ريتش لي نو - 176",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z6B43A10C02FEE8AB1B66Z/45/_/1731563295/4b15a90c-dc1b-43ec-9a1d-ae79825f1e2c.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z6B43A10C02FEE8AB1B66Z/45/_/1731563295/4b15a90c-dc1b-43ec-9a1d-ae79825f1e2c.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z6B43A10C02FEE8AB1B66Z/45/_/1731563388/2293e34d-adf5-4c03-8bf5-d9428663af2b.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z6B43A10C02FEE8AB1B66Z/45/_/1731563370/e06251d0-0b04-4387-bbaa-4aa6b7b7777b.jpg?format=webp&width=800"
+                ],
+                colors: ["نو اريفرينت "],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": "نو اريفرينت",
+                    "الحجم": "وسط",
+                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            }, {
+                id: 3,
+                name: "بريب-ست-جلو - الأصلي",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z8FD85FB41DAB51B854D6Z/45/_/1738047829/4b88e186-e5f5-4536-9c7b-f529bdedfa1e.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "This stunning multi-use spray can be used to prep the skin before applying make-up, set a finished look or add a radiant gloss to a bare face and it's 100% Vegan.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z8FD85FB41DAB51B854D6Z/45/_/1738047829/4b88e186-e5f5-4536-9c7b-f529bdedfa1e.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZA11CC9B001F19DE6CA0CZ/45/_/1739402698/1e435ed0-b0c6-4918-b5f7-a271fdf30025.jpg?format=webp&width=800"
+                  
+                ],
+                colors: ["اوريجينال","جلو"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ايكونيك لندن",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع انواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 4,
+                name: " أساسيات البشرة إتش دي سكين",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z8DCAF45E0F491F491F56Z/45/_/1698936613/8e7ad1f5-0a27-474a-ab2f-d5ca1e299003.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "الوجه",
+                description: "6 cream foundations and 6 cream blushes to unify, contour, and color your cheeks.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z8DCAF45E0F491F491F56Z/45/_/1698936613/8e7ad1f5-0a27-474a-ab2f-d5ca1e299003.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z8DCAF45E0F491F491F56Z/45/_/1698936617/4ada1f94-46ce-4ee2-b789-e7b644d8b67e.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z8DCAF45E0F491F491F56Z/45/_/1702460248/9028d087-5fe3-47c0-b023-0da13728e27f.jpg?format=webp&width=800"
+                ],
+                colors: ["Essentials Palette"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 5,
+                name: "بودرة الأساس اتش دي سكين",
+                price: "60 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z521A1AF54C8AA1D72782Z/45/1746747601/f649cc3b-8a80-4820-9288-7625b3cacd5a.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z521A1AF54C8AA1D72782Z/45/1746747601/f649cc3b-8a80-4820-9288-7625b3cacd5a.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z521A1AF54C8AA1D72782Z/45/1746747602/dfeb7c20-13ff-4e5e-bc34-5cb3a1df461a.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z521A1AF54C8AA1D72782Z/45/1746747603/35e259e4-4132-4922-a3e6-c6a04ee40f07.jpg?format=webp&width=800"
+                ],
+                colors: ["1N14 Beige"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ميك اب فور ايفر",
+                    "اللون": "SUNSET",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 6,
+                name: "بودرة بلاشر مضغوطة- 336- ونتر كيسد",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZFCEAFF4BFDB9F02097F8Z/45/1746488910/1dd9a5c0-fef4-481b-80ad-734e5d2802b5.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "تأتي بودرة بلاشر كايلي كوزماتيكس المضغوطة من المكياج النباتي في شكل بودرة مضغوطة واحدة محمولة لتمريرة فورية أثناء التنقلات. انسيابية ومقاومة للخطأ، تمتزج ألوانها الحريرية الناعمة والمكثفة بسهولة وتتغلغل على البشرة مع الثبات طوال اليوم. ضعي بودرة مكياج كايلي كوزمتيكس مع فرشاة البلاشر الخاصة بك لتعزيز مظهرك على الفور بلمسة مت نهائية صحية..",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZFCEAFF4BFDB9F02097F8Z/45/1746488910/1dd9a5c0-fef4-481b-80ad-734e5d2802b5.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZFCEAFF4BFDB9F02097F8Z/45/1746488910/71295a62-dd5d-4a81-a881-d8cc132d1529.jpg?format=webp&width=800"
+                ],
+                colors: ["وردي"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ونتر كيسد",
+                    "اللون": "وردي",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 7,
+                name: "بودرة بلاشر مضغوطة- 336- ونتر كيسد",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z2F83A97BE5D28E9EED88Z/45/1746488223/f7026cec-4b59-4554-8e13-e044fc5b76a0.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "تأتي بودرة بلاشر كايلي كوزماتيكس المضغوطة من المكياج النباتي في شكل بودرة مضغوطة واحدة محمولة لتمريرة فورية أثناء التنقلات. انسيابية ومقاومة للخطأ، تمتزج ألوانها الحريرية الناعمة والمكثفة بسهولة وتتغلغل على البشرة مع الثبات طوال اليوم. ضعي بودرة مكياج كايلي كوزمتيكس مع فرشاة البلاشر الخاصة بك لتعزيز مظهرك على الفور بلمسة مت نهائية صحية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z2F83A97BE5D28E9EED88Z/45/1746488223/f7026cec-4b59-4554-8e13-e044fc5b76a0.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z2F83A97BE5D28E9EED88Z/45/1746488222/9c5b50c2-0076-410c-a383-a0ed8fbac0da.jpg?format=webp&width=800"
+                ],
+                colors: ["بادي اون ذا بلوك"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ونتر كيسد",
+                    "اللون": "بادي اون ذا بلوك",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },
+             {
+                id: 8,
+                name: "SKIN1004 Madagascar Centella Travel Kit",
+                price: "60 ر.س",
+                originalPrice: "100 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1728481925/db8d8eb1-2064-4742-8af8-9bea178122ec.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "A full Centella skincare routine set with 5 mini-sized products for travel or trial of the Centella line.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1728481925/db8d8eb1-2064-4742-8af8-9bea178122ec.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1728481923/d41c10e4-f4d2-4c0d-838c-252309b1ccd4.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1728222625/06091bd3-0f8c-4209-95a5-7656f5c7eb3a.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1742375973/7b9d347b-0847-47c4-be27-9cb5663a8468.jpg?format=webp&width=800"
+                ],
+                colors: ["clear"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "SKIN1004",
+                    "اللون": "clear",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه والشفاه",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },  {
+                id: 9,
+                name: "Red Bean Refreshing Pore Mask",
+                price: "12 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z25850EF0FC8A86E28DB4Z/45/_/1729163206/1e980031-64d9-486f-9856-60ddbe364154.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "Our pores are essentially pathways that sebum uses to reach the surface of our skin. When dead skin cells and surplus sebum clog these pathways, pores tend to enlarge. Proper pore care involves clearing away the built-up dead skin cells and sebum, followed by cooling the skin.For this initial phase of skincare – pore and exfoliation care – we have harnessed ingredients from",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z25850EF0FC8A86E28DB4Z/45/_/1729163206/1e980031-64d9-486f-9856-60ddbe364154.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z25850EF0FC8A86E28DB4Z/45/_/1728481571/2c07b908-eb39-428e-af18-c5d06e8a633d.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z25850EF0FC8A86E28DB4Z/45/_/1728481601/00b74ae8-f2c7-43fd-9117-298120174456.jpg?format=webp&width=800"
+                ],
+                colors: ["clear"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": "clear",
+                    "الحجم": "وسط",
+                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            }, {
+                id: 10,
+                name: "انوا",
+                price: "17 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z1E37F7F5D05AF944DC56Z/45/_/1728481743/478eb165-19a9-48d2-a287-1775ba0918fb.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "A perfect daily toner pad for instant soothing and reducing enlarged pores. Suitable for all skin types, especially sensitive skin. Preps the skin perfectly before makeup, giving a radiant glass skin look.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z1E37F7F5D05AF944DC56Z/45/_/1728481743/478eb165-19a9-48d2-a287-1775ba0918fb.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z1E37F7F5D05AF944DC56Z/45/_/1728481744/bea0c7a7-4593-44a7-9fa5-909397d4aee4.jpg?format=webp&width=800"
+                  
+                ],
+                colors: ["شفاف"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "انوا",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع انواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 11,
+                name: " MASK FIT MAKE UP FIXER 80mL",
+                price: "20 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z41BC56A6B17C16CFD863Z/45/_/1739402684/1a9d777d-37c0-4ced-a2c5-9dcfa780d6bb.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "الوجه",
+                description: "6 cream foundations and 6 cream blushes to unify, contour, and color your cheeks.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z41BC56A6B17C16CFD863Z/45/_/1739402684/1a9d777d-37c0-4ced-a2c5-9dcfa780d6bb.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z41BC56A6B17C16CFD863Z/45/_/1739402686/97bca349-6a46-4b36-9ea1-4b438f51dd28.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ترتر",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 12,
+                name: "SKIN1004 Madagascar Centella Light Cleansing Oil 200ml",
+                price: "23 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZE357327CD0B5CB2F4F8AZ/45/_/1728995058/a733a7b5-bc13-4995-b304-e2362422e420.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "A lightweight, oil-based cleanser that gently melts away makeup, dirt, oils and sunscreen without stinging the eye area- Centella oil (MCT-oil-extracted Centella) and 6 botanical oils- Micellar cleansing oil allows removal of excess oil and makeup without removing healthy oils- Water-like light texture, suitable for those who are new to oil cleansers- Non-comedogenic and dissolves sebum to prevent pore congestio.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZE357327CD0B5CB2F4F8AZ/45/_/1728995058/a733a7b5-bc13-4995-b304-e2362422e420.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZE357327CD0B5CB2F4F8AZ/45/_/1728994931/c329b372-6a85-454d-b2c8-5ba2867a20b9.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZE357327CD0B5CB2F4F8AZ/45/_/1728994930/84fefa05-9139-42b8-96a5-ecab70f2bb17.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ميك اب فور ايفر",
+                    "اللون": "شفاف",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 13,
+                name: "Green Plum Refreshing Cleanser",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZFC3B8D9CAE38F9C09B97Z/45/_/1729162079/1279c4b7-7545-4635-b396-37daf44dedf8.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "Choosing a cleanser involves finding a balance between thorough cleansing and maintaining the skin's barrier health. Our Green Plum Refreshing Cleanser, with its gentle, slightly acidic formulation, harnesses the power of plant-derived extracts from plum and mung bean seeds to achieve just that.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZFC3B8D9CAE38F9C09B97Z/45/_/1729162079/1279c4b7-7545-4635-b396-37daf44dedf8.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZFC3B8D9CAE38F9C09B97Z/45/_/1728481846/ee0c37c9-d90e-4330-9e84-e341800fe5fd.jpg?format=webp&width=800"
+                ],
+                colors: ["ازرق"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "Beauty of Joseon",
+                    "اللون": "ازرق",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 14,
+                name: "Acne Pimple Master Patch",
+                price: "2 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZC036F94E1B81E046FE3BZ/45/_/1728904597/d4be7707-b5a0-4be3-8a02-d07d8513b910.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "Hydrocolloid patches that protect wounded or troubled area from getting worse while maintaining humidity of skin to prevent further breakouts.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZC036F94E1B81E046FE3BZ/45/_/1728904597/d4be7707-b5a0-4be3-8a02-d07d8513b910.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZC036F94E1B81E046FE3BZ/45/_/1728483663/72940b8f-8504-44e7-b145-c0ce5cf4ca46.jpg?format=webp&width=800"
+                ],
+                colors: ["ابيض"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "COSRX",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 15,
+                name: "Advanced Snail 96 Mucin Power Essence",
+                price: "34 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728895221/c5f5a44c-a1af-4872-a54a-06188aa270c5.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "للوجه",
+                description: "عززي لمعان البشرة عن طريق إضافة تدفق صحي للون إلى البشرة. توفر القطرات المركزة لون قابل للبناء عليه، يضيء لون الخدين. محمل بلؤلؤ ذو تركيز ناعم لمنحك بشرة مثالية طبيعية مشرقة.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728895221/c5f5a44c-a1af-4872-a54a-06188aa270c5.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728481867/0203f5ec-c602-4653-8bde-ec66ffe44b40.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "COSRX",
+                    "اللون": "شفاف",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 16,
+                name: "HYALURONIC ACID AIRY SUN STICK_22g",
+                price: "9 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z52A29F826BD59302AA7DZ/45/_/1728904461/7fb4cb01-d29c-4573-bda4-4fcb4e655ce2.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "A lightweight sunscreen stick with 8 types of hyaluronic acid helps retain moisture in the skin and protects it from strong UV rays.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z52A29F826BD59302AA7DZ/45/_/1728904461/7fb4cb01-d29c-4573-bda4-4fcb4e655ce2.jpg?format=webp&width=800"                ],
+                colors: ["ابيض"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "نيكس",
+                    "اللون": "خوخي داكن",
+                    "الحجم": "وسط",
+                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 17,
+                name: "احمر شفاه سائل سوبر ستاي",
+                price: "19 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z738D34D8164149F29434Z/45/_/1742375833/22d47e3f-6cb0-41db-be40-96119cc789a4.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "Get ultimate skincare with the Beauty of Joseon Hanbang Serum Discovery Kit - (4 pcs). This serum combo kit contains four serum samples, each with a potent formulation that addresses specific skin issues. The Beauty of Joseon kit has a calming serum formulated with green tea and penthanol, which prevent skin irritation. Plus, the glow serum in this skin-brightening kit is enriched with blemish-reducing niacinamide and calming propolis.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z738D34D8164149F29434Z/45/_/1742375833/22d47e3f-6cb0-41db-be40-96119cc789a4.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z738D34D8164149F29434Z/45/_/1728481121/9082c683-d00b-4194-b16d-c21ba3136093.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "Beauty of Joseon",
+                    "اللون": "شفاف",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 18,
+                name: "PURITO Wonder Releaf Centella Mini Kit Unscented",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z628861129773EC7C2F07Z/45/_/1729165147/8489f2ab-0a15-4d32-9026-864e5dd20e62.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z628861129773EC7C2F07Z/45/_/1729165147/8489f2ab-0a15-4d32-9026-864e5dd20e62.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z628861129773EC7C2F07Z/45/_/1728481480/9793a314-28dd-4282-91f0-f81ceb352a86.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ترتر",
+                    "اللون": "شفاف",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 19,
+                name: "No.3 Pore Reset Ampoule",
+                price: "12 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z841853FD1FCB981A5A93Z/45/_/1744275152/aac6d4ad-d94a-455d-8849-481f563d6b6a.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "Transform your skin with No.3 Pore Reset Ampoule Shot, a potent solution designed to refine pores and enhance skin clarity.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z841853FD1FCB981A5A93Z/45/_/1744275152/aac6d4ad-d94a-455d-8849-481f563d6b6a.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "نامبوزين",
+                    "اللون": ["شفاف"],
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            }, {
+                id: 20,
+                name: "كيراستاس غلوس أبسولو بخاخ غلايز ميلك",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z5098B14013677F0273F8Z/45/1748763509/fac0b2c1-1205-4feb-991e-93a50612c89a.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z5098B14013677F0273F8Z/45/1748763509/fac0b2c1-1205-4feb-991e-93a50612c89a.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z5098B14013677F0273F8Z/45/1748763510/92ee2fea-0c1a-4eca-b22f-f50eea31fea7.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 21,
+                name: "كيراستاس غلوس أبسولو هيدرا-غلايز شامبو",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZF95AC8C31189BB4A9078Z/45/1748763506/89e09e2e-2c34-4273-9713-5cb55645812e.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "شامبو مرطب يمنح إشراقة للشعر الطويل المعرض للتجعد.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZF95AC8C31189BB4A9078Z/45/1748763506/89e09e2e-2c34-4273-9713-5cb55645812e.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZF95AC8C31189BB4A9078Z/45/1748763506/e7bd0550-7e0f-4c40-982a-154720fdf0f0.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 22,
+                name: "زيت الباتانا من بوتانيك هيرث - زبدة 100 مل - للعناية بالشعر والبشرة مغذي ومنعش بعمق",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZC6E06FD36EF205F6D523Z/45/1746212250/a5700283-eec5-4628-8c3a-a128d08e8897.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZC6E06FD36EF205F6D523Z/45/1746212250/a5700283-eec5-4628-8c3a-a128d08e8897.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZC6E06FD36EF205F6D523Z/45/1746212251/367ecb66-45f5-4059-bd5e-5289c80dc701.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 23,
+                name: "زيت شعر باتانا بالكافيين من بوتانيك هيرث مع اللوز",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z93F64A6C52FEC8ED3E9EZ/45/1746195542/f7a041d7-b06a-472d-952f-359b1797afb4.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z93F64A6C52FEC8ED3E9EZ/45/1746195542/f7a041d7-b06a-472d-952f-359b1797afb4.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z93F64A6C52FEC8ED3E9EZ/45/1746195542/042ccbdf-b9a0-4cfd-b336-74e89c812e80.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 24,
+                name: "سيرم الفيف اكسترا اورديناري لجميع انواع الشعر",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z77030C62276C7CF70983Z/45/_/1694566874/647da3ae-122e-4f2c-b699-013b006a7ee2.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z77030C62276C7CF70983Z/45/_/1694566874/647da3ae-122e-4f2c-b699-013b006a7ee2.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            }, {
+                id: 24,
+                name: " The Hyaluronic Acid 3 Serum",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZF36EF2EB63407D77AEE3Z/45/_/1728904523/cb64420a-f47c-4109-9bef-253c829feb79.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "Highly concentrated 3% hyaluronic acid serum that hydrates, plumps, soothes and supports the skin's moisture barrier.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZF36EF2EB63407D77AEE3Z/45/_/1728904523/cb64420a-f47c-4109-9bef-253c829feb79.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZF36EF2EB63407D77AEE3Z/45/_/1728481865/84a381fa-6fce-407c-9f8e-9df7f367e81c.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ريفلوشن",
+                    "اللون": "شفاف",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 25,
+                name: "ملمع متغير ثلاثي الأبعاد 03 مشهد أصفر",
+                price: "170 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z8322715F6CD3CBF5B43EZ/45/_/1744098806/34f18138-dcc4-4a83-8ca6-c7ae5a6962d7.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "Fitted with a handy silicone applicator, this lip gloss in a thick gel texture helps to achieve glossy and juicy lips while amping up lip volume.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z8322715F6CD3CBF5B43EZ/45/_/1744098806/34f18138-dcc4-4a83-8ca6-c7ae5a6962d7.jpg?format=webp&width=800"
+                ],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ميلانو",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه ",
+                }
+            },{
+                id: 26,
+                name: "Vitamin C Serum 30ml (VA)",
+                price: "32 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZFE576163752506EC1692Z/45/_/1728481579/66af3b4f-ab7d-4980-b596-42a6a1cf4718.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "Cos De BAHA VA Serum contains vitamin C (L-ascorbic acid), arbutin, vitamin B5 (D-panthenol) and hyaluronic acid as active ingredients.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZFE576163752506EC1692Z/45/_/1728481579/66af3b4f-ab7d-4980-b596-42a6a1cf4718.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZFE576163752506EC1692Z/45/_/1728904483/47cc4bfd-be07-4bb9-bff5-396500a5447e.jpg?format=webp&width=800"
+                ],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "Cos De BAHA",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 27,
+                name: "ANUA HEARTLEAF 80% SOOTHING AMPOULE 30ml",
+                price: "15 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZA86DB07F3A89F463A46EZ/45/_/1728481516/2641eff3-129b-4c9d-88ee-6d999bf19cda.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "الوجه",
+                description: "A highly-concentrated ampoule effortlessly absorbs, perfectly prepping your skin before makeup application to achieve a glowing glass skin look.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZA86DB07F3A89F463A46EZ/45/_/1728481516/2641eff3-129b-4c9d-88ee-6d999bf19cda.jpg?format=webp&width=800"
+                ],
+                colors: ["طبيعي"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ماد بيوتي",
+                    "اللون": "طبيعي",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },  {
+                id: 28,
+                name: "بلاشر بلاش دروبس - فروستد بينك",
+                price: "34 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z67E9C5C251BB9F5CC401Z/45/1746747908/c2d88979-b16d-4a61-b862-b6981b87ee73.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "للوجه",
+                description: "عززي لمعان البشرة عن طريق إضافة تدفق صحي للون إلى البشرة. توفر القطرات المركزة لون قابل للبناء عليه، يضيء لون الخدين. محمل بلؤلؤ ذو تركيز ناعم لمنحك بشرة مثالية طبيعية مشرقة.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z67E9C5C251BB9F5CC401Z/45/1746747908/c2d88979-b16d-4a61-b862-b6981b87ee73.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z67E9C5C251BB9F5CC401Z/45/1746747909/b162b38d-1051-4ea6-b8d3-67c1f8b2955e.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z67E9C5C251BB9F5CC401Z/45/1746747908/2168a40a-7d2d-40d3-8ea8-b85a5b60fbff.jpg?format=webp&width=800"
+                ],
+                colors: ["فروستد بينك"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "روديال",
+                    "اللون": "فروستد بينك",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 29,
+                name: "خافي العيوب المصحح - دارك بيتش",
+                price: "34 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z8BC2E8D4EECD8066B65DZ/45/_/1742807571/972fcd42-ab36-4db1-b7a6-17c4a4645029.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "منتج مكياج فاخر من نيكس يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z8BC2E8D4EECD8066B65DZ/45/_/1742807571/972fcd42-ab36-4db1-b7a6-17c4a4645029.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z8BC2E8D4EECD8066B65DZ/45/_/1742807518/cb60f501-28f4-43f0-9f7b-c7bc46d0e538.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z8BC2E8D4EECD8066B65DZ/45/_/1742807661/92459a8d-9187-4d24-ae0c-5e1e092f5747.jpg?format=webp&width=800"
+                ],
+                colors: ["خوخي داكن"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "نيكس",
+                    "اللون": "خوخي داكن",
+                    "الحجم": "وسط",
+                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 30,
+                name: "احمر شفاه سائل سوبر ستاي",
+                price: "19 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z5DEF595D5381423F78C6Z/45/_/1695829853/0493951a-f1a6-41fd-9364-e1a09ed54f48.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "شفاه",
+                description: "تعرفي على احمر الشفاه السائل سوبر ستاي فينيل اينك لتحصلي على لون فينيل دقيق يظل ثابت لمدة تصل إلى 16 ساعة. تتحدى تركيبة كلر لوك النباتية لأحمر الشفاه هذا والتي تدوم طويلا التلطخ وتضفي لمعانًا فوريًا. متوفر بـ 7 ألوان فينيل.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z5DEF595D5381423F78C6Z/45/_/1695829853/0493951a-f1a6-41fd-9364-e1a09ed54f48.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z5DEF595D5381423F78C6Z/45/_/1695829857/5364e571-e795-41ca-bde6-6545f2436233.jpg?format=webp&width=800"
+                ],
+                colors: ["وردي"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ميبلين نيويورك",
+                    "اللون": "وردي",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشفاه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 31,
+                name: "احمر شفاه روج ارتيست فور ايفر مت",
+                price: "10 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z0CC2BC442A8C17523F37Z/45/1746748369/f98f16b9-92af-47dc-9927-55d0ca3d8511.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "شفاه",
+                description: "على غرار روج ارتيست، يأتي روج ارتيست فور ايفر الجديد بعبوة فريدة مستوحاة من فرشاة الشفاه الخاصة بخبراء المكياج..",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z0CC2BC442A8C17523F37Z/45/1746748369/f98f16b9-92af-47dc-9927-55d0ca3d8511.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z0CC2BC442A8C17523F37Z/45/1746748370/ab04f3f3-d4a2-47cf-bc14-ec4b941c65a0.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z0CC2BC442A8C17523F37Z/45/1746748370/1897b80f-3ca6-41f4-accb-7eca76818e54.jpg?format=webp&width=800"
+                ],
+                colors: ["روز ناو اند الويز"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ميك اب فور ايفر",
+                    "اللون": "روز ناو اند الويز",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 32,
+                name: "قلم تحديد الشفاه لاستنغ مات",
+                price: "12 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z3D56E134396CC354DC90Z/45/_/1698990420/53aab4bd-fa2e-41ff-b93e-ef9627045c93.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "شفاه",
+                description: "ركيبة طويلة الأمد تحدد مظهر شفتيك طوال اليوم. يتيح لك قوامه الكريمي استخدامًا دقيقًا ودمجًا سلسًا. لون حيوي واستخدام يتميز بالدقة وسهولة الدمج.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z3D56E134396CC354DC90Z/45/_/1698990420/53aab4bd-fa2e-41ff-b93e-ef9627045c93.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z3D56E134396CC354DC90Z/45/_/1698990421/82af006b-01f1-4eb8-9cb3-7fd7428ee8ed.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z019C1B29228F42BD0118Z/45/_/1696501141/dbd87982-e24a-4e0c-a2e5-8f0167c0f357.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z019C1B29228F42BD0118Z/45/_/1696501143/b4284563-daf8-404e-b299-8ce410612f7a.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZBCCE306D4623110FAC50Z/45/_/1698934717/4f14bca5-ba1f-46ca-a9c8-4fdabf9b4bc3.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZBCCE306D4623110FAC50Z/45/_/1698934718/e725f6cd-a50c-4e62-8b5f-522231eb7a7c.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZD26CD24E2D3BC5F60A2EZ/45/1746747183/43e1efb0-571c-4996-b16c-f74a10c601a4.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZD26CD24E2D3BC5F60A2EZ/45/1746747183/d1fa4284-36d2-4c77-a7a8-709310640644.jpg?format=webp&width=800"
+                ],
+                colors: ["أحمر ديناميت"," تيراميسو","بينك كاندي","واين"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": ["أحمر ديناميت"," تيراميسو","بينك كاندي","واين"],
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشفاه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 33,
+                name: " ريفلوشن ري-لوديد - بيزك ماتس",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z5F3597963C6A17F2BC20Z/45/_/1698990535/484f4d9e-2145-4c2d-b3ae-d70df992312a.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z5F3597963C6A17F2BC20Z/45/_/1698990535/484f4d9e-2145-4c2d-b3ae-d70df992312a.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z5F3597963C6A17F2BC20Z/45/_/1698990536/9e337158-7b60-4e13-974b-6a414a2b63b1.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z5F3597963C6A17F2BC20Z/45/_/1698990546/33dc8c6d-d3c1-497c-b554-88718a765f54.jpg?format=webp&width=800"
+                ],
+                colors: ["بيزيك ماتس"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ريفلوشن",
+                    "اللون": "بيزيك ماتس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للعيون ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },  {
+                id: 1325,
+                name: "سيرم كبسولات ادفانسد سيراميد اليومية لاستعادة شباب البشرة",
+                price: "20 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z0F3F6CAEA139FAB83BA2Z/45/1746717955/5440ebc8-d90a-4f6b-bbed-91210b8d3438.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "نقي. قوي. دقيق. يحتوي سيرم السيراميد الخاص بنا على قوة مضاعفة ثلاث مرات لمكافحة الشيخوخة للحصول على بشرة أكثر قوة ونعومة وصحة.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z0F3F6CAEA139FAB83BA2Z/45/1746717955/5440ebc8-d90a-4f6b-bbed-91210b8d3438.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "اليزابيث اردن",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },   {
+                id: 223,
+                name: "UNICLED 5.0 CENTURION KOREAN MASK",
+                price: "200 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z77B8100FB73DC6F47867Z/45/1755095834/1659a5c9-f692-4272-9d4b-f0c2e5030440.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z77B8100FB73DC6F47867Z/45/1755095834/1659a5c9-f692-4272-9d4b-f0c2e5030440.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z77B8100FB73DC6F47867Z/45/1755238877/d0015923-03c6-44d9-9c52-63c478b00007.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z77B8100FB73DC6F47867Z/45/1755095834/c1102b46-c726-4b62-8c91-4d691f63180b.jpg?format=webp&width=800"
+                ],
+                colors: ["اسود"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "يونيك سكين",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 323,
+                name: "كريم مرطب للبشرة الجافة بحمض الهيالورونيك",
+                price: "50 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z1D3D980EF5154A3AF706Z/45/1746717951/ab62213a-ab7c-462c-9f49-a035ebee65f2.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "يحتوي كريم الترطيب سيرافي على ثلاثة سيراميدات أساسية وحمض الهيالورونيك لترطيب البشرة بشكل فعال واستعادة الحاجز الواقي للبشرة. يتميز هذا الكريم المرطب الغني وغير الدهني وسريع الامتصاص بتقنية ام في اي ديلفري الحاصلة على براءة اختراع لإطلاق تيار مستمر من المكونات المرطبة طوال النهار والليل. كريم سيرافي المرطب بالسيراميد خالٍ من العطر.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z1D3D980EF5154A3AF706Z/45/1746717951/ab62213a-ab7c-462c-9f49-a035ebee65f2.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z1D3D980EF5154A3AF706Z/45/1746717951/9504b298-a4db-4869-915a-48a3f0bb0db8.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "سيرا في",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 4,
+                name: "بلسم شفاه ديو بنمط ثمبر",
+                price: "20 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z67BC54331693FBB1ED09Z/45/_/1722491843/8e212437-4f34-4cb4-a75d-c23f429486af.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "Put a spring in your step with our Disney Thumper inspired collection, one of the most iconic bunnies of all time, and in our opinion the cutest! Adorable bunny bathing, beauty gifts and accessories take inspiration from the springtime forest home of Bambi and Thumper with beautiful inky brush work character art and decorative florals from the Disney studio",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z67BC54331693FBB1ED09Z/45/_/1722491843/8e212437-4f34-4cb4-a75d-c23f429486af.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z67BC54331693FBB1ED09Z/45/_/1722491845/90eb0cf9-da0a-40b7-8cbc-328b5b3b800b.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z67BC54331693FBB1ED09Z/45/_/1722491722/fa3c2117-b658-4029-85bb-9c2d407359a6.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "ماد بيوتي",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 244,
+                name: "دبل سيروم جي ",
+                price: "35 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZD1DEA77446C9B87EC4EBZ/45/_/1740660711/83993813-1d1c-4063-bf79-1d7cbbd5efa6.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "Double Serum is pushing the boundaries of anti-ageing innovation and reinventing itself in a new generation with increased power*.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZD1DEA77446C9B87EC4EBZ/45/_/1740660711/83993813-1d1c-4063-bf79-1d7cbbd5efa6.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "كلارنس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 624,
+                name: " Make Up Blenders",
+                price: "4 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZCD28E42F636E322AC1FCZ/45/_/1745325955/9927cd4f-0032-4e8b-b605-ff35dedde68f.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZCD28E42F636E322AC1FCZ/45/_/1745325955/9927cd4f-0032-4e8b-b605-ff35dedde68f.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZCD28E42F636E322AC1FCZ/45/_/1744893935/3e1e5baa-57f9-48d0-a4c9-ab89ae912da5.jpg?format=webp&width=800"
+                ],
+                colors: ["طبيعي"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "ماد بيوتي",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 7234,
+                name: "Travel Exclusive Firm, Tone, Hydrate Advanced Ceramide Lift And Firm Day Spf 15 And Night Creams Set",
+                price: "35 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z6FC19A60262F11C60859Z/45/_/1739402303/dbfa32f6-ee7c-4b00-8c6c-bd991d0d0db3.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "Advanced Ceramide Lift and Firm Day Cream SPF15 is an anti-aging cream with 5x the Ceramide.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z6FC19A60262F11C60859Z/45/_/1739402303/dbfa32f6-ee7c-4b00-8c6c-bd991d0d0db3.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "اليزابيث اردن",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 8234,
+                name: "Advanced Snail 96 Mucin Power Essence",
+                price: "20 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728895221/c5f5a44c-a1af-4872-a54a-06188aa270c5.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "BENEFITS• Fades dark spots• Improves skin texture• Anti-aging• Intense hydrationTARGETS• Dull & rough skin• Soothing damaged skin• Dark spots & scars",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728895221/c5f5a44c-a1af-4872-a54a-06188aa270c5.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728481867/0203f5ec-c602-4653-8bde-ec66ffe44b40.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "كوركس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 234,
+                name: "كيكو ميلانو",
+                price: "60 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z924D5CF879CA93824151Z/45/1746807924/f792398a-c8e6-4cb7-94fb-c483be215180.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "نقدّم لك هذا السيروم المرطّب* والمعزّز لإشراق* الوجه بقوام لؤلئي مناشد للحواس. يُعزّز هذا المنتج لمعان البشرة ويضفي عليها لمسة مرنة وحريرية لتبدو أكثر تجانساً.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z924D5CF879CA93824151Z/45/1746807924/f792398a-c8e6-4cb7-94fb-c483be215180.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z924D5CF879CA93824151Z/45/1746807923/2cd3fae2-1fc8-4330-b92e-64fcce0b02ef.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "كيكو ميلانو",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },    {
+                id: 10234,
+                name: "جل مرطب للوجه دراماتيكلي ديفرنت",
+                price: "20 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZBB5A98C2497319AD6392Z/45/1746747460/2ecf5526-8bcb-44b6-a2f0-e651eeb6d8d9.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "جل مرطب للوجه وخالي من الزيت وضعه اطباء الجلدية لنعومة وتحسين البشرة ومنحها اشراق مميز.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZBB5A98C2497319AD6392Z/45/1746747460/2ecf5526-8bcb-44b6-a2f0-e651eeb6d8d9.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZBB5A98C2497319AD6392Z/45/1746747460/df0c00df-d6f2-48d1-b7cc-181393b729b0.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "كلينيك",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 12341,
+                name: "باور شيك كلاود كريم",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z91F4D242DBE389D99ACBZ/45/1754492834/264f2212-3baf-444d-82d8-9b6a812e197c.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "A moisturising and highlighting face cream with a super bouncy creamy gel texture",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z91F4D242DBE389D99ACBZ/45/1754492834/264f2212-3baf-444d-82d8-9b6a812e197c.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "كيكو ميلانو",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 12342,
+                name: "قناع الجسم لإعادة توازن معادن الجسم",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZFC2F59ABD9F916CC53EFZ/45/_/1699378246/532da205-7f46-4301-877d-8382d27f57b0.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "قل وداعا للسموم ومرحبا بالبشرة الرائعة. يمتص قناع إعادة التمعدن المذهل للجسم الشوائب ويجدد البشرة بكفاءة لا تصدق",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZFC2F59ABD9F916CC53EFZ/45/_/1699378246/532da205-7f46-4301-877d-8382d27f57b0.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "ازيل",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 1323,
+                name: "مجموعة سيراميد 2H23 لشد البشرة",
+                price: "80 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z6574B838BFF35801FD3FZ/45/_/1712137874/e8aad46b-fa07-4646-b0a1-f646d3226d97.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z6574B838BFF35801FD3FZ/45/_/1712137874/e8aad46b-fa07-4646-b0a1-f646d3226d97.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "اليزابيث اردن",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },                  {
+                id: 1334,
+                name: "مجموعة هدايا كالم إت",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z5D243E70EA157B3D7747Z/45/1746747239/cf6f1875-7ff2-42bb-80e5-1cad7ea2e5b1.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z5D243E70EA157B3D7747Z/45/1746747239/cf6f1875-7ff2-42bb-80e5-1cad7ea2e5b1.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "اليزابيث اردن",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },           {
+                id: 333,
+                name: "مجموعة أحمر شفاه باور بترفلايز سوبر كيوت ثلاثية",
+                price: "15 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z3AA13B97064192396638Z/45/_/1745325943/d8e42c35-ccb6-4cfc-9b13-aa4b703e2e1c.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "شفاه",
+                description: "منتج مكياج فاخر يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z3AA13B97064192396638Z/45/_/1745325943/d8e42c35-ccb6-4cfc-9b13-aa4b703e2e1c.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z3AA13B97064192396638Z/45/_/1745325948/6cb1c7d0-2d48-4dce-9081-f2b28b62a336.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z3AA13B97064192396638Z/45/_/1745325954/43357752-3cd2-4a4b-a762-7096c511e7fb.jpg?format=webp&width=800"
+                ],
+                colors: ["طبيعي"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ماد بيوتي",
+                    "اللون": "طبيعي",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشفاه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 42340,
+                name: "باليت ظلال عيون فلورمار - 003 صن سيت",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z6199FA8E8139EA0A388CZ/45/1746684972/3178b2cb-b0bc-4108-beeb-5afc35f63cb1.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "منتج مكياج فاخر من يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z6199FA8E8139EA0A388CZ/45/1746684972/3178b2cb-b0bc-4108-beeb-5afc35f63cb1.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z6199FA8E8139EA0A388CZ/45/1746684972/5bb7a825-efab-417a-8c01-12a0a18bf10e.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z6199FA8E8139EA0A388CZ/45/1746684972/c2c81ca9-cbd7-4ec2-9edf-317f9b08f15c.jpg?format=webp&width=800"
+                ],
+                colors: ["اسود"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": "اسود",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 23423,
+                name: "باليت ريفلوشن ألترا بلش - هوت سبايس",
+                price: "50 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZDBEA67E3C24DA3E12074Z/45/1746225173/0161a775-3a1f-4520-b8f5-02a5bafce0d8.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "تعتبر باليت ألترا بلش اند كونتور الخاصة بنا مثالية للتطبيق الاحترافي الذي نرغب فيه جميعًا. مثالية للهاي لايت والكنتور أيضًا. احترافية وعالية الصبغة، ولكن سهلة المزج، تحتوي هذه الباليت على 8 ألوان تتكون من بلاشر لامع ومطفي، وبلاشر مدمج بيكد، وبودرة هايلايتر مدمجة بيكد. باليت بلاشر ألتيمت تقدم لك 8 درجات في 1 لتناسب أي مناسبة! يمكن استخدام 8 ظلال حصرية وفريدة من نوعها في كل باليت إما بشكل فردي أو مجتمعة لمنحك الظل الذي تريديه. مع مجموعة مختارة من البودرة المطفية واللمعة، بودرة هاي لايت مدمجة في كل باليت وتأتي في عبوة مدمجة بمرآة للمسات أثناء التنقل. منتج نباتي وخالي من القسوة وخالي من الغلوتين.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZDBEA67E3C24DA3E12074Z/45/1746225173/0161a775-3a1f-4520-b8f5-02a5bafce0d8.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZDBEA67E3C24DA3E12074Z/45/1746225172/97aaf096-4827-49eb-a193-abcb121584c0.jpg?format=webp&width=800"
+                ],
+                colors: ["SUNSET"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "ريفلوشن",
+                    "اللون": "SUNSET",
+                    "الحجم": "وسط",
+                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 44342,
+                name: "بلاشر ستيك فيلفت تاتش كريمي - 06 جيرانيوم",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZD6511CA67B77C140F51EZ/45/_/1719229996/16f6d4ed-fdbf-4b64-b5ce-161c454305f6.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                description: "ستيك بلاشر مشرق. تركيبة غنية بزيت الجوز الافريقي وخلاصة الفستق المهدئة. ملمس كريمي ناعم يثبت على البشرة بسهولة وسلاسة. يمنحك هذا المنتج لون ممتاز وسهولة مزج.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZD6511CA67B77C140F51EZ/45/_/1719229996/16f6d4ed-fdbf-4b64-b5ce-161c454305f6.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZD6511CA67B77C140F51EZ/45/_/1719230005/49a7b68c-a595-441f-a6e3-eff4d94eb98a.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZD6511CA67B77C140F51EZ/45/_/1719229996/6f6be4dc-40a0-47f2-8302-206d6cb8c564.jpg?format=webp&width=800"
+                ],
+                colors: ["06 جيرانيوم"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "الحجم": "وسط",
+                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 43,
+                name: "ذا براو غلو 01 للحواجب",
+                price: "19 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZEFDC3374CF50A827867BZ/45/1746620956/5f80f4c6-9975-489a-ba90-48375bdf95a1.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "ألصقيه على حواجبك! أول منتج تصفيف للحواجب لدينا مع ثبات قوي يصل إلى 16 ساعة. هذا الجل الذي يشبه الصمغ شفاف ومقاوم للتقشر ويجف بشكل غير لزج بطبقة نهائية طبيعية! إنه سريع وسهل الاستخدام: ما عليك سوى وضعه بالفرشاة والتصفيف لخلق اطلالات حواجب لا حصر لها تبقى ثابتة في مكانها.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZEFDC3374CF50A827867BZ/45/1746620956/5f80f4c6-9975-489a-ba90-48375bdf95a1.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZEFDC3374CF50A827867BZ/45/1746620956/5b1f59b7-c2be-48de-a90e-a50113a3e625.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "نيكس",
+                    "اللون": "شفاف",
+                    "الحجم": "وسط",
+                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+                    "الاستخدام": "للعيون ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 4344,
+                name: "فيكس بلس بخاخ تثبيت الأصلي 30مل",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z1515735642C5BA2EE5D5Z/45/_/1728912703/c92a8480-b1f9-44fd-9b00-a7b382382043.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "وجه",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z1515735642C5BA2EE5D5Z/45/_/1728912703/c92a8480-b1f9-44fd-9b00-a7b382382043.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z1515735642C5BA2EE5D5Z/45/_/1724320887/27775578-39c3-4919-b29c-a7fe24f65f0a.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1715073427/c7ecc672-392e-47a9-8b05-f45dab064067.jpg?format=webp&width=800"
+                ],
+                colors: ["طبيعي"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": "طبيعي",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 42345,
+                name: "بلاشر كريمي إنغلوت ستيج راستي بينك 211",
+                price: "12 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z90B3090CAB18ED79B082Z/45/1752760981/09ce3eb1-0608-4eca-884a-ee55845fe952.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "شفاه",
+                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z90B3090CAB18ED79B082Z/45/1752760981/09ce3eb1-0608-4eca-884a-ee55845fe952.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z90B3090CAB18ED79B082Z/45/1752760981/165745e7-ecb8-4001-9bdd-f3ebafca9a51.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z90B3090CAB18ED79B082Z/45/1752760982/cf30ca0c-d9ce-4592-9323-4b9e5d797ff6.jpg?format=webp&width=800"
+                ],
+                colors: ["Pink"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "انجلوت",
+                    "اللون": "Pink",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشفاه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 46234,
+                name: "كاتريس شاين بومب ليب لاكر 040",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZDF10B037D177C90C34D7Z/45/_/1742540595/2407f9b8-6faf-4fb7-af64-bee483a02099.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "شفاه",
+                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZDF10B037D177C90C34D7Z/45/_/1742540595/2407f9b8-6faf-4fb7-af64-bee483a02099.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZDF10B037D177C90C34D7Z/45/_/1742540598/c925de19-45ea-451e-b0a1-9d35a572b632.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZDF10B037D177C90C34D7Z/45/_/1742540599/827fe630-e8c9-44bb-b55d-75288d6179f6.jpg?format=webp&width=800"
+                ],
+                colors: ["أحمر"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": "أحمر",
+                    "الحجم": "وسط",
+                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+                    "الاستخدام": "للشفاه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 47,
+                name: "احمر شفاه باودر كيس - مراكش واين",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZBDD5AB7E31F95DEA7D9CZ/45/_/1698934604/382e7e3e-14df-4d4c-afef-ec8bd81320dd.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZBDD5AB7E31F95DEA7D9CZ/45/_/1698934604/382e7e3e-14df-4d4c-afef-ec8bd81320dd.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZBDD5AB7E31F95DEA7D9CZ/45/_/1698934607/1ec35109-0a2f-49cf-9f2c-dc7337ec2b78.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZBDD5AB7E31F95DEA7D9CZ/45/_/1698934606/c0b9d727-937a-4b14-b88c-a8161f1d8f0a.jpg?format=webp&width=800"
+                ],
+                colors: ["مراكش ميري"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": "مراكش ميري",
+                    "الحجم": "وسط",
+                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+                    "الاستخدام": "للشفاه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 48,
+                name: "ملمع الشفاه بوب بلاش - بلاك هني",
+                price: "29 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZE1B0B8BC360FA7F821E6Z/45/1755689513/0f6d216f-8113-486b-9be8-bba8d49e0b0e.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "شفاه",
+                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZE1B0B8BC360FA7F821E6Z/45/1755689513/0f6d216f-8113-486b-9be8-bba8d49e0b0e.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZE1B0B8BC360FA7F821E6Z/45/1755689525/03b954ea-11b2-4d07-90d9-6b6e4aed3c90.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZE1B0B8BC360FA7F821E6Z/45/1755689795/1187c1f8-e38e-4e10-94c2-073d4de51d68.jpg?format=webp&width=800"
+                ],
+                colors: ["بلاك هني"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": "بلاك هني",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشفاه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 49,
+                name: "ماسك الشعر ريزيستانس ثيرابيست 200 مل",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z700B6EB18C4D8D791A2CZ/45/_/1731009302/63fc305e-0a3f-4fda-a56f-9c8c37101b79.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z700B6EB18C4D8D791A2CZ/45/_/1731009302/63fc305e-0a3f-4fda-a56f-9c8c37101b79.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z700B6EB18C4D8D791A2CZ/45/_/1731009312/59864068-31a5-47be-b5a5-3233d2f470d8.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 50,
+                name: "بي كيرلي كواش متقدم - 350 مل",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZD8CB869E1EE4D4526B5CZ/45/1746747114/e1899347-af83-4ed4-97b3-8a186fcf09dd.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZD8CB869E1EE4D4526B5CZ/45/1746747114/e1899347-af83-4ed4-97b3-8a186fcf09dd.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZD8CB869E1EE4D4526B5CZ/45/1746747114/ba4994fd-8fbe-459a-95c4-c032140428d6.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 51,
+                name: "ماسك الشعر انتنس ريبير جاباتي وبراهمي",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z5A1029B443DA4DDCD9D2Z/45/1746747314/656b4e14-134b-4f78-aaa5-102e1d9009c3.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z5A1029B443DA4DDCD9D2Z/45/1746747314/656b4e14-134b-4f78-aaa5-102e1d9009c3.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 52,
+                name: "ماسك ومعالج للشعر",
+                price: "120 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z0A433025DBC24127BDD4Z/45/_/1722491739/f10ef47d-e7b6-406b-ac45-7f75b701c86f.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z0A433025DBC24127BDD4Z/45/_/1722491739/f10ef47d-e7b6-406b-ac45-7f75b701c86f.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z0A433025DBC24127BDD4Z/45/_/1722491745/45a15956-2de5-4936-93f6-54eb1bc10e33.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },  {
+                id: 53,
+                name: "مجموعة K Nutritive Fondant Holidays 24",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1742453672/51dccc4f-08bb-4b31-a180-e9b3285bfefd.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1742453672/51dccc4f-08bb-4b31-a180-e9b3285bfefd.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1741180879/c63e75f8-936a-4d53-a3dd-f0aa67c93e0b.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },             {
+                id: 54,
+                name: "زيت وماسك أبسولوت ريبير",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371646/e8b527da-f2d5-46de-b97e-4eeffe82bfa2.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371646/e8b527da-f2d5-46de-b97e-4eeffe82bfa2.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371753/7789f074-5c06-4b62-8bea-32f888de5504.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371755/b45ff766-bf78-4183-8a1d-0f5c6b123556.jpg?format=webp&width=800"
+                ],
+                colors: ["طبيعي"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "لوريال بروفيسيونال",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 55,
+                name: "شامبو جينيسيس بين هيدرا فورتيفيانت - 250 مل",
+                price: "33 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1745570940/3b3c4f39-4e0e-464b-ba93-f44764f53f7f.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "شامبو جينيسيس بين هيدرا فورتيفيانت - 250 مل",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1745570940/3b3c4f39-4e0e-464b-ba93-f44764f53f7f.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1726036268/9af2de27-2c99-4703-be95-76cd30a9fa55.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },{
+                id: 56,
+                name: "مرطب شفاه فات اويل- ميسد كول",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z463557BEA32B4103B96FZ/45/1746621037/8e816eaf-f7a9-4c00-9267-b91292c48d16.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z463557BEA32B4103B96FZ/45/1746621037/8e816eaf-f7a9-4c00-9267-b91292c48d16.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z463557BEA32B4103B96FZ/45/1746621037/b17ddfc0-8924-4bfd-9a81-52c4cfd3fb94.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z463557BEA32B4103B96FZ/45/1746621037/0d6c127b-cb46-42f7-a520-cfa9ec9b6087.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": "شفاف",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشفاه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },{
+                id: 57,
+                name: "نو اريفيرينت أحمر شفاه كولور ريتش لي نو - 176",
+                price: "49 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z6B43A10C02FEE8AB1B66Z/45/_/1731563295/4b15a90c-dc1b-43ec-9a1d-ae79825f1e2c.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "عيون",
+                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z6B43A10C02FEE8AB1B66Z/45/_/1731563295/4b15a90c-dc1b-43ec-9a1d-ae79825f1e2c.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z6B43A10C02FEE8AB1B66Z/45/_/1731563388/2293e34d-adf5-4c03-8bf5-d9428663af2b.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z6B43A10C02FEE8AB1B66Z/45/_/1731563370/e06251d0-0b04-4387-bbaa-4aa6b7b7777b.jpg?format=webp&width=800"
+                ],
+                colors: ["نو اريفرينت "],
+                sizes: ["حجم كامل"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "فلورمار",
+                    "اللون": "نو اريفرينت",
+                    "الحجم": "وسط",
+                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+                    "الاستخدام": "للوجه ",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            }, {
+                id: 58,
+                name: "أحمر شفاه مطفي انجلوت",
+                price: "70 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z373CA02F50FA004A60E7Z/45/1752735754/a0da7a4a-37d1-495f-9a78-95f8c4042576.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "شفاه",
+                description: "منتج مكياج فاخر من انجلوت يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z373CA02F50FA004A60E7Z/45/1752735754/a0da7a4a-37d1-495f-9a78-95f8c4042576.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z373CA02F50FA004A60E7Z/45/1752735764/2095c1b1-900e-4ca5-b9a6-171b7c2ed213.jpg?format=webp&width=800"                ],
+                colors: [" بني مطفي"],
+                sizes: ["وسط"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "انجلوت",
+                    "اللون": "مطفي",
+                    "الحجم": "وسط",
+                    "المكونات": "مكونات طبيعية 100%",
+                    "الاستخدام": "للوجه والشفاه",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },  {
+                id: 59,
+                name: "ملمع الشفاه والخدود بيلو توك - كولور اوف باشن",
+                price: "190 ر.س",
+                originalPrice: "200 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220113/db206c02-7aa9-4c61-a0fa-baf8ab3516f2.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "مكياج",
+                subcategory: "شفاه",
+                description: "منتج مكياج فاخر من شارلوت تلبوري يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220113/db206c02-7aa9-4c61-a0fa-baf8ab3516f2.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220153/4c76125c-1932-4860-a773-126ae231700c.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220129/876bf4d7-30cc-4774-bac6-2136f1b88f2f.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1702424689/2ba6e6eb-70bb-4fb6-a50c-dc407f0e543f.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220190/0799413e-c786-4218-9854-2ab4dd2de84f.jpg?format=webp&width=800"
+                ],
+                colors: ["روز جولد"],
+                sizes: ["وسط"],
+                details: {
+                    "النوع": "مكياج",
+                    "العلامة التجارية": "شارلوت تلبوري",
+                    "اللون": "روز جولد",
+                    "الحجم": "وسط",
+                    "المكونات": "مكونات طبيعية 100%",
+                    "الاستخدام": "للوجه والشفاه",
+                    "مدة الصلاحية": "24 شهر"
+                }
+            },         
+        ];
+
+        // متغيرات نظام السلة
+        let cart = [];
+
+        // دالة لتحميل السلة من localStorage
+        function loadCartFromLocalStorage() {
+            const savedCart = localStorage.getItem('jamalkCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+            }
+        }
+
+        // دالة لحفظ السلة إلى localStorage
+        function saveCartToLocalStorage() {
+            localStorage.setItem('jamalkCart', JSON.stringify(cart));
+        }
+
+        // دالة لتحديث عداد السلة
+        function updateCartCount() {
+            const cartCount = document.querySelector('.cart-count');
+            const floatingCartCount = document.querySelector('.floating-cart-count');
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            floatingCartCount.textContent = totalItems;
+        }
+
+        // دالة لإضافة منتج إلى السلة
+        function addToCart(productId, color = null, size = null) {
+            // البحث عن المنتج في جميع المصفوفات
+            let product = products.find(p => p.id == productId);
+            
+            if (product) {
+                // التحقق إذا كان المنتج موجوداً بالفعل في السلة
+                const existingItemIndex = cart.findIndex(item => 
+                    item.id === productId && 
+                    item.selectedColor === color && 
+                    item.selectedSize === size
+                );
+                
+                if (existingItemIndex > -1) {
+                    // زيادة الكمية إذا كان المنتج موجوداً
+                    cart[existingItemIndex].quantity += 1;
+                } else {
+                    // إضافة منتج جديد إلى السلة
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1,
+                        selectedColor: color,
+                        selectedSize: size
+                    });
+                }
+                
+                // حفظ السلة وتحديث العداد
+                saveCartToLocalStorage();
+                updateCartCount();
+                
+                // إشعار للمستخدم
+            }
+        }
+
+        // دالة لعرض المنتجات
+        function renderProducts(productsArray, containerId) {
+            const productsContainer = document.getElementById(containerId);
+            productsContainer.innerHTML = '';
+            
+            productsArray.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.setAttribute('data-id', product.id);
+                
+                let badgesHtml = '';
+                if (product.badges && product.badges.length > 0) {
+                    badgesHtml = '<div class="product-badges">';
+                    product.badges.forEach(badge => {
+                        switch(badge) {
+                            case 'discount':
+                                badgesHtml += '<span class="badge badge-discount">خصم</span>';
+                                break;
+                            case 'new':
+                                badgesHtml += '<span class="badge badge-new">جديد</span>';
+                                break;
+                            case 'exclusive':
+                                badgesHtml += '<span class="badge badge-exclusive">حصري</span>';
+                                break;
+                            case 'fast-delivery':
+                                badgesHtml += '<span class="badge badge-fast-delivery">التوصيل في أقل من 90 دقيقة</span>';
+                                break;
+                        }
+                    });
+                    badgesHtml += '</div>';
+                }
+                
+                let priceHtml = `<p class="product-price">${product.price}`;
+                if (product.originalPrice) {
+                    priceHtml += ` <span class="original-price">${product.originalPrice}</span>`;
+                }
+                priceHtml += '</p>';
+                
+                productCard.innerHTML = `
+                    ${badgesHtml}
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        ${priceHtml}
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-id="${product.id}">أضف إلى السلة</button>
+                        </div>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+        }
+
+        // دالة لعرض صفحة المنتج
+        function showProductPage(productId) {
+            // البحث عن المنتج في جميع المصفوفات
+            let product = products.find(p => p.id == productId);
+            
+            if (product) {
+                // إخفاء الأقسام غير الضرورية
+                document.querySelectorAll('.products-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('product-page').style.display = 'block';
+                
+                // تعبئة معلومات المنتج
+                let priceHtml = `<p class="product-price-detail">${product.price}`;
+                if (product.originalPrice) {
+                    priceHtml += ` <span class="original-price">${product.originalPrice}</span>`;
+                }
+                priceHtml += '</p>';
+                
+                let badgesHtml = '';
+                if (product.badges && product.badges.length > 0) {
+                    badgesHtml = '<div class="product-badges">';
+                    product.badges.forEach(badge => {
+                        switch(badge) {
+                            case 'discount':
+                                badgesHtml += '<span class="badge badge-discount">خصم</span>';
+                                break;
+                            case 'new':
+                                badgesHtml += '<span class="badge badge-new">جديد</span>';
+                                break;
+                            case 'exclusive':
+                                badgesHtml += '<span class="badge badge-exclusive">حصري</span>';
+                                break;
+                            case 'fast-delivery':
+                                badgesHtml += '<span class="badge badge-fast-delivery">التوصيل في أقل من 90 دقيقة</span>';
+                                break;
+                        }
+                    });
+                    badgesHtml += '</div>';
+                }
+                
+                // معرض الصور
+                let thumbnailsHtml = '';
+                if (product.images && product.images.length > 0) {
+                    product.images.forEach((img, index) => {
+                        thumbnailsHtml += `<img src="${img}" alt="${product.name}" class="product-thumbnail ${index === 0 ? 'active' : ''}" data-image="${img}">`;
+                    });
+                }
+                
+                // خيارات الألوان
+                let colorsHtml = '';
+                if (product.colors && product.colors.length > 0) {
+                    colorsHtml = `
+                        <div class="product-options">
+                            <span class="option-title">اللون:</span>
+                            <div class="option-values">
+                                ${product.colors.map((color, index) => `
+                                    <span class="option-value ${index === 0 ? 'selected' : ''}" data-value="${color}">${color}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // خيارات الأحجام
+                let sizesHtml = '';
+                if (product.sizes && product.sizes.length > 0) {
+                    sizesHtml = `
+                        <div class="product-options">
+                            <span class="option-title">الحجم:</span>
+                            <div class="option-values">
+                                ${product.sizes.map((size, index) => `
+                                    <span class="option-value ${index === 0 ? 'selected' : ''}" data-value="${size}">${size}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // جدول تفاصيل المنتج
+                let detailsHtml = '';
+                if (product.details) {
+                    detailsHtml = `
+                        <h3>تفاصيل المنتج</h3>
+                        <table class="product-table">
+                            <tbody>
+                                ${Object.entries(product.details).map(([key, value]) => `
+                                    <tr>
+                                        <th>${key}</th>
+                                        <td>${value}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                }
+                
+                document.getElementById('product-details').innerHTML = `
+                    <div class="product-gallery">
+                        ${badgesHtml}
+                        <img src="${product.images ? product.images[0] : product.image}" alt="${product.name}" class="main-product-image" id="main-product-image">
+                        <div class="product-thumbnails">
+                            ${thumbnailsHtml}
+                        </div>
+                    </div>
+                    <div class="product-info-detail">
+                        <h2 class="product-title-detail">${product.name}</h2>
+                        ${priceHtml}
+                        <p class="product-description">${product.description}</p>
+                        
+                        ${colorsHtml}
+                        ${sizesHtml}
+                        
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-id="${product.id}" id="add-to-cart-detail">أضف إلى السلة</button>
+                        </div>
+                        
+                        ${detailsHtml}
+                    </div>
+                `;
+                
+                // إضافة الأحداث للعناصر التفاعلية
+                // معرض الصور
+                document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+                    thumb.addEventListener('click', function() {
+                        document.getElementById('main-product-image').src = this.getAttribute('data-image');
+                        document.querySelectorAll('.product-thumbnail').forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+                
+                // خيارات الألوان والأحجام
+                document.querySelectorAll('.option-value').forEach(option => {
+                    option.addEventListener('click', function() {
+                        this.parentElement.querySelectorAll('.option-value').forEach(o => o.classList.remove('selected'));
+                        this.classList.add('selected');
+                    });
+                });
+                
+                // زر إضافة إلى السلة في صفحة المنتج
+                document.getElementById('add-to-cart-detail').addEventListener('click', function() {
+                    const selectedColor = document.querySelector('.option-value.selected[data-value]')?.getAttribute('data-value') || null;
+                    const selectedSize = document.querySelector('.option-value.selected[data-value]')?.getAttribute('data-value') || null;
+                    addToCart(product.id, selectedColor, selectedSize);
+                });
+                
+                // التمرير إلى أعلى الصفحة
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+
+        // دالة للعودة إلى قائمة المنتجات
+        function backToProducts() {
+            // إظهار جميع الأقسام وإخفاء صفحة المنتج
+            document.querySelectorAll('.products-section').forEach(section => {
+                section.style.display = 'block';
+            });
+            document.getElementById('product-page').style.display = 'none';
+            
+            // التمرير إلى قسم المنتجات
+            document.getElementById('products-section').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // دالة لإظهار/إخفاء القائمة على الهواتف
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحميل السلة من localStorage
+            loadCartFromLocalStorage();
+            
+            renderProducts(products, 'featured-products');
+            
+            // إضافة حدث للنقر على أزرار إضافة إلى السلة
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart')) {
+                    const productId = e.target.getAttribute('data-id');
+                    addToCart(productId);
+                    e.stopPropagation(); // منع الانتقال إلى صفحة المنتج عند النقر على زر الإضافة إلى السلة
+                }
+            });
+            
+            // إضافة حدث النقر على بطاقات المنتج
+            document.addEventListener('click', function(e) {
+                const productCard = e.target.closest('.product-card');
+                if (productCard) {
+                    const productId = productCard.getAttribute('data-id');
+                    showProductPage(productId);
+                }
+            });
+            
+            // إضافة حدث للزر العودة إلى المنتجات
+            document.getElementById('back-to-products').addEventListener('click', backToProducts);
+            
+            // إضافة حدث للعربة الطافية
+            document.getElementById('floating-cart').addEventListener('click', function() {
+                // يمكنك توجيه المستخدم إلى صفحة السلة هنا
+                 window.location.href = 'sk.html';
+            });
+            
+            // إضافة حدث لأيقونة السلة في الهيدر
+            document.getElementById('cart-icon').addEventListener('click', function(e) {
+                e.preventDefault();
+                // يمكنك توجيه المستخدم إلى صفحة السلة هنا
+                 window.location.href = 'sk.html';
+            });
+        });
+    </script>
+</body>
+</html>

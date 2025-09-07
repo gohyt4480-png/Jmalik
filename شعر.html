@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جمالك - متجر المكياج</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FFC1CC;
+            --secondary-color: #D8B4E2;
+            --neutral-color: #FFF8F0;
+            --button-color: #FF6B81;
+            --text-color: #4A4A4A;
+            --light-text: #ffffff;
+            --dark-text: #333333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --discount-color: #FF4757;
+            --exclusive-color: #9c27b0;
+            --new-color: #2ed573;
+            --fast-delivery: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-text);
+            direction: rtl;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* الهيدر */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: #f8f8f8;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .header-top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-top-left {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-top-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .header-main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--button-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--button-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-icon {
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .header-icon:hover {
+            color: var(--button-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background-color: var(--button-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-btn {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background-color: #e55c71;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* قسم المنتجات */
+        .products-section {
+            padding: 40px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: var(--dark-text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--button-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid #f0f0f0;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* لجعل جميع البطاقات متساوية في الارتفاع */
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image-container {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* لجعل المحتوى يأخذ المساحة المتبقية */
+        }
+
+        .product-title {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-text);
+            min-height: 2.4rem; /* للحفاظ على تناسق العناوين */
+        }
+
+        .product-price {
+            color: var(--button-color);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.8rem;
+            margin-left: 6px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: auto; /* لدفع الأزرار إلى الأسفل */
+        }
+
+        .add-to-cart {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: #e55c71;
+        }
+
+        /* علامات المنتجات */
+        .product-badges {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 10;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .badge-discount {
+            background-color: var(--discount-color);
+        }
+
+        .badge-new {
+            background-color: var(--new-color);
+        }
+
+        .badge-exclusive {
+            background-color: var(--exclusive-color);
+        }
+
+        .badge-fast-delivery {
+            background-color: var(--fast-delivery);
+            color: #333;
+        }
+
+        /* قسم الاشتراك */
+        .subscription-section {
+            background-color: var(--secondary-color);
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .subscription-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--box-shadow);
+        }
+
+        .subscription-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+
+        .subscription-card p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: 555;
+        }
+
+        .subscribe-btn {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .subscribe-btn:hover {
+            background-color: #e55c71;
+            transform: translateY(-2px);
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #2c2c2c;
+            color: #f1f1f1;
+            padding: 40px 0 15px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+            color: white;
+        }
+
+        .footer-column h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 35px;
+            height: 2px;
+            background-color: var(--button-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-right: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            background-color: #444;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--button-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* صفحة المنتج */
+        .product-page {
+            display: none;
+            padding: 30px 0;
+            background-color: white;
+        }
+
+        .product-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-gallery {
+            position: relative;
+        }
+
+        .main-product-image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 12px;
+        }
+
+        .product-thumbnails {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .product-thumbnail {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .product-thumbnail:hover, .product-thumbnail.active {
+            border-color: var(--button-color);
+        }
+
+        .product-info-detail {
+            padding: 15px 0;
+        }
+
+        .product-title-detail {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: var(--dark-text);
+        }
+
+        .product-price-detail {
+            font-size: 1.6rem;
+            color: var(--button-color);
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .product-options {
+            margin-bottom: 20px;
+        }
+
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .option-values {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .option-value {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .option-value:hover, .option-value.selected {
+            background-color: var(--button-color);
+            color: white;
+            border-color: var(--button-color);
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .product-table th, .product-table td {
+            padding: 10px 12px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+
+        .product-table th {
+            background-color: #f8f8f8;
+            font-weight: 600;
+        }
+
+        .product-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .back-to-products {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .back-to-products:hover {
+            background-color: #c69ad4;
+        }
+
+        /* العربة الطافية */
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--button-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .floating-cart:hover {
+            transform: scale(1.1);
+        }
+        
+        .floating-cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--discount-color);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* التجاوب مع الشاشات المختلفة */
+        @media (max-width: 992px) {
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .product-details {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: white;
+                width: 100%;
+                flex-direction: column;
+                padding: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 8px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+            
+            /* تعديل هنا: عرض عمودين للشاشات المتوسطة */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .product-image-container {
+                height: 180px;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .product-thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .subscription-card {
+                padding: 20px;
+            }
+            
+            .subscription-card h3 {
+                font-size: 1.6rem;
+            }
+            
+            .footer-content {
+                gap: 25px;
+            }
+
+            .floating-cart {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                left: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-main-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .subscription-card {
+                padding: 15px;
+            }
+            
+            .subscription-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .footer-column h4::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .product-thumbnail {
+                width: 50px;
+                height: 50px;
+            }
+            
+            /* تعديل هنا: عرض عمودين للشاشات الصغيرة */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .product-image-container {
+                height: 160px;
+            }
+            
+            .product-info {
+                padding: 12px;
+            }
+            
+            .product-title {
+                font-size: 0.9rem;
+                min-height: 2.2rem;
+            }
+            
+            .product-price {
+                font-size: 1rem;
+            }
+            
+            .add-to-cart {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+            }
+            
+            .product-details {
+                gap: 20px;
+            }
+            
+            .product-title-detail {
+                font-size: 1.5rem;
+            }
+            
+            .product-price-detail {
+                font-size: 1.4rem;
+            }
+            
+            .option-value {
+                padding: 5px 10px;
+                font-size: 0.85rem;
+            }
+
+            .floating-cart {
+                width: 45px;
+                height: 45px;
+                bottom: 10px;
+                left: 10px;
+            }
+            
+            .floating-cart-count {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            /* تعديل هنا: عرض عمودين للشاشات الصغيرة جداً */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .product-image-container {
+                height: 140px;
+            }
+            
+            .product-title {
+                font-size: 0.85rem;
+                min-height: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-container">
+                <div class="header-top-left">
+                    <span><i class="fas fa-truck"></i> توصيل مجاني للطلبات فوق 200 ر.س</span>
+                </div>
+                <div class="header-top-right">
+                    <span><i class="fas fa-phone"></i> 800-12345</span>
+                    <span><i class="fas fa-envelope"></i> info@jamalk.com</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container header-main-container">
+            <div class="logo">جمالك</div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="التصنيفات.html">منتجاتنا</a></li>
+                <li><a href="make.html">مكياج</a></li>
+                <li><a href="99.html">أقل من 99 ريال</a></li>
+                <li><a href="#">الاشتراك</a></li>
+                <li><a href="التصنيفات.html">عروض خاصة</a></li>
+                <li><a href="#">مدونة الجمال</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <a href="#" class="header-icon">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="index.html" class="header-icon">
+                    <i class="far fa-heart"></i>
+                </a>
+                <a href="#" class="header-icon" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="login-btn">تسجيل دخول</button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم المنتجات المميزة -->
+    <section class="products-section" id="products-section">
+        <div class="container">
+            <h2 class="section-title">منتجاتنا المميزة</h2>
+            <div class="products-grid" id="featured-products">
+                <!-- سيتم إضافة المنتجات ديناميكيًا باستخدام JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- صفحة المنتج (مخفيّة في البداية) -->
+    <section class="product-page" id="product-page">
+        <div class="container">
+            <button class="back-to-products" id="back-to-products">← العودة إلى المنتجات</button>
+            
+            <div class="product-details" id="product-details">
+                <!-- سيتم تعبئة هذه المنطقة بمعلومات المنتج عند النقر عليه -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاشتراك -->
+    <section class="subscription-section">
+        <div class="container">
+            <div class="subscription-card">
+                <h3>اشتراك شهري حصري</h3>
+                <p>احصلي على صندوق شهري يحتوي على 3-5 منتجات مختارة خصيصاً لكِ مع خصم يصل إلى 40%</p>
+                <button class="subscribe-btn">اشتركي الآن</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>عن المتجر</h4>
+                    <p>متجرنا يقدم أجود منتجات التجميل والعناية بالبشرة والشعر مع ضمان الجودة والخدمة المتميزة.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">تتبع الطلب</a></li>
+                        <li><a href="#">الاشتراك</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>المساعدة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">سياسة الإرجاع</a></li>
+                        <li><a href="#">طرق الدفع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>القائمة البريدية</h4>
+                    <p>اشتركي في نشرتنا البريدية لتصلك آخر العروض والأخبار</p>
+                    <form>
+                        <input type="email" placeholder="بريدك الإلكتروني" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: var(--border-radius); border: none;">
+                        <button type="submit" class="subscribe-btn" style="width: 100%; padding: 10px;">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 جمالك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- العربة الطافية -->
+    <div class="floating-cart" id="floating-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="floating-cart-count">0</span>
+    </div>
+
+    <script>
+        // بيانات المنتجات (يمكن استبدالها ببيانات حقيقية لاحقاً)
+        const products = [
+            {
+                id: 1,
+                name: "مجموعة K Nutritive Fondant Holidays 24",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1742453672/51dccc4f-08bb-4b31-a180-e9b3285bfefd.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1742453672/51dccc4f-08bb-4b31-a180-e9b3285bfefd.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1741180879/c63e75f8-936a-4d53-a3dd-f0aa67c93e0b.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },             {
+                id: 2,
+                name: "زيت وماسك أبسولوت ريبير",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371646/e8b527da-f2d5-46de-b97e-4eeffe82bfa2.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371646/e8b527da-f2d5-46de-b97e-4eeffe82bfa2.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371753/7789f074-5c06-4b62-8bea-32f888de5504.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371755/b45ff766-bf78-4183-8a1d-0f5c6b123556.jpg?format=webp&width=800"
+                ],
+                colors: ["طبيعي"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "لوريال بروفيسيونال",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 3,
+                name: "شامبو جينيسيس بين هيدرا فورتيفيانت - 250 مل",
+                price: "33 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1745570940/3b3c4f39-4e0e-464b-ba93-f44764f53f7f.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "شامبو جينيسيس بين هيدرا فورتيفيانت - 250 مل",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1745570940/3b3c4f39-4e0e-464b-ba93-f44764f53f7f.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1726036268/9af2de27-2c99-4703-be95-76cd30a9fa55.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 4,
+                name: "زيت الفيف اكسترا اورديناري لكل انواع الشعر 100 مل",
+                price: "21 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z3A14A8BC71242C40EA70Z/45/_/1744349262/8e33fafb-33bd-4792-b6e2-d02a959b773b.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "زيت اكسترا اورديناري مثالي لجميع أنواع الشعر من لوريال باريس الفيف هو زيت شعر متعدد الاستخدامات مصمم لترطيب وتحسين اللمعان. يحتوي هذا الزيت متعدد الاستخدامات على مزيج غني من 6 خلاصات من الزهور الفريدة، كما يمنحك شعورا بخفة وزن شعرك ولمسات نهائية كصالونات التجميل.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z3A14A8BC71242C40EA70Z/45/_/1744349262/8e33fafb-33bd-4792-b6e2-d02a959b773b.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z3A14A8BC71242C40EA70Z/45/_/1743569503/7504ea84-62f5-4710-8f20-8b863d6651bd.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "لوريال باريس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 5,
+                name: "ماسك هير فود الترا دو 3 في 1 بزبدة الكاكاو",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z209CA0E3EDB7413EDDE4Z/45/_/1729519431/46e3c56d-4d3f-4e3c-bc90-f6ec24fcc024.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "تبتكر الترا دو ماسك نباتي جديد مكون من 97% من أصل طبيعي هير فود 3 في 1 لتغذية وترطيب الشعر المجعد الجاف. 3 طرق للاستمتاع بتغذية الشعر بزبدة الكاكاو: حمام بالزيت الساخن أو ماسك أو كريم يترك على الشعر.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z209CA0E3EDB7413EDDE4Z/45/_/1729519431/46e3c56d-4d3f-4e3c-bc90-f6ec24fcc024.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z209CA0E3EDB7413EDDE4Z/45/1746748138/60f6f390-5a25-41fc-a12d-ff58fdc82ac1.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "غارنييه",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 6,
+                name: "سيروم سيريوكسيل ادفانسد للشعر - 90 مل",
+                price: "25 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z9D74030C1A4F94575F89Z/45/_/1731019539/a16f16be-bc55-4798-872b-27237edc8edc.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "فعالية بقدرة فائقة: مركزة بنسبة 5% ستيموكسيدين وغنية بالريسفيراترول، للحفاظ على الأداء السليم للخلايا الجذعية وتحسين دورات الشعر التي تؤدي إلى تحسين تجديد البصيلات، مما يؤدي إلى زيادة كثافة الشعر.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z9D74030C1A4F94575F89Z/45/_/1731019539/a16f16be-bc55-4798-872b-27237edc8edc.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z9D74030C1A4F94575F89Z/45/1747128428/08fe1761-b2fc-4470-b27f-8408de51a22f.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "لوريال بروفيسيونال",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 7,
+                name: "شامبو الفيف هيدرا هيالورنيك اسيد 200 مل",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z06DBC3F28AE992B5AEF6Z/45/_/1698974028/568aef17-0592-490f-94bd-fb15830d16f5.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "الشعر التالف والجفاف؟ جربي شامبو ايلفيف هايدرا مع حمض الهيالورونيك الجديد من لوريال باريس. تركيبة مشبعة بحمض الهيالورونيك تغلف الشعر بخفة وتحافظ على رطوبته لمدة تصل إلى 72 ساعة. النتائج؟ يبدو الشعر ممتلئا وحيويا ولامعا بشكل واضح. تساعد تركيبتنا المستوحاة من العناية بالبشرة والمثبتة علميًا على معالجة الشعر الجاف والتالف، وهي أول علامة على تلف الشعر.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z06DBC3F28AE992B5AEF6Z/45/_/1698974028/568aef17-0592-490f-94bd-fb15830d16f5.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z06DBC3F28AE992B5AEF6Z/45/_/1698974030/4910e2c3-47ea-4ffa-a72c-1feca283dc63.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "لوريال باريس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 8,
+                name: "كيراستاس غلوس أبسولو بخاخ غلايز ميلك",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z5098B14013677F0273F8Z/45/1748763509/fac0b2c1-1205-4feb-991e-93a50612c89a.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z5098B14013677F0273F8Z/45/1748763509/fac0b2c1-1205-4feb-991e-93a50612c89a.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z5098B14013677F0273F8Z/45/1748763510/92ee2fea-0c1a-4eca-b22f-f50eea31fea7.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 9,
+                name: "كيراستاس غلوس أبسولو هيدرا-غلايز شامبو",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZF95AC8C31189BB4A9078Z/45/1748763506/89e09e2e-2c34-4273-9713-5cb55645812e.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "شامبو مرطب يمنح إشراقة للشعر الطويل المعرض للتجعد.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZF95AC8C31189BB4A9078Z/45/1748763506/89e09e2e-2c34-4273-9713-5cb55645812e.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZF95AC8C31189BB4A9078Z/45/1748763506/e7bd0550-7e0f-4c40-982a-154720fdf0f0.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 10,
+                name: "زيت الباتانا من بوتانيك هيرث - زبدة 100 مل - للعناية بالشعر والبشرة مغذي ومنعش بعمق",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZC6E06FD36EF205F6D523Z/45/1746212250/a5700283-eec5-4628-8c3a-a128d08e8897.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZC6E06FD36EF205F6D523Z/45/1746212250/a5700283-eec5-4628-8c3a-a128d08e8897.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZC6E06FD36EF205F6D523Z/45/1746212251/367ecb66-45f5-4059-bd5e-5289c80dc701.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 11,
+                name: "زيت شعر باتانا بالكافيين من بوتانيك هيرث مع اللوز",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z93F64A6C52FEC8ED3E9EZ/45/1746195542/f7a041d7-b06a-472d-952f-359b1797afb4.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z93F64A6C52FEC8ED3E9EZ/45/1746195542/f7a041d7-b06a-472d-952f-359b1797afb4.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z93F64A6C52FEC8ED3E9EZ/45/1746195542/042ccbdf-b9a0-4cfd-b336-74e89c812e80.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 12,
+                name: "سيرم الفيف اكسترا اورديناري لجميع انواع الشعر",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z77030C62276C7CF70983Z/45/_/1694566874/647da3ae-122e-4f2c-b699-013b006a7ee2.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z77030C62276C7CF70983Z/45/_/1694566874/647da3ae-122e-4f2c-b699-013b006a7ee2.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 13,
+                name: "ماسك الشعر ريزيستانس ثيرابيست 200 مل",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z700B6EB18C4D8D791A2CZ/45/_/1731009302/63fc305e-0a3f-4fda-a56f-9c8c37101b79.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z700B6EB18C4D8D791A2CZ/45/_/1731009302/63fc305e-0a3f-4fda-a56f-9c8c37101b79.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z700B6EB18C4D8D791A2CZ/45/_/1731009312/59864068-31a5-47be-b5a5-3233d2f470d8.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 14,
+                name: "بي كيرلي كواش متقدم - 350 مل",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZD8CB869E1EE4D4526B5CZ/45/1746747114/e1899347-af83-4ed4-97b3-8a186fcf09dd.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZD8CB869E1EE4D4526B5CZ/45/1746747114/e1899347-af83-4ed4-97b3-8a186fcf09dd.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZD8CB869E1EE4D4526B5CZ/45/1746747114/ba4994fd-8fbe-459a-95c4-c032140428d6.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 15,
+                name: "ماسك الشعر انتنس ريبير جاباتي وبراهمي",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z5A1029B443DA4DDCD9D2Z/45/1746747314/656b4e14-134b-4f78-aaa5-102e1d9009c3.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z5A1029B443DA4DDCD9D2Z/45/1746747314/656b4e14-134b-4f78-aaa5-102e1d9009c3.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 16,
+                name: "ماسك ومعالج للشعر",
+                price: "120 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z0A433025DBC24127BDD4Z/45/_/1722491739/f10ef47d-e7b6-406b-ac45-7f75b701c86f.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z0A433025DBC24127BDD4Z/45/_/1722491739/f10ef47d-e7b6-406b-ac45-7f75b701c86f.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z0A433025DBC24127BDD4Z/45/_/1722491745/45a15956-2de5-4936-93f6-54eb1bc10e33.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 17,
+                name: "قناع الترطيب المكثف من Texture Solutions 235 مل",
+                price: "20 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZA60ED65E474E6EB2E885Z/45/_/1741674483/1e102e87-08a0-4dcb-a5f9-ff1f470ccd27.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZA60ED65E474E6EB2E885Z/45/_/1741674483/1e102e87-08a0-4dcb-a5f9-ff1f470ccd27.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZA60ED65E474E6EB2E885Z/45/_/1741674487/1a3a968c-ccbb-49d9-a60f-03f0e33ab27b.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 18,
+                name: "معالج اسينشيال داميدغ كي|| بروتين LPP|| لمعالجة الشعر التألف ",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZDF27EDFDA2517F0C9DE0Z/45/1754554630/366abd6e-791e-4029-9872-f469e86057fc.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZDF27EDFDA2517F0C9DE0Z/45/1754554658/1653ea0d-0c51-4fb4-8a08-4c4c255790a5.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZDF27EDFDA2517F0C9DE0Z/45/1754554674/9b9f8aca-1e45-4591-89e8-7c9bf7a2aefc.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 19,
+                name: "برايمر بي كيرلي لتحديد تجعيد الشعر المتقدم - 200 مل",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z335CF3BE70CDCB4AB947Z/45/1746221162/ea3d4fac-8032-413c-b228-c02e0e730146.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z335CF3BE70CDCB4AB947Z/45/1746221162/ea3d4fac-8032-413c-b228-c02e0e730146.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z335CF3BE70CDCB4AB947Z/45/1746221169/9f0190d8-5be3-495f-ad4e-0fabfff69ebf.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 20,
+                name: "ماسك الاشراق بي1 فضي - 200 مل",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZCB6C7B0434B10B1D0358Z/45/1746747817/cad4c09a-7429-4bdb-94c6-b26249a00398.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZCB6C7B0434B10B1D0358Z/45/1746747817/cad4c09a-7429-4bdb-94c6-b26249a00398.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 21,
+                name: "Color Protection Deep Conditioner Packet 50g",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z362182A2BD0CEDE214B0Z/45/_/1741674524/0b8b2754-9e9c-43b3-bf5d-fb9a084cb10b.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z362182A2BD0CEDE214B0Z/45/_/1741674524/0b8b2754-9e9c-43b3-bf5d-fb9a084cb10b.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z362182A2BD0CEDE214B0Z/45/_/1741674525/7021f0ce-969d-44a6-b764-0202ae570c89.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 22,
+                name: "ماسك بوتانيكال ريبير لتقوية الشعر - ريتش 25 مل",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z5CC46B5BF8BDC1188A51Z/45/_/1698992461/362f858f-2cc9-4646-854b-def381a3326d.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z5CC46B5BF8BDC1188A51Z/45/_/1698992461/362f858f-2cc9-4646-854b-def381a3326d.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z5CC46B5BF8BDC1188A51Z/45/_/1698992462/1dd3ae66-a41f-456b-ab99-da18d9b4a4f7.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 23,
+                name: "مجموعة هدايا مستحضرات العناية المرطّبة للشعر الخفيف الجاف للغاية",
+                price: "70 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z9A2ECCA9CF6F6F7E97E7Z/45/_/1730887940/b4326436-d236-4509-997e-5fb9099613cc.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z9A2ECCA9CF6F6F7E97E7Z/45/_/1730887940/b4326436-d236-4509-997e-5fb9099613cc.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z9A2ECCA9CF6F6F7E97E7Z/45/_/1727097751/2cc05870-45be-4a85-a1a7-71f3522e68d4.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 24,
+                name: "مجموعة لوريال بروفيسيونالميتال ديتوكس جلاسيال يوتوبيا ديو، شامبو 300 مل وماسك 250 مل",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZA3C6B3B88847A2C4314EZ/45/_/1737522624/19cac9c3-02ac-4914-aa5a-4122541cca4a.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZA3C6B3B88847A2C4314EZ/45/_/1737522624/19cac9c3-02ac-4914-aa5a-4122541cca4a.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZA3C6B3B88847A2C4314EZ/45/_/1737522631/82085e75-b0e7-45c7-a3e7-8847fc64c03e.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 25,
+                name: "روتين الشعر الدهني",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZBA152849F424AE2C6598Z/45/1746747539/58c97667-06dc-441f-9c4e-f008f3bae2da.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZBA152849F424AE2C6598Z/45/1746747539/58c97667-06dc-441f-9c4e-f008f3bae2da.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZBA152849F424AE2C6598Z/45/1746747540/cb6e5e21-13f9-43f2-854e-b82181ed7692.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },            {
+                id: 26,
+                name: "لوريال باريس الفيف دريم لونغ شامبو 400 مل + بلسم 200 مل للشعر الطويل والمجعد",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z3330AE711A40A55FFF70Z/45/_/1742549304/c079f681-419f-4538-b265-5600853d0713.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالشعر",
+                subcategory: "شعر",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z3330AE711A40A55FFF70Z/45/_/1742549304/c079f681-419f-4538-b265-5600853d0713.jpg?format=webp&width=800",
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالشعر",
+                    "العلامة التجارية": "كيراستاس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للشعر",
+                }
+            },
+        ];
+
+        // متغيرات نظام السلة
+        let cart = [];
+
+        // دالة لتحميل السلة من localStorage
+        function loadCartFromLocalStorage() {
+            const savedCart = localStorage.getItem('jamalkCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+            }
+        }
+
+        // دالة لحفظ السلة إلى localStorage
+        function saveCartToLocalStorage() {
+            localStorage.setItem('jamalkCart', JSON.stringify(cart));
+        }
+
+        // دالة لتحديث عداد السلة
+        function updateCartCount() {
+            const cartCount = document.querySelector('.cart-count');
+            const floatingCartCount = document.querySelector('.floating-cart-count');
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            floatingCartCount.textContent = totalItems;
+        }
+
+        // دالة لإضافة منتج إلى السلة
+        function addToCart(productId, color = null, size = null) {
+            // البحث عن المنتج في جميع المصفوفات
+            let product = products.find(p => p.id == productId);
+            
+            if (product) {
+                // التحقق إذا كان المنتج موجوداً بالفعل في السلة
+                const existingItemIndex = cart.findIndex(item => 
+                    item.id === productId && 
+                    item.selectedColor === color && 
+                    item.selectedSize === size
+                );
+                
+                if (existingItemIndex > -1) {
+                    // زيادة الكمية إذا كان المنتج موجوداً
+                    cart[existingItemIndex].quantity += 1;
+                } else {
+                    // إضافة منتج جديد إلى السلة
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1,
+                        selectedColor: color,
+                        selectedSize: size
+                    });
+                }
+                
+                // حفظ السلة وتحديث العداد
+                saveCartToLocalStorage();
+                updateCartCount();
+                
+                // إشعار للمستخدم
+            }
+        }
+
+        // دالة لعرض المنتجات
+        function renderProducts(productsArray, containerId) {
+            const productsContainer = document.getElementById(containerId);
+            productsContainer.innerHTML = '';
+            
+            productsArray.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.setAttribute('data-id', product.id);
+                
+                let badgesHtml = '';
+                if (product.badges && product.badges.length > 0) {
+                    badgesHtml = '<div class="product-badges">';
+                    product.badges.forEach(badge => {
+                        switch(badge) {
+                            case 'discount':
+                                badgesHtml += '<span class="badge badge-discount">خصم</span>';
+                                break;
+                            case 'new':
+                                badgesHtml += '<span class="badge badge-new">جديد</span>';
+                                break;
+                            case 'exclusive':
+                                badgesHtml += '<span class="badge badge-exclusive">حصري</span>';
+                                break;
+                            case 'fast-delivery':
+                                badgesHtml += '<span class="badge badge-fast-delivery">التوصيل في أقل من 90 دقيقة</span>';
+                                break;
+                        }
+                    });
+                    badgesHtml += '</div>';
+                }
+                
+                let priceHtml = `<p class="product-price">${product.price}`;
+                if (product.originalPrice) {
+                    priceHtml += ` <span class="original-price">${product.originalPrice}</span>`;
+                }
+                priceHtml += '</p>';
+                
+                productCard.innerHTML = `
+                    ${badgesHtml}
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        ${priceHtml}
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-id="${product.id}">أضف إلى السلة</button>
+                        </div>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+        }
+
+        // دالة لعرض صفحة المنتج
+        function showProductPage(productId) {
+            // البحث عن المنتج في جميع المصفوفات
+            let product = products.find(p => p.id == productId);
+            
+            if (product) {
+                // إخفاء الأقسام غير الضرورية
+                document.querySelectorAll('.products-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('product-page').style.display = 'block';
+                
+                // تعبئة معلومات المنتج
+                let priceHtml = `<p class="product-price-detail">${product.price}`;
+                if (product.originalPrice) {
+                    priceHtml += ` <span class="original-price">${product.originalPrice}</span>`;
+                }
+                priceHtml += '</p>';
+                
+                let badgesHtml = '';
+                if (product.badges && product.badges.length > 0) {
+                    badgesHtml = '<div class="product-badges">';
+                    product.badges.forEach(badge => {
+                        switch(badge) {
+                            case 'discount':
+                                badgesHtml += '<span class="badge badge-discount">خصم</span>';
+                                break;
+                            case 'new':
+                                badgesHtml += '<span class="badge badge-new">جديد</span>';
+                                break;
+                            case 'exclusive':
+                                badgesHtml += '<span class="badge badge-exclusive">حصري</span>';
+                                break;
+                            case 'fast-delivery':
+                                badgesHtml += '<span class="badge badge-fast-delivery">التوصيل في أقل من 90 دقيقة</span>';
+                                break;
+                        }
+                    });
+                    badgesHtml += '</div>';
+                }
+                
+                // معرض الصور
+                let thumbnailsHtml = '';
+                if (product.images && product.images.length > 0) {
+                    product.images.forEach((img, index) => {
+                        thumbnailsHtml += `<img src="${img}" alt="${product.name}" class="product-thumbnail ${index === 0 ? 'active' : ''}" data-image="${img}">`;
+                    });
+                }
+                
+                // خيارات الألوان
+                let colorsHtml = '';
+                if (product.colors && product.colors.length > 0) {
+                    colorsHtml = `
+                        <div class="product-options">
+                            <span class="option-title">اللون:</span>
+                            <div class="option-values">
+                                ${product.colors.map((color, index) => `
+                                    <span class="option-value ${index === 0 ? 'selected' : ''}" data-value="${color}">${color}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // خيارات الأحجام
+                let sizesHtml = '';
+                if (product.sizes && product.sizes.length > 0) {
+                    sizesHtml = `
+                        <div class="product-options">
+                            <span class="option-title">الحجم:</span>
+                            <div class="option-values">
+                                ${product.sizes.map((size, index) => `
+                                    <span class="option-value ${index === 0 ? 'selected' : ''}" data-value="${size}">${size}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // جدول تفاصيل المنتج
+                let detailsHtml = '';
+                if (product.details) {
+                    detailsHtml = `
+                        <h3>تفاصيل المنتج</h3>
+                        <table class="product-table">
+                            <tbody>
+                                ${Object.entries(product.details).map(([key, value]) => `
+                                    <tr>
+                                        <th>${key}</th>
+                                        <td>${value}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                }
+                
+                document.getElementById('product-details').innerHTML = `
+                    <div class="product-gallery">
+                        ${badgesHtml}
+                        <img src="${product.images ? product.images[0] : product.image}" alt="${product.name}" class="main-product-image" id="main-product-image">
+                        <div class="product-thumbnails">
+                            ${thumbnailsHtml}
+                        </div>
+                    </div>
+                    <div class="product-info-detail">
+                        <h2 class="product-title-detail">${product.name}</h2>
+                        ${priceHtml}
+                        <p class="product-description">${product.description}</p>
+                        
+                        ${colorsHtml}
+                        ${sizesHtml}
+                        
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-id="${product.id}" id="add-to-cart-detail">أضف إلى السلة</button>
+                        </div>
+                        
+                        ${detailsHtml}
+                    </div>
+                `;
+                
+                // إضافة الأحداث للعناصر التفاعلية
+                // معرض الصور
+                document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+                    thumb.addEventListener('click', function() {
+                        document.getElementById('main-product-image').src = this.getAttribute('data-image');
+                        document.querySelectorAll('.product-thumbnail').forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+                
+                // خيارات الألوان والأحجام
+                document.querySelectorAll('.option-value').forEach(option => {
+                    option.addEventListener('click', function() {
+                        this.parentElement.querySelectorAll('.option-value').forEach(o => o.classList.remove('selected'));
+                        this.classList.add('selected');
+                    });
+                });
+                
+                // زر إضافة إلى السلة في صفحة المنتج
+                document.getElementById('add-to-cart-detail').addEventListener('click', function() {
+                    const selectedColor = document.querySelector('.option-value.selected[data-value]')?.getAttribute('data-value') || null;
+                    const selectedSize = document.querySelector('.option-value.selected[data-value]')?.getAttribute('data-value') || null;
+                    addToCart(product.id, selectedColor, selectedSize);
+                });
+                
+                // التمرير إلى أعلى الصفحة
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+
+        // دالة للعودة إلى قائمة المنتجات
+        function backToProducts() {
+            // إظهار جميع الأقسام وإخفاء صفحة المنتج
+            document.querySelectorAll('.products-section').forEach(section => {
+                section.style.display = 'block';
+            });
+            document.getElementById('product-page').style.display = 'none';
+            
+            // التمرير إلى قسم المنتجات
+            document.getElementById('products-section').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // دالة لإظهار/إخفاء القائمة على الهواتف
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحميل السلة من localStorage
+            loadCartFromLocalStorage();
+            
+            renderProducts(products, 'featured-products');
+            
+            // إضافة حدث للنقر على أزرار إضافة إلى السلة
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart')) {
+                    const productId = e.target.getAttribute('data-id');
+                    addToCart(productId);
+                    e.stopPropagation(); // منع الانتقال إلى صفحة المنتج عند النقر على زر الإضافة إلى السلة
+                }
+            });
+            
+            // إضافة حدث النقر على بطاقات المنتج
+            document.addEventListener('click', function(e) {
+                const productCard = e.target.closest('.product-card');
+                if (productCard) {
+                    const productId = productCard.getAttribute('data-id');
+                    showProductPage(productId);
+                }
+            });
+            
+            // إضافة حدث للزر العودة إلى المنتجات
+            document.getElementById('back-to-products').addEventListener('click', backToProducts);
+            
+            // إضافة حدث للعربة الطافية
+            document.getElementById('floating-cart').addEventListener('click', function() {
+                // يمكنك توجيه المستخدم إلى صفحة السلة هنا
+                 window.location.href = 'sk.html';
+            });
+            
+            // إضافة حدث لأيقونة السلة في الهيدر
+            document.getElementById('cart-icon').addEventListener('click', function(e) {
+                e.preventDefault();
+                // يمكنك توجيه المستخدم إلى صفحة السلة هنا
+                 window.location.href = 'sk.html';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جمالك - متجر المكياج</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FFC1CC;
+            --secondary-color: #D8B4E2;
+            --neutral-color: #FFF8F0;
+            --button-color: #FF6B81;
+            --text-color: #4A4A4A;
+            --light-text: #ffffff;
+            --dark-text: #333333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --discount-color: #FF4757;
+            --exclusive-color: #9c27b0;
+            --new-color: #2ed573;
+            --fast-delivery: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-text);
+            direction: rtl;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* الهيدر */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: #f8f8f8;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .header-top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-top-left {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-top-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .header-main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--button-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--button-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-icon {
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .header-icon:hover {
+            color: var(--button-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background-color: var(--button-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-btn {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background-color: #e55c71;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* قسم المنتجات */
+        .products-section {
+            padding: 40px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: var(--dark-text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--button-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid #f0f0f0;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* لجعل جميع البطاقات متساوية في الارتفاع */
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image-container {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* لجعل المحتوى يأخذ المساحة المتبقية */
+        }
+
+        .product-title {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-text);
+            min-height: 2.4rem; /* للحفاظ على تناسق العناوين */
+        }
+
+        .product-price {
+            color: var(--button-color);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.8rem;
+            margin-left: 6px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: auto; /* لدفع الأزرار إلى الأسفل */
+        }
+
+        .add-to-cart {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: #e55c71;
+        }
+
+        /* علامات المنتجات */
+        .product-badges {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 10;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .badge-discount {
+            background-color: var(--discount-color);
+        }
+
+        .badge-new {
+            background-color: var(--new-color);
+        }
+
+        .badge-exclusive {
+            background-color: var(--exclusive-color);
+        }
+
+        .badge-fast-delivery {
+            background-color: var(--fast-delivery);
+            color: #333;
+        }
+
+        /* قسم الاشتراك */
+        .subscription-section {
+            background-color: var(--secondary-color);
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .subscription-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--box-shadow);
+        }
+
+        .subscription-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+
+        .subscription-card p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: 555;
+        }
+
+        .subscribe-btn {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .subscribe-btn:hover {
+            background-color: #e55c71;
+            transform: translateY(-2px);
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #2c2c2c;
+            color: #f1f1f1;
+            padding: 40px 0 15px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+            color: white;
+        }
+
+        .footer-column h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 35px;
+            height: 2px;
+            background-color: var(--button-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-right: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            background-color: #444;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--button-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* صفحة المنتج */
+        .product-page {
+            display: none;
+            padding: 30px 0;
+            background-color: white;
+        }
+
+        .product-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-gallery {
+            position: relative;
+        }
+
+        .main-product-image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 12px;
+        }
+
+        .product-thumbnails {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .product-thumbnail {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .product-thumbnail:hover, .product-thumbnail.active {
+            border-color: var(--button-color);
+        }
+
+        .product-info-detail {
+            padding: 15px 0;
+        }
+
+        .product-title-detail {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: var(--dark-text);
+        }
+
+        .product-price-detail {
+            font-size: 1.6rem;
+            color: var(--button-color);
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .product-options {
+            margin-bottom: 20px;
+        }
+
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .option-values {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .option-value {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .option-value:hover, .option-value.selected {
+            background-color: var(--button-color);
+            color: white;
+            border-color: var(--button-color);
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .product-table th, .product-table td {
+            padding: 10px 12px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+
+        .product-table th {
+            background-color: #f8f8f8;
+            font-weight: 600;
+        }
+
+        .product-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .back-to-products {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .back-to-products:hover {
+            background-color: #c69ad4;
+        }
+
+        /* العربة الطافية */
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--button-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .floating-cart:hover {
+            transform: scale(1.1);
+        }
+        
+        .floating-cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--discount-color);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* التجاوب مع الشاشات المختلفة */
+        @media (max-width: 992px) {
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .product-details {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: white;
+                width: 100%;
+                flex-direction: column;
+                padding: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 8px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+            
+            /* تعديل هنا: عرض عمودين للشاشات المتوسطة */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .product-image-container {
+                height: 180px;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .product-thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .subscription-card {
+                padding: 20px;
+            }
+            
+            .subscription-card h3 {
+                font-size: 1.6rem;
+            }
+            
+            .footer-content {
+                gap: 25px;
+            }
+
+            .floating-cart {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                left: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-main-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .subscription-card {
+                padding: 15px;
+            }
+            
+            .subscription-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .footer-column h4::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .product-thumbnail {
+                width: 50px;
+                height: 50px;
+            }
+            
+            /* تعديل هنا: عرض عمودين للشاشات الصغيرة */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .product-image-container {
+                height: 160px;
+            }
+            
+            .product-info {
+                padding: 12px;
+            }
+            
+            .product-title {
+                font-size: 0.9rem;
+                min-height: 2.2rem;
+            }
+            
+            .product-price {
+                font-size: 1rem;
+            }
+            
+            .add-to-cart {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+            }
+            
+            .product-details {
+                gap: 20px;
+            }
+            
+            .product-title-detail {
+                font-size: 1.5rem;
+            }
+            
+            .product-price-detail {
+                font-size: 1.4rem;
+            }
+            
+            .option-value {
+                padding: 5px 10px;
+                font-size: 0.85rem;
+            }
+
+            .floating-cart {
+                width: 45px;
+                height: 45px;
+                bottom: 10px;
+                left: 10px;
+            }
+            
+            .floating-cart-count {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            /* تعديل هنا: عرض عمودين للشاشات الصغيرة جداً */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .product-image-container {
+                height: 140px;
+            }
+            
+            .product-title {
+                font-size: 0.85rem;
+                min-height: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-container">
+                <div class="header-top-left">
+                    <span><i class="fas fa-truck"></i> توصيل مجاني للطلبات فوق 200 ر.س</span>
+                </div>
+                <div class="header-top-right">
+                    <span><i class="fas fa-phone"></i> 800-12345</span>
+                    <span><i class="fas fa-envelope"></i> info@jamalk.com</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container header-main-container">
+            <div class="logo">جمالك</div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="التصنيفات.html">منتجاتنا</a></li>
+                <li><a href="make.html">مكياج</a></li>
+                <li><a href="99.html">أقل من 99 ريال</a></li>
+                <li><a href="#">الاشتراك</a></li>
+                <li><a href="التصنيفات.html">عروض خاصة</a></li>
+                <li><a href="#">مدونة الجمال</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <a href="#" class="header-icon">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="index.html" class="header-icon">
+                    <i class="far fa-heart"></i>
+                </a>
+                <a href="#" class="header-icon" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="login-btn">تسجيل دخول</button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم المنتجات المميزة -->
+    <section class="products-section" id="products-section">
+        <div class="container">
+            <h2 class="section-title">منتجاتنا المميزة</h2>
+            <div class="products-grid" id="featured-products">
+                <!-- سيتم إضافة المنتجات ديناميكيًا باستخدام JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- صفحة المنتج (مخفيّة في البداية) -->
+    <section class="product-page" id="product-page">
+        <div class="container">
+            <button class="back-to-products" id="back-to-products">← العودة إلى المنتجات</button>
+            
+            <div class="product-details" id="product-details">
+                <!-- سيتم تعبئة هذه المنطقة بمعلومات المنتج عند النقر عليه -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاشتراك -->
+    <section class="subscription-section">
+        <div class="container">
+            <div class="subscription-card">
+                <h3>اشتراك شهري حصري</h3>
+                <p>احصلي على صندوق شهري يحتوي على 3-5 منتجات مختارة خصيصاً لكِ مع خصم يصل إلى 40%</p>
+                <button class="subscribe-btn">اشتركي الآن</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>عن المتجر</h4>
+                    <p>متجرنا يقدم أجود منتجات التجميل والعناية بالبشرة والشعر مع ضمان الجودة والخدمة المتميزة.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">تتبع الطلب</a></li>
+                        <li><a href="#">الاشتراك</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>المساعدة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">سياسة الإرجاع</a></li>
+                        <li><a href="#">طرق الدفع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>القائمة البريدية</h4>
+                    <p>اشتركي في نشرتنا البريدية لتصلك آخر العروض والأخبار</p>
+                    <form>
+                        <input type="email" placeholder="بريدك الإلكتروني" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: var(--border-radius); border: none;">
+                        <button type="submit" class="subscribe-btn" style="width: 100%; padding: 10px;">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 جمالك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- العربة الطافية -->
+    <div class="floating-cart" id="floating-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="floating-cart-count">0</span>
+    </div>
+
+    <script>
+        // بيانات المنتجات (يمكن استبدالها ببيانات حقيقية لاحقاً)
+        const products = [
+            {
+                id: 1,
+                name: "سيرم كبسولات ادفانسد سيراميد اليومية لاستعادة شباب البشرة",
+                price: "20 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z0F3F6CAEA139FAB83BA2Z/45/1746717955/5440ebc8-d90a-4f6b-bbed-91210b8d3438.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "نقي. قوي. دقيق. يحتوي سيرم السيراميد الخاص بنا على قوة مضاعفة ثلاث مرات لمكافحة الشيخوخة للحصول على بشرة أكثر قوة ونعومة وصحة.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z0F3F6CAEA139FAB83BA2Z/45/1746717955/5440ebc8-d90a-4f6b-bbed-91210b8d3438.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "اليزابيث اردن",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },   {
+                id: 2,
+                name: "UNICLED 5.0 CENTURION KOREAN MASK",
+                price: "200 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z77B8100FB73DC6F47867Z/45/1755095834/1659a5c9-f692-4272-9d4b-f0c2e5030440.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z77B8100FB73DC6F47867Z/45/1755095834/1659a5c9-f692-4272-9d4b-f0c2e5030440.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z77B8100FB73DC6F47867Z/45/1755238877/d0015923-03c6-44d9-9c52-63c478b00007.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z77B8100FB73DC6F47867Z/45/1755095834/c1102b46-c726-4b62-8c91-4d691f63180b.jpg?format=webp&width=800"
+                ],
+                colors: ["اسود"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "يونيك سكين",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 3,
+                name: "كريم مرطب للبشرة الجافة بحمض الهيالورونيك",
+                price: "50 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z1D3D980EF5154A3AF706Z/45/1746717951/ab62213a-ab7c-462c-9f49-a035ebee65f2.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "يحتوي كريم الترطيب سيرافي على ثلاثة سيراميدات أساسية وحمض الهيالورونيك لترطيب البشرة بشكل فعال واستعادة الحاجز الواقي للبشرة. يتميز هذا الكريم المرطب الغني وغير الدهني وسريع الامتصاص بتقنية ام في اي ديلفري الحاصلة على براءة اختراع لإطلاق تيار مستمر من المكونات المرطبة طوال النهار والليل. كريم سيرافي المرطب بالسيراميد خالٍ من العطر.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z1D3D980EF5154A3AF706Z/45/1746717951/ab62213a-ab7c-462c-9f49-a035ebee65f2.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z1D3D980EF5154A3AF706Z/45/1746717951/9504b298-a4db-4869-915a-48a3f0bb0db8.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "سيرا في",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 4,
+                name: "بلسم شفاه ديو بنمط ثمبر",
+                price: "20 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z67BC54331693FBB1ED09Z/45/_/1722491843/8e212437-4f34-4cb4-a75d-c23f429486af.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "Put a spring in your step with our Disney Thumper inspired collection, one of the most iconic bunnies of all time, and in our opinion the cutest! Adorable bunny bathing, beauty gifts and accessories take inspiration from the springtime forest home of Bambi and Thumper with beautiful inky brush work character art and decorative florals from the Disney studio",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z67BC54331693FBB1ED09Z/45/_/1722491843/8e212437-4f34-4cb4-a75d-c23f429486af.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z67BC54331693FBB1ED09Z/45/_/1722491845/90eb0cf9-da0a-40b7-8cbc-328b5b3b800b.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z67BC54331693FBB1ED09Z/45/_/1722491722/fa3c2117-b658-4029-85bb-9c2d407359a6.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "ماد بيوتي",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 5,
+                name: "دبل سيروم جي ",
+                price: "35 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZD1DEA77446C9B87EC4EBZ/45/_/1740660711/83993813-1d1c-4063-bf79-1d7cbbd5efa6.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "Double Serum is pushing the boundaries of anti-ageing innovation and reinventing itself in a new generation with increased power*.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZD1DEA77446C9B87EC4EBZ/45/_/1740660711/83993813-1d1c-4063-bf79-1d7cbbd5efa6.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "كلارنس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 6,
+                name: " Make Up Blenders",
+                price: "4 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZCD28E42F636E322AC1FCZ/45/_/1745325955/9927cd4f-0032-4e8b-b605-ff35dedde68f.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZCD28E42F636E322AC1FCZ/45/_/1745325955/9927cd4f-0032-4e8b-b605-ff35dedde68f.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZCD28E42F636E322AC1FCZ/45/_/1744893935/3e1e5baa-57f9-48d0-a4c9-ab89ae912da5.jpg?format=webp&width=800"
+                ],
+                colors: ["طبيعي"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "ماد بيوتي",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 7,
+                name: "Travel Exclusive Firm, Tone, Hydrate Advanced Ceramide Lift And Firm Day Spf 15 And Night Creams Set",
+                price: "35 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z6FC19A60262F11C60859Z/45/_/1739402303/dbfa32f6-ee7c-4b00-8c6c-bd991d0d0db3.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "Advanced Ceramide Lift and Firm Day Cream SPF15 is an anti-aging cream with 5x the Ceramide.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z6FC19A60262F11C60859Z/45/_/1739402303/dbfa32f6-ee7c-4b00-8c6c-bd991d0d0db3.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "اليزابيث اردن",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 8,
+                name: "Advanced Snail 96 Mucin Power Essence",
+                price: "20 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728895221/c5f5a44c-a1af-4872-a54a-06188aa270c5.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "BENEFITS• Fades dark spots• Improves skin texture• Anti-aging• Intense hydrationTARGETS• Dull & rough skin• Soothing damaged skin• Dark spots & scars",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728895221/c5f5a44c-a1af-4872-a54a-06188aa270c5.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728481867/0203f5ec-c602-4653-8bde-ec66ffe44b40.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "كوركس",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 9,
+                name: "كيكو ميلانو",
+                price: "60 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z924D5CF879CA93824151Z/45/1746807924/f792398a-c8e6-4cb7-94fb-c483be215180.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "نقدّم لك هذا السيروم المرطّب* والمعزّز لإشراق* الوجه بقوام لؤلئي مناشد للحواس. يُعزّز هذا المنتج لمعان البشرة ويضفي عليها لمسة مرنة وحريرية لتبدو أكثر تجانساً.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z924D5CF879CA93824151Z/45/1746807924/f792398a-c8e6-4cb7-94fb-c483be215180.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/Z924D5CF879CA93824151Z/45/1746807923/2cd3fae2-1fc8-4330-b92e-64fcce0b02ef.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "كيكو ميلانو",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },    {
+                id: 10,
+                name: "جل مرطب للوجه دراماتيكلي ديفرنت",
+                price: "20 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZBB5A98C2497319AD6392Z/45/1746747460/2ecf5526-8bcb-44b6-a2f0-e651eeb6d8d9.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "جل مرطب للوجه وخالي من الزيت وضعه اطباء الجلدية لنعومة وتحسين البشرة ومنحها اشراق مميز.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZBB5A98C2497319AD6392Z/45/1746747460/2ecf5526-8bcb-44b6-a2f0-e651eeb6d8d9.jpg?format=webp&width=800",
+                    "https://f.nooncdn.com/p/pzsku/ZBB5A98C2497319AD6392Z/45/1746747460/df0c00df-d6f2-48d1-b7cc-181393b729b0.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "كلينيك",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 11,
+                name: "باور شيك كلاود كريم",
+                price: "30 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z91F4D242DBE389D99ACBZ/45/1754492834/264f2212-3baf-444d-82d8-9b6a812e197c.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "A moisturising and highlighting face cream with a super bouncy creamy gel texture",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z91F4D242DBE389D99ACBZ/45/1754492834/264f2212-3baf-444d-82d8-9b6a812e197c.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "كيكو ميلانو",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 12,
+                name: "قناع الجسم لإعادة توازن معادن الجسم",
+                price: "40 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/ZFC2F59ABD9F916CC53EFZ/45/_/1699378246/532da205-7f46-4301-877d-8382d27f57b0.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "قل وداعا للسموم ومرحبا بالبشرة الرائعة. يمتص قناع إعادة التمعدن المذهل للجسم الشوائب ويجدد البشرة بكفاءة لا تصدق",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/ZFC2F59ABD9F916CC53EFZ/45/_/1699378246/532da205-7f46-4301-877d-8382d27f57b0.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "ازيل",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },          {
+                id: 13,
+                name: "مجموعة سيراميد 2H23 لشد البشرة",
+                price: "80 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z6574B838BFF35801FD3FZ/45/_/1712137874/e8aad46b-fa07-4646-b0a1-f646d3226d97.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z6574B838BFF35801FD3FZ/45/_/1712137874/e8aad46b-fa07-4646-b0a1-f646d3226d97.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "اليزابيث اردن",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },                  {
+                id: 14,
+                name: "مجموعة هدايا كالم إت",
+                price: "90 ر.س",
+                image: "https://f.nooncdn.com/p/pzsku/Z5D243E70EA157B3D7747Z/45/1746747239/cf6f1875-7ff2-42bb-80e5-1cad7ea2e5b1.jpg?format=webp&width=800",
+                badges: ["fast-delivery"],
+                category: "عناية بالبشرة",
+                subcategory: "بشره",
+                images: [
+                    "https://f.nooncdn.com/p/pzsku/Z5D243E70EA157B3D7747Z/45/1746747239/cf6f1875-7ff2-42bb-80e5-1cad7ea2e5b1.jpg?format=webp&width=800"
+                ],
+                colors: ["شفاف"],
+                details: {
+                    "النوع": "عناية بالبشرة",
+                    "العلامة التجارية": "اليزابيث اردن",
+                    "الحجم": "وسط",
+                    "الاستخدام": "للبشرة",
+                }
+            },                                 
+        ];
+
+        // متغيرات نظام السلة
+        let cart = [];
+
+        // دالة لتحميل السلة من localStorage
+        function loadCartFromLocalStorage() {
+            const savedCart = localStorage.getItem('jamalkCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+            }
+        }
+
+        // دالة لحفظ السلة إلى localStorage
+        function saveCartToLocalStorage() {
+            localStorage.setItem('jamalkCart', JSON.stringify(cart));
+        }
+
+        // دالة لتحديث عداد السلة
+        function updateCartCount() {
+            const cartCount = document.querySelector('.cart-count');
+            const floatingCartCount = document.querySelector('.floating-cart-count');
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            floatingCartCount.textContent = totalItems;
+        }
+
+        // دالة لإضافة منتج إلى السلة
+        function addToCart(productId, color = null, size = null) {
+            // البحث عن المنتج في جميع المصفوفات
+            let product = products.find(p => p.id == productId);
+            
+            if (product) {
+                // التحقق إذا كان المنتج موجوداً بالفعل في السلة
+                const existingItemIndex = cart.findIndex(item => 
+                    item.id === productId && 
+                    item.selectedColor === color && 
+                    item.selectedSize === size
+                );
+                
+                if (existingItemIndex > -1) {
+                    // زيادة الكمية إذا كان المنتج موجوداً
+                    cart[existingItemIndex].quantity += 1;
+                } else {
+                    // إضافة منتج جديد إلى السلة
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1,
+                        selectedColor: color,
+                        selectedSize: size
+                    });
+                }
+                
+                // حفظ السلة وتحديث العداد
+                saveCartToLocalStorage();
+                updateCartCount();
+                
+                // إشعار للمستخدم
+            }
+        }
+
+        // دالة لعرض المنتجات
+        function renderProducts(productsArray, containerId) {
+            const productsContainer = document.getElementById(containerId);
+            productsContainer.innerHTML = '';
+            
+            productsArray.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.setAttribute('data-id', product.id);
+                
+                let badgesHtml = '';
+                if (product.badges && product.badges.length > 0) {
+                    badgesHtml = '<div class="product-badges">';
+                    product.badges.forEach(badge => {
+                        switch(badge) {
+                            case 'discount':
+                                badgesHtml += '<span class="badge badge-discount">خصم</span>';
+                                break;
+                            case 'new':
+                                badgesHtml += '<span class="badge badge-new">جديد</span>';
+                                break;
+                            case 'exclusive':
+                                badgesHtml += '<span class="badge badge-exclusive">حصري</span>';
+                                break;
+                            case 'fast-delivery':
+                                badgesHtml += '<span class="badge badge-fast-delivery">التوصيل في أقل من 90 دقيقة</span>';
+                                break;
+                        }
+                    });
+                    badgesHtml += '</div>';
+                }
+                
+                let priceHtml = `<p class="product-price">${product.price}`;
+                if (product.originalPrice) {
+                    priceHtml += ` <span class="original-price">${product.originalPrice}</span>`;
+                }
+                priceHtml += '</p>';
+                
+                productCard.innerHTML = `
+                    ${badgesHtml}
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        ${priceHtml}
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-id="${product.id}">أضف إلى السلة</button>
+                        </div>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+        }
+
+        // دالة لعرض صفحة المنتج
+        function showProductPage(productId) {
+            // البحث عن المنتج في جميع المصفوفات
+            let product = products.find(p => p.id == productId);
+            
+            if (product) {
+                // إخفاء الأقسام غير الضرورية
+                document.querySelectorAll('.products-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('product-page').style.display = 'block';
+                
+                // تعبئة معلومات المنتج
+                let priceHtml = `<p class="product-price-detail">${product.price}`;
+                if (product.originalPrice) {
+                    priceHtml += ` <span class="original-price">${product.originalPrice}</span>`;
+                }
+                priceHtml += '</p>';
+                
+                let badgesHtml = '';
+                if (product.badges && product.badges.length > 0) {
+                    badgesHtml = '<div class="product-badges">';
+                    product.badges.forEach(badge => {
+                        switch(badge) {
+                            case 'discount':
+                                badgesHtml += '<span class="badge badge-discount">خصم</span>';
+                                break;
+                            case 'new':
+                                badgesHtml += '<span class="badge badge-new">جديد</span>';
+                                break;
+                            case 'exclusive':
+                                badgesHtml += '<span class="badge badge-exclusive">حصري</span>';
+                                break;
+                            case 'fast-delivery':
+                                badgesHtml += '<span class="badge badge-fast-delivery">التوصيل في أقل من 90 دقيقة</span>';
+                                break;
+                        }
+                    });
+                    badgesHtml += '</div>';
+                }
+                
+                // معرض الصور
+                let thumbnailsHtml = '';
+                if (product.images && product.images.length > 0) {
+                    product.images.forEach((img, index) => {
+                        thumbnailsHtml += `<img src="${img}" alt="${product.name}" class="product-thumbnail ${index === 0 ? 'active' : ''}" data-image="${img}">`;
+                    });
+                }
+                
+                // خيارات الألوان
+                let colorsHtml = '';
+                if (product.colors && product.colors.length > 0) {
+                    colorsHtml = `
+                        <div class="product-options">
+                            <span class="option-title">اللون:</span>
+                            <div class="option-values">
+                                ${product.colors.map((color, index) => `
+                                    <span class="option-value ${index === 0 ? 'selected' : ''}" data-value="${color}">${color}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // خيارات الأحجام
+                let sizesHtml = '';
+                if (product.sizes && product.sizes.length > 0) {
+                    sizesHtml = `
+                        <div class="product-options">
+                            <span class="option-title">الحجم:</span>
+                            <div class="option-values">
+                                ${product.sizes.map((size, index) => `
+                                    <span class="option-value ${index === 0 ? 'selected' : ''}" data-value="${size}">${size}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // جدول تفاصيل المنتج
+                let detailsHtml = '';
+                if (product.details) {
+                    detailsHtml = `
+                        <h3>تفاصيل المنتج</h3>
+                        <table class="product-table">
+                            <tbody>
+                                ${Object.entries(product.details).map(([key, value]) => `
+                                    <tr>
+                                        <th>${key}</th>
+                                        <td>${value}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                }
+                
+                document.getElementById('product-details').innerHTML = `
+                    <div class="product-gallery">
+                        ${badgesHtml}
+                        <img src="${product.images ? product.images[0] : product.image}" alt="${product.name}" class="main-product-image" id="main-product-image">
+                        <div class="product-thumbnails">
+                            ${thumbnailsHtml}
+                        </div>
+                    </div>
+                    <div class="product-info-detail">
+                        <h2 class="product-title-detail">${product.name}</h2>
+                        ${priceHtml}
+                        <p class="product-description">${product.description}</p>
+                        
+                        ${colorsHtml}
+                        ${sizesHtml}
+                        
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-id="${product.id}" id="add-to-cart-detail">أضف إلى السلة</button>
+                        </div>
+                        
+                        ${detailsHtml}
+                    </div>
+                `;
+                
+                // إضافة الأحداث للعناصر التفاعلية
+                // معرض الصور
+                document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+                    thumb.addEventListener('click', function() {
+                        document.getElementById('main-product-image').src = this.getAttribute('data-image');
+                        document.querySelectorAll('.product-thumbnail').forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+                
+                // خيارات الألوان والأحجام
+                document.querySelectorAll('.option-value').forEach(option => {
+                    option.addEventListener('click', function() {
+                        this.parentElement.querySelectorAll('.option-value').forEach(o => o.classList.remove('selected'));
+                        this.classList.add('selected');
+                    });
+                });
+                
+                // زر إضافة إلى السلة في صفحة المنتج
+                document.getElementById('add-to-cart-detail').addEventListener('click', function() {
+                    const selectedColor = document.querySelector('.option-value.selected[data-value]')?.getAttribute('data-value') || null;
+                    const selectedSize = document.querySelector('.option-value.selected[data-value]')?.getAttribute('data-value') || null;
+                    addToCart(product.id, selectedColor, selectedSize);
+                });
+                
+                // التمرير إلى أعلى الصفحة
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+
+        // دالة للعودة إلى قائمة المنتجات
+        function backToProducts() {
+            // إظهار جميع الأقسام وإخفاء صفحة المنتج
+            document.querySelectorAll('.products-section').forEach(section => {
+                section.style.display = 'block';
+            });
+            document.getElementById('product-page').style.display = 'none';
+            
+            // التمرير إلى قسم المنتجات
+            document.getElementById('products-section').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // دالة لإظهار/إخفاء القائمة على الهواتف
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحميل السلة من localStorage
+            loadCartFromLocalStorage();
+            
+            renderProducts(products, 'featured-products');
+            
+            // إضافة حدث للنقر على أزرار إضافة إلى السلة
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart')) {
+                    const productId = e.target.getAttribute('data-id');
+                    addToCart(productId);
+                    e.stopPropagation(); // منع الانتقال إلى صفحة المنتج عند النقر على زر الإضافة إلى السلة
+                }
+            });
+            
+            // إضافة حدث النقر على بطاقات المنتج
+            document.addEventListener('click', function(e) {
+                const productCard = e.target.closest('.product-card');
+                if (productCard) {
+                    const productId = productCard.getAttribute('data-id');
+                    showProductPage(productId);
+                }
+            });
+            
+            // إضافة حدث للزر العودة إلى المنتجات
+            document.getElementById('back-to-products').addEventListener('click', backToProducts);
+            
+            // إضافة حدث للعربة الطافية
+            document.getElementById('floating-cart').addEventListener('click', function() {
+                // يمكنك توجيه المستخدم إلى صفحة السلة هنا
+                 window.location.href = 'sk.html';
+            });
+            
+            // إضافة حدث لأيقونة السلة في الهيدر
+            document.getElementById('cart-icon').addEventListener('click', function(e) {
+                e.preventDefault();
+                // يمكنك توجيه المستخدم إلى صفحة السلة هنا
+                 window.location.href = 'sk.html';
+            });
+        });
+    </script>
+</body>
+</html>
