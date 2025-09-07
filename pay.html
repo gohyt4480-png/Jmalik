@@ -560,57 +560,18 @@
         }
 
         /* رسالة التحويل */
-        .redirect-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .redirect-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
         .redirect-message {
-            background-color: white;
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .redirect-message i {
-            font-size: 3rem;
-            color: var(--success-color);
-            margin-bottom: 15px;
-        }
-
-        .redirect-message h3 {
-            margin-bottom: 15px;
-            color: var(--dark-text);
-        }
-
-        .redirect-message p {
-            margin-bottom: 20px;
-            color: var(--text-color);
-        }
-
-        .redirect-countdown {
-            font-size: 1.2rem;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 0, 0, 0.9);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
             font-weight: bold;
-            color: var(--button-color);
+            z-index: 2000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         /* كود الخصم */
@@ -870,7 +831,7 @@
                     <!-- إعدادات FormSubmit -->
                     <input type="hidden" name="_subject" value="طلب جديد من متجر جمالك">
                     <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://gohyt4480-png.github.io/Jmalik/upay.html">
+                    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
                     <input type="hidden" name="_captcha" value="false">
                     
                     <h2 class="checkout-title">إتمام الطلب</h2>
@@ -942,7 +903,7 @@
                                 <input type="text" class="discount-input" id="discount-code" placeholder="أدخل كود الخصم">
                                 <button type="button" class="apply-discount" id="apply-discount">تطبيق</button>
                             </div>
-                            <div class="disc discount-message discount-success" id="discount-success">
+                            <div class="discount-message discount-success" id="discount-success">
                                 <i class="fas fa-check-circle"></i> تم تطبيق الخصم بنجاح!
                             </div>
                             <div class="discount-message discount-error" id="discount-error">
@@ -1024,16 +985,6 @@
     <div class="cart-toast" id="cart-toast">
         <i class="fas fa-check-circle"></i>
         <span id="toast-message">تمت الإضافة إلى السلة</span>
-    </div>
-
-    <!-- رسالة التحويل -->
-    <div class="redirect-overlay" id="redirect-overlay">
-        <div class="redirect-message">
-            <i class="fas fa-check-circle"></i>
-            <h3>تم إرسال طلبك بنجاح!</h3>
-            <p>سيتم توجيهك الآن إلى صفحة الدفع لإتمام عملية الدفع.</p>
-            <div class="redirect-countdown" id="redirect-countdown">5</div>
-        </div>
     </div>
 
     <script>
@@ -1132,7 +1083,7 @@
             document.getElementById('expiry-date').addEventListener('input', formatExpiryDate);
             
             // إرسال النموذج
-            document.getElementById('checkout-form').addEventListener('submit', handleFormSubmit);
+            document.getElementById('checkout-form').addEventListener('submit', prepareFormData);
         }
 
         // تحديث واجهة السلة
@@ -1312,8 +1263,8 @@
             e.target.value = value;
         }
 
-        // معالجة إرسال النموذج
-        function handleFormSubmit(e) {
+        // تحضير البيانات قبل إرسال النموذج
+        function prepareFormData(e) {
             e.preventDefault(); // منع الإرسال المباشر
             
             let isValid = true;
@@ -1363,35 +1314,8 @@
             document.getElementById('order-summary').value = orderSummary;
             document.getElementById('cart-data').value = JSON.stringify(cart);
             
-            // عرض رسالة التحويل
-            showRedirectMessage();
-            
-            // إرسال النموذج بعد تأخير قصير
-            setTimeout(() => {
-                document.getElementById('checkout-form').submit();
-            }, 5000);
-        }
-
-        // عرض رسالة التحويل
-        function showRedirectMessage() {
-            const overlay = document.getElementById('redirect-overlay');
-            const countdownElement = document.getElementById('redirect-countdown');
-            
-            // عرض رسالة التحويل
-            overlay.classList.add('active');
-            
-            // بدء العد التنازلي
-            let countdown = 5;
-            countdownElement.textContent = countdown;
-            
-            const countdownInterval = setInterval(() => {
-                countdown--;
-                countdownElement.textContent = countdown;
-                
-                if (countdown <= 0) {
-                    clearInterval(countdownInterval);
-                }
-            }, 1000);
+            // إرسال النموذج
+            document.getElementById('checkout-form').submit();
         }
 
         // تهيئة الصفحة عند التحميل
