@@ -16,7 +16,7 @@
     <script type="text/javascript">
        (function(){
           emailjs.init({
-            publicKey: "Yb7ctZ1o16WJElvFxL",
+            publicKey: "b7ctZ1o16WJElvFxL",
           });
        })();
     </script>
@@ -1524,9 +1524,9 @@
             // --- بيانات حسابك في EmailJS (مهم جداً) ---
             const SERVICE_ID = "service_bouybkm";      // 👈 استبدل هذا بمعرف الخدمة الخاص بك
             const TEMPLATE_ID = "template_uy903fn";   // هذا هو معرف القالب
-            const PUBLIC_KEY = "Yb7ctZ1o16WJElvFxL";    // هذا هو المفتاح العام
+            const PUBLIC_KEY = "b7ctZ1o16WJElvFxL";    // هذا هو المفتاح العام
 
-            emailjs.init(PUBLIC_KEY);
+            emailjs.init(b7ctZ1o16WJElvFxL);
             // ---------------------------------------------
             
             let isValid = validateEmail() && validatePhone();
@@ -1583,7 +1583,7 @@
                 order_notes: orderData.order.notes || 'لا توجد ملاحظات',
             };
 
-            emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+            emailjs.send(service_bouybkm, template_uy903fn, templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     toggleLoading(false);
