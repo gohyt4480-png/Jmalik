@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ==========================================================
     
     // استبدل هذه القيم بالقيم من حسابك في EmailJS
-    const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+    const EMAILJS_SERVICE_ID = 'service_bouybkm';
     const EMAILJS_TEMPLATE_ID = 'Ytemplate_uy903fn';
     const EMAILJS_PUBLIC_KEY = 'Yb7ctZ1o16WJElvFxL'; // هذا هو مفتاحك العام، يبدو صحيحاً
 
@@ -171,3 +171,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // بدء تشغيل الصفحة
     initializePage();
 });
+
