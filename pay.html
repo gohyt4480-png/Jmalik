@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+    <!-- إضافة مكتبة EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --primary-color: #FFC1CC;
@@ -624,6 +625,70 @@
             color: var(--discount-color);
         }
 
+        /* مؤشر التحميل */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary-color);
+            border-radius: 50%;
+            border-top-color: var(--button-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* رسالة نجاح/فشل */
+        .message-toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--success-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            transform: translate(-50%, 100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .message-toast.show {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+
+        .message-toast.error {
+            background-color: var(--discount-color);
+        }
+
         /* التجاوب مع الشاشات المختلفة */
         @media (max-width: 992px) {
             .checkout-container {
@@ -734,52 +799,6 @@
             color: var(--button-color);
             margin: 10px 0;
         }
-
-        /* أنماط جديدة لرسالة التحميل والتأكيد */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            flex-direction: column;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid var(--primary-color);
-            border-top: 5px solid var(--button-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .confirmation-message {
-            text-align: center;
-            background-color: white;
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            max-width: 500px;
-            width: 90%;
-        }
-
-        .confirmation-icon {
-            font-size: 4rem;
-            color: var(--success-color);
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
@@ -818,7 +837,7 @@
                 <a href="#" class="header-icon">
                     <i class="far fa-heart"></i>
                 </a>
-                <a href="cart.html" class="header-icon">
+                <a href="sk.html" class="header-icon">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
                 </a>
@@ -870,11 +889,11 @@
                         <span class="total-price" id="total">0 ر.س</span>
                     </div>
                     
-                    <a href="cart.html" class="continue-shopping">← العودة إلى السلة</a>
+                    <a href="sk.html" class="continue-shopping">← العودة إلى السلة</a>
                 </div>
                 
-                <!-- نموذج إتمام الطلب -->
-                <form id="checkout-form" class="checkout-form">
+                <!-- نموذج الدفع -->
+                <form id="checkout-form">
                     <h2 class="checkout-title">إتمام الطلب</h2>
                     
                     <!-- معلومات الاتصال -->
@@ -1010,6 +1029,10 @@
                         </div>
                     </div>
                     
+                    <!-- حقول مخفية لإرسال بيانات الطلب -->
+                    <input type="hidden" id="order-summary" name="order-summary">
+                    <input type="hidden" id="cart-data" name="cart-data">
+                    
                     <button type="submit" class="checkout-btn" id="complete-order-btn">
                         <i class="fas fa-lock"></i> إتمام الطلب
                     </button>
@@ -1024,16 +1047,15 @@
         <span id="toast-message">تمت الإضافة إلى السلة</span>
     </div>
 
-    <!-- رسالة التحميل والتأكيد -->
-    <div class="loading-overlay" id="loading-overlay" style="display: none;">
-        <div class="spinner"></div>
-        <div class="confirmation-message" id="confirmation-message">
-            <i class="fas fa-check-circle confirmation-icon"></i>
-            <h2>تم استلام طلبك بنجاح!</h2>
-            <p>سيتم إرسال تفاصيل الطلب إلى بريدك الإلكتروني</p>
-            <p>رقم الطلب: <span id="order-number"></span></p>
-            <a href="index.html" class="shop-now-btn" style="margin-top: 20px;">العودة إلى المتجر</a>
-        </div>
+    <!-- مؤشر التحميل -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- رسالة نجاح/فشل -->
+    <div class="message-toast" id="message-toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="message-text"></span>
     </div>
 
     <script>
@@ -1044,7 +1066,10 @@
         let phoneInput = null;
 
         // تهيئة EmailJS
-        emailjs.init("b7ctZ1o16WJElvFxL"); // استبدل بمفتاحك العام من EmailJS
+        // استبدل هذه القيم بمعلومات حسابك في EmailJS
+        const EMAILJS_PUBLIC_KEY = 'b7ctZ1o16WJElvFxL'; // استبدل بمفتاحك العام
+        const EMAILJS_SERVICE_ID = 'service_bouybkm'; // استبدل بمعرف الخدمة
+        const EMAILJS_TEMPLATE_ID = 'template_uy903fn'; // استبدل بمعرف القالب
 
         // دالة تهيئة الصفحة
         function initializePage() {
@@ -1079,7 +1104,7 @@
                 phoneInput = window.intlTelInput(phoneInputField, {
                     initialCountry: "sa",
                     separateDialCode: true,
-                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intlTelInput/17.0.8/js/utils.js",
                 });
             } else {
                 console.warn("لم يتم تحميل مكتبة intlTelInput بشكل صحيح");
@@ -1135,7 +1160,7 @@
             document.getElementById('expiry-date').addEventListener('input', formatExpiryDate);
             
             // إرسال النموذج
-            document.getElementById('checkout-form').addEventListener('submit', handleFormSubmit);
+            document.getElementById('checkout-form').addEventListener('submit', handleFormSubmission);
         }
 
         // تحديث واجهة السلة
@@ -1315,8 +1340,33 @@
             e.target.value = value;
         }
 
+        // عرض رسالة للمستخدم
+        function showMessage(message, isError = false) {
+            const messageToast = document.getElementById('message-toast');
+            const messageText = document.getElementById('message-text');
+            
+            messageText.textContent = message;
+            messageToast.className = isError ? 'message-toast error' : 'message-toast';
+            messageToast.classList.add('show');
+            
+            // إخفاء الرسالة بعد 5 ثوانٍ
+            setTimeout(() => {
+                messageToast.classList.remove('show');
+            }, 5000);
+        }
+
+        // إظهار/إخفاء مؤشر التحميل
+        function toggleLoading(show) {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            if (show) {
+                loadingOverlay.classList.add('active');
+            } else {
+                loadingOverlay.classList.remove('active');
+            }
+        }
+
         // معالجة إرسال النموذج
-        function handleFormSubmit(e) {
+        function handleFormSubmission(e) {
             e.preventDefault(); // منع الإرسال المباشر
             
             let isValid = true;
@@ -1350,145 +1400,123 @@
             
             // إذا كان النموذج غير صالح، منع الإرسال
             if (!isValid) {
-                alert('يرجى ملء جميع الحقول الإلزامية بشكل صحيح');
+                showMessage('يرجى ملء جميع الحقول الإلزامية بشكل صحيح', true);
                 return;
             }
             
             // جمع بيانات الطلب
             const orderData = collectOrderData();
             
-            // إظهار شاشة التحميل
-            showLoadingScreen();
-            
-            // إرسال البريد الإلكتروني
+            // إرسال البريد عبر EmailJS
             sendOrderEmail(orderData);
         }
 
         // جمع بيانات الطلب
         function collectOrderData() {
-            const formData = new FormData(document.getElementById('checkout-form'));
-            const orderData = {
-                contact: {
-                    email: formData.get('email'),
-                    phone: formData.get('phone')
+            const subtotal = cart.reduce((total, item) => total + (parseFloat(item.price) * item.quantity), 0);
+            const discount = subtotal >= 200 ? subtotal * 0.1 : 0;
+            let additionalDiscount = 0;
+            
+            if (discountApplied && discountCode === 'OMD90') {
+                additionalDiscount = subtotal * 0.9;
+            }
+            
+            const totalDiscount = discount + additionalDiscount;
+            const shipping = subtotal >= 200 ? 0 : 15;
+            
+            // تطبيق خصم إضافي 10% عند اختيار الدفع ببطاقة الائتمان
+            const paymentMethod = document.getElementById('payment-method');
+            const paymentMethodValue = paymentMethod ? paymentMethod.value : '';
+            const cardDiscount = paymentMethodValue === 'credit-card' ? subtotal * 0.1 : 0;
+            const finalDiscount = totalDiscount + cardDiscount;
+            
+            const total = subtotal - finalDiscount + shipping;
+            
+            return {
+                customer: {
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    firstName: document.getElementById('first-name').value,
+                    lastName: document.getElementById('last-name').value,
+                    address: document.getElementById('address').value,
+                    apartment: document.getElementById('apartment').value,
+                    city: document.getElementById('city').value,
+                    postalCode: document.getElementById('postal-code').value
                 },
-                shipping: {
-                    firstName: formData.get('first-name'),
-                    lastName: formData.get('last-name'),
-                    address: formData.get('address'),
-                    apartment: formData.get('apartment'),
-                    city: formData.get('city'),
-                    postalCode: formData.get('postal-code')
+                order: {
+                    items: cart,
+                    subtotal: subtotal.toFixed(0),
+                    discount: finalDiscount.toFixed(0),
+                    shipping: shipping.toFixed(0),
+                    total: total.toFixed(0),
+                    paymentMethod: paymentMethodValue,
+                    notes: document.getElementById('order-notes').value,
+                    discountCode: discountApplied ? discountCode : 'لا يوجد'
                 },
-                payment: {
-                    method: formData.get('payment-method'),
-                    cardNumber: formData.get('card-number'),
-                    expiryDate: formData.get('expiry-date'),
-                    cvv: formData.get('cvv'),
-                    cardName: formData.get('card-name')
-                },
-                notes: formData.get('order-notes'),
-                discount: {
-                    applied: discountApplied,
-                    code: discountCode
-                },
-                cart: cart,
-                summary: {
-                    subtotal: document.getElementById('subtotal').textContent,
-                    discount: document.getElementById('discount').textContent,
-                    shipping: document.getElementById('shipping').textContent,
-                    total: document.getElementById('total').textContent
-                },
-                orderNumber: generateOrderNumber(),
                 orderDate: new Date().toLocaleString('ar-SA')
             };
-            
-            return orderData;
         }
 
-        // إنشاء رقم طلب عشوائي
-        function generateOrderNumber() {
-            return 'JMLK-' + Math.floor(100000 + Math.random() * 900000);
-        }
-
-        // إظهار شاشة التحميل
-        function showLoadingScreen() {
-            const loadingOverlay = document.getElementById('loading-overlay');
-            const confirmationMessage = document.getElementById('confirmation-message');
-            const orderNumber = document.getElementById('order-number');
-            
-            // إخفاء رسالة التأكيد في البداية
-            confirmationMessage.style.display = 'none';
-            loadingOverlay.style.display = 'flex';
-        }
-
-        // إظهار رسالة التأكيد
-        function showConfirmationScreen(orderData) {
-            const loadingOverlay = document.getElementById('loading-overlay');
-            const confirmationMessage = document.getElementById('confirmation-message');
-            const orderNumber = document.getElementById('order-number');
-            
-            // تعيين رقم الطلب
-            orderNumber.textContent = orderData.orderNumber;
-            
-            // إظهار رسالة التأكيد وإخفاء مؤشر التحميل
-            document.querySelector('.spinner').style.display = 'none';
-            confirmationMessage.style.display = 'block';
-            
-            // مسح سلة التسوق
-            clearCart();
-        }
-
-        // مسح سلة التسوق
-        function clearCart() {
-            localStorage.removeItem('jamalkCart');
-            cart = [];
-            updateCartUI();
-        }
-
-        // إرسال البريد الإلكتروني للطلب
+        // إرسال البريد عبر EmailJS
         function sendOrderEmail(orderData) {
-            // تحضير محتوى البريد الإلكتروني
-            const emailParams = {
-                to_email: orderData.contact.email,
-                from_name: "متجر جمالك",
-                to_name: `${orderData.shipping.firstName} ${orderData.shipping.lastName}`,
-                order_number: orderData.orderNumber,
+            // إظهار مؤشر التحميل
+            toggleLoading(true);
+            
+            // تهيئة EmailJS
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+            
+            // إعداد بيانات القالب
+            const templateParams = {
+                to_email: orderData.customer.email,
+                customer_name: `${orderData.customer.firstName} ${orderData.customer.lastName}`,
+                customer_email: orderData.customer.email,
+                customer_phone: orderData.customer.phone,
+                customer_address: `${orderData.customer.address}, ${orderData.customer.apartment ? 'شقة: ' + orderData.customer.apartment + ', ' : ''}${orderData.customer.city}, ${orderData.customer.postalCode}`,
                 order_date: orderData.orderDate,
-                customer_email: orderData.contact.email,
-                customer_phone: orderData.contact.phone,
-                shipping_address: `${orderData.shipping.address}, ${orderData.shipping.city}, ${orderData.shipping.postalCode}`,
-                order_notes: orderData.notes || 'لا توجد ملاحظات',
-                order_summary: `
-                    المجموع الجزئي: ${orderData.summary.subtotal}
-                    الخصم: ${orderData.summary.discount}
-                    الشحن: ${orderData.summary.shipping}
-                    الإجمالي: ${orderData.summary.total}
-                `,
-                order_items: orderData.cart.map(item => `
-                    <tr>
-                        <td>${item.name}</td>
-                        <td>${item.quantity}</td>
-                        <td>${item.price} ر.س</td>
-                        <td>${item.price * item.quantity} ر.س</td>
-                    </tr>
-                `).join('')
+                order_items: orderData.order.items.map(item => 
+                    `${item.name} - ${item.quantity} × ${item.price} ر.س = ${(item.quantity * parseFloat(item.price)).toFixed(0)} ر.س`
+                ).join('\n'),
+                order_subtotal: orderData.order.subtotal + ' ر.س',
+                order_discount: orderData.order.discount + ' ر.س',
+                order_shipping: orderData.order.shipping + ' ر.س',
+                order_total: orderData.order.total + ' ر.س',
+                payment_method: orderData.order.paymentMethod === 'credit-card' ? 'بطاقة ائتمان' : 'PayPal',
+                order_notes: orderData.order.notes || 'لا توجد ملاحظات',
+                discount_code: orderData.order.discountCode
             };
-
-            // إرسال البريد باستخدام EmailJS
-            emailjs.send('service_z2p85bj', 'template_uy903fn', emailParams)
-                .then(function(response) {
-                    console.log('تم إرسال البريد بنجاح:', response);
-                    // إظهار رسالة التأكيد بعد ثانيتين لمحاكاة عملية الإرسال
+            
+            // إرسال البريد
+            emailjs.send(service_bouybkm, template_uy903fn, templateParams)
+                .then(() => {
+                    // إخفاء مؤشر التحميل
+                    toggleLoading(false);
+                    
+                    // عرض رسالة نجاح
+                    showMessage('تم إرسال طلبك بنجاح! سنتصل بك قريباً لتأكيد الطلب.');
+                    
+                    // مسح السلة
+                    localStorage.removeItem('jamalkCart');
+                    cart = [];
+                    
+                    // تحديث واجهة المستخدم
+                    updateCartUI();
+                    
+                    // تعطيل زر الإرسال
+                    document.getElementById('complete-order-btn').disabled = true;
+                    
+                    // إعادة توجيه بعد 5 ثوانٍ
                     setTimeout(() => {
-                        showConfirmationScreen(orderData);
-                    }, 2000);
-                }, function(error) {
-                    console.error('فشل في إرسال البريد:', error);
-                    // في حالة الفشل، نعرض رسالة نجاح وهمية للتجربة
-                    setTimeout(() => {
-                        showConfirmationScreen(orderData);
-                    }, 2000);
+                        window.location.href = 'index.html';
+                    }, 5000);
+                })
+                .catch(error => {
+                    // إخفاء مؤشر التحميل
+                    toggleLoading(false);
+                    
+                    // عرض رسالة خطأ
+                    showMessage('حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى.', true);
+                    
+                    console.error('فشل إرسال البريد:', error);
                 });
         }
 
