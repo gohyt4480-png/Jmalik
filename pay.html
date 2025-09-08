@@ -781,17 +781,6 @@
             margin-bottom: 20px;
         }
     </style>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "b7ctZ1o16WJElvFxL",
-      });
-   })();
-</script>
-<script src="app.js"></script>
 </head>
 <body>
     <!-- الهيدر -->
@@ -881,7 +870,7 @@
                         <span class="total-price" id="total">0 ر.س</span>
                     </div>
                     
-                    <a href="sk.html" class="continue-shopping">← العودة إلى السلة</a>
+                    <a href="cart.html" class="continue-shopping">← العودة إلى السلة</a>
                 </div>
                 
                 <!-- نموذج إتمام الطلب -->
@@ -1035,6 +1024,17 @@
         <span id="toast-message">تمت الإضافة إلى السلة</span>
     </div>
 
+    <!-- رسالة التحميل والتأكيد -->
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <div class="confirmation-message" id="confirmation-message">
+            <i class="fas fa-check-circle confirmation-icon"></i>
+            <h2>تم استلام طلبك بنجاح!</h2>
+            <p>سيتم إرسال تفاصيل الطلب إلى بريدك الإلكتروني</p>
+            <p>رقم الطلب: <span id="order-number"></span></p>
+            <a href="index.html" class="shop-now-btn" style="margin-top: 20px;">العودة إلى المتجر</a>
+        </div>
+    </div>
 
     <script>
         // تهيئة المتغيرات العامة
@@ -1043,7 +1043,8 @@
         let discountCode = '';
         let phoneInput = null;
 
-        
+        // تهيئة EmailJS
+        emailjs.init("b7ctZ1o16WJElvFxL"); // استبدل بمفتاحك العام من EmailJS
 
         // دالة تهيئة الصفحة
         function initializePage() {
@@ -1475,7 +1476,7 @@
             };
 
             // إرسال البريد باستخدام EmailJS
-            emailjs.send('service_z2p85bj', 'YOUR_TEMPLATE_ID', emailParams)
+            emailjs.send('service_z2p85bj', 'template_uy903fn', emailParams)
                 .then(function(response) {
                     console.log('تم إرسال البريد بنجاح:', response);
                     // إظهار رسالة التأكيد بعد ثانيتين لمحاكاة عملية الإرسال
@@ -1496,4 +1497,3 @@
     </script>
 </body>
 </html>
-
