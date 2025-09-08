@@ -1035,17 +1035,6 @@
         <span id="toast-message">تمت الإضافة إلى السلة</span>
     </div>
 
-    <!-- رسالة التحميل والتأكيد -->
-    <div class="loading-overlay" id="loading-overlay" style="display: none;">
-        <div class="spinner"></div>
-        <div class="confirmation-message" id="confirmation-message">
-            <i class="fas fa-check-circle confirmation-icon"></i>
-            <h2>تم استلام طلبك بنجاح!</h2>
-            <p>سيتم إرسال تفاصيل الطلب إلى بريدك الإلكتروني</p>
-            <p>رقم الطلب: <span id="order-number"></span></p>
-            <a href="index.html" class="shop-now-btn" style="margin-top: 20px;">العودة إلى المتجر</a>
-        </div>
-    </div>
 
     <script>
         // تهيئة المتغيرات العامة
@@ -1054,8 +1043,7 @@
         let discountCode = '';
         let phoneInput = null;
 
-        // تهيئة EmailJS
-        emailjs.init("YOUR_PUBLIC_KEY"); // استبدل بمفتاحك العام من EmailJS
+        
 
         // دالة تهيئة الصفحة
         function initializePage() {
@@ -1508,3 +1496,4 @@
     </script>
 </body>
 </html>
+
