@@ -10,17 +10,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    <!-- إضافة مكتبة EmailJS -->
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "Yb7ctZ1o16WJElvFxL",
-      });
-   })();
-</script>    <style>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init({
+            publicKey: "Yb7ctZ1o16WJElvFxL",
+          });
+       })();
+    </script>
+    <style>
         :root {
             --primary-color: #FFC1CC;
             --secondary-color: #D8B4E2;
@@ -808,20 +808,8 @@
             margin: 10px 0;
         }
     </style>
- <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "b7ctZ1o16WJElvFxL",
-      });
-   })();
-</script>
-        <script src="app.js"></script>
 </head>
 <body>
-    <!-- الهيدر -->
     <header>
         <div class="header-top">
             <div class="container header-top-container">
@@ -868,7 +856,6 @@
         </div>
     </header>
 
-    <!-- مسار التنقل -->
     <div class="breadcrumb">
         <div class="container breadcrumb-container">
             <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
@@ -879,17 +866,14 @@
         </div>
     </div>
 
-    <!-- محتوى صفحة الدفع -->
     <section class="checkout-section">
         <div class="container">
             <div class="checkout-container">
-                <!-- ملخص الطلب (تم نقله إلى الأعلى) -->
                 <div class="order-summary">
                     <h2 class="summary-title">ملخص الطلب</h2>
                     
                     <div class="cart-items-summary" id="cart-items-summary">
-                        <!-- سيتم ملؤها بواسطة JavaScript -->
-                    </div>
+                        </div>
                     
                     <div class="summary-row">
                         <span class="summary-label">المجموع الجزئي</span>
@@ -911,11 +895,9 @@
                     <a href="sk.html" class="continue-shopping">← العودة إلى السلة</a>
                 </div>
                 
-                <!-- نموذج الدفع -->
                 <form id="checkout-form">
                     <h2 class="checkout-title">إتمام الطلب</h2>
                     
-                    <!-- معلومات الاتصال -->
                     <div class="form-section">
                         <h3 class="section-title"><i class="fas fa-user"></i> معلومات الاتصال</h3>
                         <div class="form-group">
@@ -933,7 +915,6 @@
                         </div>
                     </div>
                     
-                    <!-- معلومات الشحن -->
                     <div class="form-section">
                         <h3 class="section-title"><i class="fas fa-truck"></i> معلومات الشحن</h3>
                         <div class="form-row">
@@ -974,7 +955,6 @@
                         </div>
                     </div>
                     
-                    <!-- كود الخصم -->
                     <div class="form-section">
                         <h3 class="section-title"><i class="fas fa-tag"></i> كود الخصم</h3>
                         <div class="discount-section">
@@ -991,7 +971,6 @@
                         </div>
                     </div>
                     
-                    <!-- طريقة الدفع -->
                     <div class="form-section">
                         <h3 class="section-title"><i class="fas fa-credit-card"></i> طريقة الدفع</h3>
                         <div class="form-group">
@@ -1040,7 +1019,6 @@
                         </div>
                     </div>
                     
-                    <!-- ملاحظات الطلب -->
                     <div class="form-section">
                         <h3 class="section-title"><i class="fas fa-sticky-note"></i> ملاحظات الطلب (اختياري)</h3>
                         <div class="form-group">
@@ -1048,7 +1026,6 @@
                         </div>
                     </div>
                     
-                    <!-- حقول مخفية لإرسال بيانات الطلب -->
                     <input type="hidden" id="order-summary" name="order-summary">
                     <input type="hidden" id="cart-data" name="cart-data">
                     
@@ -1060,18 +1037,15 @@
         </div>
     </section>
 
-    <!-- رسالة تأكيد الإضافة للسلة -->
     <div class="cart-toast" id="cart-toast">
         <i class="fas fa-check-circle"></i>
         <span id="toast-message">تمت الإضافة إلى السلة</span>
     </div>
 
-    <!-- مؤشر التحميل -->
     <div class="loading-overlay" id="loading-overlay">
         <div class="loading-spinner"></div>
     </div>
 
-    <!-- رسالة نجاح/فشل -->
     <div class="message-toast" id="message-toast">
         <i class="fas fa-check-circle"></i>
         <span id="message-text"></span>
@@ -1117,7 +1091,7 @@
                 phoneInput = window.intlTelInput(phoneInputField, {
                     initialCountry: "sa",
                     separateDialCode: true,
-                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intlTelInput/17.0.8/js/utils.js",
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
                 });
             } else {
                 console.warn("لم يتم تحميل مكتبة intlTelInput بشكل صحيح");
@@ -1247,10 +1221,10 @@
             
             if (!phoneField.value.trim()) {
                 setFieldError('phone', 'يرجى إدخال رقم الهاتف');
-                return true;
+                return false; // كان true بالخطأ
             } else if (phoneInput && !phoneInput.isValidNumber()) {
                 setFieldError('phone', 'يرجى إدخال رقم هاتف صحيح');
-                return true;
+                return false; // كان true بالخطأ
             } else {
                 clearFieldError('phone');
                 return true;
@@ -1260,9 +1234,11 @@
         // التحقق من صحة الحقل النصي
         function validateTextField(fieldId) {
             const field = document.getElementById(fieldId);
-            
+            const label = field.parentElement.querySelector('label');
+            const labelText = label ? label.textContent.replace('*', '').trim() : 'الحقل';
+
             if (!field.value.trim()) {
-                setFieldError(fieldId, `يرجى إدخال ${field.previousElementSibling.textContent}`);
+                setFieldError(fieldId, `يرجى إدخال ${labelText}`);
                 return false;
             } else {
                 clearFieldError(fieldId);
@@ -1288,16 +1264,18 @@
             const field = document.getElementById(fieldId);
             const paymentMethod = document.getElementById('payment-method');
             
-            // إذا كانت طريقة الدفع ليست بطاقة ائتمان، لا داعي للتحقق
             if (paymentMethod.value !== 'credit-card') {
+                clearFieldError(fieldId);
                 return true;
             }
             
+            const label = field.parentElement.querySelector('label');
+            const labelText = label ? label.textContent.replace('*', '').trim() : 'الحقل';
+
             if (!field.value.trim()) {
-                setFieldError(fieldId, `يرجى إدخال ${field.previousElementSibling.textContent}`);
+                setFieldError(fieldId, `يرجى إدخال ${labelText}`);
                 return false;
             } else {
-                // تحقق إضافي حسب نوع الحقل
                 let isValid = true;
                 let errorMessage = '';
                 
@@ -1307,7 +1285,7 @@
                         errorMessage = 'يرجى إدخال رقم بطاقة صحيح';
                         break;
                     case 'expiry-date':
-                        isValid = /^(0[1-9]|1[0-2])\/([0-9]{2})$/.test(field.value);
+                        isValid = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/.test(field.value);
                         errorMessage = 'يرجى إدخال تاريخ انتهاء صحيح (MM/YY)';
                         break;
                     case 'cvv':
@@ -1329,18 +1307,30 @@
         // تعيين رسالة خطأ للحقل
         function setFieldError(fieldId, message) {
             const field = document.getElementById(fieldId);
-            const errorElement = field.parentElement.querySelector('.error');
+            if (!field) return;
+            const formGroup = field.closest('.form-group');
+            if (!formGroup) return;
+            const errorElement = formGroup.querySelector('.error');
             
-            field.parentElement.classList.add('invalid');
+            formGroup.classList.add('invalid');
             if (errorElement) {
                 errorElement.textContent = message;
+                errorElement.style.display = 'block';
             }
         }
 
         // مسح رسالة الخطأ من الحقل
         function clearFieldError(fieldId) {
             const field = document.getElementById(fieldId);
-            field.parentElement.classList.remove('invalid');
+            if (!field) return;
+            const formGroup = field.closest('.form-group');
+            if (!formGroup) return;
+            const errorElement = formGroup.querySelector('.error');
+
+            formGroup.classList.remove('invalid');
+             if (errorElement) {
+                errorElement.style.display = 'none';
+            }
         }
 
         // تحديث واجهة السلة
@@ -1348,15 +1338,12 @@
             const cartItemsSummary = document.getElementById('cart-items-summary');
             const cartCount = document.querySelector('.cart-count');
             
-            // تحديث عدد العناصر في السلة
             const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
             if (cartCount) cartCount.textContent = totalItems;
             
-            if (cart.length === 0) {
-                // إذا كانت السلة فارغة، عرض رسالة بدلاً من التوجيه الفوري
+            if (cart.length === 0 && window.location.pathname.includes('pay.html')) {
                 showEmptyCartMessage();
             } else {
-                // عرض عناصر السلة في ملخص الطلب
                 if (cartItemsSummary) {
                     cartItemsSummary.innerHTML = '';
                     cart.forEach(item => {
@@ -1374,8 +1361,6 @@
                         cartItemsSummary.appendChild(summaryItem);
                     });
                 }
-                
-                // تحديث ملخص الطلب
                 updateOrderSummary();
             }
         }
@@ -1390,29 +1375,25 @@
             if (!subtotalElement || !discountElement || !shippingElement || !totalElement) return;
             
             const subtotal = cart.reduce((total, item) => total + (parseFloat(item.price || 0) * (item.quantity || 1)), 0);
-            const discount = subtotal >= 200 ? subtotal * 0.1 : 0; // خصم 10% للطلبات فوق 200 ريال
             
-            // تطبيق خصم إضافي 90% إذا تم إدخال الكود الصحيح
-            let additionalDiscount = 0;
+            let totalDiscount = 0;
             if (discountApplied && discountCode === 'OMD90') {
-                additionalDiscount = subtotal * 0.9;
+                totalDiscount = subtotal * 0.9;
             }
             
-            const totalDiscount = discount + additionalDiscount;
-            const shipping = subtotal >= 200 ? 0 : 15; // شحن مجاني للطلبات فوق 200 ريال
+            const shipping = subtotal > 0 && subtotal < 200 ? 15 : 0;
             
-            // تطبيق خصم إضافي 10% عند اختيار الدفع ببطاقة الائتمان
             const paymentMethod = document.getElementById('payment-method');
-            const paymentMethodValue = paymentMethod ? paymentMethod.value : '';
-            const cardDiscount = paymentMethodValue === 'credit-card' ? subtotal * 0.1 : 0;
-            const finalDiscount = totalDiscount + cardDiscount;
+            if (paymentMethod && paymentMethod.value === 'credit-card') {
+                totalDiscount += subtotal * 0.30;
+            }
             
-            const total = subtotal - finalDiscount + shipping;
+            const total = (subtotal - totalDiscount + shipping);
             
-            subtotalElement.textContent = subtotal.toFixed(0) + ' ر.س';
-            discountElement.textContent = finalDiscount > 0 ? '-' + finalDiscount.toFixed(0) + ' ر.س' : '0 ر.س';
-            shippingElement.textContent = shipping > 0 ? shipping.toFixed(0) + ' ر.س' : '0 ر.س';
-            totalElement.textContent = total.toFixed(0) + ' ر.س';
+            subtotalElement.textContent = subtotal.toFixed(2) + ' ر.س';
+            discountElement.textContent = totalDiscount > 0 ? '-' + totalDiscount.toFixed(2) + ' ر.س' : '0 ر.س';
+            shippingElement.textContent = shipping > 0 ? shipping.toFixed(2) + ' ر.س' : 'شحن مجاني';
+            totalElement.textContent = total.toFixed(2) + ' ر.س';
         }
 
         // تطبيق كود الخصم
@@ -1428,29 +1409,24 @@
                 discountCode = 'OMD90';
                 discountSuccess.style.display = 'block';
                 discountError.style.display = 'none';
-                updateOrderSummary();
             } else {
                 discountApplied = false;
                 discountCode = '';
                 discountSuccess.style.display = 'none';
                 discountError.style.display = 'block';
-                updateOrderSummary();
             }
+            updateOrderSummary();
         }
 
-        // إظهار/إخفاء تفاصيل البطاقة حسب طريقة الدفع
+        // إظهار/إخفاء تفاصيل البطاقة
         function toggleCardDetails() {
             const cardDetails = document.getElementById('card-details');
             const paymentMethod = document.getElementById('payment-method');
             
             if (!cardDetails || !paymentMethod) return;
             
-            if (paymentMethod.value === 'credit-card') {
-                cardDetails.style.display = 'block';
-            } else {
-                cardDetails.style.display = 'none';
-            }
-            updateOrderSummary(); // تحديث الملخص لتطبيق الخصم
+            cardDetails.style.display = (paymentMethod.value === 'credit-card') ? 'block' : 'none';
+            updateOrderSummary();
         }
 
         // التعرف على نوع البطاقة من الرقم
@@ -1463,9 +1439,7 @@
             };
             
             for (const [type, pattern] of Object.entries(cardPatterns)) {
-                if (pattern.test(cardNumber)) {
-                    return type;
-                }
+                if (pattern.test(cardNumber)) return type;
             }
             return 'unknown';
         }
@@ -1475,49 +1449,36 @@
             const cardIcon = document.getElementById('card-type-icon');
             if (!cardIcon) return;
             
-            if (cardType === 'unknown' || !cardType) {
-                cardIcon.style.display = 'none';
-                return;
-            }
+            cardIcon.style.display = (cardType !== 'unknown' && cardType) ? 'block' : 'none';
+            cardIcon.innerHTML = '';
             
-            cardIcon.style.display = 'block';
-            
-            // تعيين لون الخلفية حسب نوع البطاقة
+            if(cardIcon.style.display === 'none') return;
+
+            const iconElement = document.createElement('i');
+            iconElement.style.cssText = "color: white; font-size: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);";
+
             switch(cardType) {
-                case 'visa':
-                    cardIcon.style.backgroundColor = 'var(--card-visa)';
-                    cardIcon.innerHTML = '<i class="fab fa-cc-visa" style="color: white; font-size: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>';
-                    break;
-                case 'mastercard':
-                    cardIcon.style.backgroundColor = 'var(--card-mastercard)';
-                    cardIcon.innerHTML = '<i class="fab fa-cc-mastercard" style="color: white; font-size: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>';
-                    break;
-                case 'amex':
-                    cardIcon.style.backgroundColor = 'var(--card-amex)';
-                    cardIcon.innerHTML = '<i class="fab fa-cc-amex" style="color: white; font-size: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>';
-                    break;
-                case 'discover':
-                    cardIcon.style.backgroundColor = 'var(--card-discover)';
-                    cardIcon.innerHTML = '<i class="fab fa-cc-discover" style="color: white; font-size: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>';
-                    break;
-                default:
-                    cardIcon.style.display = 'none';
+                case 'visa': cardIcon.style.backgroundColor = 'var(--card-visa)'; iconElement.className = 'fab fa-cc-visa'; break;
+                case 'mastercard': cardIcon.style.backgroundColor = 'var(--card-mastercard)'; iconElement.className = 'fab fa-cc-mastercard'; break;
+                case 'amex': cardIcon.style.backgroundColor = 'var(--card-amex)'; iconElement.className = 'fab fa-cc-amex'; break;
+                case 'discover': cardIcon.style.backgroundColor = 'var(--card-discover)'; iconElement.className = 'fab fa-cc-discover'; break;
+                default: cardIcon.style.display = 'none';
             }
+            if(cardIcon.style.display !== 'none') cardIcon.appendChild(iconElement);
         }
 
         // تنسيق رقم البطاقة
         function formatCardNumber(e) {
-            const cardNumber = e.target.value.replace(/\s/g, '');
-            const cardType = detectCardType(cardNumber);
-            updateCardIcon(cardType);
+            const input = e.target;
+            const value = input.value.replace(/\D/g, '');
+            updateCardIcon(detectCardType(value));
             
-            // إضافة مسافات بعد كل 4 أرقام لتحسين القراءة
-            if (e.inputType !== 'deleteContentBackward') {
-                const formattedCardNumber = cardNumber.replace(/(\d{4})/g, '$1 ').trim();
-                if (formattedCardNumber !== e.target.value) {
-                    e.target.value = formattedCardNumber;
-                }
+            let formattedValue = '';
+            for(let i = 0; i < value.length; i++) {
+                if(i > 0 && i % 4 === 0) formattedValue += ' ';
+                formattedValue += value[i];
             }
+            input.value = formattedValue;
         }
 
         // تنسيق تاريخ انتهاء البطاقة
@@ -1537,10 +1498,10 @@
             if (!messageToast || !messageText) return;
             
             messageText.textContent = message;
-            messageToast.className = isError ? 'message-toast error' : 'message-toast';
+            messageToast.className = 'message-toast';
+            if (isError) messageToast.classList.add('error');
             messageToast.classList.add('show');
             
-            // إخفاء الرسالة بعد 5 ثوانٍ
             setTimeout(() => {
                 messageToast.classList.remove('show');
             }, 5000);
@@ -1549,108 +1510,120 @@
         // إظهار/إخفاء مؤشر التحميل
         function toggleLoading(show) {
             const loadingOverlay = document.getElementById('loading-overlay');
-            if (!loadingOverlay) return;
-            
-            if (show) {
-                loadingOverlay.classList.add('active');
-            } else {
-                loadingOverlay.classList.remove('active');
+            if (loadingOverlay) {
+                loadingOverlay.classList.toggle('active', show);
             }
         }
-
-        // معالجة إرسال النموذج
+        
+        // =========================================================================
+        // ✨ [الكود الجديد] دالة إرسال النموذج بعد التعديل
+        // =========================================================================
         function handleFormSubmission(e) {
             e.preventDefault(); // منع الإرسال المباشر
             
-            let isValid = true;
+            // --- بيانات حسابك في EmailJS (مهم جداً) ---
+            const SERVICE_ID = "service_bouybkm";      // 👈 استبدل هذا بمعرف الخدمة الخاص بك
+            const TEMPLATE_ID = "template_uy903fn";   // هذا هو معرف القالب
+            const PUBLIC_KEY = "Yb7ctZ1o16WJElvFxL";    // هذا هو المفتاح العام
+
+            emailjs.init(PUBLIC_KEY);
+            // ---------------------------------------------
             
-            // التحقق من جميع الحقول الإلزامية
-            isValid = validateEmail() && isValid;
-            isValid = validatePhone() && isValid;
+            let isValid = validateEmail() && validatePhone();
             
-            // التحقق من الحقول النصية
             const textFields = ['first-name', 'last-name', 'address', 'city', 'postal-code'];
             textFields.forEach(fieldId => {
                 isValid = validateTextField(fieldId) && isValid;
             });
             
-            // التحقق من طريقة الدفع
             isValid = validatePaymentMethod() && isValid;
             
-            // إذا كانت طريقة الدفع ببطاقة الائتمان، التحقق من تفاصيل البطاقة
-            const paymentMethod = document.getElementById('payment-method');
-            if (paymentMethod.value === 'credit-card') {
+            if (document.getElementById('payment-method').value === 'credit-card') {
                 const cardFields = ['card-number', 'expiry-date', 'cvv', 'card-name'];
                 cardFields.forEach(fieldId => {
                     isValid = validateCardField(fieldId) && isValid;
                 });
             }
             
-            // إذا كان النموذج غير صالح، منع الإرسال
             if (!isValid) {
                 showMessage('يرجى ملء جميع الحقول الإلزامية بشكل صحيح', true);
-                
-                // التمرير إلى أول حقل به خطأ
                 const firstErrorField = document.querySelector('.form-group.invalid');
                 if (firstErrorField) {
                     firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
-                
                 return;
             }
             
-            // جمع بيانات الطلب
+            toggleLoading(true);
+            const completeOrderBtn = document.getElementById('complete-order-btn');
+            completeOrderBtn.disabled = true;
+            completeOrderBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            
             const orderData = collectOrderData();
             
-            // إظهار مؤشر التحميل
-            toggleLoading(true);
-            
-            // محاكاة عملية إرسال الطلب
-            setTimeout(() => {
-                // إخفاء مؤشر التحميل
-                toggleLoading(false);
-                
-                // مسح السلة
-                localStorage.removeItem('jamalkCart');
-                cart = [];
-                
-                // تحديث واجهة المستخدم
-                updateCartUI();
-                
-                // تعطيل زر الإرسال
-                document.getElementById('complete-order-btn').disabled = true;
-                
-                // عرض رسالة نجاح
-                showMessage('تم إرسال طلبك بنجاح! يتم الآن التوجيه إلى صفحة الدفع...');
-                
-                // التوجيه إلى صفحة الدفع بعد 2 ثانية
-                setTimeout(() => {
-                    window.location.href = 'upay.html';
-                }, 2000);
-            }, 2000);
+            const templateParams = {
+                customer_name: `${orderData.customer.firstName} ${orderData.customer.lastName}`,
+                customer_email: orderData.customer.email,
+                customer_phone: phoneInput.getNumber(),
+                shipping_address: `
+                    العنوان: ${orderData.customer.address}
+                    الشقة: ${orderData.customer.apartment || 'لا يوجد'}
+                    المدينة: ${orderData.customer.city}
+                    الرمز البريدي: ${orderData.customer.postalCode}
+                `,
+                order_summary: `
+                    المجموع الجزئي: ${orderData.order.subtotal} ر.س
+                    الخصم: ${orderData.order.discount} ر.س
+                    الشحن: ${orderData.order.shipping} ر.س
+                    الإجمالي: ${orderData.order.total} ر.س
+                    كود الخصم: ${orderData.order.discountCode}
+                `,
+                order_items: cart.map(item => `- ${item.name} (الكمية: ${item.quantity || 1})`).join('\n'),
+                payment_method: orderData.order.paymentMethod,
+                order_notes: orderData.order.notes || 'لا توجد ملاحظات',
+            };
+
+            emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    toggleLoading(false);
+                    localStorage.removeItem('jamalkCart');
+                    cart = [];
+                    updateCartUI();
+                    
+                    showMessage('تم إرسال طلبك بنجاح! سيتم توجيهك الآن...');
+                    setTimeout(() => {
+                        window.location.href = 'upay.html';
+                    }, 2000);
+
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    toggleLoading(false);
+                    completeOrderBtn.disabled = false;
+                    completeOrderBtn.innerHTML = '<i class="fas fa-lock"></i> إتمام الطلب';
+                    showMessage('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى.', true);
+                });
         }
+
 
         // جمع بيانات الطلب
         function collectOrderData() {
             const subtotal = cart.reduce((total, item) => total + (parseFloat(item.price || 0) * (item.quantity || 1)), 0);
-            const discount = subtotal >= 200 ? subtotal * 0.1 : 0;
-            let additionalDiscount = 0;
             
+            let totalDiscount = 0;
             if (discountApplied && discountCode === 'OMD90') {
-                additionalDiscount = subtotal * 0.9;
+                totalDiscount = subtotal * 0.9;
             }
             
-            const totalDiscount = discount + additionalDiscount;
-            const shipping = subtotal >= 200 ? 0 : 15;
+            const shipping = subtotal > 0 && subtotal < 200 ? 15 : 0;
             
-            // تطبيق خصم إضافي 10% عند اختيار الدفع ببطاقة الائتمان
             const paymentMethod = document.getElementById('payment-method');
-            const paymentMethodValue = paymentMethod ? paymentMethod.value : '';
-            const cardDiscount = paymentMethodValue === 'credit-card' ? subtotal * 0.1 : 0;
-            const finalDiscount = totalDiscount + cardDiscount;
+            if (paymentMethod && paymentMethod.value === 'credit-card') {
+                totalDiscount += subtotal * 0.30;
+            }
             
-            const total = subtotal - finalDiscount + shipping;
-            
+            const total = (subtotal - totalDiscount + shipping);
+
             return {
                 customer: {
                     email: document.getElementById('email').value,
@@ -1664,11 +1637,11 @@
                 },
                 order: {
                     items: cart,
-                    subtotal: subtotal.toFixed(0),
-                    discount: finalDiscount.toFixed(0),
-                    shipping: shipping.toFixed(0),
-                    total: total.toFixed(0),
-                    paymentMethod: paymentMethodValue,
+                    subtotal: subtotal.toFixed(2),
+                    discount: totalDiscount.toFixed(2),
+                    shipping: shipping.toFixed(2),
+                    total: total.toFixed(2),
+                    paymentMethod: paymentMethod.value,
                     notes: document.getElementById('order-notes').value,
                     discountCode: discountApplied ? discountCode : 'لا يوجد'
                 },
