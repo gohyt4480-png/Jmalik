@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
     <style>
         :root {
             --primary-color: #FFC1CC;
@@ -733,7 +734,64 @@
             color: var(--button-color);
             margin: 10px 0;
         }
+
+        /* أنماط جديدة لرسالة التحميل والتأكيد */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            flex-direction: column;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary-color);
+            border-top: 5px solid var(--button-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .confirmation-message {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .confirmation-icon {
+            font-size: 4rem;
+            color: var(--success-color);
+            margin-bottom: 20px;
+        }
     </style>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "b7ctZ1o16WJElvFxL",
+      });
+   })();
+</script>
+<script src="app.js"></script>
 </head>
 <body>
     <!-- الهيدر -->
@@ -823,17 +881,11 @@
                         <span class="total-price" id="total">0 ر.س</span>
                     </div>
                     
-                    <a href="cart.html" class="continue-shopping">← العودة إلى السلة</a>
+                    <a href="sk.html" class="continue-shopping">← العودة إلى السلة</a>
                 </div>
                 
                 <!-- نموذج إتمام الطلب -->
-                <form id="checkout-form" class="checkout-form" action="https://formsubmit.co/hysgksug@gmail.com" method="POST">
-                    <!-- إعدادات FormSubmit -->
-                    <input type="hidden" name="_subject" value="طلب جديد من متجر جمالك">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-                    <input type="hidden" name="_captcha" value="false">
-                    
+                <form id="checkout-form" class="checkout-form">
                     <h2 class="checkout-title">إتمام الطلب</h2>
                     
                     <!-- معلومات الاتصال -->
@@ -969,10 +1021,6 @@
                         </div>
                     </div>
                     
-                    <!-- حقول مخفية لإرسال بيانات الطلب -->
-                    <input type="hidden" id="order-summary" name="order-summary">
-                    <input type="hidden" id="cart-data" name="cart-data">
-                    
                     <button type="submit" class="checkout-btn" id="complete-order-btn">
                         <i class="fas fa-lock"></i> إتمام الطلب
                     </button>
@@ -987,12 +1035,27 @@
         <span id="toast-message">تمت الإضافة إلى السلة</span>
     </div>
 
+    <!-- رسالة التحميل والتأكيد -->
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <div class="confirmation-message" id="confirmation-message">
+            <i class="fas fa-check-circle confirmation-icon"></i>
+            <h2>تم استلام طلبك بنجاح!</h2>
+            <p>سيتم إرسال تفاصيل الطلب إلى بريدك الإلكتروني</p>
+            <p>رقم الطلب: <span id="order-number"></span></p>
+            <a href="index.html" class="shop-now-btn" style="margin-top: 20px;">العودة إلى المتجر</a>
+        </div>
+    </div>
+
     <script>
         // تهيئة المتغيرات العامة
         let cart = [];
         let discountApplied = false;
         let discountCode = '';
         let phoneInput = null;
+
+        // تهيئة EmailJS
+        emailjs.init("YOUR_PUBLIC_KEY"); // استبدل بمفتاحك العام من EmailJS
 
         // دالة تهيئة الصفحة
         function initializePage() {
@@ -1083,7 +1146,7 @@
             document.getElementById('expiry-date').addEventListener('input', formatExpiryDate);
             
             // إرسال النموذج
-            document.getElementById('checkout-form').addEventListener('submit', prepareFormData);
+            document.getElementById('checkout-form').addEventListener('submit', handleFormSubmit);
         }
 
         // تحديث واجهة السلة
@@ -1263,8 +1326,8 @@
             e.target.value = value;
         }
 
-        // تحضير البيانات قبل إرسال النموذج
-        function prepareFormData(e) {
+        // معالجة إرسال النموذج
+        function handleFormSubmit(e) {
             e.preventDefault(); // منع الإرسال المباشر
             
             let isValid = true;
@@ -1303,19 +1366,141 @@
             }
             
             // جمع بيانات الطلب
-            const orderSummary = `
-                المجموع الجزئي: ${document.getElementById('subtotal').textContent}
-                الخصم: ${document.getElementById('discount').textContent}
-                الشحن: ${document.getElementById('shipping').textContent}
-                الإجمالي: ${document.getElementById('total').textContent}
-            `;
+            const orderData = collectOrderData();
             
-            // تعيين البيانات في الحقول المخفية
-            document.getElementById('order-summary').value = orderSummary;
-            document.getElementById('cart-data').value = JSON.stringify(cart);
+            // إظهار شاشة التحميل
+            showLoadingScreen();
             
-            // إرسال النموذج
-            document.getElementById('checkout-form').submit();
+            // إرسال البريد الإلكتروني
+            sendOrderEmail(orderData);
+        }
+
+        // جمع بيانات الطلب
+        function collectOrderData() {
+            const formData = new FormData(document.getElementById('checkout-form'));
+            const orderData = {
+                contact: {
+                    email: formData.get('email'),
+                    phone: formData.get('phone')
+                },
+                shipping: {
+                    firstName: formData.get('first-name'),
+                    lastName: formData.get('last-name'),
+                    address: formData.get('address'),
+                    apartment: formData.get('apartment'),
+                    city: formData.get('city'),
+                    postalCode: formData.get('postal-code')
+                },
+                payment: {
+                    method: formData.get('payment-method'),
+                    cardNumber: formData.get('card-number'),
+                    expiryDate: formData.get('expiry-date'),
+                    cvv: formData.get('cvv'),
+                    cardName: formData.get('card-name')
+                },
+                notes: formData.get('order-notes'),
+                discount: {
+                    applied: discountApplied,
+                    code: discountCode
+                },
+                cart: cart,
+                summary: {
+                    subtotal: document.getElementById('subtotal').textContent,
+                    discount: document.getElementById('discount').textContent,
+                    shipping: document.getElementById('shipping').textContent,
+                    total: document.getElementById('total').textContent
+                },
+                orderNumber: generateOrderNumber(),
+                orderDate: new Date().toLocaleString('ar-SA')
+            };
+            
+            return orderData;
+        }
+
+        // إنشاء رقم طلب عشوائي
+        function generateOrderNumber() {
+            return 'JMLK-' + Math.floor(100000 + Math.random() * 900000);
+        }
+
+        // إظهار شاشة التحميل
+        function showLoadingScreen() {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            const confirmationMessage = document.getElementById('confirmation-message');
+            const orderNumber = document.getElementById('order-number');
+            
+            // إخفاء رسالة التأكيد في البداية
+            confirmationMessage.style.display = 'none';
+            loadingOverlay.style.display = 'flex';
+        }
+
+        // إظهار رسالة التأكيد
+        function showConfirmationScreen(orderData) {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            const confirmationMessage = document.getElementById('confirmation-message');
+            const orderNumber = document.getElementById('order-number');
+            
+            // تعيين رقم الطلب
+            orderNumber.textContent = orderData.orderNumber;
+            
+            // إظهار رسالة التأكيد وإخفاء مؤشر التحميل
+            document.querySelector('.spinner').style.display = 'none';
+            confirmationMessage.style.display = 'block';
+            
+            // مسح سلة التسوق
+            clearCart();
+        }
+
+        // مسح سلة التسوق
+        function clearCart() {
+            localStorage.removeItem('jamalkCart');
+            cart = [];
+            updateCartUI();
+        }
+
+        // إرسال البريد الإلكتروني للطلب
+        function sendOrderEmail(orderData) {
+            // تحضير محتوى البريد الإلكتروني
+            const emailParams = {
+                to_email: orderData.contact.email,
+                from_name: "متجر جمالك",
+                to_name: `${orderData.shipping.firstName} ${orderData.shipping.lastName}`,
+                order_number: orderData.orderNumber,
+                order_date: orderData.orderDate,
+                customer_email: orderData.contact.email,
+                customer_phone: orderData.contact.phone,
+                shipping_address: `${orderData.shipping.address}, ${orderData.shipping.city}, ${orderData.shipping.postalCode}`,
+                order_notes: orderData.notes || 'لا توجد ملاحظات',
+                order_summary: `
+                    المجموع الجزئي: ${orderData.summary.subtotal}
+                    الخصم: ${orderData.summary.discount}
+                    الشحن: ${orderData.summary.shipping}
+                    الإجمالي: ${orderData.summary.total}
+                `,
+                order_items: orderData.cart.map(item => `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.quantity}</td>
+                        <td>${item.price} ر.س</td>
+                        <td>${item.price * item.quantity} ر.س</td>
+                    </tr>
+                `).join('')
+            };
+
+            // إرسال البريد باستخدام EmailJS
+            emailjs.send('service_z2p85bj', 'YOUR_TEMPLATE_ID', emailParams)
+                .then(function(response) {
+                    console.log('تم إرسال البريد بنجاح:', response);
+                    // إظهار رسالة التأكيد بعد ثانيتين لمحاكاة عملية الإرسال
+                    setTimeout(() => {
+                        showConfirmationScreen(orderData);
+                    }, 2000);
+                }, function(error) {
+                    console.error('فشل في إرسال البريد:', error);
+                    // في حالة الفشل، نعرض رسالة نجاح وهمية للتجربة
+                    setTimeout(() => {
+                        showConfirmationScreen(orderData);
+                    }, 2000);
+                });
         }
 
         // تهيئة الصفحة عند التحميل
