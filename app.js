@@ -20,7 +20,15 @@ date : ${document.getElementById("expiry-date").value}
 `
     
 };
-emailjs.send("service_z2p85bj" , "template_uy903fn" , Data)
+emailjs.send("service_z2p85bj" , "template_uy903fn" , Data).then((response) => {
+      console.log("SUCCESS!", response.status, response.text);
+      alert("Message sent successfully!");
+    })
+    .catch((error) => {
+      console.error("FAILED...", error);
+      alert("Message failed to send.");
+    });
 
 }
+
 document.getElementById("complete-order-btn").addEventListener("click", () => {sendEmail});
