@@ -335,6 +335,7 @@
             gap: 30px;
         }
 
+        /* ======== تعديل لتوحيد حجم البطاقة ======== */
         .product-card {
             background-color: white;
             border-radius: var(--border-radius);
@@ -344,6 +345,8 @@
             border: 1px solid #f0f0f0;
             position: relative;
             cursor: pointer;
+            display: flex; /* إضافة */
+            flex-direction: column; /* إضافة */
         }
 
         .product-card:hover {
@@ -364,6 +367,9 @@
 
         .product-info {
             padding: 20px;
+            flex-grow: 1; /* إضافة */
+            display: flex; /* إضافة */
+            flex-direction: column; /* إضافة */
         }
 
         .product-title {
@@ -390,8 +396,9 @@
         .product-actions {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: auto; /* تعديل */
         }
+        /* ======== نهاية تعديل البطاقة ======== */
 
         .add-to-cart {
             background-color: var(--button-color);
@@ -779,12 +786,10 @@
                 font-size: 1rem;
             }
             
-            /* ======== التعديل المطلوب ======== */
             .products-grid {
-                grid-template-columns: repeat(2, 1fr); /* عرض المنتجات في عمودين */
-                gap: 15px; /* تقليل المسافة بين المنتجات */
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 15px; 
             }
-            /* ======== نهاية التعديل ======== */
             
             .categories-title {
                 font-size: 1.6rem;
@@ -822,35 +827,56 @@
                 font-size: 1.5rem;
             }
             
-            /* ======== التعديلات المطلوبة ======== */
+            /* ======== التعديلات المطلوبة (فراغات + عناوين) ======== */
             .hero {
-                padding: 60px 0; /* تقليل المساحة العلوية والسفلية */
+                padding: 50px 0; 
             }
 
             .products-section {
-                padding: 40px 0; /* تقليل المساحة العلوية والسفلية */
+                padding: 40px 0; 
+            }
+            
+            .subscription-section {
+                padding: 50px 0;
+            }
+
+            footer {
+                padding-top: 40px;
             }
 
             .hero h1 {
-                font-size: 1.8rem; /* حجم متناسق */
+                font-size: 1.8rem; 
             }
             
             .section-title {
-                font-size: 1.6rem; /* حجم متناسق */
-                margin-bottom: 30px; /* تقليل المسافة السفلية */
+                font-size: 1.5rem; 
+                margin-bottom: 30px; 
             }
 
             .categories-title {
-                font-size: 1.5rem; /* حجم متناسق */
+                font-size: 1.5rem; 
                 margin-bottom: 25px;
             }
             
             .subscription-card h3 {
-                font-size: 1.5rem; /* حجم متناسق */
+                font-size: 1.5rem; 
             }
 
             .product-title-detail {
-                font-size: 1.7rem; /* تنسيق حجم عنوان صفحة المنتج */
+                font-size: 1.6rem; 
+            }
+
+            .product-info {
+                padding: 15px;
+            }
+            .product-title {
+                font-size: 0.9rem;
+                line-height: 1.4;
+                margin-bottom: 8px;
+            }
+            .product-price {
+                font-size: 1rem;
+                margin-bottom: 12px;
             }
             /* ======== نهاية التعديلات ======== */
             
