@@ -745,6 +745,85 @@
             color: var(--button-color);
             margin: 10px 0;
         }
+
+        /* الفوتر من sk.html */
+        footer {
+            background-color: #2c2c2c;
+            color: #f1f1f1;
+            padding: 60px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: white;
+        }
+
+        .footer-column h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--button-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-right: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--button-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #999;
+        }
     </style>
 </head>
 <body>
@@ -911,7 +990,7 @@
                         </div>
                     </div>
                     
-                    <div class="form-section">
+                    <div class="form-section" id="payment-section">
                         <h3 class="section-title"><i class="fas fa-credit-card"></i> طريقة الدفع</h3>
                         <div class="form-group">
                             <label for="payment-method">طريقة الدفع *</label>
@@ -983,405 +1062,255 @@
         <span id="toast-message">تمت الإضافة إلى السلة</span>
     </div>
 
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>عن المتجر</h4>
+                    <p>متجرنا يقدم أجود منتجات التجميل والعناية بالبشرة والشعر مع ضمان الجودة والخدمة المتميزة.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">تتبع الطلب</a></li>
+                        <li><a href="#">الاشتراك</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>المساعدة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">سياسة الإرجاع</a></li>
+                        <li><a href="#">طرق الدفع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>القائمة البريدية</h4>
+                    <p>اشتركي في نشرتنا البريدية لتصلك آخر العروض والأخبار</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" required style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: var(--border-radius); border: 1px solid #ddd;">
+                        <button type="submit" class="subscribe-btn" style="width: 100%; padding: 10px; background-color: var(--button-color); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">اشترак</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 جمالك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // تهيئة المتغيرات العامة
-        let cart = [];
-        let discountApplied = false;
-        let discountCode = '';
-        let phoneInput = null;
+        // ========================[ الكود المصحح ]========================
+        
+        // استرجاع بيانات الطلب والعميل من localStorage
+        let orderProducts = [];
+        let customerData = {};
 
-        // دالة تهيئة الصفحة
-        function initializePage() {
-            // تهيئة القائمة على الهواتف
-            document.querySelector('.hamburger').addEventListener('click', function() {
-                document.querySelector('.nav-menu').classList.toggle('active');
-            });
+        try {
+            const storedProducts = localStorage.getItem('orderProducts');
+            const storedCustomerData = localStorage.getItem('customerData');
 
-            // تحميل بيانات العميل من localStorage
-            const customerData = JSON.parse(localStorage.getItem('customerData'));
-            
-            // تهيئة السلة من localStorage
-            try {
-                const cartData = localStorage.getItem('jamalkCart');
-                cart = cartData ? JSON.parse(cartData) : [];
-                console.log("تم تحميل السلة:", cart);
-            } catch (e) {
-                console.error("خطأ في تحميل بيانات السلة:", e);
-                cart = [];
+            if (storedProducts) {
+                orderProducts = JSON.parse(storedProducts); // تحويل النص إلى كائن
             }
 
-            // التحقق من أن السلة ليست فارغة
-            if (cart.length === 0) {
-                showEmptyCartMessage();
-                // تعطيل زر إتمام الطلب
-                document.getElementById('complete-order-btn').disabled = true;
-            } else {
-                // تمكين زر إتمام الطلب
-                document.getElementById('complete-order-btn').disabled = false;
+            if (storedCustomerData) {
+                customerData = JSON.parse(storedCustomerData);
             }
-            
-            // تهيئة مدخل رقم الهاتف
-            const phoneInputField = document.querySelector("#phone");
-            if (phoneInputField && window.intlTelInput) {
-                phoneInput = window.intlTelInput(phoneInputField, {
-                    initialCountry: "sa",
-                    separateDialCode: true,
-                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                });
-            } else {
-                console.warn("لم يتم تحميل مكتبة intlTelInput بشكل صحيح");
-                if (phoneInputField) {
-                    phoneInputField.placeholder = "أدخل رقم الهاتف مع رمز الدولة";
-                }
-            }
-            
-            // إذا كانت هناك بيانات عميل، قم بتعبئة الحقول
-            if (customerData) {
-                fillFormData(customerData);
-            }
-            
-            // تحديث واجهة السلة
-            updateCartUI();
-            
-            // إعداد معالجات الأحداث
-            setupEventListeners();
+        } catch (e) {
+            console.error("خطأ في قراءة البيانات من localStorage:", e);
         }
 
-        // تعبئة بيانات النموذج من البيانات المخزنة
-        function fillFormData(customerData) {
-            document.getElementById('email').value = customerData.email || '';
-            document.getElementById('phone').value = customerData.phone || '';
-            document.getElementById('first-name').value = customerData.firstName || '';
-            document.getElementById('last-name').value = customerData.lastName || '';
-            document.getElementById('address').value = customerData.address || '';
-            document.getElementById('apartment').value = customerData.apartment || '';
-            document.getElementById('city').value = customerData.city || '';
-            document.getElementById('postal-code').value = customerData.postalCode || '';
-            document.getElementById('payment-method').value = customerData.paymentMethod || '';
-            document.getElementById('order-notes').value = customerData.orderNotes || '';
+        // تهيئة المتغيرات
+        let subtotal = 0;
+        let discountAmount = 0;
+        const shippingCost = 15;
+
+        // عرض المنتجات في ملخص الطلب
+        function displayOrderProducts() {
+            const cartItemsContainer = document.getElementById('cart-items-summary');
             
-            if (customerData.discountCode) {
-                document.getElementById('discount-code').value = customerData.discountCode;
-                discountCode = customerData.discountCode;
-                discountApplied = customerData.discountApplied || false;
+            if (orderProducts.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart-message">لا توجد منتجات في السلة</p>';
+                return;
+            }
+            
+            let productsHTML = '';
+            
+            orderProducts.forEach(product => {
+                const productPrice = parseFloat(product.price || 0);
+                const productQuantity = parseInt(product.quantity || 1);
+                const productTotal = productPrice * productQuantity;
+                subtotal += productTotal;
                 
-                if (discountApplied) {
-                    document.getElementById('discount-success').style.display = 'block';
-                }
-            }
-
-            updateOrderSummary();
-        }
-
-        // عرض رسالة السلة الفارغة
-        function showEmptyCartMessage() {
-            const checkoutContainer = document.querySelector('.checkout-container');
-            
-            const checkoutForm = document.querySelector('.checkout-form');
-            const orderSummary = document.querySelector('.order-summary');
-            
-            if (checkoutForm) checkoutForm.style.display = 'none';
-            if (orderSummary) orderSummary.style.display = 'none';
-            
-            const emptyCartMessage = document.createElement('div');
-            emptyCartMessage.className = 'empty-cart-message';
-            emptyCartMessage.innerHTML = `
-                <i class="fas fa-shopping-cart" style="font-size: 64px; color: #ccc; margin-bottom: 20px;"></i>
-                <h2>سلة التسوق فارغة</h2>
-                <p>لم تقم بإضافة أي منتجات إلى سلة التسوق بعد.</p>
-                <a href="cart.html" class="shop-now-btn" style="display: inline-block; margin-top: 20px;">تسوق الآن</a>
-            `;
-            
-            checkoutContainer.appendChild(emptyCartMessage);
-        }
-
-        // دالة إعداد معالجات الأحداث
-        function setupEventListeners() {
-            // تطبيق كود الخصم
-            document.getElementById('apply-discount').addEventListener('click', applyDiscount);
-            
-            // تحديث الملخص عند تغيير طريقة الدفع
-            document.getElementById('payment-method').addEventListener('change', updateOrderSummary);
-            
-            // التعرف على نوع البطاقة أثناء الكتابة
-            document.getElementById('card-number').addEventListener('input', formatCardNumber);
-            
-            // تنسيق تاريخ انتهاء البطاقة
-            document.getElementById('expiry-date').addEventListener('input', formatExpiryDate);
-            
-            // إرسال النموذج
-            document.getElementById('checkout-form').addEventListener('submit', submitForm);
-        }
-
-        // تحديث واجهة السلة
-        function updateCartUI() {
-            const cartItemsSummary = document.getElementById('cart-items-summary');
-            const cartCount = document.querySelector('.cart-count');
-            
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
-            
-            if (cart.length === 0) {
-                showEmptyCartMessage();
-            } else {
-                cartItemsSummary.innerHTML = '';
-                cart.forEach(item => {
-                    const summaryItem = document.createElement('div');
-                    summaryItem.className = 'summary-item';
-                    
-                    summaryItem.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}">
+                productsHTML += `
+                    <div class="summary-item">
+                        <img src="${product.image || 'https://via.placeholder.com/60'}" alt="${product.name}">
                         <div class="summary-item-details">
-                            <div class="summary-item-name">${item.name}</div>
-                            <div class="summary-item-price">${item.price} ر.س</div>
-                            <div class="summary-item-quantity">الكمية: ${item.quantity}</div>
+                            <div class="summary-item-name">${product.name}</div>
+                            <div class="summary-item-price">${productPrice.toFixed(2)} ر.س</div>
+                            <div class="summary-item-quantity">الكمية: ${productQuantity}</div>
                         </div>
-                    `;
-                    cartItemsSummary.appendChild(summaryItem);
-                });
-                
-                updateOrderSummary();
-            }
+                    </div>
+                `;
+            });
+            
+            cartItemsContainer.innerHTML = productsHTML;
+            updateOrderSummary();
         }
 
         // تحديث ملخص الطلب
         function updateOrderSummary() {
-            const subtotalElement = document.getElementById('subtotal');
-            const discountElement = document.getElementById('discount');
-            const shippingElement = document.getElementById('shipping');
-            const totalElement = document.getElementById('total');
-            
-            const subtotal = cart.reduce((total, item) => total + (parseFloat(item.price) * item.quantity), 0);
-            const discount = subtotal >= 200 ? subtotal * 0.1 : 0;
-            
-            let additionalDiscount = 0;
-            if (discountApplied && discountCode === 'OMD90') {
-                additionalDiscount = subtotal * 0.9;
+            const finalTotal = subtotal - discountAmount + shippingCost;
+            document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)} ر.س`;
+            document.getElementById('discount').textContent = `-${discountAmount.toFixed(2)} ر.س`;
+            document.getElementById('shipping').textContent = `${shippingCost.toFixed(2)} ر.س`;
+            document.getElementById('total').textContent = `${finalTotal.toFixed(2)} ر.س`;
+        }
+        
+        // ملء حقول النموذج ببيانات العميل المسترجعة
+        function populateCustomerFields() {
+            if (customerData) {
+                document.getElementById('email').value = customerData.email || '';
+                document.getElementById('phone').value = customerData.phone || '';
+                document.getElementById('first-name').value = customerData.firstName || '';
+                document.getElementById('last-name').value = customerData.lastName || '';
+                document.getElementById('address').value = customerData.address || '';
+                document.getElementById('city').value = customerData.city || '';
+                document.getElementById('postal-code').value = customerData.postalCode || '';
             }
-            
-            const totalDiscount = discount + additionalDiscount;
-            const shipping = subtotal >= 200 ? 0 : 15;
-            
-            const total = subtotal - totalDiscount + shipping;
-            
-            subtotalElement.textContent = subtotal.toFixed(0) + ' ر.س';
-            discountElement.textContent = totalDiscount > 0 ? '-' + totalDiscount.toFixed(0) + ' ر.س' : '0 ر.س';
-            shippingElement.textContent = shipping > 0 ? shipping.toFixed(0) + ' ر.س' : '0 ر.س';
-            totalElement.textContent = total.toFixed(0) + ' ر.س';
+        }
+
+        // تعطيل خيار بطاقات الائتمان
+        function disableCreditCardOption() {
+            const creditCardOption = document.querySelector('option[value="credit-card"]');
+            creditCardOption.disabled = true;
+            document.getElementById('credit-card-unavailable-message').style.display = 'block';
+            const paymentMethod = document.getElementById('payment-method');
+            if (paymentMethod.value === 'credit-card') {
+                paymentMethod.value = '';
+            }
+        }
+
+        // تهيئة إدخال رقم الهاتف
+        function initPhoneInput() {
+            const phoneInput = document.querySelector("#phone");
+            if(window.intlTelInput && phoneInput) {
+                const iti = window.intlTelInput(phoneInput, {
+                    initialCountry: "sa",
+                    separateDialCode: true,
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                });
+                
+                phoneInput.addEventListener('input', function() {
+                    if (iti.isValidNumber()) {
+                        phoneInput.setCustomValidity("");
+                    } else {
+                        phoneInput.setCustomValidity("يرجى إدخال رقم هاتف صحيح");
+                    }
+                });
+            }
         }
 
         // تطبيق كود الخصم
         function applyDiscount() {
-            const discountInput = document.getElementById('discount-code');
+            const discountCode = document.getElementById('discount-code').value.trim().toUpperCase();
             const discountSuccess = document.getElementById('discount-success');
             const discountError = document.getElementById('discount-error');
             
-            if (discountInput.value.toUpperCase() === 'OMD90') {
-                discountApplied = true;
-                discountCode = 'OMD90';
+            if (discountCode === 'OMD90') {
+                discountAmount = subtotal * 0.90; // خصم 90%
                 discountSuccess.style.display = 'block';
                 discountError.style.display = 'none';
                 updateOrderSummary();
-            } else {
-                discountApplied = false;
-                discountCode = '';
-                discountSuccess.style.display = 'none';
+            } else if (discountCode) {
+                discountAmount = 0;
                 discountError.style.display = 'block';
+                discountSuccess.style.display = 'none';
                 updateOrderSummary();
             }
         }
 
-        // التعرف على نوع البطاقة من الرقم
-        function detectCardType(cardNumber) {
-            const cardPatterns = {
-                visa: /^4/,
-                mastercard: /^(5[1-5]|2[2-7])/,
-                amex: /^3[47]/,
-                discover: /^6(?:011|5)/
-            };
+        // إتمام الطلب
+        function completeOrder(event) {
+            event.preventDefault();
             
-            for (const [type, pattern] of Object.entries(cardPatterns)) {
-                if (pattern.test(cardNumber)) {
-                    return type;
-                }
-            }
-            return 'unknown';
-        }
-
-        // تحديث أيقونة نوع البطاقة
-        function updateCardIcon(cardType) {
-            const cardIcon = document.getElementById('card-type-icon');
+            const form = document.getElementById('checkout-form');
+            const paymentMethod = document.getElementById('payment-method').value;
             
-            if (cardType === 'unknown' || !cardType) {
-                cardIcon.style.display = 'none';
+            if (!form.checkValidity()) {
+                form.reportValidity();
                 return;
             }
             
-            cardIcon.style.display = 'block';
-            
-            switch(cardType) {
-                case 'visa':
-                    cardIcon.style.backgroundColor = 'var(--card-visa)';
-                    cardIcon.innerHTML = '<i class="fab fa-cc-visa" style="color: white; font-size: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>';
-                    break;
-                case 'mastercard':
-                    cardIcon.style.backgroundColor = 'var(--card-mastercard)';
-                    cardIcon.innerHTML = '<i class="fab fa-cc-mastercard" style="color: white; font-size: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>';
-                    break;
-                case 'amex':
-                    cardIcon.style.backgroundColor = 'var(--card-amex)';
-                    cardIcon.innerHTML = '<i class="fab fa-cc-amex" style="color: white; font-size: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>';
-                    break;
-                case 'discover':
-                    cardIcon.style.backgroundColor = 'var(--card-discover)';
-                    cardIcon.innerHTML = '<i class="fab fa-cc-discover" style="color: white; font-size: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>';
-                    break;
-                default:
-                    cardIcon.style.display = 'none';
-            }
-        }
-
-        // تنسيق رقم البطاقة
-        function formatCardNumber(e) {
-            const cardNumber = e.target.value.replace(/\s/g, '');
-            const cardType = detectCardType(cardNumber);
-            updateCardIcon(cardType);
-            
-            if (e.inputType !== 'deleteContentBackward') {
-                const formattedCardNumber = cardNumber.replace(/(\d{4})/g, '$1 ').trim();
-                if (formattedCardNumber !== e.target.value) {
-                    e.target.value = formattedCardNumber;
-                }
-            }
-        }
-
-        // تنسيق تاريخ انتهاء البطاقة
-        function formatExpiryDate(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 2) {
-                value = value.substring(0, 2) + '/' + value.substring(2, 4);
-            }
-            e.target.value = value;
-        }
-
-        // إرسال البيانات إلى البريد الإلكتروني
-        function sendEmail(customerData) {
-            const emailBody = `
-                طلب جديد من متجر جمالك
-                ========================
-                
-                معلومات العميل:
-                - البريد الإلكتروني: ${customerData.email}
-                - رقم الهاتف: ${customerData.phone}
-                - الاسم الأول: ${customerData.firstName}
-                - اسم العائلة: ${customerData.lastName}
-                - العنوان: ${customerData.address}
-                - الشقة/المبنى: ${customerData.apartment || 'غير محدد'}
-                - المدينة: ${customerData.city}
-                - الرمز البريدي: ${customerData.postalCode}
-                
-                معلومات الدفع:
-                - طريقة الدفع: ${customerData.paymentMethod}
-                
-                ملخص الطلب:
-                - المجموع الجزئي: ${customerData.orderSummary.subtotal}
-                - الخصم: ${customerData.orderSummary.discount}
-                - الشحن: ${customerData.orderSummary.shipping}
-                - الإجمالي: ${customerData.orderSummary.total}
-                
-                المنتجات:
-                ${customerData.cart.map(item => `
-                  - ${item.name} (${item.quantity} × ${item.price} ر.س)
-                `).join('')}
-                
-                ملاحظات الطلب:
-                ${customerData.orderNotes || 'لا توجد ملاحظات'}
-            `;
-
-            Email.send({
-                SecureToken: "يمكنك إضافة التوكن الخاص بك هنا",
-                To: 'hysgksug@gmail.com',
-                From: 'noreply@jamalk.com',
-                Subject: 'طلب جديد من متجر جمالك - ' + customerData.firstName + ' ' + customerData.lastName,
-                Body: emailBody
-            }).then(
-                message => console.log('تم إرسال البريد بنجاح:', message)
-            ).catch(
-                error => console.error('خطأ في إرسال البريد:', error)
-            );
-        }
-
-        // إرسال النموذج
-        function submitForm(e) {
-            e.preventDefault();
-            
-            let isValid = true;
-            
-            const requiredFields = document.querySelectorAll('[required]');
-            requiredFields.forEach(field => {
-                field.classList.remove('invalid');
-                if (!field.value.trim()) {
-                    field.classList.add('invalid');
-                    isValid = false;
-                }
-            });
-            
-            const emailField = document.getElementById('email');
-            if (emailField) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(emailField.value)) {
-                    emailField.classList.add('invalid');
-                    isValid = false;
-                }
-            }
-            
-            const phoneField = document.getElementById('phone');
-            if (phoneField && phoneInput && !phoneInput.isValidNumber()) {
-                phoneField.classList.add('invalid');
-                isValid = false;
-            }
-            
-            if (!isValid) {
-                alert('يرجى ملء جميع الحقول الإلزامية بشكل صحيح');
+            if (paymentMethod === 'credit-card') {
+                alert('بطاقات الائتمان غير متاحة حالياً. يرجى اختيار طريقة دفع أخرى.');
                 return;
             }
             
-            const customerData = {
-                email: document.getElementById('email').value,
-                phone: phoneInput ? phoneInput.getNumber() : document.getElementById('phone').value,
-                firstName: document.getElementById('first-name').value,
-                lastName: document.getElementById('last-name').value,
-                address: document.getElementById('address').value,
-                apartment: document.getElementById('apartment').value,
-                city: document.getElementById('city').value,
-                postalCode: document.getElementById('postal-code').value,
-                paymentMethod: document.getElementById('payment-method').value,
-                orderNotes: document.getElementById('order-notes').value,
-                discountCode: discountCode,
-                discountApplied: discountApplied,
-                cart: cart,
-                orderSummary: {
-                    subtotal: document.getElementById('subtotal').textContent,
-                    discount: document.getElementById('discount').textContent,
-                    shipping: document.getElementById('shipping').textContent,
-                    total: document.getElementById('total').textContent
+            const redirectMessage = document.createElement('div');
+            redirectMessage.className = 'redirect-message';
+            redirectMessage.textContent = 'جاري تأكيد طلبك...';
+            document.body.appendChild(redirectMessage);
+            
+            setTimeout(() => {
+                redirectMessage.remove();
+                alert('تم إتمام الطلب بنجاح! سيتم توصيل طلبك خلال 2-3 أيام عمل.');
+                localStorage.removeItem('orderProducts');
+                localStorage.removeItem('customerData');
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+
+        // التمرير إلى قسم الدفع عند تحميل الصفحة
+        function scrollToPaymentSection() {
+            setTimeout(() => {
+                const paymentSection = document.getElementById('payment-section');
+                if (paymentSection) {
+                    paymentSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // إضافة تأثير بسيط للفت الانتباه
+                    paymentSection.style.transition = 'box-shadow 0.5s ease';
+                    paymentSection.style.boxShadow = '0 0 15px rgba(255, 107, 129, 0.5)';
+                    
+                    setTimeout(() => {
+                        paymentSection.style.boxShadow = 'var(--box-shadow)';
+                    }, 1500);
                 }
-            };
-            
-            sendEmail(customerData);
-            
-            localStorage.setItem('customerData', JSON.stringify(customerData));
-            
-            alert('تم تأكيد الدفع بنجاح! شكراً لشرائك من متجر جمالك');
-            
-            localStorage.removeItem('customerData');
-            localStorage.removeItem('jamalkCart');
-            
-            window.location.href = 'index.html';
+            }, 300); // تأخير بسيط لضمان تحميل الصفحة بالكامل
         }
 
         // تهيئة الصفحة عند التحميل
-        document.addEventListener('DOMContentLoaded', initializePage);
+        document.addEventListener('DOMContentLoaded', function() {
+            displayOrderProducts();
+            populateCustomerFields(); // <-- ملء بيانات العميل
+            disableCreditCardOption();
+            initPhoneInput();
+            
+            document.getElementById('apply-discount').addEventListener('click', applyDiscount);
+            document.getElementById('checkout-form').addEventListener('submit', completeOrder);
+            
+            const cartCount = orderProducts.reduce((total, product) => total + (product.quantity || 1), 0);
+            document.querySelector('.cart-count').textContent = cartCount;
+            
+            // التمرير إلى قسم الدفع عند تحميل الصفحة
+            scrollToPaymentSection();
+        });
     </script>
 </body>
 </html>
