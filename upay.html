@@ -1231,7 +1231,7 @@
             const discountError = document.getElementById('discount-error');
             
             if (discountCode === 'OMD90') {
-                discountAmount = subtotal * 0.90; // خصم 90%
+                discountAmount = subtotal * 0.9; // خصم 90%
                 discountSuccess.style.display = 'block';
                 discountError.style.display = 'none';
                 updateOrderSummary();
@@ -1267,10 +1267,9 @@
             
             setTimeout(() => {
                 redirectMessage.remove();
-                alert('تم إتمام الطلب بنجاح! سيتم توصيل طلبك خلال 2-3 أيام عمل.');
                 localStorage.removeItem('orderProducts');
                 localStorage.removeItem('customerData');
-                window.location.href = 'chk.html';
+                window.location.href = 'index.html';
             }, 2000);
         }
 
@@ -1314,4 +1313,3 @@
     </script>
 </body>
 </html>
-
