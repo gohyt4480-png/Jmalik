@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تم استلام طلبك - جمالك</title>
+    <title>شكرًا لطلبك - جمالك</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -12,14 +12,13 @@
         :root {
             --primary-color: #FFC1CC;
             --secondary-color: #D8B4E2;
-            --neutral-color: #FFF8F0;
             --button-color: #FF6B81;
-            --text-color: #4A4A4A;
-            --light-text: #ffffff;
             --dark-text: #333333;
-            --border-radius: 12px;
-            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --text-color: #4A4A4A;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
+            --border-color: #e8e8e8;
             --success-color: #4CAF50;
         }
 
@@ -39,259 +38,293 @@
             display: flex;
             flex-direction: column;
         }
-
+        
         a {
             text-decoration: none;
             color: inherit;
         }
 
+        ul {
+            list-style: none;
+        }
+
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1200px; /* عرض أوسع لاستيعاب الهيدر والفوتر */
             margin: 0 auto;
             padding: 0 15px;
         }
 
-        /* الهيدر المبسط */
+        /* --- الهيدر --- */
         header {
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .header-container {
+        .header-top {
+            background-color: #f8f8f8;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .header-top-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+        }
+
+        .header-top-left {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-top-right {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--button-color);
+            text-decoration: none;
         }
 
-        /* محتوى صفحة التأكيد */
-        .confirmation-section {
-            padding: 40px 0 60px;
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--button-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-icon {
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .header-icon:hover {
+            color: var(--button-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background-color: var(--button-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-btn {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background-color: #e55c71;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* --- محتوى الصفحة --- */
+        .thank-you-section {
+            padding: 60px 0;
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+        
+        .thank-you-container {
+             width: 100%;
+            max-width: 800px; /* عرض مناسب لبطاقة الشكر */
+            margin: 0 auto;
+        }
 
-        .confirmation-container {
+        .thank-you-card {
             background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 30px;
-            max-width: 600px;
-            width: 100%;
+            padding: 40px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            width: 100%;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success-color);
+            margin-bottom: 20px;
+            animation: pop 0.5s ease-out;
         }
 
-        .confirmation-icon {
-            width: 100px;
-            height: 100px;
-            background-color: var(--success-color);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 20px;
-            animation: scaleIn 0.5s ease-out;
+        @keyframes pop {
+            0% { transform: scale(0.5); opacity: 0; }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
         }
 
-        .confirmation-icon i {
-            font-size: 3.5rem;
-            color: white;
-        }
-
-        .confirmation-title {
+        .thank-you-title {
             font-size: 1.8rem;
             margin-bottom: 15px;
-            color: var(--success-color);
+            color: var(--dark-text);
         }
 
-        .confirmation-message {
+        .thank-you-message {
+            margin-bottom: 20px;
             font-size: 1.1rem;
-            margin-bottom: 25px;
-            color: var(--text-color);
+            color: #555;
         }
-
+        
         .order-details {
-            background-color: #f9f9f9;
-            border-radius: var(--border-radius);
-            padding: 20px;
-            margin-bottom: 25px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+            padding-top: 20px;
             text-align: right;
         }
-
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px dashed #e0e0e0;
+        
+        .order-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .detail-item {
+            margin-bottom: 10px;
+        }
+        
+        .detail-item strong {
+            display: inline-block;
+            width: 120px;
+            color: #333;
         }
 
-        .detail-row:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
+        .products-list {
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+        
+        .product-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .product-item:last-child {
             border-bottom: none;
         }
-
-        .detail-label {
-            font-weight: 500;
-            color: var(--text-color);
-        }
-
-        .detail-value {
-            font-weight: 700;
-            color: var(--button-color);
-        }
-
-        .order-number {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--button-color);
-            margin: 15px 0;
-        }
-
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
+        
+        .product-item img {
+            width: 60px;
+            height: 60px;
             border-radius: var(--border-radius);
-            font-weight: 600;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-name {
+            font-weight: 500;
+        }
+        
+        .product-quantity, .product-price {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .product-total-price {
+            font-weight: bold;
         }
 
-        .btn-primary {
+        .shop-now-btn {
             background-color: var(--button-color);
             color: white;
             border: none;
+            padding: 12px 35px;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
         }
 
-        .btn-primary:hover {
+        .shop-now-btn:hover {
             background-color: #e55c71;
             transform: translateY(-2px);
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--button-color);
-            border: 2px solid var(--button-color);
+        /* رسالة الخطأ */
+        .error-message {
+            color: var(--dark-text);
+            font-size: 1.2rem;
         }
 
-        .btn-secondary:hover {
-            background-color: rgba(255, 107, 129, 0.1);
-        }
-
-        .decoration-top {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, transparent 70%);
-            border-radius: 0 0 0 100%;
-            z-index: 0;
-            opacity: 0.3;
-        }
-
-        .decoration-bottom {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(315deg, var(--secondary-color) 0%, transparent 70%);
-            border-radius: 100% 0 0 0;
-            z-index: 0;
-            opacity: 0.3;
-        }
-
-        /* رسالة التقدير */
-        .appreciation {
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid #eee;
-            font-style: italic;
-            color: var(--text-color);
-        }
-
-        /* تأثيرات الحركة */
-        @keyframes scaleIn {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            80% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.6s;
-        }
-
-        /* الفوتر */
+        /* --- الفوتر --- */
         footer {
             background-color: #2c2c2c;
             color: #f1f1f1;
-            padding: 40px 0 20px;
-            margin-top: auto;
+            padding: 60px 0 20px;
+            margin-top: auto; /* لدفع الفوتر لأسفل الصفحة */
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-column h4 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
             color: white;
@@ -302,13 +335,13 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 30px;
+            width: 40px;
             height: 2px;
             background-color: var(--button-color);
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
@@ -323,20 +356,20 @@
 
         .social-icons {
             display: flex;
-            gap: 12px;
-            margin-top: 15px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .social-icon {
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             background-color: #444;
             border-radius: 50%;
             color: white;
-            font-size: 1rem;
+            font-size: 1.2rem;
             transition: var(--transition);
         }
 
@@ -347,167 +380,272 @@
 
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid #444;
             font-size: 0.9rem;
             color: #999;
         }
-
-        /* التجاوب مع الشاشات المختلفة */
+        
+        /* --- التجاوب مع الشاشات --- */
         @media (max-width: 768px) {
-            .confirmation-container {
-                padding: 25px 20px;
-                margin: 0 15px;
-            }
-            
-            .confirmation-icon {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .confirmation-icon i {
-                font-size: 2.8rem;
-            }
-            
-            .confirmation-title {
-                font-size: 1.5rem;
-            }
-            
-            .confirmation-message {
-                font-size: 1rem;
-            }
-            
-            .order-number {
-                font-size: 1.2rem;
-            }
-            
-            .action-buttons {
+            .header-top-container {
                 flex-direction: column;
+                gap: 10px;
             }
             
-            .btn {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: white;
                 width: 100%;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
             }
-            
-            .decoration-top, .decoration-bottom {
-                width: 100px;
-                height: 100px;
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
             }
         }
-
-        @media (max-width: 480px) {
-            .logo {
+        
+        @media (max-width: 576px) {
+            .thank-you-card {
+                padding: 20px;
+            }
+            .thank-you-title {
                 font-size: 1.5rem;
             }
-            
-            .confirmation-section {
-                padding: 30px 0 40px;
+            .detail-item strong {
+                display: block;
+                width: auto;
+                margin-bottom: 3px;
             }
-            
-            .detail-row {
-                flex-direction: column;
-                gap: 5px;
+            .header-main-container {
+                flex-wrap: wrap;
+                gap: 15px;
             }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .footer-column h4::after {
-                right: 50%;
-                transform: translateX(50%);
-            }
-            
-            .social-icons {
-                justify-content: center;
+            .logo {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container header-container">
-            <div class="logo">جمالك</div>
+        <div class="header-top">
+            <div class="container header-top-container">
+                <div class="header-top-left">
+                    <span><i class="fas fa-truck"></i> توصيل مجاني للطلبات فوق 200 ر.س</span>
+                </div>
+                <div class="header-top-right">
+                    <span><i class="fas fa-phone"></i> 800-12345</span>
+                    <span><i class="fas fa-envelope"></i> info@jamalk.com</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container header-main-container">
+            <a href="index.html" class="logo">جمالك</a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="categories.html">منتجاتنا</a></li>
+                <li><a href="makeup.html">مكياج</a></li>
+                <li><a href="under-99.html">أقل من 99 ريال</a></li>
+                <li><a href="#">الاشتراك</a></li>
+                <li><a href="categories.html">عروض خاصة</a></li>
+                <li><a href="#">مدونة الجمال</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <a href="#" class="header-icon">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="#" class="header-icon">
+                    <i class="far fa-heart"></i>
+                </a>
+                <a href="sk.html" class="header-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="login-btn">تسجيل دخول</button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="confirmation-section">
-        <div class="container">
-            <div class="confirmation-container">
-                <div class="decoration-top"></div>
-                <div class="decoration-bottom"></div>
-                
-                <div class="confirmation-icon">
-                    <i class="fas fa-check"></i>
+    <section class="thank-you-section">
+        <div class="thank-you-container">
+            <div class="thank-you-card" id="thank-you-container">
                 </div>
-                
-                <h1 class="confirmation-title animate-up">تم استلام طلبك بنجاح!</h1>
-                
-                <p class="confirmation-message animate-up delay-1">
-                    نشكرك على ثقتك بمتجر جمالك. تم تأكيد طلبك وسيتم تجهيزه فوراً.
-                </p>
-                
-                <div class="order-number animate-up delay-1">رقم الطلب: #JM2025001</div>
-                
-                </div>
-                
-                <div class="action-buttons animate-up delay-3">
-                    <a href="index.html" class="btn btn-primary">مواصلة التسوق</a>
-                    <a href="#" class="btn btn-secondary">تتبع طلبي</a>
-                </div>
-                
-                <p class="appreciation animate-up delay-3">
-                    نقدّر ثقتك بنا ونتطلع لخدمتك مرة أخرى ❤️
-                </p>
-            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h4>عن المتجر</h4>
-                    <p>متجرنا يقدم أجود منتجات التجميل والعناية بالبشرة والشعر مع ضمان الجودة والخدمة المتميزة.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>روابط سريعة</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">تتبع الطلب</a></li>
-                        <li><a href="#">الاشتراك</a></li>
-                        <li><a href="#">اتصل بنا</a></li>
-                        <li><a href="#">الأسئلة الشائعة</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>المساعدة</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">شروط الاستخدام</a></li>
-                        <li><a href="#">سياسة الخصوصية</a></li>
-                        <li><a href="#">سياسة الإرجاع</a></li>
-                        <li><a href="#">طرق الدفع</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© 2025 جمالك. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
+          <div class="footer-content">
+              <div class="footer-column">
+                  <h4>عن المتجر</h4>
+                  <p>متجرنا يقدم أجود منتجات التجميل والعناية بالبشرة والشعر مع ضمان الجودة والخدمة المتميزة.</p>
+                  <div class="social-icons">
+                      <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                      <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                      <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                  </div>
+              </div>
+              
+              <div class="footer-column">
+                  <h4>روابط سريعة</h4>
+                  <ul class="footer-links">
+                      <li><a href="#">تتبع الطلب</a></li>
+                      <li><a href="#">الاشتراك</a></li>
+                      <li><a href="#">اتصل بنا</a></li>
+                      <li><a href="#">الأسئلة الشائعة</a></li>
+                  </ul>
+              </div>
+              
+              <div class="footer-column">
+                  <h4>المساعدة</h4>
+                  <ul class="footer-links">
+                      <li><a href="#">شروط الاستخدام</a></li>
+                      <li><a href="#">سياسة الخصوصية</a></li>
+                      <li><a href="#">سياسة الإرجاع</a></li>
+                      <li><a href="#">طرق الدفع</a></li>
+                  </ul>
+              </div>
+              
+              <div class="footer-column">
+                  <h4>القائمة البريدية</h4>
+                  <p>اشتركي في نشرتنا البريدية لتصلك آخر العروض والأخبار</p>
+                  <form>
+                      <input type="email" placeholder="بريدك الإلكتروني" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: var(--border-radius); border: none;">
+                      <button type="submit" class="subscribe-btn" style="width: 100%; padding: 10px; background-color: var(--button-color); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">اشتراك</button>
+                  </form>
+              </div>
+          </div>
+          
+          <div class="footer-bottom">
+              <p>© 2025 جمالك. جميع الحقوق محفوظة.</p>
+          </div>
+      </div>
     </footer>
 
     <script>
-        // إضافة تأثيرات ظهور عند تحميل الصفحة
         document.addEventListener('DOMContentLoaded', function() {
-            // يمكن إضافة أي تفاعلات إضافية هنا إذا لزم الأمر
+            // --- [إضافة جديدة] تشغيل قائمة الهامبرغر ---
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                 hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+           
+            // --- الكود الأصلي لصفحة الشكر ---
+            const thankYouContainer = document.getElementById('thank-you-container');
+
+            // قراءة البيانات من localStorage
+            const customerDataJSON = localStorage.getItem('customerData');
+            const orderedProductsJSON = localStorage.getItem('orderProducts');
+
+            if (!customerDataJSON || !orderedProductsJSON) {
+                // عرض رسالة في حال عدم وجود بيانات
+                thankYouContainer.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: #ddd; margin-bottom: 20px;"></i>
+                        <h2>لا توجد تفاصيل طلب لعرضها</h2>
+                        <p>يبدو أنك وصلت إلى هذه الصفحة مباشرة.</p>
+                        <a href="index.html" class="shop-now-btn">العودة للرئيسية</a>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                const customerData = JSON.parse(customerDataJSON);
+                const orderedProducts = JSON.parse(orderedProductsJSON);
+
+                // إنشاء رقم طلب عشوائي
+                const orderNumber = `JM-${Math.floor(Date.now() / 1000)}`;
+
+                // حساب المجموع
+                const subtotal = orderedProducts.reduce((total, item) => total + (parseFloat(item.price || 0) * (item.quantity || 1)), 0);
+
+                // بناء قائمة المنتجات
+                let productsHTML = '<div class="products-list">';
+                orderedProducts.forEach(item => {
+                    const itemTotalPrice = (parseFloat(item.price || 0) * (item.quantity || 1)).toFixed(2);
+                    productsHTML += `
+                        <div class="product-item">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div class="product-info">
+                                <div class="product-name">${item.name}</div>
+                                <div class="product-quantity">الكمية: ${item.quantity || 1}</div>
+                            </div>
+                            <div class="product-total-price">${itemTotalPrice} ر.س</div>
+                        </div>
+                    `;
+                });
+                productsHTML += '</div>';
+
+                // بناء HTML النهائي للصفحة
+                thankYouContainer.innerHTML = `
+                    <i class="fas fa-check-circle success-icon"></i>
+                    <h1 class="thank-you-title">شكرًا لكِ، <span id="customer-name">${customerData.firstName}</span>!</h1>
+                    <p class="thank-you-message">لقد تم استلام طلبك بنجاح. سيتم التواصل معك قريبًا لتأكيد تفاصيل الشحن.</p>
+                    
+                    <div class="order-details">
+                        <h3>تفاصيل طلبك</h3>
+                        <div class="detail-item">
+                            <strong>رقم الطلب:</strong>
+                            <span id="order-number">${orderNumber}</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>البريد الإلكتروني:</strong>
+                            <span id="customer-email">${customerData.email}</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>عنوان الشحن:</strong>
+                            <span id="shipping-address">${customerData.address}, ${customerData.city}</span>
+                        </div>
+                        
+                        ${productsHTML}
+                        
+                        <div style="text-align: left; margin-top: 20px; font-size: 1.2rem; font-weight: bold;">
+                           المجموع الإجمالي: ${subtotal.toFixed(2)} ر.س
+                        </div>
+                    </div>
+
+                    <a href="index.html" class="shop-now-btn">متابعة التسوق</a>
+                `;
+
+                // ✨ اختياري: مسح البيانات بعد عرضها لمنع ظهورها مرة أخرى عند تحديث الصفحة
+                localStorage.removeItem('customerData');
+                localStorage.removeItem('orderProducts');
+
+            } catch (error) {
+                console.error("خطأ في تحليل بيانات الطلب:", error);
+                thankYouContainer.innerHTML = `
+                    <div class="error-message">
+                        <h2>حدث خطأ أثناء عرض تفاصيل الطلب</h2>
+                        <a href="index.html" class="shop-now-btn">العودة للرئيسية</a>
+                    </div>
+                `;
+            }
         });
     </script>
 </body>
