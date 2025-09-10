@@ -712,7 +712,7 @@
             font-weight: 500;
         }
 
-        /* التجاوب مع الشاشات المختلفة */
+        /* ===== التجاوب مع الشاشات المختلفة ===== */
         @media (max-width: 992px) {
             .nav-menu {
                 gap: 15px;
@@ -779,10 +779,12 @@
                 font-size: 1rem;
             }
             
+            /* ======== التعديل المطلوب ======== */
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 20px;
+                grid-template-columns: repeat(2, 1fr); /* عرض المنتجات في عمودين */
+                gap: 15px; /* تقليل المسافة بين المنتجات */
             }
+            /* ======== نهاية التعديل ======== */
             
             .categories-title {
                 font-size: 1.6rem;
@@ -820,20 +822,40 @@
                 font-size: 1.5rem;
             }
             
+            /* ======== التعديلات المطلوبة ======== */
+            .hero {
+                padding: 60px 0; /* تقليل المساحة العلوية والسفلية */
+            }
+
+            .products-section {
+                padding: 40px 0; /* تقليل المساحة العلوية والسفلية */
+            }
+
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 1.8rem; /* حجم متناسق */
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem; /* حجم متناسق */
+                margin-bottom: 30px; /* تقليل المسافة السفلية */
             }
-            
-            .subscription-card {
-                padding: 25px;
+
+            .categories-title {
+                font-size: 1.5rem; /* حجم متناسق */
+                margin-bottom: 25px;
             }
             
             .subscription-card h3 {
-                font-size: 1.6rem;
+                font-size: 1.5rem; /* حجم متناسق */
+            }
+
+            .product-title-detail {
+                font-size: 1.7rem; /* تنسيق حجم عنوان صفحة المنتج */
+            }
+            /* ======== نهاية التعديلات ======== */
+            
+            .subscription-card {
+                padding: 25px;
             }
             
             .footer-content {
@@ -852,11 +874,6 @@
             
             .categories-section {
                 padding: 30px 0;
-            }
-            
-            .categories-title {
-                font-size: 1.4rem;
-                margin-bottom: 20px;
             }
             
             .categories-container {
@@ -1926,4 +1943,5 @@
         });
     </script>
 </body>
+
 </html>
