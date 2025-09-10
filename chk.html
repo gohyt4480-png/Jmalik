@@ -546,7 +546,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- [إضافة جديدة] تشغيل قائمة الهامبرغر ---
+            // تشغيل قائمة الهامبرغر
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             if (hamburger && navMenu) {
@@ -555,20 +555,19 @@
                 });
             }
            
-            // --- الكود الأصلي لصفحة الشكر ---
+            // --- الكود الجديد والمصحح لعرض تفاصيل الطلب ---
             const thankYouContainer = document.getElementById('thank-you-container');
 
-            // قراءة البيانات من localStorage
-            const customerDataJSON = localStorage.getItem('customerData');
-            const orderedProductsJSON = localStorage.getItem('orderProducts');
+            // قراءة البيانات المجمعة من localStorage
+            const orderDetailsJSON = localStorage.getItem('orderDetailsForConfirmation');
 
-            if (!customerDataJSON || !orderedProductsJSON) {
+            if (!orderDetailsJSON) {
                 // عرض رسالة في حال عدم وجود بيانات
                 thankYouContainer.innerHTML = `
                     <div class="error-message">
                         <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: #ddd; margin-bottom: 20px;"></i>
                         <h2>لا توجد تفاصيل طلب لعرضها</h2>
-                        <p>يبدو أنك وصلت إلى هذه الصفحة مباشرة.</p>
+                        <p>ربما وصلت إلى هذه الصفحة مباشرة أو تم تحديثها.</p>
                         <a href="index.html" class="shop-now-btn">العودة للرئيسية</a>
                     </div>
                 `;
@@ -576,22 +575,23 @@
             }
 
             try {
-                const customerData = JSON.parse(customerDataJSON);
-                const orderedProducts = JSON.parse(orderedProductsJSON);
+                // تحويل النص إلى كائن
+                const orderDetails = JSON.parse(orderDetailsJSON);
+                const customer = orderDetails.customer;
+                const shipping = orderDetails.shippingAddress;
+                const summary = orderDetails.orderSummary;
+                const items = orderDetails.items;
 
                 // إنشاء رقم طلب عشوائي
                 const orderNumber = `JM-${Math.floor(Date.now() / 1000)}`;
 
-                // حساب المجموع
-                const subtotal = orderedProducts.reduce((total, item) => total + (parseFloat(item.price || 0) * (item.quantity || 1)), 0);
-
-                // بناء قائمة المنتجات
+                // بناء قائمة المنتجات من البيانات الجديدة
                 let productsHTML = '<div class="products-list">';
-                orderedProducts.forEach(item => {
+                items.forEach(item => {
                     const itemTotalPrice = (parseFloat(item.price || 0) * (item.quantity || 1)).toFixed(2);
                     productsHTML += `
                         <div class="product-item">
-                            <img src="${item.image}" alt="${item.name}">
+                            <img src="${item.image || 'https://via.placeholder.com/60'}" alt="${item.name}">
                             <div class="product-info">
                                 <div class="product-name">${item.name}</div>
                                 <div class="product-quantity">الكمية: ${item.quantity || 1}</div>
@@ -602,40 +602,39 @@
                 });
                 productsHTML += '</div>';
 
-                // بناء HTML النهائي للصفحة
+                // بناء HTML النهائي للصفحة باستخدام البيانات الجديدة
                 thankYouContainer.innerHTML = `
                     <i class="fas fa-check-circle success-icon"></i>
-                    <h1 class="thank-you-title">شكرًا لكِ، <span id="customer-name">${customerData.firstName}</span>!</h1>
+                    <h1 class="thank-you-title">شكرًا لكِ، <span>${customer.firstName}</span>!</h1>
                     <p class="thank-you-message">لقد تم استلام طلبك بنجاح. سيتم التواصل معك قريبًا لتأكيد تفاصيل الشحن.</p>
                     
                     <div class="order-details">
                         <h3>تفاصيل طلبك</h3>
                         <div class="detail-item">
                             <strong>رقم الطلب:</strong>
-                            <span id="order-number">${orderNumber}</span>
+                            <span>${orderNumber}</span>
                         </div>
                         <div class="detail-item">
                             <strong>البريد الإلكتروني:</strong>
-                            <span id="customer-email">${customerData.email}</span>
+                            <span>${customer.email}</span>
                         </div>
                         <div class="detail-item">
                             <strong>عنوان الشحن:</strong>
-                            <span id="shipping-address">${customerData.address}, ${customerData.city}</span>
+                            <span>${shipping.address}, ${shipping.city}</span>
                         </div>
                         
                         ${productsHTML}
                         
                         <div style="text-align: left; margin-top: 20px; font-size: 1.2rem; font-weight: bold;">
-                           المجموع الإجمالي: ${subtotal.toFixed(2)} ر.س
+                           المجموع الإجمالي: ${summary.total}
                         </div>
                     </div>
 
                     <a href="index.html" class="shop-now-btn">متابعة التسوق</a>
                 `;
 
-                // ✨ اختياري: مسح البيانات بعد عرضها لمنع ظهورها مرة أخرى عند تحديث الصفحة
-                localStorage.removeItem('customerData');
-                localStorage.removeItem('orderProducts');
+                // مسح البيانات بعد عرضها لمنع ظهورها مرة أخرى عند تحديث الصفحة
+                localStorage.removeItem('orderDetailsForConfirmation');
 
             } catch (error) {
                 console.error("خطأ في تحليل بيانات الطلب:", error);
