@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -1586,7 +1587,7 @@
             const subtotal = cart.reduce((total, item) => total + (parseFloat(item.price || 0) * (item.quantity || 1)), 0);
             let totalDiscount = 0;
             if (discountApplied && discountCode === 'OMD90') {
-                totalDiscount = subtotal * 0.9;
+                totalDiscount = subtotal * 0.01;
             }
             const shipping = subtotal > 0 && subtotal < 200 ? 15 : 0;
             const paymentMethod = document.getElementById('payment-method');
