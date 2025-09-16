@@ -1164,464 +1164,589 @@
     <script>
         // بيانات المنتجات (يمكن استبدالها ببيانات حقيقية لاحقاً)
         const products = [
-            {
-                id: 1,
-                name: "شارلوت تلبوري",
-                price: "85 ر.س",
-                originalPrice: "200 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z89832513223E67B4B8B0Z/45/1750680489/99538b85-8999-4b16-8284-9e40662de637.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "منتج مكياج فاخر من شارلوت تلبوري يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/Z89832513223E67B4B8B0Z/45/1750680489/99538b85-8999-4b16-8284-9e40662de637.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZE594A171AEE2479A3978Z/45/1750680429/8390898e-1bf6-4748-a966-7c45379f845e.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZE594A171AEE2479A3978Z/45/1750680440/61a12eb7-dde9-4db2-a77f-f6a69b5f7532.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZE594A171AEE2479A3978Z/45/1750680450/317ec80d-7748-4adb-b1f6-c9f0afe35dae.jpg?format=webp&width=800"
-                ],
-                colors: ["أحمر"],
-                sizes: ["صغير", "وسط", "كبير"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "شارلوت تلبوري",
-                    "اللون": "وردي",
-                    "الحجم": "وسط",
-                    "المكونات": "مكونات طبيعية 100%",
-                    "الاستخدام": "للوجه والشفاه",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },  {
-                id: 2,
-                name: "باليت ظلال عيون فلورمار - 003 صن سيت",
-                price: "49 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1738048155/9fe32a96-ed68-4c13-8b08-07082bf53ba6.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "منتج مكياج فاخر من فلومورا يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1738048155/9fe32a96-ed68-4c13-8b08-07082bf53ba6.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1715073416/b8b71637-7c91-4605-84d9-aede34ef6673.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1715073427/c7ecc672-392e-47a9-8b05-f45dab064067.jpg?format=webp&width=800"
-                ],
-                colors: ["SUNSET"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "فلورمار",
-                    "اللون": "SUNSET",
-                    "الحجم": "وسط",
-                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },    {
-                id: 3,
-                name: "أحمر شفاه مطفي انجلوت",
-                price: "70 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z373CA02F50FA004A60E7Z/45/1752735754/a0da7a4a-37d1-495f-9a78-95f8c4042576.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "منتج مكياج فاخر من انجلوت يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/Z373CA02F50FA004A60E7Z/45/1752735754/a0da7a4a-37d1-495f-9a78-95f8c4042576.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z373CA02F50FA004A60E7Z/45/1752735764/2095c1b1-900e-4ca5-b9a6-171b7c2ed213.jpg?format=webp&width=800"                ],
-                colors: [" بني مطفي"],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "انجلوت",
-                    "اللون": "مطفي",
-                    "الحجم": "وسط",
-                    "المكونات": "مكونات طبيعية 100%",
-                    "الاستخدام": "للوجه والشفاه",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },  {
-                id: 4,
-                name: "ملمع الشفاه والخدود بيلو توك - كولور اوف باشن",
-                price: "190 ر.س",
-                originalPrice: "200 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220113/db206c02-7aa9-4c61-a0fa-baf8ab3516f2.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "منتج مكياج فاخر من شارلوت تلبوري يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220113/db206c02-7aa9-4c61-a0fa-baf8ab3516f2.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220153/4c76125c-1932-4860-a773-126ae231700c.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220129/876bf4d7-30cc-4774-bac6-2136f1b88f2f.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1702424689/2ba6e6eb-70bb-4fb6-a50c-dc407f0e543f.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220190/0799413e-c786-4218-9854-2ab4dd2de84f.jpg?format=webp&width=800"
-                ],
-                colors: ["روز جولد"],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "شارلوت تلبوري",
-                    "اللون": "روز جولد",
-                    "الحجم": "وسط",
-                    "المكونات": "مكونات طبيعية 100%",
-                    "الاستخدام": "للوجه والشفاه",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },    {
-                id: 2,
-                name: "ريتوالز",
-                price: "149 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z996CB88C56F16EE1A15DZ/45/1750219901/f05c3825-1a53-4597-96b1-8806fef43b8a.jpg?format=webp&width=800",
-                badges: ["new"],
-                category: "العناية بالبشرة",
-                description: "مجموعة هدايا ريتشوالز ساكورا المتوسطة 2025 من ريتوالز تحتوي على منتجات طبيعية 100% تغذي بشرتك وتجعلها أكثر نضارة وإشراقاً.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z996CB88C56F16EE1A15DZ/45/1750219901/f05c3825-1a53-4597-96b1-8806fef43b8a.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z996CB88C56F16EE1A15DZ/45/1750219911/7c03a25c-744d-4c45-ab31-e74d594f42ca.jpg?format=webp&width=800"                ],
-                colors: ["أبيض", "وردي", "احمر"],
-                sizes: ["100 مل"],
-                details: {
-                    "النوع": "عناية بالبشرة",
-                    "العلامة التجارية": "ريتوالز",
-                    "اللون": "أبيض",
-                    "الحجم": "100 مل",
-                    "المكونات": "مكونات طبيعية 100%",
-                    "الاستخدام": "للوجه والجسم",
-                    "مدة الصلاحية": "36 شهر"
-                }
-            },
+  {
+    "id": 1,
+    "name": "شارلوت تلبوري",
+    "price": "85 ر.س",
+    "originalPrice": "200 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z89832513223E67B4B8B0Z/45/1750680489/99538b85-8999-4b16-8284-9e40662de637.jpg?format=webp&width=800",
+    "badges": ["fast-delivery"],
+    "category": "مكياج",
+    "description": "استمتعي بجمال ساحر وإطلالة لا تُنسى مع منتج المكياج الفاخر من شارلوت تلبوري. بتركيبة فريدة تمنحك تغطية مثالية تدوم طوال اليوم دون أن تثقل بشرتك، هذا المنتج هو الحل الأمثل لإطلالة طبيعية ومشرقة. مناسب لجميع أنواع البشرة، حيث يمنحها ترطيبًا ونعومة، ويخفي العيوب والشوائب بفعالية.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z89832513223E67B4B8B0Z/45/1750680489/99538b85-8999-4b16-8284-9e40662de637.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZE594A171AEE2479A3978Z/45/1750680429/8390898e-1bf6-4748-a966-7c45379f845e.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZE594A171AEE2479A3978Z/45/1750680440/61a12eb7-dde9-4db2-a77f-f6a69b5f7532.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZE594A171AEE2479A3978Z/45/1750680450/317ec80d-7748-4adb-b1f6-c9f0afe35dae.jpg?format=webp&width=800"
+    ],
+    "colors": ["وردي", "أحمر", "بيج", "برونزي", "ذهبي"],
+    "sizes": ["صغير (5 جم)", "وسط (10 جم)", "كبير (15 جم)"],
+    "details": {
+      "النوع": "مكياج فاخر متعدد الاستخدامات (للشفاه والخدود)",
+      "العلامة التجارية": "شارلوت تلبوري",
+      "اسم المنتج": "أحمر خدود وشفاه سائل بيلو توك",
+      "اللون": "وردي طبيعي",
+      "الحجم": "10 جم (وسط)",
+      "المكونات": "مكونات طبيعية 100%، غني بزبدة الشيا وزيت اللوز الحلو",
+      "الاستخدام": "يُستخدم لإضافة لون طبيعي للخدود وتحديد الشفاه.",
+      "ميزة إضافية": "تركيبة مقاومة للماء تدوم حتى 12 ساعة، خالي من البارابين",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "إيطاليا"
+    }
+  },
+  {
+    "id": 2,
+    "name": "باليت ظلال عيون فلورمار - 003 صن سيت",
+    "price": "49 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1738048155/9fe32a96-ed68-4c13-8b08-07082bf53ba6.jpg?format=webp&width=800",
+    "badges": ["fast-delivery"],
+    "category": "مكياج",
+    "description": "اكتشفي عالمًا من الألوان الدافئة والمشرقة مع باليت ظلال العيون 'صن سيت' من فلورمار. هذه الباليت المصممة خصيصًا لتمنحك إطلالة عصرية وجذابة مستوحاة من ألوان الغروب الساحرة. تحتوي على مجموعة من الألوان الغنية بالصبغات، بتركيبة ناعمة وسهلة الدمج تمنحك إطلالة احترافية تدوم طويلًا دون تكتل.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1738048155/9fe32a96-ed68-4c13-8b08-07082bf53ba6.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1715073416/b8b71637-7c91-4605-84d9-aede34ef6673.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z42AFDE8EA99AFFD15A76Z/45/_/1715073427/c7ecc672-392e-47a9-8b05-f45dab064067.jpg?format=webp&width=800"
+    ],
+    "colors": ["مجموعة ألوان صن سيت (برتقالي، وردي، بني، ذهبي)"],
+    "sizes": ["حجم كامل (12.5 جم)"],
+    "details": {
+      "النوع": "باليت ظلال عيون",
+      "العلامة التجارية": "فلورمار",
+      "اسم المنتج": "باليت ظلال عيون فلورمار - 003 صن سيت",
+      "مجموعة الألوان": "صن سيت (درجات البني والبرتقالي والذهبي)",
+      "الحجم": "12.5 جم",
+      "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
+      "المكونات": "تركيبة غنية بالصبغات، خالية من البارابين، ومختبرة من قبل أطباء الجلدية.",
+      "الاستخدام": "يُستخدم لإضافة لمسة جمالية لمكياج العيون. مناسب للاستخدام اليومي والمناسبات.",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "تركيا"
+    }
+  },
+  {
+    "id": 3,
+    "name": "أحمر شفاه مطفي انجلوت",
+    "price": "70 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z373CA02F50FA004A60E7Z/45/1752735754/a0da7a4a-37d1-495f-9a78-95f8c4042576.jpg?format=webp&width=800",
+    "badges": ["fast-delivery"],
+    "category": "مكياج",
+    "description": "اجعلي شفاهكِ محط الأنظار مع أحمر الشفاه المطفي من انجلوت. بتركيبته الغنية التي تمنح لونًا عميقًا ومطفيًا يدوم طويلًا دون أن يجفف الشفاه. يتميز بقوام كريمي ناعم ينساب بسهولة ليمنحك تغطية كاملة من أول لمسة. مثالي لإطلالة جريئة وعصرية.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z373CA02F50FA004A60E7Z/45/1752735754/a0da7a4a-37d1-495f-9a78-95f8c4042576.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z373CA02F50FA004A60E7Z/45/1752735764/2095c1b1-900e-4ca5-b9a6-171b7c2ed213.jpg?format=webp&width=800"
+    ],
+    "colors": ["بني مطفي", "وردي", "أحمر", "مشمشي"],
+    "sizes": ["حجم كامل (4.5 جم)"],
+    "details": {
+      "النوع": "أحمر شفاه مطفي",
+      "العلامة التجارية": "انجلوت",
+      "اسم المنتج": "أحمر شفاه مطفي رقم 222",
+      "اللون": "بني مطفي",
+      "الحجم": "4.5 جم",
+      "المكونات": "تركيبة غنية بفيتامين E، خالية من العطور والبارابين",
+      "الاستخدام": "للون الشفاه وتحديدها",
+      "ميزة إضافية": "يدوم طويلًا، مقاوم للتلطخ، لا يترك خطوطًا",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "بولندا"
+    }
+  },
+  {
+    "id": 4,
+    "name": "ملمع الشفاه والخدود بيلو توك - كولور اوف باشن",
+    "price": "190 ر.س",
+    "originalPrice": "200 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220113/db206c02-7aa9-4c61-a0fa-baf8ab3516f2.jpg?format=webp&width=800",
+    "badges": ["fast-delivery"],
+    "category": "مكياج",
+    "description": "اجمعي بين الجمال والعملية مع ملمع الشفاه والخدود 'بيلو توك' من شارلوت تلبوري. هذا المنتج متعدد الاستخدامات يمنحك لمسة من اللون المتألق على الشفاه والخدود. بفضل تركيبته الخفيفة والغير لزجة، يمكنك الحصول على إطلالة طبيعية ومشرقة تدوم لساعات طويلة، مما يجعله الخيار الأمثل للمكياج اليومي السريع.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220113/db206c02-7aa9-4c61-a0fa-baf8ab3516f2.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220153/4c76125c-1932-4860-a773-126ae231700c.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220129/876bf4d7-30cc-4774-bac6-2136f1b88f2f.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1702424689/2ba6e6eb-70bb-4fb6-a50c-dc407f0e543f.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z70800F1E6F75C7BD8E4BZ/45/_/1719220190/0799413e-c786-4218-9854-2ab4dd2de84f.jpg?format=webp&width=800"
+    ],
+    "colors": ["روز جولد", "وردي", "أحمر"],
+    "sizes": ["حجم كامل (10 مل)"],
+    "details": {
+      "النوع": "ملمع شفاه وخدود",
+      "العلامة التجارية": "شارلوت تلبوري",
+      "اسم المنتج": "ملمع الشفاه والخدود بيلو توك",
+      "اللون": "روز جولد",
+      "الحجم": "10 مل",
+      "المكونات": "مكونات طبيعية 100%، غني بالزيوت المرطبة",
+      "الاستخدام": "يُستخدم لإضافة إشراقة وتألق للشفاه والخدود",
+      "ميزة إضافية": "تركيبة خفيفة وسريعة الامتصاص، لا يترك ملمسًا لزجًا",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "إيطاليا"
+    }
+  },
+  {
+    "id": 5,
+    "name": "مجموعة هدايا ريتوالز ساكورا",
+    "price": "149 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z996CB88C56F16EE1A15DZ/45/1750219901/f05c3825-1a53-4597-96b1-8806fef43b8a.jpg?format=webp&width=800",
+    "badges": ["new"],
+    "category": "العناية بالبشرة",
+    "description": "اهدي من تحبين أو دللي نفسكِ مع مجموعة هدايا ريتوالز ساكورا المتوسطة. هذه المجموعة الفاخرة مستوحاة من طقوس الساكورا اليابانية، وتحتوي على منتجات طبيعية 100% غنية بخلاصة زهور الكرز وحليب الأرز العضوي. تعمل على تغذية بشرتك بعمق وتمنحها نعومة فائقة ورائحة عطرية آسرة تدوم طويلاً، مما يجعلها تجربة عناية متكاملة.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z996CB88C56F16EE1A15DZ/45/1750219901/f05c3825-1a53-4597-96b1-8806fef43b8a.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z996CB88C56F16EE1A15DZ/45/1750219911/7c03a25c-744d-4c45-ab31-e74d594f42ca.jpg?format=webp&width=800"
+    ],
+    "colors": ["أبيض", "وردي", "احمر"],
+    "sizes": ["مجموعة متوسطة (تتكون من 4 منتجات)"],
+    "details": {
+      "النوع": "مجموعة هدايا للعناية بالبشرة",
+      "العلامة التجارية": "ريتوالز",
+      "اسم المنتج": "مجموعة هدايا ذا ريتوال أوف ساكورا متوسطة",
+      "الحجم": "تتضمن رغوة استحمام (50 مل)، كريم جسم (70 مل)، مقشر جسم (75 جم)، وشمعة عطرية (25 جم).",
+      "المكونات الرئيسية": "خلاصة زهر الكرز وحليب الأرز العضوي",
+      "الاستخدام": "تستخدم للعناية الكاملة بالجسم، لتنظيف وترطيب وتنعيم البشرة.",
+      "ميزة إضافية": "صندوق هدايا فاخر، مناسب لجميع أنواع البشرة",
+      "مدة الصلاحية": "36 شهر بعد الفتح",
+      "بلد المنشأ": "هولندا"
+    }
+  }
+
         ];
 
         // منتجات جديدة
         const under99Products = [
-           {
-                id: 7,
-                name: "روتين كيراستاس غلوس أبسولو للشعر المقاوم للتجعد واللامع",
-                price: "99 ر.س",
-                originalPrice: "149 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z10FBBA650541BDD2C714Z/45/1750665260/4ea14a61-d31a-43d8-866c-66f9f335e7df.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "مجموعة جلوس أبسولو المضادة للتجعد، تتكون من هيدرا جليز باين، إنستا جليز فوندانت، وزيت جليز دروبس، للشعر الطويل المعرض للتجعد والذي يسعى للحصول على نعومة ولمعان",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/Z10FBBA650541BDD2C714Z/45/1750665260/4ea14a61-d31a-43d8-866c-66f9f335e7df.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z00D26CB125D09CA5CDAAZ/45/1748763509/1dc97fd3-a9a1-459e-a807-824fa7bb9634.jpg?format=webp&width=400",
-                    "https://f.nooncdn.com/p/pzsku/ZED21FD6BD8F336ABCCAEZ/45/1748763511/8401951e-a95b-4d1b-80a6-de31f23334f1.jpg?format=webp&width=400",
-                    "https://f.nooncdn.com/p/pzsku/Z1A29F858A70A11DD4529Z/45/1748763506/45621b5c-c269-4003-9f5d-72e7e2c8c260.jpg?format=webp&width=400"
-                ],
-                colors: ["وردي"],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "كيراستاس",
-                    "اللون": "وردي",
-                    "الحجم": "وسط",
-                    "يحتوي على": "كيراستاس غلوس أبسولو إنستا غلايز بلسم 250مل، كيراستاس غلوس أبسولو زيت غلايز دروبس 45مل، كيراستاس غلوس أبسولو هيدرا-غلايز شامبو 250مل"
-                }
-            }, {
-                id: 8,
-                name: "سيرافي غسول رغوي للبشرة ",
-                price: "69 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZA3AF224C252751BDA94FZ/45/1746747296/b04a99ba-07cf-4cff-97b7-17079dbbb028.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "العناية بالبشرة",
-                description: "يحتوي منظف الوجه فومينج من سيرافي على سيراميد وحمض الهيالورونيك ونياسيناميد للمساعدة في استعادة حاجز البشرة وجذب الترطيب وتهدئة البشرة. تم تطوير منظف الوجه الرغوي من سيرافي مع أطباء الجلد لتنظيف البشرة بعمق وإزالة الزيوت الزائدة وإنعاش البشرة دون الإفراط في تقشيرها أو تركها مشدودة وجافة. يحتوي على ثلاثة سيراميدات أساسية وحمض الهيالورونيك والنياسيناميد، هذا المنظف الرغوي الذي يعتمد على الجل هو وسيلة فعالة لكنها غير مزعجة لتنظيف البشرة العادية إلى الدهنية والعناية بها.",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/ZA3AF224C252751BDA94FZ/45/1746747296/b04a99ba-07cf-4cff-97b7-17079dbbb028.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZA3AF224C252751BDA94FZ/45/1746747296/3f14f341-5d1d-4772-b3ba-2726d4aca54d.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZA3AF224C252751BDA94FZ/45/1746747296/2a7b7d5f-b92f-4042-b777-b8b97875b2f5.jpg?format=webp&width=800"
-                ],
-                details: {
-                    "النوع": "عناية بالبشرة",
-                    "العلامة التجارية": "سيرافي",
-                    "الحجم": "كبير",
-                    "الاستخدام": "للوجه والبشرة",
-                    "مدة الصلاحية": "12 شهر"
-                }
-            },  {
-                id: 9,
-                name: "مجموعة ليه فيلفيت الثلاثية للشفاه",
-                price: "60 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZB0D2BED0F3650AF90AD1Z/45/_/1698935152/686e552c-d66d-4275-9c85-3ce60d4cb8bb.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "مجموعة روزج ايديشن فيلفيت من بورجوا تنساب كالهمسة الناعمة. بمجرد ان يجف اللون الغني المميز لن يتلطخ! ملمس مخملي يذوب على الشفاه ويمنحك احساس مريح. سوف تنسي انك تضعين احمر شفاه! اذا اردت الحصول على لون مطفي مكثف ولا يسبب الجفاف لشفاتك، روج ايديشن فيلفيت يمنحك احمر شفاه سائل يدوم طويلا واطلالة لا تقاوم. اداة استخدام ناعمة تمنحك الكمية المناسبة من اللون بدقة متناهية.",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/ZB0D2BED0F3650AF90AD1Z/45/_/1698935152/686e552c-d66d-4275-9c85-3ce60d4cb8bb.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZB0D2BED0F3650AF90AD1Z/45/_/1698935157/ee4e6281-8cb6-4da9-89e2-08fd19021e4d.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZB0D2BED0F3650AF90AD1Z/45/_/1698935156/48a91839-a15f-456b-bbea-21eeebc4e6b1.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZEDF72BBE976016BA3E5DZ/45/_/1719220185/0b853ba4-f600-49cb-8707-49a98c8e60b5.jpg?format=webp&width=400",
-                    "https://f.nooncdn.com/p/pzsku/ZB0D2BED0F3650AF90AD1Z/45/_/1702402928/ed891fac-ac00-4086-9909-2864ae0ef282.jpg?format=webp&width=800"
-                ],
-                colors: ["وردي،احمر،مطفي"],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "فيلفيت",
-                    "الحجم": "وسط",
-                    "المكونات": "مكونات طبيعية 100%",
-                    "الاستخدام": "للوجه والشفاه",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            }, {
-                id: 11,
-                name: "لوريال بروفيسيونيل | شامبو سكالب أدفانسد المنقّي لفروة الرأس ضدّ الدهن | لفروة الرأس الدهنية | سيري إكسبرت | 300 مل",
-                price: "70 ر.س",
-                originalPrice: "120 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZC91F0C2F6C66CE77E0D5Z/45/_/1733471335/969b40c7-1365-42cb-96d5-b6ed08c4a780.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "عناية بالصحة",
-                description: "تم تصميم شامبو ديرمو بيوريافاير المقاوم للزيوت لفروة الرأس وخصيصا الدهنية. ينقي هذا الجل خفيف الوزن فروة الرأس والألياف من الشوائب والعرق والزيوت لإحساس أكثر بالانتعاش والنظافة",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/ZC91F0C2F6C66CE77E0D5Z/45/_/1733471335/969b40c7-1365-42cb-96d5-b6ed08c4a780.jpg?format=webp&width=800"
-                ],
-                colors: [" ازرق"],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "عناية بالصحة",
-                    "العلامة التجارية": "لوريال بروفيسيونيل",
-                    "الحجم": "وسط",
-                    "الاستخدام": " الشعر وللوجه والجسم",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            }, {
-                id: 1,
-                name: "مجموعة K Nutritive Fondant Holidays 24",
-                price: "90 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1742453672/51dccc4f-08bb-4b31-a180-e9b3285bfefd.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "عناية بالشعر",
-                subcategory: "شعر",
-                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1742453672/51dccc4f-08bb-4b31-a180-e9b3285bfefd.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1741180879/c63e75f8-936a-4d53-a3dd-f0aa67c93e0b.jpg?format=webp&width=800"
-                ],
-                colors: ["شفاف"],
-                details: {
-                    "النوع": "عناية بالشعر",
-                    "العلامة التجارية": "كيراستاس",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للشعر",
-                }
-            },             {
-                id: 2,
-                name: "زيت وماسك أبسولوت ريبير",
-                price: "40 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371646/e8b527da-f2d5-46de-b97e-4eeffe82bfa2.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "عناية بالشعر",
-                subcategory: "شعر",
-                description: "This on-the-go Nutritive hair care discovery gift set for dry hair is ideal for all hair types, medium to thick.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371646/e8b527da-f2d5-46de-b97e-4eeffe82bfa2.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371753/7789f074-5c06-4b62-8bea-32f888de5504.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371755/b45ff766-bf78-4183-8a1d-0f5c6b123556.jpg?format=webp&width=800"
-                ],
-                colors: ["طبيعي"],
-                details: {
-                    "النوع": "عناية بالشعر",
-                    "العلامة التجارية": "لوريال بروفيسيونال",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للشعر",
-                }
-            },            {
-                id: 3,
-                name: "شامبو جينيسيس بين هيدرا فورتيفيانت - 250 مل",
-                price: "33 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1745570940/3b3c4f39-4e0e-464b-ba93-f44764f53f7f.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "عناية بالشعر",
-                subcategory: "شعر",
-                description: "شامبو جينيسيس بين هيدرا فورتيفيانت - 250 مل",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1745570940/3b3c4f39-4e0e-464b-ba93-f44764f53f7f.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1726036268/9af2de27-2c99-4703-be95-76cd30a9fa55.jpg?format=webp&width=800"
-                ],
-                colors: ["شفاف"],
-                details: {
-                    "النوع": "عناية بالشعر",
-                    "العلامة التجارية": "كيراستاس",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للشعر",
-                }
-            },{
-                id: 12,
-                name: "احمر شفاه انليميتد دبل تاتش - 104",
-                price: "49 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z0C4BE2F154A6FF7124E2Z/45/_/1719229978/0141a699-7571-4469-80fa-892677b35d85.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "احمر شفاه سائل ويدوم طويلًا في خطوتين: مزيج استثنائي من الالوان الاساسية وملمع الشفاه بنتيجة نهائية مشرقة ومكثفة. يثبت اللون على الشفاه لمنحك نتيجة تدوم حتى 12 ساعة.",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/Z0C4BE2F154A6FF7124E2Z/45/_/1719229978/0141a699-7571-4469-80fa-892677b35d85.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z0C4BE2F154A6FF7124E2Z/45/_/1719229978/c898f4ff-00fd-4624-b8d8-e3f853b1bdc7.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZACC93BCBA3C495A49583Z/45/_/1719229941/5d84822b-54ff-4c7a-8559-8fdb29dc466e.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZACC93BCBA3C495A49583Z/45/_/1719229943/44b3eac1-6c8e-4f1e-968d-b463fbfc4c28.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZBEF5A183CB4D010CDA0DZ/45/_/1719229993/d47d92c3-2716-454c-b31c-08ed17c3f501.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZBEF5A183CB4D010CDA0DZ/45/_/1719229994/5b4e8299-eec1-4adc-8c0a-eb63d274112a.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZD03368EE2CCC54C099FEZ/45/_/1719229942/b007fc41-7878-4fe6-a8dd-cc80167d4b3c.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZD03368EE2CCC54C099FEZ/45/_/1719230014/f2d15537-0395-42bd-ad83-dc51f5d27089.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZA4B56D9745B7B350145FZ/45/_/1719229921/93ddb7a2-c470-4546-89ac-d06c26ab0be2.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZA4B56D9745B7B350145FZ/45/_/1719229924/2a4ea29b-291d-42d5-9182-92e3bd7340bc.jpg?format=webp&width=800"
-                ],
-                colors: [,"احمر","ارجواني","وردي طبيعي","مطفي","وردي"],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "كيكو ميلانو",
-                    "الحجم": "وسط",
-                    "الاستخدام": " والشفاه",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            }, {
-                id: 13,
-                name: "سيروم فاست فيرنيس فيتامين سي 30 مل",
-                price: "30 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z9C907A4AF916FFBF390BZ/45/1746747863/e3b93572-5b6e-45cd-ad59-27997ecbdcb6.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "هل سئمتي من البشرة الباهتة والتصبغات والبقع الداكنة؟ جددي حيوية بشرتك واحصلي على بشرة مشرقة وخالية من البقع مع سيروم لايت كومبليت فيتامين سي بوستر الجديد من غارنييه، تركيبة غارنييه الأكثر تركيزًا لتقليل البقع. سيروم فيتامين سي بوستر هو سيروم للوجه غني بمضادات الأكسدة يضيء بشرتك من أول استخدام ويقلل من البقع الداكنة وعلامات حب الشباب في 3 أيام فقط. احصلي على نتائج سريعة وملموسة مع سيروم لايت كومبليت من غارنييه..",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/Z9C907A4AF916FFBF390BZ/45/1746747863/e3b93572-5b6e-45cd-ad59-27997ecbdcb6.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z9C907A4AF916FFBF390BZ/45/1746747864/a4086f27-760b-485a-8b4e-816dcdf1131c.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z9C907A4AF916FFBF390BZ/45/1746747866/6937093e-d2b2-43fb-82f6-f04e8bf624cf.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z9C907A4AF916FFBF390BZ/45/1746747865/da0192e9-18d1-440f-abc9-1f99c98dedfc.jpg?format=webp&width=800"
-                ],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "العناية بالبشرة",
-                    "العلامة التجارية": "غارنييه",
-                    "اللون": "شفاف",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للوجه",
-                    "مدة الصلاحية": "8 شهر"
-                }
-            }, {
-                id: 14,
-                name: "محدد شفاه مخملي- 13",
-                price: "9 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z3613076E4B74DFC49535Z/45/1746747370/7fba71e1-fd6d-4f6d-b146-a2743c3c8a4f.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "قلم شفاه يدوم طويلا بألوان متساوية وغنية تحدد محيط الشفاه بدقة",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/Z3613076E4B74DFC49535Z/45/1746747370/7fba71e1-fd6d-4f6d-b146-a2743c3c8a4f.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z08D3E15A673266AB3DCCZ/45/1746748531/0c05f1ee-71d9-4c0f-9bab-a64482cc8e78.jpg?format=webp&width=400",
-                    "https://f.nooncdn.com/p/pzsku/Z162002AB4D29BEE436B6Z/45/1746748530/95584cd0-fcf2-483c-bcd9-5150a4bd4338.jpg?format=webp&width=400",
-                    "https://f.nooncdn.com/p/pzsku/Z22F03562D9BF5D2DABB2Z/45/1746747484/1c9cf856-4c41-4721-b125-aa92d6a6c602.jpg?format=webp&width=400",
-                    "https://f.nooncdn.com/p/pzsku/Z2C723FC9DEA529BD86EFZ/45/1746746755/d4b82c73-9304-4fba-bf8c-37eac71ac780.jpg?format=webp&width=400"
-                ],
-                colors: ["بني فاتح","وردي","احمر","ارجواني","بني فاتح"],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "بورجوا باريس",
-                    "اللون":  ["بني فاتح","وردي","احمر","ارجواني","بني فاتح"],
-                    "الحجم": "وسط",
-                    "الاستخدام": " الشفاه",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            }, {
-                id: 15,
-                name: "ماسكارا فالسيس لاش لفت",
-                price: "15 ر.س",
-                originalPrice: "21 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746907/63465279-3297-4d33-b3b1-68b54a1e5517.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "ماسكارا فالسيس لاش لفت لإطلالة جريئة تحاكي إطلالات صالونات التجيمل. ماسكارا تمنحك رموشا بطول، حجم وشكل مرفوع واستثنائي بشكل فوري.",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746907/63465279-3297-4d33-b3b1-68b54a1e5517.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746907/e9832cb2-c77c-4a15-a5f2-30826064544e.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746907/3d0f02d6-42c3-4fd9-b8e3-427959769651.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746907/4acab3ff-e280-49a3-9355-60bb2f93ef15.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746908/d918964e-363d-498f-8ceb-96a7d7890dde.jpg?format=webp&width=800"
-                ],
-                colors: ["اسود"],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "ميبلين نيويورك",
-                    "اللون": "اسود",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للعيون",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            }, {
-                id: 16,
-                name: "لاينر سائل ايبك وير- اسود",
-                price: "20 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747353/d2489548-c8c8-4de2-b8b5-4de16eeed72e.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "منتج مكياج فاخر من شارلوت تلبوري يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747353/d2489548-c8c8-4de2-b8b5-4de16eeed72e.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747355/204b9889-4347-4801-ac6a-a8dc7e281409.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747354/4da932a1-124c-46c2-987d-0184b4d886b0.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747357/89a0e161-f468-46d9-ae69-161d7aeee9e8.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747355/0e2ef97a-c613-418c-a2ee-e4a471538d84.jpg?format=webp&width=800"
-                ],
-                colors: ["اسود"],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "ايبك وير",
-                    "اللون": "اسود",
-                    "الحجم": "وسط",
-                    "الاستخدام": "العيون",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            }, {
-                id: 17,
-                name: "كريم اساس اير مط 24 ساعة",
-                price: "59 ر.س",
-                originalPrice: "99 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZD5ED19CF6333009B8C2AZ/45/1746747538/a555b834-0329-4714-8ec5-60d00da994ba.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                description: "منتج مكياج فاخر من شارلوت تلبوري يمنحك إطلالة رائعة تدوم طوال اليوم. مناسب لجميع أنواع البشرة ويوفر تغطية متوسطة إلى عالية.",
-                images: [
-                                "https://f.nooncdn.com/p/pzsku/ZD5ED19CF6333009B8C2AZ/45/1746747538/a555b834-0329-4714-8ec5-60d00da994ba.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z989A7C0A4CF26E2403F5Z/45/_/1702412189/5577f142-02a8-42e9-9c07-6826255e3e68.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z989A7C0A4CF26E2403F5Z/45/_/1698934601/f80975f0-c60b-4d48-bf28-ad83e96128c0.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z989A7C0A4CF26E2403F5Z/45/_/1698934602/55abfb98-d7d7-4ee0-acd8-cb804b34ef7d.jpg?format=webp&width=800"
-                ],
-                colors: ["بيج ذهبي","بيج فاتح"],
-                sizes: ["وسط"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "بورجوا باريس",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للوجه",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            }, 
+
+
+  {
+    "id": 7,
+    "name": "روتين كيراستاس غلوس أبسولو للشعر اللامع والمقاوم للتجعد",
+    "price": "99 ر.س",
+    "originalPrice": "149 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z10FBBA650541BDD2C714Z/45/1750665260/4ea14a61-d31a-43d8-866c-66f9f335e7df.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "عرض خاص"],
+    "category": "عناية بالشعر",
+    "description": "اكتشفي سر الشعر اللامع والناعم مع مجموعة 'غلوس أبسولو' من كيراستاس. هذا الروتين المتكامل مصمم خصيصًا للشعر الطويل والمقاوم للتجعد الذي يبحث عن لمعان استثنائي. تتكون المجموعة من ثلاثة منتجات أساسية: شامبو 'هيدرا جليز باين' لتنظيف الشعر بلطف، بلسم 'إنستا جليز فوندانت' لفك التشابك وتغذية الشعر، وزيت 'غلوس دروبس' لإضافة لمسة نهائية من اللمعان والنعومة الفائقة.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z10FBBA650541BDD2C714Z/45/1750665260/4ea14a61-d31a-43d8-866c-66f9f335e7df.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z00D26CB125D09CA5CDAAZ/45/1748763509/1dc97fd3-a9a1-459e-a807-824fa7bb9634.jpg?format=webp&width=400",
+      "https://f.nooncdn.com/p/pzsku/ZED21FD6BD8F336ABCCAEZ/45/1748763511/8401951e-a95b-4d1b-80a6-de23334f1.jpg?format=webp&width=400",
+      "https://f.nooncdn.com/p/pzsku/Z1A29F858A70A11DD4529Z/45/1748763506/45621b5c-c269-4003-9f5d-72e7e2c8c260.jpg?format=webp&width=400"
+    ],
+    "options": {
+      "الحجم": ["وسط", "صغير", "كبير"]
+    },
+    "details": {
+      "النوع": "روتين عناية متكامل للشعر",
+      "العلامة التجارية": "كيراستاس",
+      "اسم المنتج": "روتين غلوس أبسولو للشعر",
+      "الفئة": "عناية بالشعر",
+      "الاستخدام": "للشعر الطويل المقاوم للتجعد",
+      "يحتوي على": "شامبو هيدرا-جلايز 250 مل، بلسم إنستا-جلايز 250 مل، زيت جلايز دروبس 45 مل",
+      "الفوائد": "يمنح الشعر لمعانًا فائقًا، يقاوم التجعد، يغذي الشعر بعمق، ويسهل فك التشابك",
+      "المكونات الرئيسية": "حمض الستريك وحمض اللاكتيك، بروتين الحليب",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "إسبانيا"
+    }
+  },
+  {
+    "id": 8,
+    "name": "غسول رغوي للبشرة العادية إلى الدهنية من سيرافي",
+    "price": "69 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/ZA3AF224C252751BDA94FZ/45/1746747296/b04a99ba-07cf-4cff-97b7-17079dbbb028.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "الأكثر مبيعًا"],
+    "category": "العناية بالبشرة",
+    "description": "صمم غسول الوجه الرغوي من سيرافي بالتعاون مع أطباء الجلد ليوفر تنظيفًا عميقًا للبشرة دون أن يسبب جفافها. بتركيبته الغنية بالسيراميدات الأساسية الثلاثة، وحمض الهيالورونيك، والنياسيناميد، يساعد هذا الغسول على استعادة الحاجز الطبيعي للبشرة، جذب الترطيب، وتهدئة البشرة. يزيل الزيوت الزائدة والشوائب بفعالية، ليترك بشرتك منتعشة ونظيفة ومجهزة للخطوات التالية من روتين العناية.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/ZA3AF224C252751BDA94FZ/45/1746747296/b04a99ba-07cf-4cff-97b7-17079dbbb028.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZA3AF224C252751BDA94FZ/45/1746747296/3f14f341-5d1d-4772-b3ba-2726d4aca54d.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZA3AF224C252751BDA94FZ/45/1746747296/2a7b7d5f-b92f-4042-b777-b8b97875b2f5.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "الحجم": ["236 مل", "473 مل"]
+    },
+    "details": {
+      "النوع": "غسول رغوي للوجه",
+      "العلامة التجارية": "سيرافي",
+      "اسم المنتج": "سيرافي غسول رغوي للبشرة",
+      "الاستخدام": "للبشرة العادية إلى الدهنية، الوجه والجسم",
+      "الفوائد": "ينظف، يرطب، ويستعيد حاجز البشرة الواقي",
+      "المكونات الرئيسية": "سيراميدات أساسية، حمض الهيالورونيك، نياسيناميد",
+      "خالٍ من": "العطور، البارابين، الصابون",
+      "تم اختباره": "من قبل أطباء الجلدية",
+      "مدة الصلاحية": "12 شهر بعد الفتح",
+      "بلد المنشأ": "فرنسا"
+    }
+  },
+  {
+    "id": 9,
+    "name": "مجموعة أحمر شفاه ليه فيلفيت الثلاثية",
+    "price": "60 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/ZB0D2BED0F3650AF90AD1Z/45/_/1698935152/686e552c-d66d-4275-9c85-3ce60d4cb8bb.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "هدية رائعة"],
+    "category": "مكياج",
+    "description": "اكتشفي الأناقة والرقي مع مجموعة أحمر الشفاه الثلاثية 'ليه فيلفيت' من بورجوا. بتركيبة مخملية ناعمة تمنحك لونًا غنيًا ومطفيًا يدوم طويلاً، دون أن يسبب جفافًا للشفاه. تنساب التركيبة السائلة على الشفاه كالهمسة لتمنحك شعورًا بالراحة وخفة الوزن. تتضمن المجموعة ثلاثة ألوان عصرية ومثالية لكل المناسبات، مما يجعلها إضافة مثالية لعلبة مكياجك.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/ZB0D2BED0F3650AF90AD1Z/45/_/1698935152/686e552c-d66d-4275-9c85-3ce60d4cb8bb.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZB0D2BED0F3650AF90AD1Z/45/_/1698935157/ee4e6281-8cb6-4da9-89e2-08fd19021e4d.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZB0D2BED0F3650AF90AD1Z/45/_/1698935156/48a91839-a15f-456b-bbea-21eeebc4e6b1.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZEDF72BBE976016BA3E5DZ/45/_/1719220185/0b853ba4-f600-49cb-8707-49a98c8e60b5.jpg?format=webp&width=400",
+      "https://f.nooncdn.com/p/pzsku/ZB0D2BED0F3650AF90AD1Z/45/_/1702402928/ed891fac-ac00-4086-9909-2864ae0ef282.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "الألوان": ["وردي، أحمر، مطفي"],
+      "الحجم": ["مجموعة من 3 قطع"]
+    },
+    "details": {
+      "النوع": "مجموعة أحمر شفاه سائل مطفي",
+      "العلامة التجارية": "بورجوا باريس",
+      "اسم المنتج": "مجموعة روج إيديشن فيلفيت الثلاثية",
+      "اللون": "مجموعة متنوعة من الألوان",
+      "الحجم": "3 * 7.7 مل",
+      "المكونات": "تركيبة مخملية غير جافة، غنية بالزيوت المرطبة",
+      "الاستخدام": "للون الشفاه وتحديدها",
+      "ميزة إضافية": "تدوم حتى 24 ساعة، سهلة التطبيق، أداة استخدام دقيقة",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "فرنسا"
+    }
+  },
+  {
+    "id": 11,
+    "name": "شامبو لوريال بروفيسيونيل سكالب أدفانسد المنقّي لفروة الرأس الدهنية",
+    "price": "70 ر.س",
+    "originalPrice": "120 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/ZC91F0C2F6C66CE77E0D5Z/45/_/1733471335/969b40c7-1365-42cb-96d5-b6ed08c4a780.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "عناية متخصصة"],
+    "category": "عناية بالشعر",
+    "description": "ودّعي فروة الرأس الدهنية مع شامبو 'سكالب أدفانسد' من لوريال بروفيسيونيل. هذا الشامبو المنقي مصمم خصيصًا ليناسب فروة الرأس التي تعاني من الإفرازات الدهنية الزائدة. ينقي الجل خفيف الوزن فروة الرأس وألياف الشعر من الشوائب والعرق والزيوت، ليمنحك شعورًا فوريًا بالانتعاش والنظافة. يساعد على استعادة توازن فروة الرأس ويترك الشعر ناعمًا ومشرقًا دون أن يثقله.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/ZC91F0C2F6C66CE77E0D5Z/45/_/1733471335/969b40c7-1365-42cb-96d5-b6ed08c4a780.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "الحجم": ["300 مل", "500 مل", "1500 مل"],
+      "اللون": ["أزرق"]
+    },
+    "details": {
+      "النوع": "شامبو منقّي لفروة الرأس",
+      "العلامة التجارية": "لوريال بروفيسيونيل",
+      "اسم المنتج": "سكالب أدفانسد ديرمو بيوريافاير شامبو",
+      "اللون": "أزرق",
+      "الحجم": "300 مل",
+      "الاستخدام": "للعناية بفروة الرأس والشعر الدهني",
+      "الفوائد": "ينقي، يوازن، وينعش فروة الرأس",
+      "المكونات الرئيسية": "مركب تنقية دقيقة، حمض الساليسيليك",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "فرنسا"
+    }
+  },
+  {
+    "id": 1,
+    "name": "مجموعة كيراستاس نوتريتيف هوليدايز 24",
+    "price": "90 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1742453672/51dccc4f-08bb-4b31-a180-e9b3285bfefd.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "مجموعة حصرية"],
+    "category": "عناية بالشعر",
+    "subcategory": "شعر",
+    "description": "امنحي شعرك الجاف التغذية التي يستحقها مع مجموعة 'نوتريتيف' من كيراستاس. هذه المجموعة مصممة خصيصًا للشعر الجاف والمتوسط إلى الكثيف، وتعتبر الرفيق المثالي للعناية بالشعر أثناء التنقل. تحتوي على تركيبة غنية بالمكونات المغذية التي تعيد الحيوية والنعومة للشعر، وتجعله أكثر سهولة في التصفيف.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1742453672/51dccc4f-08bb-4b31-a180-e9b3285bfefd.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z03821DED7D3839065E52Z/45/_/1741180879/c63e75f8-936a-4d53-a3dd-f0aa67c93e0b.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "النوع": ["مجموعة العناية بالشعر"],
+      "الحجم": ["مجموعة متوسطة"]
+    },
+    "details": {
+      "النوع": "مجموعة هدايا للعناية بالشعر الجاف",
+      "العلامة التجارية": "كيراستاس",
+      "اسم المنتج": "مجموعة K Nutritive Fondant Holidays 24",
+      "الفئة": "عناية بالشعر",
+      "الاستخدام": "للشعر الجاف والمتوسط إلى الكثيف",
+      "يحتوي على": "شامبو، بلسم، وماسك للشعر (الأحجام قد تختلف)",
+      "الفوائد": "يغذي الشعر بعمق، يمنحه نعومة ولمعانًا، ويحسن من سهولة التصفيف",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "إسبانيا"
+    }
+  },
+  {
+    "id": 2,
+    "name": "زيت وماسك أبسولوت ريبير للشعر التالف",
+    "price": "40 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371646/e8b527da-f2d5-46de-b97e-4eeffe82bfa2.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "مكافحة التلف"],
+    "category": "عناية بالشعر",
+    "subcategory": "شعر",
+    "description": "ودّعي الشعر التالف والمتقصف مع زيت وماسك 'أبسولوت ريبير' من لوريال بروفيسيونيل. هذه المنتجات مصممة خصيصًا لإعادة بناء ألياف الشعر وإصلاح التلف الناتج عن المعالجات الكيميائية أو الحرارة. يمنح الشعر ملمسًا ناعمًا، ويقلل من التقصف، ويعيد إليه قوته وحيويته، لتحصلي على شعر صحي ولامع من الجذور حتى الأطراف.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371646/e8b527da-f2d5-46de-b97e-4eeffe82bfa2.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371753/7789f074-5c06-4b62-8bea-32f888de5504.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z6025866E4ED5EA5DDB44Z/45/_/1742371755/b45ff766-bf78-4183-8a1d-0f5c6b123556.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "النوع": ["زيت وماسك"],
+      "الحجم": ["مجموعة متوسطة"]
+    },
+    "details": {
+      "النوع": "عناية بالشعر التالف",
+      "العلامة التجارية": "لوريال بروفيسيونيل",
+      "اسم المنتج": "زيت وماسك أبسولوت ريبير",
+      "الفئة": "عناية بالشعر",
+      "الاستخدام": "للشعر المتضرر والتالف",
+      "الفوائد": "يعيد بناء ألياف الشعر، يقلل التقصف، ويعيد الحيوية",
+      "المكونات الرئيسية": "بروتين الكينوا الذهبي",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "إسبانيا"
+    }
+  },
+  {
+    "id": 3,
+    "name": "شامبو جينيسيس بين هيدرا فورتيفيانت - 250 مل",
+    "price": "33 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1745570940/3b3c4f39-4e0e-464b-ba93-f44764f53f7f.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "مقاوم لتساقط الشعر"],
+    "category": "عناية بالشعر",
+    "subcategory": "شعر",
+    "description": "يعد شامبو 'بين هيدرا فورتيفيانت' من مجموعة جينيسيس من كيراستاس الحل الأمثل للشعر الضعيف والمعرض للتساقط. بتركيبة لطيفة على الشعر، ينظف هذا الشامبو الألياف بعمق، ويزيل الأوساخ والدهون الزائدة، ويمنح الشعر ملمسًا ناعمًا وخفيفًا. يعزز من قوة الشعر من الجذور ويقلل من تساقطه، لتحصلي على شعر صحي وأكثر كثافة.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1745570940/3b3c4f39-4e0e-464b-ba93-f44764f53f7f.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z05CB087713A995EB7743Z/45/_/1726036268/9af2de27-2c99-4703-be95-76cd30a9fa55.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "الحجم": ["250 مل", "500 مل"]
+    },
+    "details": {
+      "النوع": "شامبو مضاد لتساقط الشعر",
+      "العلامة التجارية": "كيراستاس",
+      "اسم المنتج": "شامبو جينيسيس بين هيدرا فورتيفيانت",
+      "الفئة": "عناية بالشعر",
+      "الاستخدام": "للشعر الضعيف والمعرض للتساقط",
+      "الفوائد": "يقلل من تساقط الشعر، ينظف بعمق، ويقوي الألياف",
+      "المكونات الرئيسية": "زنجبيل إديلويس",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "فرنسا"
+    }
+  },
+  {
+    "id": 12,
+    "name": "أحمر شفاه انليميتد دبل تاتش - 104",
+    "price": "49 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z0C4BE2F154A6FF7124E2Z/45/_/1719229978/0141a699-7571-4469-80fa-892677b35d85.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "ثبات 12 ساعة"],
+    "category": "مكياج",
+    "description": "احصلي على لون شفاه فائق الثبات بلمسة واحدة مع أحمر شفاه 'انليميتد دبل تاتش' من كيكو ميلانو. يتميز هذا المنتج بخطوتين للحصول على إطلالة مثالية: لون أساسي غني ومركز يدوم طويلاً، وملمع شفاه شفاف يمنحك لمسة نهائية لامعة ومشرقة. تركيبته المبتكرة تمنع التلطخ وتثبت اللون على الشفاه لأكثر من 12 ساعة، مما يجعله الخيار الأمثل لإطلالة تدوم طوال اليوم.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z0C4BE2F154A6FF7124E2Z/45/_/1719229978/0141a699-7571-4469-80fa-892677b35d85.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z0C4BE2F154A6FF7124E2Z/45/_/1719229978/c898f4ff-00fd-4624-b8d8-e3f853b1bdc7.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZACC93BCBA3C495A49583Z/45/_/1719229941/5d84822b-54ff-4c7a-8559-8fdb29dc466e.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZACC93BCBA3C495A49583Z/45/_/1719229943/44b3eac1-6c8e-4f1e-968d-b463fbfc4c28.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZBEF5A183CB4D010CDA0DZ/45/_/1719229993/d47d92c3-2716-454c-b31c-08ed17c3f501.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZBEF5A183CB4D010CDA0DZ/45/_/1719229994/5b4e8299-eec1-4adc-8c0a-eb63d274112a.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZD03368EE2CCC54C099FEZ/45/_/1719229942/b007fc41-7878-4fe6-a8dd-cc80167d4b3c.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZD03368EE2CCC54C099FEZ/45/_/1719230014/f2d15537-0395-42bd-ad83-dc51f5d27089.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZA4B56D9745B7B350145FZ/45/_/1719229921/93ddb7a2-c470-4546-89ac-d06c26ab0be2.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZA4B56D9745B7B350145FZ/45/_/1719229924/2a4ea29b-291d-42d5-9182-92e3bd7340bc.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "اللون": ["104 (وردي طبيعي)", "105 (أحمر)", "108 (أرجواني)", "110 (بني)"],
+      "النوع": ["مطفي", "لامع"]
+    },
+    "details": {
+      "النوع": "أحمر شفاه سائل مزدوج",
+      "العلامة التجارية": "كيكو ميلانو",
+      "اسم المنتج": "انليميتد دبل تاتش",
+      "رقم اللون": "104",
+      "اللون": "وردي طبيعي",
+      "الحجم": "6 مل",
+      "الاستخدام": "للون الشفاه وتحديدها",
+      "الفوائد": "ثبات يصل إلى 12 ساعة، مقاوم للتلطخ، لمسة نهائية لامعة",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "إيطاليا"
+    }
+  },
+  {
+    "id": 13,
+    "name": "سيروم فاست فيرنيس بفيتامين سي 30 مل",
+    "price": "30 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z9C907A4AF916FFBF390BZ/45/1746747863/e3b93572-5b6e-45cd-ad59-27997ecbdcb6.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "تفتيح فوري"],
+    "category": "العناية بالبشرة",
+    "description": "ودّعي البشرة الباهتة واحصلي على إشراقة لا مثيل لها مع سيروم 'فاست فيرنيس' من غارنييه. بتركيبته الغنية بـ30 ضعفًا من تركيز فيتامين سي والليمون الياباني، يقلل هذا السيروم من البقع الداكنة وعلامات حب الشباب في 3 أيام فقط. يعمل كمضاد للأكسدة لتجديد حيوية البشرة، مما يمنحك بشرة موحدة اللون ومشرقة وناعمة. ",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z9C907A4AF916FFBF390BZ/45/1746747863/e3b93572-5b6e-45cd-ad59-27997ecbdcb6.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z9C907A4AF916FFBF390BZ/45/1746747864/a4086f27-760b-485a-8b4e-816dcdf1131c.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z9C907A4AF916FFBF390BZ/45/1746747866/6937093e-d2b2-43fb-82f6-f04e8bf624cf.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z9C907A4AF916FFBF390BZ/45/1746747865/da0192e9-18d1-440f-abc9-1f99c98dedfc.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "الحجم": ["30 مل", "50 مل"]
+    },
+    "details": {
+      "النوع": "سيروم للوجه",
+      "العلامة التجارية": "غارنييه",
+      "اسم المنتج": "سيروم فاست فيرنيس بفيتامين سي",
+      "اللون": "شفاف",
+      "الحجم": "30 مل",
+      "الاستخدام": "للوجه والرقبة",
+      "الفوائد": "يقلل البقع الداكنة، يضيء البشرة، يوحد لونها",
+      "المكونات الرئيسية": "30x فيتامين سي، مستخلص الليمون الياباني",
+      "مدة الصلاحية": "8 أشهر بعد الفتح",
+      "بلد المنشأ": "إندونيسيا"
+    }
+  },
+  {
+    "id": 14,
+    "name": "محدد شفاه مخملي - 13",
+    "price": "9 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z3613076E4B74DFC49535Z/45/1746747370/7fba71e1-fd6d-4f6d-b146-a2743c3c8a4f.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "لون غني"],
+    "category": "مكياج",
+    "description": "ارسمي شفاهًا مثالية مع محدد الشفاه المخملي من بورجوا باريس. بفضل تركيبته الغنية بالألوان، ينساب هذا القلم بسهولة لتحديد محيط الشفاه بدقة متناهية، مما يمنع أحمر الشفاه من التلطخ أو التسرب. يدوم طويلاً بفضل قوامه الناعم والمخملي، مما يجعله خطوتك الأساسية لإطلالة شفاه جذابة ومحددة بشكل لا يصدق.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z3613076E4B74DFC49535Z/45/1746747370/7fba71e1-fd6d-4f6d-b146-a2743c3c8a4f.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z08D3E15A673266AB3DCCZ/45/1746748531/0c05f1ee-71d9-4c0f-9bab-a64482cc8e78.jpg?format=webp&width=400",
+      "https://f.nooncdn.com/p/pzsku/Z162002AB4D29BEE436B6Z/45/1746748530/95584cd0-fcf2-483c-bcd9-5150a4bd4338.jpg?format=webp&width=400",
+      "https://f.nooncdn.com/p/pzsku/Z22F03562D9BF5D2DABB2Z/45/1746747484/1c9cf856-4c41-4721-b125-aa92d6a6c602.jpg?format=webp&width=400",
+      "https://f.nooncdn.com/p/pzsku/Z2C723FC9DEA529BD86EFZ/45/1746746755/d4b82c73-9304-4fba-bf8c-37eac71ac780.jpg?format=webp&width=400"
+    ],
+    "options": {
+      "اللون": ["13 (بني فاتح)", "05 (وردي)", "14 (أحمر)", "15 (أرجواني)"]
+    },
+    "details": {
+      "النوع": "محدد شفاه",
+      "العلامة التجارية": "بورجوا باريس",
+      "اسم المنتج": "محدد شفاه مخملي",
+      "رقم اللون": "13",
+      "اللون": "بني فاتح",
+      "الحجم": "1.2 جم",
+      "الاستخدام": "لتحديد محيط الشفاه",
+      "الفوائد": "لون غني، سهل التطبيق، يمنع سيلان أحمر الشفاه",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "فرنسا"
+    }
+  },
+  {
+    "id": 15,
+    "name": "ماسكارا فالسيس لاش ليفت",
+    "price": "15 ر.س",
+    "originalPrice": "21 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746907/63465279-3297-4d33-b3b1-68b54a1e5517.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "رفع الرموش"],
+    "category": "مكياج",
+    "description": "احصلي على رموش مرفوعة وكثيفة تحاكي إطلالة صالونات التجميل مع ماسكارا 'فالسيس لاش ليفت' من ميبلين نيويورك. بفضل تركيبتها الفريدة وفرشاتها المبتكرة، تمنحك هذه الماسكارا رموشًا بطول وحجم استثنائيين. تغطي كل رمش من الجذور حتى الأطراف، مما يرفعها ويمنحها مظهرًا جريئًا ومفتوحًا للعين.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746907/63465279-3297-4d33-b3b1-68b54a1e5517.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746907/e9832cb2-c77c-4a15-a5f2-30826064544e.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746907/3d0f02d6-42c3-4fd9-b8e3-427959769651.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746907/4acab3ff-e280-49a3-9355-60bb2f93ef15.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z75F364DDCBF5C67B2811Z/45/1746746908/d918964e-363d-498f-8ceb-96a7d7890dde.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "اللون": ["أسود", "بني"],
+      "الحجم": ["حجم كامل"]
+    },
+    "details": {
+      "النوع": "ماسكارا للرموش",
+      "العلامة التجارية": "ميبلين نيويورك",
+      "اسم المنتج": "ماسكارا فالسيس لاش ليفت",
+      "اللون": "أسود",
+      "الحجم": "10.5 مل",
+      "الاستخدام": "للعيون",
+      "الفوائد": "تمنح الرموش طولًا وحجمًا، مقاومة للتكتل، تدوم طويلًا",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "الولايات المتحدة الأمريكية"
+    }
+  },
+  {
+    "id": 16,
+    "name": "لاينر سائل ايبك وير - أسود",
+    "price": "20 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747353/d2489548-c8c8-4de2-b8b5-4de16eeed72e.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "مقاوم للماء"],
+    "category": "مكياج",
+    "description": "ارسمي خطوطًا دقيقة وجريئة بكل سهولة مع الآيلاينر السائل 'ايبك وير' من إن واي إكس بروفيشنال ميك أب. يتميز هذا اللاينر بتركيبة مقاومة للماء والتلطخ تدوم حتى 24 ساعة. برأس فرشاة رفيع ومرن، يمكنك رسم خطوط دقيقة أو عريضة للحصول على إطلالة عيون جذابة ومثالية.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747353/d2489548-c8c8-4de2-b8b5-4de16eeed72e.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747355/204b9889-4347-4801-ac6a-a8dc7e281409.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747354/4da932a1-124c-46c2-987d-0184b4d886b0.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747357/89a0e161-f468-46d9-ae69-161d7aeee9e8.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZC2DA3DA85132CF678AC8Z/45/1746747355/0e2ef97a-c613-418c-a2ee-e4a471538d84.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "اللون": ["أسود", "بني"],
+      "الحجم": ["حجم كامل"]
+    },
+    "details": {
+      "النوع": "آيلاينر سائل",
+      "العلامة التجارية": "إن واي إكس بروفيشنال ميك أب",
+      "اسم المنتج": "آيلاينر سائل ايبك وير",
+      "اللون": "أسود",
+      "الحجم": "3.5 مل",
+      "الاستخدام": "للمكياج العيون",
+      "الفوائد": "مقاوم للماء، يدوم طويلًا، تركيبة غنية بالصبغات",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "الولايات المتحدة الأمريكية"
+    }
+  },
+  {
+    "id": 17,
+    "name": "كريم أساس اير مات 24 ساعة",
+    "price": "59 ر.س",
+    "originalPrice": "99 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/ZD5ED19CF6333009B8C2AZ/45/1746747538/a555b834-0329-4714-8ec5-60d00da994ba.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "تغطية كاملة"],
+    "category": "مكياج",
+    "description": "تمتعي ببشرة خالية من العيوب تدوم طوال اليوم مع كريم أساس 'اير مات' من بورجوا باريس. بتركيبته الخفيفة التي تمنحك لمسة نهائية مطفية وناعمة، يمنحك هذا الكريم تغطية كاملة تدوم حتى 24 ساعة دون أن يسد المسام. يخفي العيوب، ويوحد لون البشرة، ويتحكم في اللمعان الزائد، مما يجعله مثاليًا للبشرة الدهنية والمختلطة.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/ZD5ED19CF6333009B8C2AZ/45/1746747538/a555b834-0329-4714-8ec5-60d00da994ba.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z989A7C0A4CF26E2403F5Z/45/_/1702412189/5577f142-02a8-42e9-9c07-6826255e3e68.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z989A7C0A4CF26E2403F5Z/45/_/1698934601/f80975f0-c60b-4d48-bf28-ad83e96128c0.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z989A7C0A4CF26E2403F5Z/45/_/1698934602/55abfb98-d7d7-4ee0-acd8-cb804b34ef7d.jpg?format=webp&width=800"
+    ],
+    "options": {
+      "اللون": ["بيج ذهبي (Golden Beige)", "بيج فاتح (Light Beige)"]
+    },
+    "details": {
+      "النوع": "كريم أساس سائل مطفي",
+      "العلامة التجارية": "بورجوا باريس",
+      "اسم المنتج": "كريم أساس اير مات 24 ساعة",
+      "اللون": "متعدد (حسب الخيار)",
+      "الحجم": "30 مل",
+      "الاستخدام": "للوجه",
+      "الفوائد": "تغطية كاملة، لمسة نهائية مطفية، يدوم حتى 24 ساعة، خفيف الوزن",
+      "مدة الصلاحية": "24 شهر بعد الفتح",
+      "بلد المنشأ": "فرنسا"
+    }
+  }
+
         ];
 
         // منتجات العطور
         const perfumeProducts = [
-            {
-                id: 20,
-                name: "Baccarat Rouge 540 – Maison Francis Kurkdjian",
-                price: "220 ر.س",
-                originalPrice: "280 ر.س",
-                image: "https://dcdn-us.mitiendanube.com/stores/004/144/904/products/1-ce5017df1ca9b857d117231411624782-1024-1024.png",
-                badges: ["discount", "exclusive"],
-                category: "عطور",
-                description: "عطر نسائي فاخر يجمع بين روائح الزهور والخشب، برائحة مميزة تدوم طويلاً وتلفت الانتباه أينما ذهبتِ.",
-                images: [
-                    "https://dcdn-us.mitiendanube.com/stores/004/144/904/products/1-ce5017df1ca9b857d117231411624782-1024-1024.png"
-                ],
-                colors: ["ذهبي", "فضي", "شفاف"],
-                sizes: ["50 مل", "100 مل"],
-                details: {
-                    "النوع": "عطر",
-                    "العلامة التجارية": "Maison Francis Kurkdjian",
-                    "اللون": "ذهبي",
-                    "الحجم": "100 مل",
-                    "المكونات": "خلاصات عطرية طبيعية",
-                    "الاستخدام": "للجسم",
-                    "مدة الصلاحية": "60 شهر"
-                }
-            },
+  {
+    "id": 20,
+    "name": "عطر باكارات روج 540 - ميزون فرانسيس كركدجيان",
+    "price": "220 ر.س",
+    "originalPrice": "280 ر.س",
+    "image": "https://dcdn-us.mitiendanube.com/stores/004/144/904/products/1-ce5017df1ca9b857d117231411624782-1024-1024.png",
+    "badges": ["عرض خاص", "حصري"],
+    "category": "عطور",
+    "description": "استمتعي بعبق الفخامة والتميز مع عطر باكارات روج 540، تحفة عطرية من دار ميزون فرانسيس كركدجيان. هذا العطر النسائي الفريد يجمع ببراعة بين روائح الزهور، الياسمين، والعنبر مع لمسة من الأخشاب الدافئة والراتنجات، مما يخلق رائحة مميزة وآسرة. يتميز العطر بفوحان قوي وثبات يدوم طويلاً، ليترك أثراً لا يُنسى أينما ذهبتِ. إنه الخيار الأمثل للمرأة التي تبحث عن عطر يعبر عن شخصيتها القوية والأنيقة.",
+    "images": [
+      "https://dcdn-us.mitiendanube.com/stores/004/144/904/products/1-ce5017df1ca9b857d117231411624782-1024-1024.png"
+    ],
+    "options": {
+      "الحجم": ["50 مل", "100 مل", "200 مل"]
+    },
+    "details": {
+      "النوع": "عطر فاخر",
+      "العلامة التجارية": "ميزون فرانسيس كركدجيان",
+      "اسم المنتج": "باكارات روج 540",
+      "التركيز": "ماء عطر (Eau de Parfum)",
+      "الحجم": "100 مل",
+      "المكونات العليا": "الزعفران، الياسمين",
+      "المكونات الوسطى": "خشب العنبر، الآمبرغريس",
+      "المكونات القاعدية": "راتنج التنوب، أخشاب الأرز",
+      "الاستخدام": "للملابس والجسم",
+      "مدة الصلاحية": "60 شهر",
+      "بلد المنشأ": "فرنسا"
+    }
+  }
+
         ];
 
         // متغيرات نظام السلة
