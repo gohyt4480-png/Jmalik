@@ -1015,7 +1015,7 @@
                     </div>
                     <img src="https://f.nooncdn.com/p/pzsku/Z9A696255B69AADA43B54Z/45/1753698243/6ae7e2e4-87a0-41b5-8e6e-1a1946e15feb.jpg?format=webp&width=800" alt="ميبلين نيويورك" class="product-image">
                     <div class="product-info">
-                        <h3 class="product-title">ميبلين نيويork</h3>
+                        <h3 class="product-title">ميبلين نيويورك</h3>
                         <p class="product-price">19 ر.س</p>
                         <div class="product-actions">
                             <button class="add-to-cart" data-id="50" data-name="ميبلين نيويورك" data-price="19" data-image="https://f.nooncdn.com/p/pzsku/Z9A696255B69AADA43B54Z/45/1753698243/6ae7e2e4-87a0-41b5-8e6e-1a1946e15feb.jpg?format=webp&width=800">أضف إلى السلة</button>
@@ -1049,7 +1049,7 @@
                         <h3 class="product-title">فلمورا</h3>
                         <p class="product-price">29 ر.س</p>
                         <div class="product-actions">
-                            <button class="add-to-cart" data-id="70" data-name="فلمورa" data-price="29" data-image="https://f.nooncdn.com/p/pzsku/Z21A3D98D14E9EA9929D0Z/45/_/1738048436/3be6b53b-dab9-43e8-9a29-05f4a6369084.jpg?format=webp&width=800">أضف إلى السلة</button>
+                            <button class="add-to-cart" data-id="70" data-name="فلمورا" data-price="29" data-image="https://f.nooncdn.com/p/pzsku/Z21A3D98D14E9EA9929D0Z/45/_/1738048436/3be6b53b-dab9-43e8-9a29-05f4a6369084.jpg?format=webp&width=800">أضف إلى السلة</button>
                             <a href="product.html?id=70" class="view-details">عرض التفاصيل</a>
                         </div>
                     </div>
@@ -1135,6 +1135,11 @@
             document.querySelector('.nav-menu').classList.toggle('active');
         });
 
+        // دالة لإنشاء معرف فريد لكل عنصر في السلة
+        function generateUniqueId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
         // تهيئة السلة من localStorage
         let cart = JSON.parse(localStorage.getItem('jamalkCart')) || [];
         
@@ -1158,9 +1163,9 @@
                         </div>
                         <h2 class="empty-cart-title">سلة التسوق فارغة</h2>
                         <p class="empty-cart-message">لم تقم بإضافة أي منتجات إلى سلة التسوق بعد.</p>
+                        <button class="shop-now-btn" onclick="window.location.href='categories.html'">تسوق الآن</button>
                     </div>
                 `;
-                // تمت إزالة تعطيل الزر
                 checkoutBtn.textContent = 'إتمام الشراء';
             } else {
                 // عرض عناصر السلة
@@ -1175,11 +1180,11 @@
                             <p class="cart-item-price">${item.price} ر.س</p>
                             <div class="cart-item-actions">
                                 <div class="quantity-controls">
-                                    <button class="quantity-btn decrease" data-id="${item.id}">-</button>
-                                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
-                                    <button class="quantity-btn increase" data-id="${item.id}">+</button>
+                                    <button class="quantity-btn decrease" data-uniqueid="${item.uniqueId}">-</button>
+                                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-uniqueid="${item.uniqueId}">
+                                    <button class="quantity-btn increase" data-uniqueid="${item.uniqueId}">+</button>
                                 </div>
-                                <a href="#" class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i> إزالة</a>
+                                <a href="#" class="remove-item" data-uniqueid="${item.uniqueId}"><i class="fas fa-trash"></i> إزالة</a>
                             </div>
                         </div>
                         <div class="cart-item-total">
@@ -1203,8 +1208,8 @@
             // أحداث زيادة الكمية
             document.querySelectorAll('.increase').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    const item = cart.find(item => item.id == id);
+                    const uniqueId = this.getAttribute('data-uniqueid');
+                    const item = cart.find(item => item.uniqueId == uniqueId);
                     if (item) {
                         item.quantity++;
                         saveCart();
@@ -1216,8 +1221,8 @@
             // أحداث نقصان الكمية
             document.querySelectorAll('.decrease').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    const item = cart.find(item => item.id == id);
+                    const uniqueId = this.getAttribute('data-uniqueid');
+                    const item = cart.find(item => item.uniqueId == uniqueId);
                     if (item && item.quantity > 1) {
                         item.quantity--;
                         saveCart();
@@ -1229,8 +1234,8 @@
             // أحداث إدخال الكمية يدويًا
             document.querySelectorAll('.quantity-input').forEach(input => {
                 input.addEventListener('change', function() {
-                    const id = this.getAttribute('data-id');
-                    const item = cart.find(item => item.id == id);
+                    const uniqueId = this.getAttribute('data-uniqueid');
+                    const item = cart.find(item => item.uniqueId == uniqueId);
                     if (item) {
                         const newQuantity = parseInt(this.value);
                         if (newQuantity > 0) {
@@ -1249,8 +1254,8 @@
             document.querySelectorAll('.remove-item').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const id = this.getAttribute('data-id');
-                    cart = cart.filter(item => item.id != id);
+                    const uniqueId = this.getAttribute('data-uniqueid');
+                    cart = cart.filter(item => item.uniqueId != uniqueId);
                     saveCart();
                     updateCartUI();
                     showToast('تمت إزالة المنتج من السلة');
@@ -1281,7 +1286,7 @@
             localStorage.setItem('jamalkCart', JSON.stringify(cart));
         }
         
-        // عرض رسالة التأكيد
+        // عرض رسالة تأكيد
         function showToast(message) {
             const toast = document.getElementById('cart-toast');
             const toastMessage = document.getElementById('toast-message');
@@ -1302,20 +1307,15 @@
                 const price = parseFloat(e.target.getAttribute('data-price'));
                 const image = e.target.getAttribute('data-image');
                 
-                // التحقق إذا كان المنتج موجوداً بالفعل في السلة
-                const existingItem = cart.find(item => item.id == id);
-                
-                if (existingItem) {
-                    existingItem.quantity++;
-                } else {
-                    cart.push({
-                        id: id,
-                        name: name,
-                        price: price,
-                        image: image,
-                        quantity: 1
-                    });
-                }
+                // إضافة المنتج إلى السلة مع معرف فريد
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1,
+                    uniqueId: generateUniqueId() // إضافة معرف فريد لكل عنصر
+                });
                 
                 saveCart();
                 updateCartUI();
@@ -1364,6 +1364,19 @@
         
         // تهيئة الصفحة عند التحميل
         document.addEventListener('DOMContentLoaded', function() {
+            // التأكد من أن كل عنصر في السلة له معرف فريد (للسلة القديمة)
+            let needsUpdate = false;
+            cart.forEach(item => {
+                if (!item.uniqueId) {
+                    item.uniqueId = generateUniqueId();
+                    needsUpdate = true;
+                }
+            });
+            
+            if (needsUpdate) {
+                saveCart();
+            }
+            
             updateCartUI();
         });
     </script>
