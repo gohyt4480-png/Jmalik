@@ -968,135 +968,167 @@
     <script>
         // بيانات المنتجات (يمكن استبدالها ببيانات حقيقية لاحقاً)
         const products = [
-            {
-                id: 1,
-                name: "مجفف الشعر هيليوس وايت",
-                price: "300 ر.س",
-                originalPrice: "400 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z6D2AA7B8486B341CFF94Z/45/_/1694560253/921191dd-c49b-4c4f-95e2-a9ff278f5f14.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "اجهزة",
-                subcategory: "شعر",
-                description: "مجفف الشعر الأكثر مبيعًا ذو أداء احترافي وحائز على العديد من الجوائز. مجفف شعر هيليوس من جي اتش دي الاحترافي باللون الأبيض لقوة وتحكم قصوى. ابتكار جديد يغير كل شيء من الفيزيائيين والمهندسين وخبراء التصميم الرائدين في جي اتش دي، استكشفي هيليوس من جي اتش دي للتحكم المطلق في التصفيف وتألق أكثر بنسبة 30%.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z6D2AA7B8486B341CFF94Z/45/_/1694560253/921191dd-c49b-4c4f-95e2-a9ff278f5f14.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z13AA74B486BB38A19F05Z/45/_/1698968859/902885a0-fcc1-4467-9e97-1c88b458e9ed.jpg?format=webp&width=400"
-                ],
-                colors: ["ذهبي","اسود"],
-                details: {
-                    "النوع": "اجهزة",
-                    "العلامة التجارية": "GHD",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للشعر",
-                }
-            }, {
-                id: 2,
-                name: "إصدار خاص من دايسون سوبرسونيك",
-                price: "120 ر.س",
-                originalPrice: "200 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZE273BFFE5DC283EF4FA6Z/45/1746747452/04e822e0-bf7b-4a64-a852-aaf925e971bb.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "اجهزة",
-                subcategory: "شعر",
-                description: "يدور محرك دايسون الرقمي الصغير والقوي V9 بسرعة تصل إلى 110،000 دورة في الدقيقة. إلى جانب تقنية اير مالتيبلاير، فإنها تنتج ضغطا عاليا، ونفثا عالي السرعة من الهواء المتحكم فيه، من أجل تجفيف سريع وتصميم دقيق. مجفف الشعر دايسون سوبر سونيك المزود بـ 5 ملحقات تصفيف بما في ذلك ملحق فلاي اواي الجديد.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/ZE273BFFE5DC283EF4FA6Z/45/1746747452/04e822e0-bf7b-4a64-a852-aaf925e971bb.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZE273BFFE5DC283EF4FA6Z/45/1746747452/2473e6a5-194e-4179-8799-24fdcf46822b.jpg?format=webp&width=800"
-                ],
-                colors: ["ازرق"],
-                details: {
-                    "النوع": "اجهزة",
-                    "العلامة التجارية": "GHD",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للشعر",
-                }
-            },  {
-                id: 3,
-                name: "مجعد الشعر جي اتش بي 26 مم ( كلاسيك كيرل تونج)",
-                price: "120 ر.س",
-                originalPrice: "200 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZCBD2273418D7570A1F2EZ/45/_/1694569699/004f363d-eac9-4d62-8266-2a3ce4fac4d4.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "اجهزة",
-                subcategory: "شعر",
-                description: "(26 مم) أسطوانة متوسطة الحجم للحصول على تموجات متناغمة للحصول على تسريحة وحجم كلاسيكيين، حتى على الشعر الأقصر.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/ZCBD2273418D7570A1F2EZ/45/_/1694569699/004f363d-eac9-4d62-8266-2a3ce4fac4d4.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZCBD2273418D7570A1F2EZ/45/_/1702461425/53860327-55cb-43be-972b-94a855d3edbe.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZCBD2273418D7570A1F2EZ/45/_/1694569701/0c0948ac-2cdb-4db5-9aa8-904c0d9e213a.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/ZCBD2273418D7570A1F2EZ/45/_/1694569698/e604ae9a-5eac-469e-b634-722f0b730645.jpg?format=webp&width=800"
-                ],
-                colors: ["اسود"],
-                details: {
-                    "النوع": "اجهزة",
-                    "العلامة التجارية": "GHD",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للشعر",
-                }
-            },  {
-                id: 4,
-                name: "فيليبس",
-                price: "50 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z71F0A71B200693FA3BB7Z/45/_/1731508085/61b27da2-dbaa-4a7c-8bbd-2ea0b8f4abb8.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "اجهزة",
-                subcategory: "شعر",
-                description: "A full Centella skincare routine set with 5 mini-sized products for travel or trial of the Centella line.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z71F0A71B200693FA3BB7Z/45/_/1731508085/61b27da2-dbaa-4a7c-8bbd-2ea0b8f4abb8.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z71F0A71B200693FA3BB7Z/45/_/1731508105/3a21ff2b-37a8-4736-9993-37f874ae0913.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z71F0A71B200693FA3BB7Z/45/_/1731508126/d3fda5dd-7a15-42c1-9155-b4cbead9edce.jpg?format=webp&width=800"
-                ],
-                colors: ["ذهبي","اسود"],
-                details: {
-                    "النوع": "اجهزة",
-                    "العلامة التجارية": "GHD",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للشعر",
-                }
-            },  {
-                id: 5,
-                name: "دايسون اير ورب مالتى ستايلر ومجفف كومبليت لونج فوليمايز فراولة برونز/بلش بينك",
-                price: "300 ر.س",
-                originalPrice: "400 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z26DE9702682CB512F743Z/45/_/1729062960/f6e8a7fb-6d45-423e-9ab9-3bba1408f4ad.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "اجهزة",
-                subcategory: "شعر",
-                description: "A full Centella skincare routine set with 5 mini-sized products for travel or trial of the Centella line.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z26DE9702682CB512F743Z/45/_/1729062960/f6e8a7fb-6d45-423e-9ab9-3bba1408f4ad.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z26DE9702682CB512F743Z/45/_/1729063764/b6e7c53a-3383-45fa-ad3f-c4454d7f66be.jpg?format=webp&width=800"
-                ],
-                colors: ["ذهبي"],
-                details: {
-                    "النوع": "اجهزة",
-                    "العلامة التجارية": "GHD",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للشعر",
-                }
-            },  {
-                id: 6,
-                name: "Hair Dryer 7000 Series BHD720/13",
-                price: "300 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z2F02433191B3EFD2791AZ/45/_/1731503464/9667047a-c4b9-44a2-b05f-8dbbe235005b.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "اجهزة",
-                subcategory: "شعر",
-                description: "A full Centella skincare routine set with 5 mini-sized products for travel or trial of the Centella line.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z2F02433191B3EFD2791AZ/45/_/1731503464/9667047a-c4b9-44a2-b05f-8dbbe235005b.jpg?format=webp&width=800",
-                    "https://f.nooncdn.com/p/pzsku/Z2F02433191B3EFD2791AZ/45/_/1731503475/43bbb379-ad6a-4c13-aa20-ebfbfc6b2d0d.jpg?format=webp&width=800"
-                ],
-                colors: ["بينك"],
-                details: {
-                    "النوع": "اجهزة",
-                    "العلامة التجارية": "GHD",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للشعر",
-                }
-            },  
-        ];
+
+  {
+    "id": 1,
+    "name": "مجفف الشعر هيليوس وايت",
+    "price": "300 ر.س",
+    "originalPrice": "400 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z6D2AA7B8486B341CFF94Z/45/_/1694560253/921191dd-c49b-4c4f-95e2-a9ff278f5f14.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "best-seller", "award-winning"],
+    "category": "اجهزة",
+    "subcategory": "شعر",
+    "description": "ارتقي بتجربة تجفيف شعركِ إلى مستوى احترافي مع مجفف الشعر **جي اتش دي هيليوس وايت**، الأكثر مبيعًا والحائز على جوائز مرموقة. تم تصميمه بواسطة نخبة من الفيزيائيين والمهندسين، ليمنحكِ قوة وتحكمًا مطلقًا في التصفيف. بفضل **تقنية الايونات المتقدمة**، يمنع هذا المجفف تطاير الشعر ويمنحه لمعانًا ونعومة تدوم طويلًا. استمتعي بتجفيف أسرع وتصفيف أكثر دقة، مع زيادة التألق بنسبة 30%.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z6D2AA7B8486B341CFF94Z/45/_/1694560253/921191dd-c49b-4c4f-95e2-a9ff278f5f14.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z13AA74B486BB38A19F05Z/45/_/1698968859/902885a0-fcc1-4467-9e97-1c88b458e9ed.jpg?format=webp&width=400"
+    ],
+    "colors": ["أبيض", "ذهبي", "أسود"],
+    "details": {
+      "النوع": "مجفف شعر احترافي",
+      "العلامة التجارية": "GHD",
+      "اللون": "أبيض",
+      "الاستخدام": "تصفيف الشعر وتجفيفه",
+      "الميزات": "تقنية ايونات متقدمة، يمنع تطاير الشعر، يزيد اللمعان بنسبة 30%",
+      "الطاقة": "2200 واط",
+      "الجهد": "220-240 فولت",
+      "الوزن": "500 جرام (بدون سلك)",
+      "المرفقات": "فوهة مسطحة"
+    }
+  },
+  {
+    "id": 2,
+    "name": "إصدار خاص من دايسون سوبرسونيك",
+    "price": "120 ر.س",
+    "originalPrice": "200 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/ZE273BFFE5DC283EF4FA6Z/45/1746747452/04e822e0-bf7b-4a64-a852-aaf925e971bb.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "special-edition"],
+    "category": "اجهزة",
+    "subcategory": "شعر",
+    "description": "تجفيف فائق السرعة وتصفيف دقيق مع **مجفف الشعر دايسون سوبرسونيك**، الإصدار الخاص. يتميز بمحرك دايسون الرقمي القوي V9 الذي يدور بسرعة فائقة تصل إلى 110,000 دورة في الدقيقة، مما يمنحكِ تيارًا هوائيًا عالي السرعة للتحكم الكامل في التصفيف. يأتيكِ مع 5 ملحقات تصفيف مختلفة، بما في ذلك ملحق 'فلاي اواي' الجديد الذي يمنحكِ نعومة ولمعانًا لا مثيل لهما.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/ZE273BFFE5DC283EF4FA6Z/45/1746747452/04e822e0-bf7b-4a64-a852-aaf925e971bb.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZE273BFFE5DC283EF4FA6Z/45/1746747452/2473e6a5-194e-4179-8799-24fdcf46822b.jpg?format=webp&width=800"
+    ],
+    "colors": ["أزرق", "وردي", "بنفسجي"],
+    "details": {
+      "النوع": "مجفف شعر",
+      "العلامة التجارية": "دايسون",
+      "اللون": "أزرق",
+      "الاستخدام": "تجفيف وتصفيف الشعر",
+      "الميزات": "محرك رقمي V9، تقنية اير مالتيبلاير، تحكم حراري ذكي، 5 ملحقات",
+      "سرعة المحرك": "110,000 دورة في الدقيقة",
+      "الطاقة": "1600 واط",
+      "الجهد": "220-240 فولت",
+      "المرفقات": "فوهة التنعيم، موزع الهواء، مشط بأسنان واسعة، ملحق تلطيف الشعر، ملحق فلاي اواي"
+    }
+  },
+  {
+    "id": 3,
+    "name": "مجعد الشعر جي اتش بي 26 مم ( كلاسيك كيرل تونج)",
+    "price": "120 ر.س",
+    "originalPrice": "200 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/ZCBD2273418D7570A1F2EZ/45/_/1694569699/004f363d-eac9-4d62-8266-2a3ce4fac4d4.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "salon-professional"],
+    "category": "اجهزة",
+    "subcategory": "شعر",
+    "description": "احصلي على تموجات كلاسيكية ومحددة مع **مجعد الشعر جي اتش دي كلاسيك كيرل تونج**. يتميز بأسطوانة متوسطة الحجم (26 مم) مثالية لجميع أطوال الشعر، حتى الأقصر منها. يمنحكِ هذا الجهاز تجعيدًا متناغمًا يدوم طويلًا، مع حجم وكثافة طبيعيين. **تقنية السيراميك المتطورة** تضمن توزيعًا متساويًا للحرارة لحماية الشعر من التلف.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/ZCBD2273418D7570A1F2EZ/45/_/1694569699/004f363d-eac9-4d62-8266-2a3ce4fac4d4.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZCBD2273418D7570A1F2EZ/45/_/1702461425/53860327-55cb-43be-972b-94a855d3edbe.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZCBD2273418D7570A1F2EZ/45/_/1694569701/0c0948ac-2cdb-4db5-9aa8-904c0d9e213a.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/ZCBD2273418D7570A1F2EZ/45/_/1694569698/e604ae9a-5eac-469e-b634-722f0b730645.jpg?format=webp&width=800"
+    ],
+    "colors": ["أسود", "وردي"],
+    "details": {
+      "النوع": "مجعد شعر (كيرلنج تونج)",
+      "العلامة التجارية": "GHD",
+      "اللون": "أسود",
+      "الاستخدام": "تجعيد وتصفيف الشعر",
+      "الميزات": "أسطوانة سيراميك 26 مم، نظام تسخين PTC، إيقاف تلقائي بعد 30 دقيقة، سلك دوار 360 درجة",
+      "درجة الحرارة": "185 درجة مئوية",
+      "الجهد": "220-240 فولت",
+      "قطر الأسطوانة": "26 مم"
+    }
+  },
+  {
+    "id": 4,
+    "name": "فيليبس",
+    "price": "50 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z71F0A71B200693FA3BB7Z/45/_/1731508085/61b27da2-dbaa-4a7c-8bbd-2ea0b8f4abb8.jpg?format=webp&width=800",
+    "badges": ["fast-delivery"],
+    "category": "اجهزة",
+    "subcategory": "شعر",
+    "description": "تجفيف فائق السرعة وتصفيف دقيق مع مجفف الشعر فيليبس، الإصدار الخاص. يتميز بمحرك قوي الذي يدور بسرعة فائقة تصل إلى 110,000 دورة في الدقيقة، مما يمنحكِ تيارًا هوائيًا عالي السرعة للتحكم الكامل في التصفيف. يأتيكِ مع 5 ملحقات تصفيف مختلفة، بما في ذلك ملحق 'فلاي اواي' الجديد الذي يمنحكِ نعومة ولمعانًا لا مثيل لهما.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z71F0A71B200693FA3BB7Z/45/_/1731508085/61b27da2-dbaa-4a7c-8bbd-2ea0b8f4abb8.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z71F0A71B200693FA3BB7Z/45/_/1731508105/3a21ff2b-37a8-4736-9993-37f874ae0913.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z71F0A71B200693FA3BB7Z/45/_/1731508126/d3fda5dd-7a15-42c1-9155-b4cbead9edce.jpg?format=webp&width=800"
+    ],
+    "colors": ["ذهبي", "اسود", "وردي"],
+    "details": {
+      "النوع": "مجفف شعر",
+      "العلامة التجارية": "فيليبس",
+      "اللون": "ذهبي",
+      "الاستخدام": "تصفيف الشعر وتجفيفه",
+      "الميزات": "محرك رقمي قوي، تقنية اير مالتيبلاير، تحكم حراري ذكي، 5 ملحقات",
+      "سرعة المحرك": "110,000 دورة في الدقيقة",
+      "الطاقة": "1600 واط",
+      "الجهد": "220-240 فولت",
+      "المرفقات": "فوهة التنعيم، موزع الهواء، مشط بأسنان واسعة، ملحق تلطيف الشعر، ملحق فلاي اواي"
+    }
+  },
+  {
+    "id": 5,
+    "name": "دايسون اير ورب مالتى ستايلر ومجفف كومبليت لونج فوليمايز فراولة برونز/بلش بينك",
+    "price": "300 ر.س",
+    "originalPrice": "400 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z26DE9702682CB512F743Z/45/_/1729062960/f6e8a7fb-6d45-423e-9ab9-3bba1408f4ad.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "multi-styler"],
+    "category": "اجهزة",
+    "subcategory": "شعر",
+    "description": "غيري إطلالة شعركِ بكل سهولة مع **دايسون ايروراب مالتي ستايلر**، الحل الشامل لكل احتياجات التصفيف. بفضل **تأثير كواندا**، يمكنكِ تصفيف الشعر وتجعيده وتمليسه وتجفيفه دون حرارة مفرطة. تأتي هذه المجموعة الكاملة مع عدة مرفقات لتناسب كل أنواع الشعر، وتمنحكِ حجمًا وكثافة لا مثيل لهما. لونها الجذاب 'فراولة برونز/بلش بينك' يضيف لمسة من الأناقة على روتينكِ اليومي.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z26DE9702682CB512F743Z/45/_/1729062960/f6e8a7fb-6d45-423e-9ab9-3bba1408f4ad.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z26DE9702682CB512F743Z/45/_/1729063764/b6e7c53a-3383-45fa-ad3f-c4454d7f66be.jpg?format=webp&width=800"
+    ],
+    "colors": ["فراولة برونز/بلش بينك", "نيكل/نحاسي", "فوشيا/نيكل"],
+    "details": {
+      "النوع": "جهاز تصفيف شعر متعدد الاستخدامات",
+      "العلامة التجارية": "دايسون",
+      "اللون": "فراولة برونز/بلش بينك",
+      "الاستخدام": "تجفيف، تجعيد، تمليس، وتكثيف الشعر",
+      "الميزات": "يعمل بتأثير كواندا، لا يستخدم حرارة مفرطة، 6 مرفقات مختلفة، يأتي مع حافظة جلدية",
+      "الجهد": "220-240 فولت",
+      "المرفقات": "فوهة تجفيف، أسطوانات تجعيد، فراشي تمليس ناعمة وصلبة، فرشاة مستديرة لتكثيف الشعر"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Hair Dryer 7000 Series BHD720/13",
+    "price": "300 ر.س",
+    "image": "https://f.nooncdn.com/p/pzsku/Z2F02433191B3EFD2791AZ/45/_/1731503464/9667047a-c4b9-44a2-b05f-8dbbe235005b.jpg?format=webp&width=800",
+    "badges": ["fast-delivery", "powerful-performance"],
+    "category": "اجهزة",
+    "subcategory": "شعر",
+    "description": "تجفيف سريع وفعّال مع **مجفف الشعر فيليبس سيريس 7000**. تم تصميمه لتوفير أداء قوي مع الحفاظ على صحة شعركِ. يتميز هذا الجهاز بتقنية **ثيرمو شيلد** التي تمنع التلف الناتج عن الحرارة، وتوفر درجة حرارة مثالية لتجفيف آمن وسريع. سواء كنتِ تبحثين عن تجفيف سريع أو تصفيف دقيق، فإن هذا المجفف هو خياركِ المثالي.",
+    "images": [
+      "https://f.nooncdn.com/p/pzsku/Z2F02433191B3EFD2791AZ/45/_/1731503464/9667047a-c4b9-44a2-b05f-8dbbe235005b.jpg?format=webp&width=800",
+      "https://f.nooncdn.com/p/pzsku/Z2F02433191B3EFD2791AZ/45/_/1731503475/43bbb379-ad6a-4c13-aa20-ebfbfc6b2d0d.jpg?format=webp&width=800"
+    ],
+    "colors": ["وردي", "أسود", "أبيض"],
+    "details": {
+      "النوع": "مجفف شعر",
+      "العلامة التجارية": "فيليبس",
+      "اللون": "وردي",
+      "الاستخدام": "تجفيف وتصفيف الشعر",
+      "الميزات": "تقنية ثيرمو شيلد، 4 إعدادات للحرارة، 2 سرعة، تدفق هواء قوي",
+      "الطاقة": "2300 واط",
+      "الجهد": "220-240 فولت",
+      "طول السلك": "2 متر",
+      "المرفقات": "فوهة مسطحة، موزع هواء"
+    }
+  }        ];
 
         // متغيرات نظام السلة
         let cart = [];
@@ -1355,13 +1387,13 @@
                     });
                 });
                 
-                // زر إضافة إلى السلة في صفحة المنتج
-                document.getElementById('add-to-cart-detail').addEventListener('click', function() {
-                    const selectedColor = document.querySelector('.option-value.selected[data-value]')?.getAttribute('data-value') || null;
-                    const selectedSize = document.querySelector('.option-value.selected[data-value]')?.getAttribute('data-value') || null;
-                    addToCart(product.id, selectedColor, selectedSize);
-                });
-                
+// الكود المُعدل
+document.getElementById('add-to-cart-detail').addEventListener('click', function(event) { // أضف event هنا
+    event.stopPropagation(); // أضف هذا السطر
+    const selectedColor = document.querySelector('.product-options .option-value.selected[data-value]')?.getAttribute('data-value') || (product.colors ? product.colors[0] : null);
+    const selectedSize = document.querySelector('.product-options .option-value.selected[data-value]')?.getAttribute('data-value') || (product.sizes ? product.sizes[0] : null);
+    addToCart(product.id, selectedColor, selectedSize);
+});                
                 // التمرير إلى أعلى الصفحة
                 window.scrollTo({top: 0, behavior: 'smooth'});
             }
