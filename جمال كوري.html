@@ -1124,374 +1124,453 @@
     <script>
         // بيانات المنتجات (يمكن استبدالها ببيانات حقيقية لاحقاً)
         const products = [
-            {
-                id: 1,
-                name: "SKIN1004 Madagascar Centella Travel Kit",
-                price: "60 ر.س",
-                originalPrice: "100 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1728481925/db8d8eb1-2064-4742-8af8-9bea178122ec.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "A full Centella skincare routine set with 5 mini-sized products for travel or trial of the Centella line.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1728481925/db8d8eb1-2064-4742-8af8-9bea178122ec.jpg?format=webp&width=800",
+{
+"id": 1,
+"name": "SKIN1004 Madagascar Centella Travel Kit",
+"price": "60 ر.س",
+"originalPrice": "100 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1728481925/db8d8eb1-2064-4742-8af8-9bea178122ec.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "مكياج",
+"subcategory": "وجه",
+"description": "طقم سفر متكامل من علامة SKIN1004 الرائدة، يحتوي على 5 منتجات مصغرة من خط Centella الشهير. مثالي للسفر أو لتجربة خط العناية بالبشرة. تركيبة مركزة من خلاصة نبات القنفذية (Centella Asiatica) من مدغشقر، تعمل على تهدئة البشرة، تقليل الاحمرار، ومحاربة علامات الشيخوخة. يوفر روتين عناية متكامل: تنظيف، تهدئة، ترطيب، وتغذية. يناسب جميع أنواع البشرة، وخاصة الحساسة والمعرضة للاحمرار. تغليف أنيق ومضغوط يناسب حقيبة السفر.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1728481925/db8d8eb1-2064-4742-8af8-9bea178122ec.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1728481923/d41c10e4-f4d2-4c0d-838c-252309b1ccd4.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1728222625/06091bd3-0f8c-4209-95a5-7656f5c7eb3a.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/ZC1698B2BB54F57D47951Z/45/_/1742375973/7b9d347b-0847-47c4-be27-9cb5663a8468.jpg?format=webp&width=800"
-                ],
-                colors: ["clear"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "SKIN1004",
-                    "اللون": "clear",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للوجه والشفاه",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },  {
-                id: 2,
-                name: "Red Bean Refreshing Pore Mask",
-                price: "12 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z25850EF0FC8A86E28DB4Z/45/_/1729163206/1e980031-64d9-486f-9856-60ddbe364154.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "Our pores are essentially pathways that sebum uses to reach the surface of our skin. When dead skin cells and surplus sebum clog these pathways, pores tend to enlarge. Proper pore care involves clearing away the built-up dead skin cells and sebum, followed by cooling the skin.For this initial phase of skincare – pore and exfoliation care – we have harnessed ingredients from",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z25850EF0FC8A86E28DB4Z/45/_/1729163206/1e980031-64d9-486f-9856-60ddbe364154.jpg?format=webp&width=800",
+],
+"colors": ["طقم كامل"],
+"sizes": ["طقم سفر"],
+"details": {
+"النوع": "طقم عناية بالبشرة",
+"العلامة التجارية": "SKIN1004",
+"المكونات النشطة": "مستخلص Centella Asiatica بنسبة 100%",
+"نوع البشرة": "جميع أنواع البشرة، الحساسة، المعرضة للاحمرار",
+"فوائد المنتج": "تهدئة فورية، تقليل الاحمرار، تعزيز حاجز البشرة، ترطيب عميق",
+"عدد القطع": "5 قطع",
+"مدة الصلاحية بعد الفتح": "12 شهر",
+"خالي من": "العطور، الكحول، البارابين، الكبريتات",
+"بلد المنشأ": "كوريا الجنوبية",
+"طريقة الاستخدام": "استخدم المنتجات بالترتيب: المنظف، التونر، السيروم، الكريم، كريم العين"
+}
+},
+
+{
+"id": 2,
+"name": "Red Bean Refreshing Pore Mask - قناع البورفيري المنعش بالفاصوليا الحمراء",
+"price": "12 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/Z25850EF0FC8A86E28DB4Z/45/_/1729163206/1e980031-64d9-486f-9856-60ddbe364154.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "أقنعة الوجه",
+"description": "قناع طيني متقدم مصنوع من مسحوق الفاصوليا الحمراء الدقيقة لتنظيف المسام بعمق وإزالة الخلايا الميتة والزيوت الزائدة. يتميز بقوامه الكريمي الذي يتحول إلى قوام شمعي عند الجفاف، مما يسمح له بسحب الشوائب من أعماق المسام. يترك البشرة منعشة، ناعمة، وخالية من اللمعة الدهنية. مثالي للبشرة الدهنية والمختلطة والمعرضة لحب الشباب. يعمل على تنظيم إفراز الزيوت وتضييق المسام الواسعة.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/Z25850EF0FC8A86E28DB4Z/45/_/1729163206/1e980031-64d9-486f-9856-60ddbe364154.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/Z25850EF0FC8A86E28DB4Z/45/_/1728481571/2c07b908-eb39-428e-af18-c5d06e8a633d.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/Z25850EF0FC8A86E28DB4Z/45/_/1728481601/00b74ae8-f2c7-43fd-9117-298120174456.jpg?format=webp&width=800"
                 ],
-                colors: ["clear"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "فلورمار",
-                    "اللون": "clear",
-                    "الحجم": "وسط",
-                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            }, {
-                id: 3,
-                name: "انوا",
-                price: "17 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z1E37F7F5D05AF944DC56Z/45/_/1728481743/478eb165-19a9-48d2-a287-1775ba0918fb.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "A perfect daily toner pad for instant soothing and reducing enlarged pores. Suitable for all skin types, especially sensitive skin. Preps the skin perfectly before makeup, giving a radiant glass skin look.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z1E37F7F5D05AF944DC56Z/45/_/1728481743/478eb165-19a9-48d2-a287-1775ba0918fb.jpg?format=webp&width=800",
+"colors": ["أصلي"],
+"sizes": ["50 مل"],
+"details": {
+"النوع": "قناع طيني للوجه",
+"العلامة التجارية": "Isntree",
+"المكونات الرئيسية": "مسحوق الفاصوليا الحمراء, Kaolin, Bentonite",
+"نوع البشرة": "البشرة الدهنية, المختلطة, المعرضة لحب الشباب",
+"فوائد المنتج": "تنظيف عميق للمسام, تقشير لطيف, امتصاص الزيوت الزائدة, تقليل حجم المسام",
+"ملمس المنتج": "كريمي سلس",
+"خالي من": "العطور الاصطناعية, الألوان الاصطناعية, البارابين, الكحول",
+"طريقة الاستخدام": "طبق طبقة رقيقة على الوجه الرطب، اتركه حتى يجف لمدة 10-15 دقيقة، ثم اشطفه بالماء الفاتر. استخدم 1-2 مرات أسبوعياً.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 3,
+"name": "ANUA Heartleaf 70% Cleansing Pad - مناديل تونر Heartleaf من ANUA",
+"price": "17 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/Z1E37F7F5D05AF944DC56Z/45/_/1728481743/478eb165-19a9-48d2-a287-1775ba0918fb.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "تونر ومناديل",
+"description": "مناديل تونر يومية مثالية تحتوي على 70% من خلاصة ورق القلب (Heartleaf) لتهدئة فورية وتقليل المسام المتوسعة. هذه المناديل المتشبعة بالتونر تعمل على تقشير لطيف، موازنة درجة حموضة البشرة، وإعداد البشرة بشكل مثالي قبل المكياج لمنحها مظهر الجلد الزجاجي المتألق. مناسبة لجميع أنواع البشرة، وخاصة الحساسة والمتهيجة. خالية من الكحول والعطور الاصطناعية. علبة تحتوي على 70 وسادة.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/Z1E37F7F5D05AF944DC56Z/45/_/1728481743/478eb165-19a9-48d2-a287-1775ba0918fb.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/Z1E37F7F5D05AF944DC56Z/45/_/1728481744/bea0c7a7-4593-44a7-9fa5-909397d4aee4.jpg?format=webp&width=800"
-                  
                 ],
-                colors: ["شفاف"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "انوا",
-                    "الحجم": "وسط",
-                    "نوع البشرة المستهدف": "جميع انواع البشرة",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 4,
-                name: " MASK FIT MAKE UP FIXER 80mL",
-                price: "20 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z41BC56A6B17C16CFD863Z/45/_/1739402684/1a9d777d-37c0-4ced-a2c5-9dcfa780d6bb.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "الوجه",
-                description: "6 cream foundations and 6 cream blushes to unify, contour, and color your cheeks.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z41BC56A6B17C16CFD863Z/45/_/1739402684/1a9d777d-37c0-4ced-a2c5-9dcfa780d6bb.jpg?format=webp&width=800",
+"colors": ["أصلي"],
+"sizes": ["70 وسادة"],
+"details": {
+"النوع": "مناديل تونر مقشرة وملطفة",
+"العلامة التجارية": "ANUA",
+"المكونات النشطة": "خلاصة Heartleaf (70%), PHA, LHA",
+"نوع البشرة": "جميع أنواع البشرة، وخاصة الحساسة والدهنية والمعرضة للاحمرار",
+"فوائد المنتج": "تقشير كيميائي لطيف، تهدئة فورية، تقليل حجم المسام، ترطيب خفيف",
+"خالي من": "الكحول, العطور, الألوان الاصطناعية, البارابين, الزيوت المعدنية",
+"ملمس المنتج": "سائل خفيف غير لزج",
+"طريقة الاستخدام": "امسحي الوجه والرقبة برفق باستخدام منديل واحد بعد التنظيف. استخدمي صباحاً ومساءً.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 4,
+"name": "TIRTIR Mask Fit Make Up Fixer 80mL - مثبت مكياج من تيرتير",
+"price": "20 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/Z41BC56A6B17C16CFD863Z/45/_/1739402684/1a9d777d-37c0-4ced-a2c5-9dcfa780d6bb.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "مكياج",
+"subcategory": "مثبتات ومضادات للماء",
+"description": "مثبت مكياج مبتكر على شكل سبراي من تيرتير، مصمم لإضفاء لمسة نهائية طويلة الأمد لمظهر المكياج. يتميز بتركيبته الخفيفة غير اللزجة التي تشكل حاجزاً واقياً يمنع تلطيخ المكياج أو ذوبانه، حتى في الظروف الرطبة. يحافظ على المكياج طازجاً ومثبتاً لمدة تصل إلى 12 ساعة. يناسب جميع أنواع البشرة، بما في ذلك الحساسة. يعمل أيضًا على ترطيب البشرة ومنحها توهجاً طبيعياً.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/Z41BC56A6B17C16CFD863Z/45/_/1739402684/1a9d777d-37c0-4ced-a2c5-9dcfa780d6bb.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/Z41BC56A6B17C16CFD863Z/45/_/1739402686/97bca349-6a46-4b36-9ea1-4b438f51dd28.jpg?format=webp&width=800"
-                ],
-                colors: ["شفاف"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "ترتر",
-                    "الحجم": "وسط",
-                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 5,
-                name: "SKIN1004 Madagascar Centella Light Cleansing Oil 200ml",
-                price: "23 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZE357327CD0B5CB2F4F8AZ/45/_/1728995058/a733a7b5-bc13-4995-b304-e2362422e420.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "A lightweight, oil-based cleanser that gently melts away makeup, dirt, oils and sunscreen without stinging the eye area- Centella oil (MCT-oil-extracted Centella) and 6 botanical oils- Micellar cleansing oil allows removal of excess oil and makeup without removing healthy oils- Water-like light texture, suitable for those who are new to oil cleansers- Non-comedogenic and dissolves sebum to prevent pore congestio.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/ZE357327CD0B5CB2F4F8AZ/45/_/1728995058/a733a7b5-bc13-4995-b304-e2362422e420.jpg?format=webp&width=800",
+],
+"colors": ["شفاف"],
+"sizes": ["80 مل"],
+"details": {
+"النوع": "سبراي مثبت للمكياج",
+"العلامة التجارية": "TIRTIR",
+"المكونات النشطة": "Centella Asiatica, Green Tea Extract, Hyaluronic Acid",
+"نوع البشرة": "جميع أنواع البشرة",
+"فوائد المنتج": "تثبيت المكياج طويل الأمد (حتى 12 ساعة), مقاوم للماء والعرق, ترطيب خفيف, توهج طبيعي",
+"خالي من": "الكحول, العطور الاصطناعية",
+"نوع البخاخ": "رذاذ ناعم ومتساوي",
+"طريقة الاستخدام": "هز العلبة جيداً، ثم رشها على بعد 20-30 سم من الوجه بعد الانتهاء من تطبيق المكياج بالكامل.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 5,
+"name": "SKIN1004 Madagascar Centella Light Cleansing Oil 200ml - زيت تنظيف خفيف",
+"price": "23 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/ZE357327CD0B5CB2F4F8AZ/45/_/1728995058/a733a7b5-bc13-4995-b304-e2362422e420.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "منظفات",
+"description": "زيت تنظيف خفيف القوام من SKIN1004، مصنوع من زيت Centella (المستخلص من نبات القنفذية) و6 زيوت نباتية أخرى. يذوب بلطف المكياج (حتى المقاوم للماء)، الأوساخ، الزيوت، وواقي الشمس دون أن يسبب لسعة في منطقة العين. قوامه المائي الخفيف يجعلها مناسباً حتى لأولئك الجدد على استخدام زيت التنظيف. غير كوميدوغينيك (لا يسد المسام) ويذوب الزهم لمنع انسداد المسام. يتحول إلى قوام حليبي عند ملامسة الماء لشطف سهل دون ترك بقايا.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/ZE357327CD0B5CB2F4F8AZ/45/_/1728995058/a733a7b5-bc13-4995-b304-e2362422e420.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/ZE357327CD0B5CB2F4F8AZ/45/_/1728994931/c329b372-6a85-454d-b2c8-5ba2867a20b9.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/ZE357327CD0B5CB2F4F8AZ/45/_/1728994930/84fefa05-9139-42b8-96a5-ecab70f2bb17.jpg?format=webp&width=800"
                 ],
-                colors: ["شفاف"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "ميك اب فور ايفر",
-                    "اللون": "شفاف",
-                    "الحجم": "وسط",
-                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 6,
-                name: "Green Plum Refreshing Cleanser",
-                price: "30 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZFC3B8D9CAE38F9C09B97Z/45/_/1729162079/1279c4b7-7545-4635-b396-37daf44dedf8.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "Choosing a cleanser involves finding a balance between thorough cleansing and maintaining the skin's barrier health. Our Green Plum Refreshing Cleanser, with its gentle, slightly acidic formulation, harnesses the power of plant-derived extracts from plum and mung bean seeds to achieve just that.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/ZFC3B8D9CAE38F9C09B97Z/45/_/1729162079/1279c4b7-7545-4635-b396-37daf44dedf8.jpg?format=webp&width=800",
+"colors": ["أصلي"],
+"sizes": ["200 مل"],
+"details": {
+"النوع": "زيت تنظيف/مرحلة التنظيف الأولى",
+"العلامة التجارية": "SKIN1004",
+"المكونات النشطة": "زيت Centella MCT, زيت الجوجوبا, زيت بذور عباد الشمس, زيت الزيتون",
+"نوع البشرة": "جميع أنواع البشرة، بما في ذلك الحساسة والمعرضة لحب الشباب",
+"فوائد المنتج": "إزالة المكياج المقاوم للماء, تنظيف لطيف دون تهيج, الحفاظ على حاجز البشرة, منع انسداد المسام",
+"خالي من": "العطور, الألوان الاصطناعية, البارابين, الكبريتات, الزيوت المعدنية",
+"طريقة الاستخدام": "ضع كمية وفيرة على الوجه والرقبة الجاف، دلك برفق لذوبان المكياج. أضف القليل من الماء لاستحلاب الزيت، ثم اشطف جيداً.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 6,
+"name": "Beauty of Joseon Green Plum Refreshing Cleanser - منظف Green Plum المنعش",
+"price": "30 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/ZFC3B8D9CAE38F9C09B97Z/45/_/1729162079/1279c4b7-7545-4635-b396-37daf44dedf8.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "منظفات",
+"description": "منظف وجه حمضي قليلاً (pH 6.5) من Beauty of Joseon، مصنوع من مستخلصات البرقوق الأخضر وبذور المونغ لتوفير توازن مثالي بين التنظيف العميق والحفاظ على صحة حاجز البشرة. يرغو برغوة كريمية كثيفة تزيل الشوائب بلطف دون تجريد البشرة من زيوتها الطبيعية. يترك البشرة نظيفة، منعشة، ومريحة دون الشعور بالشد أو الجفاف. مثالي للاستخدام اليومي كمنظف ثانٍ بعد زيت التنظيف، أو كمنظف رئيسي في الصباح.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/ZFC3B8D9CAE38F9C09B97Z/45/_/1729162079/1279c4b7-7545-4635-b396-37daf44dedf8.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/ZFC3B8D9CAE38F9C09B97Z/45/_/1728481846/ee0c37c9-d90e-4330-9e84-e341800fe5fd.jpg?format=webp&width=800"
                 ],
-                colors: ["ازرق"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "Beauty of Joseon",
-                    "اللون": "ازرق",
-                    "الحجم": "وسط",
-                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 7,
-                name: "Acne Pimple Master Patch",
-                price: "2 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZC036F94E1B81E046FE3BZ/45/_/1728904597/d4be7707-b5a0-4be3-8a02-d07d8513b910.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "عيون",
-                description: "Hydrocolloid patches that protect wounded or troubled area from getting worse while maintaining humidity of skin to prevent further breakouts.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/ZC036F94E1B81E046FE3BZ/45/_/1728904597/d4be7707-b5a0-4be3-8a02-d07d8513b910.jpg?format=webp&width=800",
+"colors": ["أزرق (لون العبوة)"],
+"sizes": ["100 مل"],
+"details": {
+"النوع": "جل منظف للوجه",
+"العلامة التجارية": "Beauty of Joseon",
+"المكونات النشطة": "مستخلص البرقوق الأخضر (2%), مستخلص بذور المونغ, AHA (حمض الجليكوليك)",
+"نوع البشرة": "جميع أنواع البشرة، وخاصة الدهنية والمختلطة",
+"درجة الحموضة pH": "6.5 (حمضي قليلاً)",
+"فوائد المنتج": "تنظيف عميق مع الحفاظ على رطوبة البشرة, تقشير كيميائي لطيف, موازنة إفراز الزيوت",
+"خالي من": "الكبريتات, العطور, الألوان الاصطناعية, البارابين",
+"طريقة الاستخدام": "بلل الوجه، ضع كمية صغيرة على اليدين، افركهما لصنع رغوة، ثم دلك الوجه بلطف. اشطف جيداً.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 7,
+"name": "COSRX Acne Pimple Master Patch - لصقات علاج حب الشباب",
+"price": "2 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/ZC036F94E1B81E046FE3BZ/45/_/1728904597/d4be7707-b5a0-4be3-8a02-d07d8513b910.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "علاج موضعي",
+"description": "لصقات هيدروكولويد شفافة من COSRX مصممة خصيصًا لعلاج البثور وحب الشباب بشكل موضعي. تعمل على امتصاص القيح والزيوت الزائدة من البثور الناضجة أو المفتوحة، مع حماية المنطقة المصابة من البكتيريا والمزيد من التهيج. تعزز هذه الرقاع التئام أسرع وتقلل من خطر التندب. شفافة بشكل مخفي، يمكن ارتداؤها أثناء النهار أو الليل. تتضمن العبوة 24 رقعة بمقاسات مختلفة تناسب جميع أنواع البثور.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/ZC036F94E1B81E046FE3BZ/45/_/1728904597/d4be7707-b5a0-4be3-8a02-d07d8513b910.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/ZC036F94E1B81E046FE3BZ/45/_/1728483663/72940b8f-8504-44e7-b145-c0ce5cf4ca46.jpg?format=webp&width=800"
                 ],
-                colors: ["ابيض"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "COSRX",
-                    "الحجم": "وسط",
-                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 8,
-                name: "Advanced Snail 96 Mucin Power Essence",
-                price: "34 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728895221/c5f5a44c-a1af-4872-a54a-06188aa270c5.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "للوجه",
-                description: "عززي لمعان البشرة عن طريق إضافة تدفق صحي للون إلى البشرة. توفر القطرات المركزة لون قابل للبناء عليه، يضيء لون الخدين. محمل بلؤلؤ ذو تركيز ناعم لمنحك بشرة مثالية طبيعية مشرقة.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728895221/c5f5a44c-a1af-4872-a54a-06188aa270c5.jpg?format=webp&width=800",
+"colors": ["شفاف"],
+"sizes": ["24 رقعة (مقاسات مختلفة)"],
+"details": {
+"النوع": "لصقات علاج موضعي للبثور (هيدروكولويد)",
+"العلامة التجارية": "COSRX",
+"المكونات النشطة": "هيدروكولويد",
+"نوع البشرة": "البشرة المعرضة لحب الشباب، الدهنية",
+"فوائد المنتج": "امتصاص الإفرازات والقيح, حماية البثور من التلوث, تسريع الشفاء, تقليل الاحمرار والالتهاب",
+"خالي من": "العطور, الزيوت, الكحول",
+"كيفية الاستخدام": "تنظيف البشرة وتجفيفها جيداً، وضع الرقعة على البثرة الناضجة أو المفتوحة، تركها لمدة 6-8 ساعات أو طوال الليل.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 8,
+"name": "COSRX Advanced Snail 96 Mucin Power Essence - إسنسوم snail mucin",
+"price": "34 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728895221/c5f5a44c-a1af-4872-a54a-06188aa270c5.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "إسنسوم ومصل",
+"description": "إسنسوم خارق من COSRX يحتوي على 96% من مركب Snail Mucin (مخاط الحلزون) لترطيب عميق وإصلاح مكثف للبشرة. يعمل على تهدئة البشرة المتهيجة، ملء الخطوط الدقيقة، وتحسين مرونة البشرة بشكل ملحوظ. قوامه الهلامي الخفيف يمتص بسرعة دون أن يترك ملمساً لزجاً. مثالي لجميع أنواع البشرة، وخاصة الجافة، الناضجة، أو التالفة. يساعد على استعادة نضارة البشرة وشبابها مع حماية حاجز البشرة.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728895221/c5f5a44c-a1af-4872-a54a-06188aa270c5.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/ZF21A5896EF14D157CF36Z/45/_/1728481867/0203f5ec-c602-4653-8bde-ec66ffe44b40.jpg?format=webp&width=800"
                 ],
-                colors: ["شفاف"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "COSRX",
-                    "اللون": "شفاف",
-                    "الحجم": "وسط",
-                    "نوع البشرة المستهدف": "جميع أنواع البشرة",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 9,
-                name: "HYALURONIC ACID AIRY SUN STICK_22g",
-                price: "9 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z52A29F826BD59302AA7DZ/45/_/1728904461/7fb4cb01-d29c-4573-bda4-4fcb4e655ce2.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "A lightweight sunscreen stick with 8 types of hyaluronic acid helps retain moisture in the skin and protects it from strong UV rays.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z52A29F826BD59302AA7DZ/45/_/1728904461/7fb4cb01-d29c-4573-bda4-4fcb4e655ce2.jpg?format=webp&width=800"                ],
-                colors: ["ابيض"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "نيكس",
-                    "اللون": "خوخي داكن",
-                    "الحجم": "وسط",
-                    "محتوى واقي من الشمس": "بدون عامل حماية من الشمس",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 10,
-                name: "احمر شفاه سائل سوبر ستاي",
-                price: "19 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z738D34D8164149F29434Z/45/_/1742375833/22d47e3f-6cb0-41db-be40-96119cc789a4.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "Get ultimate skincare with the Beauty of Joseon Hanbang Serum Discovery Kit - (4 pcs). This serum combo kit contains four serum samples, each with a potent formulation that addresses specific skin issues. The Beauty of Joseon kit has a calming serum formulated with green tea and penthanol, which prevent skin irritation. Plus, the glow serum in this skin-brightening kit is enriched with blemish-reducing niacinamide and calming propolis.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z738D34D8164149F29434Z/45/_/1742375833/22d47e3f-6cb0-41db-be40-96119cc789a4.jpg?format=webp&width=800",
+"colors": ["أصلي"],
+"sizes": ["100 مل"],
+"details": {
+"النوع": "إسنسوم ترطيب وإصلاح",
+"العلامة التجارية": "COSRX",
+"المكونات النشطة": "Snail Secretion Filtrate (96%), Hyaluronic Acid",
+"نوع البشرة": "جميع أنواع البشرة، وخاصة الجافة، الناضجة، التالفة، أو المعرضة للاحمرار",
+"فوائد المنتج": "ترطيب عميق ومكثف, إصلاح حاجز البشرة, تهدئة الاحمرار والتهيج, ملء الخطوط الدقيقة, تحسين مرونة البشرة",
+"خالي من": "العطور, البارابين, Phthalates",
+"ملمس المنتج": "هلامي خفيف، غير لزج، يمتص بسرعة",
+"طريقة الاستخدام": "ضع كمية مناسبة على الوجه والرقبة بعد التونر وقبل السيروم أو الكريم. استخدم صباحاً ومساءً.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 9,
+"name": "NEOGEN HYALURONIC ACID AIRY SUN STICK 22g - ستيك واقي شمسي",
+"price": "9 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/Z52A29F826BD59302AA7DZ/45/_/1728904461/7fb4cb01-d29c-4573-bda4-4fcb4e655ce2.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "واقي الشمس",
+"description": "ستيك واقي شمسي فائق الخفة من NEOGEN، مصمم لإعادة تطبيق الواقي الشمسي بسهولة وبدون فوضى طوال اليوم. يحتوي على 8 أنواع من حمض الهيالورونيك لترطيب البشرة وحمايتها من الأشعة فوق البنفسجية الضارة (SPF50+ PA++++). قوامه الهوائي (Airy) غير اللامع لا يترك طبقة بيضاء أو ملمساً دهنياً. مثالي للاستخدام فوق المكياج. صغير الحجم ومحمول بسهولة في الحقيبة للتطبيق في أي وقت وأي مكان.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/Z52A29F826BD59302AA7DZ/45/_/1728904461/7fb4cb01-d29c-4573-bda4-4fcb4e655ce2.jpg?format=webp&width=800"  ],
+"colors": ["شفاف"],
+"sizes": ["22 جم"],
+"details": {
+"النوع": "ستيك واقي من الشمس",
+"العلامة التجارية": "NEOGEN",
+"معامل الحماية": "SPF50+ PA++++",
+"المكونات النشطة": "8 أنواع من Hyaluronic Acid, Centella Asiatica",
+"نوع البشرة": "جميع أنواع البشرة، بما في ذلك الحساسة",
+"فوائد المنتج": "حماية عالية من UVA/UVB, ترطيب مكثف, تطبيق سهل فوق المكياج, قوام خفيف غير لامع",
+"مقاوم للماء": "نعم",
+"خالي من": "العطور, الألوان الاصطناعية, البارابين",
+"طريقة الاستخدام": "طبق مباشرة على الوجه بإمرار الستيك على المناطق المراد حمايتها. أعد التطبيق كل ساعتين.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 10,
+"name": "Beauty of Joseon Hanbang Serum Discovery Kit - طقم تجربة السيرومات",
+"price": "19 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/Z738D34D8164149F29434Z/45/_/1742375833/22d47e3f-6cb0-41db-be40-96119cc789a4.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "طقم عينات",
+"description": "طقم اكتشاف مثالي من Beauty of Joseon يتضمن 4 سيرومات مصغرة من خط Hanbang التقليدي. كل سيروم مصمم لاستهداف مشكلة محددة: سيروم تهدئة البشرة (الشاي الأخضر)، سيروم إشراق البشرة (النياسيناميد والبروبوليس)، سيروم إصلاح البشرة (الريتينول)، وسيروم تنعيم البشرة. مثالي للسفر أو لتجربة التركيبات قبل شراء الحجم الكامل. يعتمد على تركيبات Hanbang التقليدية المعززة بالعلوم الحديثة لفعالية مثبتة.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/Z738D34D8164149F29434Z/45/_/1742375833/22d47e3f-6cb0-41db-be40-96119cc789a4.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/Z738D34D8164149F29434Z/45/_/1728481121/9082c683-d00b-4194-b16d-c21ba3136093.jpg?format=webp&width=800"
                 ],
-                colors: ["شفاف"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "Beauty of Joseon",
-                    "اللون": "شفاف",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 11,
-                name: "PURITO Wonder Releaf Centella Mini Kit Unscented",
-                price: "30 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z628861129773EC7C2F07Z/45/_/1729165147/8489f2ab-0a15-4d32-9026-864e5dd20e62.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z628861129773EC7C2F07Z/45/_/1729165147/8489f2ab-0a15-4d32-9026-864e5dd20e62.jpg?format=webp&width=800",
+"colors": ["طقم عينات"],
+"sizes": ["4 قطع مصغرة"],
+"details": {
+"النوع": "طقم سيرومات تجريبية",
+"العلامة التجارية": "Beauty of Joseon",
+"محتويات الطقم": "4 سيرومات (تهدئة، إشراق، إصلاح، تنعيم)",
+"نوع البشرة": "جميع أنواع البشرة",
+"فوائد الطقم": "تجربة متعددة الوظائف, استهداف مشاكل البشرة المختلفة, ترطيب, تفتيح, مكافحة الشيخوخة",
+"حجم كل عينة": "5 مل لكل سيروم (إجمالي 20 مل)",
+"خالي من": "العطور, الألوان الاصطناعية, البارابين, الكحول",
+"طريقة الاستخدام": "استخدم سيروم واحد أو ادمجهم في روتينك حسب احتياجات بشرتك.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 11,
+"name": "PURITO Wonder Releaf Centella Mini Kit Unscented - طقم Centella المصغر",
+"price": "30 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/Z628861129773EC7C2F07Z/45/_/1729165147/8489f2ab-0a15-4d32-9026-864e5dd20e62.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "طقم عناية",
+"description": "طقم مصغر من Purito خالي من العطور، مخصص للبشرة الحساسة والمتهيجة. يعتمد على Centella Asiatica بتركيز 49% كمكون رئيسي لتهدئة فورية وإصلاح مكثف لحاجز البشرة. يتضمن منظف لطيف، تونر مرطب، سيروم مركز، وكريم غني. مثالي لاستعادة توازن البشرة خلال فترات التوتر، بعد التقشير، أو عند التعرض للعوامل الخارجية المسببة للتهيج. جميع المنتجات في الطقم خالية من العطور والكحول والعطور الاصطناعية.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/Z628861129773EC7C2F07Z/45/_/1729165147/8489f2ab-0a15-4d32-9026-864e5dd20e62.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/Z628861129773EC7C2F07Z/45/_/1728481480/9793a314-28dd-4282-91f0-f81ceb352a86.jpg?format=webp&width=800"
                 ],
-                colors: ["شفاف"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "ترتر",
-                    "اللون": "شفاف",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 12,
-                name: "No.3 Pore Reset Ampoule",
-                price: "12 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z841853FD1FCB981A5A93Z/45/_/1744275152/aac6d4ad-d94a-455d-8849-481f563d6b6a.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "Transform your skin with No.3 Pore Reset Ampoule Shot, a potent solution designed to refine pores and enhance skin clarity.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z841853FD1FCB981A5A93Z/45/_/1744275152/aac6d4ad-d94a-455d-8849-481f563d6b6a.jpg?format=webp&width=800"
-                ],
-                colors: ["شفاف"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "نامبوزين",
-                    "اللون": ["شفاف"],
-                    "الحجم": "وسط",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 13,
-                name: " The Hyaluronic Acid 3 Serum",
-                price: "49 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZF36EF2EB63407D77AEE3Z/45/_/1728904523/cb64420a-f47c-4109-9bef-253c829feb79.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "Highly concentrated 3% hyaluronic acid serum that hydrates, plumps, soothes and supports the skin's moisture barrier.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/ZF36EF2EB63407D77AEE3Z/45/_/1728904523/cb64420a-f47c-4109-9bef-253c829feb79.jpg?format=webp&width=800",
+"colors": ["طقم مصغر"],
+"sizes": ["4 قطع مصغرة"],
+"details": {
+"النوع": "طقم عناية بالبشرة الحساسة",
+"العلامة التجارية": "PURITO",
+"المكون النشط الرئيسي": "Centella Asiatica 49%",
+"نوع البشرة": "البشرة الحساسة, المتهيجة, المعرضة للاحمرار",
+"فوائد الطقم": "تهدئة فورية, إصلاح حاجز البشرة, تقليل الاحمرار, ترطيب عميق",
+"محتويات الطقم": "منظف، تونر، سيروم، كريم",
+"خالي من": "العطور, الكحول, العطور الاصطناعية, البارابين, الزيوت المعدنية",
+"طريقة الاستخدام": "استخدم المنتجات بالترتيب: المنظف، التونر، السيروم، ثم الكريم.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 12,
+"name": "Numbuzin No.3 Pore Reset Ampoule - أمبول مسام Numbuzin رقم 3",
+"price": "12 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/Z841853FD1FCB981A5A93Z/45/_/1744275152/aac6d4ad-d94a-455d-8849-481f563d6b6a.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "أمبول وسيروم",
+"description": "أمبول مركز من Numbuzin رقم 3 مصمم لإعادة ضبط وتنقية المسام. يحتوي على مزيج من AHA, BHA, PHA لإزالة الخلايا الميتة والشوائب من أعماق المسام، بالإضافة إلى Niacinamide للتحكم في إفراز الزيوت وتحسين ملمس البشرة. قوامه المائي الخفيف يمتص بسرعة دون أن يترك ملمساً دهنياً. يستهدف المسام الواسعة، البشرة الدهنية، والعيوب. استخدام منتظم يساعد على تصفية لون البشرة وتحسين نسيجها بشكل ملحوظ.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/Z841853FD1FCB981A5A93Z/45/_/1744275152/aac6d4ad-d94a-455d-8849-481f563d6b6a.jpg?format=webp&width=800"
+],
+"colors": ["أصلي"],
+"sizes": ["30 مل"],
+"details": {
+"النوع": "أمبول علاجي للمسام",
+"العلامة التجارية": "Numbuzin",
+"المكونات النشطة": "Niacinamide (10%), AHA, BHA, PHA",
+"نوع البشرة": "البشرة الدهنية, المختلطة, المعرضة لحب الشباب والمسام الواسعة",
+"فوائد المنتج": "تقشير كيميائي عميق, تقليل حجم المسام, تنقية البشرة, التحكم في اللمعة الدهنية",
+"تركيز Niacinamide": "10%",
+"خالي من": "العطور, الألوان الاصطناعية, الزيوت المعدنية",
+"طريقة الاستخدام": "ضع بضع قطرات على الوجه بعد التونر وقبل المرطب. ابدأ باستخدامه 2-3 مرات أسبوعياً، ثم زد التكرار تدريجياً.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 13,
+"name": "The INKEY List Hyaluronic Acid Serum - سيروم حمض الهيالورونيك",
+"price": "49 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/ZF36EF2EB63407D77AEE3Z/45/_/1728904523/cb64420a-f47c-4109-9bef-253c829feb79.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "سيروم",
+"description": "سيروم ترطيب قوي من The INKEY List يحتوي على 3 أنواع من حمض الهيالورونيك بتركيز 2% لاستهداف طبقات البشرة المختلفة. يعمل على جذب الرطوبة بعمق، ملء الخطوط الدقيقة الناتجة عن الجفاف، وترك البشرة ممتلئة ونضرة. مدعم بفيتامين B5 (بانثينول) لتهدئة البشرة وتعزيز فعالية الترطيب. قوامه الهلامي الخفيف غير اللزج يمتص بسرعة ويناسب استخدامه تحت المكياج. حل بسيط وفعال للترطيب اليومي لجميع أنواع البشرة.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/ZF36EF2EB63407D77AEE3Z/45/_/1728904523/cb64420a-f47c-4109-9bef-253c829feb79.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/ZF36EF2EB63407D77AEE3Z/45/_/1728481865/84a381fa-6fce-407c-9f8e-9df7f367e81c.jpg?format=webp&width=800"
                 ],
-                colors: ["شفاف"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "ريفلوشن",
-                    "اللون": "شفاف",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 14,
-                name: "ملمع متغير ثلاثي الأبعاد 03 مشهد أصفر",
-                price: "170 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/Z8322715F6CD3CBF5B43EZ/45/_/1744098806/34f18138-dcc4-4a83-8ca6-c7ae5a6962d7.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "Fitted with a handy silicone applicator, this lip gloss in a thick gel texture helps to achieve glossy and juicy lips while amping up lip volume.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/Z8322715F6CD3CBF5B43EZ/45/_/1744098806/34f18138-dcc4-4a83-8ca6-c7ae5a6962d7.jpg?format=webp&width=800"
-                ],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "ميلانو",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للوجه ",
-                }
-            },{
-                id: 15,
-                name: "Vitamin C Serum 30ml (VA)",
-                price: "32 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZFE576163752506EC1692Z/45/_/1728481579/66af3b4f-ab7d-4980-b596-42a6a1cf4718.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "وجه",
-                description: "Cos De BAHA VA Serum contains vitamin C (L-ascorbic acid), arbutin, vitamin B5 (D-panthenol) and hyaluronic acid as active ingredients.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/ZFE576163752506EC1692Z/45/_/1728481579/66af3b4f-ab7d-4980-b596-42a6a1cf4718.jpg?format=webp&width=800",
+"colors": ["شفاف"],
+"sizes": ["30 مل"],
+"details": {
+"النوع": "سيروم ترطيب",
+"العلامة التجارية": "The INKEY List",
+"المكونات النشطة": "Hyaluronic Acid (2%, متعدد الأوزان الجزيئية), Panthenol (فيتامين B5)",
+"نوع البشرة": "جميع أنواع البشرة، وخاصة الجافة، المجهدة، أو المعرضة للجفاف",
+"فوائد المنتج": "ترطيب متعدد الطبقات, ملء الخطوط الدقيقة, تهدئة البشرة, تعزيز نضارة البشرة",
+"خالي من": "العطور, البارابين, Sulfates, Phthalates",
+"ملمس المنتج": "هلامي خفيف، غير لزج",
+"طريقة الاستخدام": "طبق 2-3 قطرات على البشرة الرطبة بعد التونر. دلك حتى يتم امتصاصه بالكامل ثم اتبعيه بالمرطب.",
+"بلد المنشأ": "المملكة المتحدة"
+}
+},
+
+{
+"id": 14,
+"name": "Milani 3D Highlighting Lip Gloss - ملمع شفاه ثلاثي الأبعاد من Milani",
+"price": "170 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/Z8322715F6CD3CBF5B43EZ/45/_/1744098806/34f18138-dcc4-4a83-8ca6-c7ae5a6962d7.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "مكياج",
+"subcategory": "ملمع شفاه",
+"description": "ملمع شفاه فاخر من Milani بتأثير ثلاثي الأبعاد يمنح شفاهك بريقاً لا يقاوم وحجماً مبهراً. يأتي مع Applicator سيليكون مبتكر لتطبيق دقيق وسهل. قوامه الجيل السميك غير اللزج يغلف الشفاه بطبقة لامعة وغنية دون أن يشعرك بالثقل. يعمل على تحسين ملمس الشفاه فوراً، مما يجعها تبدو أكثر امتلاءً وجاذبية. اللون 03 'مشهد أصفر' يمنح لوناً دافئاً براقاً يناسب جميع درجات البشرة.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/Z8322715F6CD3CBF5B43EZ/45/_/1744098806/34f18138-dcc4-4a83-8ca6-c7ae5a6962d7.jpg?format=webp&width=800"
+],
+"colors": ["03 مشهد أصفر"],
+"sizes": ["5.5 مل"],
+"details": {
+"النوع": "ملمع شفاه عالي اللمعان",
+"العلامة التجارية": "Milani",
+"لمسة نهائية": "لامع عالي، غير لزج",
+"نوع Applicator": "سيليكون دقيق",
+"فوائد المنتج": "لمعان مكثف, إبراز حجم الشفاه, ترطيب, تحسين الملمس",
+"خالي من": "البارابين",
+"طريقة الاستخدام": "طبق مباشرة على الشفاه باستخدام الـApplicator المرفق أو استخدام الإصبع للحصول على لمسة أكثر طبيعية.",
+"بلد المنشأ": "الولايات المتحدة الأمريكية"
+}
+},
+
+{
+"id": 15,
+"name": "Cos De BAHA VC Serum 30ml - سيروم فيتامين سي",
+"price": "32 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/ZFE576163752506EC1692Z/45/_/1728481579/66af3b4f-ab7d-4980-b596-42a6a1cf4718.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "سيروم",
+"description": "سيروم فيتامين سي قوي وفعال من Cos De BAHA، مصنوع بـ L-Ascorbic Acid (أقوى أشكال فيتامين سي) لتحقيق أقصى فائدة في مكافحة علامات الشيخوخة وتوحيد لون البشرة. مدعم بـ Arbutin (للتفتيح)، فيتامين B5 (للترطيب والتهدئة)، وحمض الهيالورونيك. يعمل على تحفيز إنتاج الكولاجين، تقليل التجاعيد الدقيقة، ومحاربة البقع الداكنة والتصبغات. تغليف معتم يحافظ على فعالية فيتامين سي. مثالي للبشرة الناضجة، المتعبة، أو التي تعاني من عدم均匀 اللون.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/ZFE576163752506EC1692Z/45/_/1728481579/66af3b4f-ab7d-4980-b596-42a6a1cf4718.jpg?format=webp&width=800",
                     "https://f.nooncdn.com/p/pzsku/ZFE576163752506EC1692Z/45/_/1728904483/47cc4bfd-be07-4bb9-bff5-396500a5447e.jpg?format=webp&width=800"
                 ],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "Cos De BAHA",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },{
-                id: 16,
-                name: "ANUA HEARTLEAF 80% SOOTHING AMPOULE 30ml",
-                price: "15 ر.س",
-                image: "https://f.nooncdn.com/p/pzsku/ZA86DB07F3A89F463A46EZ/45/_/1728481516/2641eff3-129b-4c9d-88ee-6d999bf19cda.jpg?format=webp&width=800",
-                badges: ["fast-delivery"],
-                category: "مكياج",
-                subcategory: "الوجه",
-                description: "A highly-concentrated ampoule effortlessly absorbs, perfectly prepping your skin before makeup application to achieve a glowing glass skin look.",
-                images: [
-                    "https://f.nooncdn.com/p/pzsku/ZA86DB07F3A89F463A46EZ/45/_/1728481516/2641eff3-129b-4c9d-88ee-6d999bf19cda.jpg?format=webp&width=800"
-                ],
-                colors: ["طبيعي"],
-                sizes: ["حجم كامل"],
-                details: {
-                    "النوع": "مكياج",
-                    "العلامة التجارية": "ماد بيوتي",
-                    "اللون": "طبيعي",
-                    "الحجم": "وسط",
-                    "الاستخدام": "للوجه ",
-                    "مدة الصلاحية": "24 شهر"
-                }
-            },  
-        ];
+"colors": ["أصفر فاتح (لون السيروم)"],
+"sizes": ["30 مل"],
+"details": {
+"النوع": "سيروم فيتامين سي مضاد للأكسدة",
+"العلامة التجارية": "Cos De BAHA",
+"نوع فيتامين سي": "L-Ascorbic Acid",
+"المكونات النشطة": "Vitamin C, Arbutin, Panthenol (Vitamin B5), Hyaluronic Acid",
+"نوع البشرة": "البشرة الناضجة, المعرضة للتصبغات, الباهتة",
+"فوائد المنتج": "مكافحة علامات الشيخوخة, تفتيح البشرة وتوحيد لونها, ترطيب, حماية مضادة للأكسدة",
+"تركيز فيتامين سي": "غير محدد (مستقر وفعال)",
+"خالي من": "العطور, الكحول, الزيوت",
+"طريقة الاستخدام": "ضع بضع قطرات في الصباح على البشرة النظيفة والجافة قبل المرطب والواقي الشمسي.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+},
+
+{
+"id": 16,
+"name": "ANUA Heartleaf 80% Soothing Ampoule 30ml - أمبول Heartleaf المهدئ من ANUA",
+"price": "15 ر.س",
+"image": "https://f.nooncdn.com/p/pzsku/ZA86DB07F3A89F463A46EZ/45/_/1728481516/2641eff3-129b-4c9d-88ee-6d999bf19cda.jpg?format=webp&width=800",
+"badges": ["fast-delivery"],
+"category": "العناية بالبشرة",
+"subcategory": "أمبول",
+"description": "أمبول مهدئ عالي التركيز من ANUA يحتوي على 80% من خلاصة ورق القلب (Heartleaf) لتهدئة فورية وإصلاح مكثف للبشرة المتهيجة أو المعرضة للاحمرار. يمتص بسهولة ويُعد البشرة بشكل مثالي قبل المكياج لمنحها مظهر الجلد الزجاجي المتألق. يعمل على تقليل الاحمرار، تهدئة الحكة والالتهاب، وتعزيز حاجز البشرة. خفيف وغير لزج، يناسب استخدامه يومياً كطبقة أساس للمكياج أو كعلاج ليلي مكثف.",
+"images": [
+"https://f.nooncdn.com/p/pzsku/ZA86DB07F3A89F463A46EZ/45/_/1728481516/2641eff3-129b-4c9d-88ee-6d999bf19cda.jpg?format=webp&width=800"
+],
+"colors": ["أصلي"],
+"sizes": ["30 مل"],
+"details": {
+"النوع": "أمبول مهدئ ومرطب",
+"العلامة التجارية": "ANUA",
+"المكون النشط الرئيسي": "Heartleaf Extract (80%)",
+"نوع البشرة": "جميع أنواع البشرة، وخاصة الحساسة، المتهيجة، المعرضة للاحمرار (الوردية)",
+"فوائد المنتج": "تهدئة فورية, تقليل الاحمرار والالتهاب, إصلاح حاجز البشرة, ترطيب خفيف",
+"خالي من": "العطور, الكحول, الألوان الاصطناعية, البارابين",
+"ملمس المنتج": "سائل خفيف، يمتص بسرعة",
+"طريقة الاستخدام": "ضع بضع قطرات على الوجه بعد التونر وقبل الكريم. يمكن استخدامه كطبقة أساس قبل المكياج أو كعلاج مكثف مساءً.",
+"بلد المنشأ": "كوريا الجنوبية"
+}
+}        ];
 
         // متغيرات نظام السلة
         let cart = [];
@@ -1760,13 +1839,13 @@
                     });
                 });
                 
-                // زر إضافة إلى السلة في صفحة المنتج
-                document.getElementById('add-to-cart-detail').addEventListener('click', function() {
-                    const selectedColor = document.querySelector('.option-value.selected[data-value]')?.getAttribute('data-value') || null;
-                    const selectedSize = document.querySelector('.option-value.selected[data-value]')?.getAttribute('data-value') || null;
-                    addToCart(product.id, selectedColor, selectedSize);
-                });
-                
+// الكود المُعدل
+document.getElementById('add-to-cart-detail').addEventListener('click', function(event) { // أضف event هنا
+    event.stopPropagation(); // أضف هذا السطر
+    const selectedColor = document.querySelector('.product-options .option-value.selected[data-value]')?.getAttribute('data-value') || (product.colors ? product.colors[0] : null);
+    const selectedSize = document.querySelector('.product-options .option-value.selected[data-value]')?.getAttribute('data-value') || (product.sizes ? product.sizes[0] : null);
+    addToCart(product.id, selectedColor, selectedSize);
+});                
                 // التمرير إلى أعلى الصفحة
                 window.scrollTo({top: 0, behavior: 'smooth'});
             }
@@ -1846,4 +1925,5 @@
         });
     </script>
 </body>
+
 </html>
