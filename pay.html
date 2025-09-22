@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -1058,7 +1057,7 @@
                             <select id="payment-method" name="payment-method" required>
                                 <option value="">اختر طريقة الدفع</option>
                                 <option value="credit-card">بطاقة ائتمان</option>
-                                <option value="cash-on-delivery">(تقسيط مع مدى (متوفر عند 1000 ر.س</option>
+                                <option value="cash-on-delivery"> Google Pay</option>
                             </select>
                             <div class="error">يرجى اختيار طريقة الدفع</div>
                         </div>
@@ -1155,7 +1154,7 @@
                   <p>اشتركي في نشرتنا البريدية لتصلك آخر العروض والأخبار</p>
                   <form>
                       <input type="email" placeholder="بريدك الإلكتروني" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: var(--border-radius); border: none;">
-                      <button type="submit" class="subscribe-btn" style="width: 100%; padding: 10px; background-color: var(--button-color); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">اشترак</button>
+                      <button type="submit" class="subscribe-btn" style="width: 100%; padding: 10px; background-color: var(--button-color); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">اشتراك</button>
                   </form>
               </div>
           </div>
@@ -1461,28 +1460,40 @@
             }
         }
 
+        // ==========================================================
+        // ============== START: الكود المعدل هنا =====================
+        // ==========================================================
         function updateOrderSummary() {
             const subtotalElement = document.getElementById('subtotal');
             const discountElement = document.getElementById('discount');
             const shippingElement = document.getElementById('shipping');
             const totalElement = document.getElementById('total');
             if (!subtotalElement || !discountElement || !shippingElement || !totalElement) return;
+        
             const subtotal = cart.reduce((total, item) => total + (parseFloat(item.price || 0) * (item.quantity || 1)), 0);
             let totalDiscount = 0;
-            if (discountApplied && discountCode === 'OMD90') {
-                totalDiscount = subtotal * 0.9;
-            }
             const shipping = subtotal > 0 && subtotal < 200 ? 15 : 0;
+        
+            if (discountApplied && discountCode === 'OMD90') {
+                // المعادلة الجديدة لجعل المجموع 2.3 ر.س
+                totalDiscount = (subtotal + shipping) - 2.3;
+            }
+        
             const paymentMethod = document.getElementById('payment-method');
             if (paymentMethod && paymentMethod.value === 'credit-card') {
                 totalDiscount += subtotal * 0.30;
             }
+        
             const total = (subtotal - totalDiscount + shipping);
+        
             subtotalElement.textContent = subtotal.toFixed(2) + ' ر.س';
             discountElement.textContent = totalDiscount > 0 ? '-' + totalDiscount.toFixed(2) + ' ر.س' : '0 ر.س';
             shippingElement.textContent = shipping > 0 ? shipping.toFixed(2) + ' ر.س' : 'شحن مجاني';
             totalElement.textContent = total.toFixed(2) + ' ر.س';
         }
+        // ==========================================================
+        // ============== END: نهاية الكود المعدل ====================
+        // ==========================================================
 
         function applyDiscount() {
             const discountInput = document.getElementById('discount-code');
@@ -1731,4 +1742,3 @@
     </script>
 </body>
 </html>
-
