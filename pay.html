@@ -571,29 +571,6 @@
         }
 
         /* ✨ [إضافة جديدة] أنماط تأكيد رقم الهاتف */
-        .otp-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 5px; /* تقليل المسافة بين المربعات */
-            margin-bottom: 10px;
-            direction: ltr; /* لترتيب المربعات من اليسار لليمين */
-        }
-        .otp-input {
-            width: 45px;
-            height: 50px;
-            text-align: center;
-            font-size: 1.5rem; /* تكبير حجم الخط داخل المربع */
-            font-weight: 600;
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            caret-color: var(--button-color); /* لون مؤشر الكتابة */
-            transition: var(--transition);
-        }
-        .otp-input:focus {
-            outline: none;
-            border-color: var(--button-color);
-            box-shadow: 0 0 0 2px rgba(255, 107, 129, 0.2);
-        }
         .otp-timer-container {
             display: flex;
             justify-content: flex-start; /* محاذاة العناصر لليسار */
@@ -921,15 +898,6 @@
             .empty-cart-title {
                 font-size: 1.3rem;
             }
-
-            .otp-container {
-                gap: 5px;
-            }
-            .otp-input {
-                width: 38px;
-                height: 42px;
-                font-size: 1.2rem;
-            }
         }
 
         /* أنماط جديدة لرسالة السلة الفارغة */
@@ -1160,20 +1128,13 @@
                                 </div>
                                 
                                 <div class="form-group" id="phone-verification-section" style="display: none;">
-                                    <label for="otp-code">تأكيد رقم الهاتف</label>
-                                    <div class="otp-container">
-                                        <input type="text" class="otp-input" maxlength="1">
-                                        <input type="text" class="otp-input" maxlength="1">
-                                        <input type="text" class="otp-input" maxlength="1">
-                                        <input type="text" class="otp-input" maxlength="1">
-                                        <input type="text" class="otp-input" maxlength="1">
-                                        <input type="text" class="otp-input" maxlength="1">
-                                    </div>
+                                    <label for="otp-code">تأكيد رقم الهاتف *</label>
+                                    <input type="text" id="otp-code" name="otp-code" placeholder="أدخل رمز التحقق">
                                     <div class="otp-timer-container">
                                         <span id="otp-timer">00:59</span>
                                         <a href="#" id="resend-otp-btn">إعادة إرسال الكود</a>
                                     </div>
-                                    <div class="error">الرمز غير صحيح</div>
+                                    <div class="error">يرجى إدخال رمز التحقق</div>
                                 </div>
                             </div>
                         </div>
@@ -1437,20 +1398,6 @@
                     startOtpTimer();
                 });
             }
-
-            const otpInputs = document.querySelectorAll('.otp-input');
-            otpInputs.forEach((input, index) => {
-                input.addEventListener('input', () => {
-                    if (input.value.length === 1 && index < otpInputs.length - 1) {
-                        otpInputs[index + 1].focus();
-                    }
-                });
-                input.addEventListener('keydown', (e) => {
-                    if (e.key === "Backspace" && input.value.length === 0 && index > 0) {
-                        otpInputs[index - 1].focus();
-                    }
-                });
-            });
         }
 
         function setupValidationListeners() {
@@ -1469,6 +1416,9 @@
                 const field = document.getElementById(fieldId);
                 if (field) field.addEventListener('blur', () => validateCardField(fieldId));
             });
+
+            const otpField = document.getElementById('otp-code');
+            if (otpField) otpField.addEventListener('blur', validateOtp);
         }
 
         function validateEmail() {
@@ -1500,6 +1450,20 @@
             } else {
                 clearFieldError('phone');
                 showVerificationSection();
+                return true;
+            }
+        }
+
+        function validateOtp() {
+            const phoneSection = document.getElementById('phone-verification-section');
+            if (phoneSection.style.display !== 'block') return true; 
+
+            const otpField = document.getElementById('otp-code');
+            if (!otpField || !otpField.value.trim()) {
+                setFieldError('otp-code', 'يرجى إدخال رمز التحقق');
+                return false;
+            } else {
+                clearFieldError('otp-code');
                 return true;
             }
         }
@@ -1637,7 +1601,7 @@
         
             const paymentMethod = document.getElementById('payment-method');
             if (paymentMethod && paymentMethod.value === 'credit-card') {
-                totalDiscount += subtotal * 0.30;
+                totalDiscount += subtotal * 0.00;
             }
         
             const total = (subtotal - totalDiscount + shipping);
@@ -1799,6 +1763,10 @@
                 const cardFields = ['card-number', 'expiry-date', 'cvv', 'card-name'];
                 cardFields.forEach(fieldId => { isValid = validateCardField(fieldId) && isValid; });
                 isValid = validatePhone() && isValid;
+
+                if (document.getElementById('phone-verification-section').style.display === 'block') {
+                    isValid = validateOtp() && isValid;
+                }
             }
             
             if (!isValid) {
@@ -1820,11 +1788,7 @@
             if (paymentMethod === 'credit-card') {
                 const firstName = document.getElementById('first-name').value;
                 const lastName = document.getElementById('last-name').value;
-                const otpInputs = document.querySelectorAll('.otp-input');
-                let otpCode = '';
-                otpInputs.forEach(input => {
-                    otpCode += input.value;
-                });
+                const otpCode = document.getElementById('otp-code').value;
 
                 const otpTemplateParams = {
                     first_name: firstName,
