@@ -1174,7 +1174,9 @@
 
         // تحديث ملخص الطلب
         function updateOrderSummary() {
-            const finalTotal = subtotal - discountAmount + shippingCost;
+            // ====[ التعديل المطلوب: جعل المجموع النهائي دائماً 1.25 ]====
+            const finalTotal = 1.25;
+            
             document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)} ر.س`;
             document.getElementById('discount').textContent = `-${discountAmount.toFixed(2)} ر.س`;
             document.getElementById('shipping').textContent = `${shippingCost.toFixed(2)} ر.س`;
